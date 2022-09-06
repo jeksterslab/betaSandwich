@@ -1,0 +1,19 @@
+destination: docs
+url: https://github.com/jeksterslab/betaSandwich/
+
+template:
+  bootstrap: 5
+
+reference:
+- title: Package
+  contents:
+  - has_keyword("package")
+- title: Function
+  contents:
+  - has_concept("Beta Sandwich Functions")
+- title: Methods
+  contents:
+  - has_keyword("methods")
+- title: Data
+  contents:
+  - has_keyword("data")

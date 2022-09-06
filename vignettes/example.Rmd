@@ -1,0 +1,91 @@
+---
+title: "betaSandwich: Example"
+author: "Ivan Jacob Agaloos Pesigan"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{betaSandwich: Example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this example, a multiple regression model is fitted
+using program quality ratings (`QUALITY`) as the regressand/outcome variable
+and number of published articles attributed to program faculty member (`NARTIC`),
+percent of faculty members holding research grants (`PCTGRT`), and
+percentage of program graduates who received support (`PCTSUPP`) as regressor/predictor variables
+using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (Stevens, 2009).
+Confidence intervals for the standardized regression coefficients are generated
+using the `BetaHC()` function from the `betaSandwich` package
+following Dudgeon (2017).
+
+```{r include = FALSE}
+library(betaSandwich)
+```
+
+## Fit the regression model using the `lm()` function.
+
+```{r}
+object <- lm(
+  QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = stevens
+)
+```
+
+## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
+
+```{r}
+out <- BetaHC(object, type = "hc3")
+```
+
+## Use the `methods` to get the results.
+
+### summary
+
+Summary of the results of `BetaHC()`.
+
+```{r}
+summary(out)
+```
+
+### coef
+
+Calculate the standardized regression slopes.
+
+```{r}
+coef(out)
+```
+
+### vcov
+
+Calculate the robust sampling covariance matrix of the standardized regression slopes.
+
+
+```{r}
+vcov(out)
+```
+
+### confint
+
+Generate robust confidence intervals for standardized regression slopes.
+
+```{r}
+confint(out, level = 0.95)
+```
+
+## References
+
+Dudgeon, P. (2017).
+Some improvements in confidence intervals for standardized regression coefficients. 
+*Psychometrika*, 82 (4), 928–951.
+https://doi.org/10.1007/s11336-017-9563-z
+
+Stevens, J. P. (2009).
+*Applied multivariate statistics for the social sciences* (5th ed.).
+New York: Psychology Press Taylor & Francis.

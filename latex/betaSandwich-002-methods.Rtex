@@ -1,0 +1,97 @@
+\documentclass{article}
+
+\input{latex/preamble/preamble}
+
+%% begin.rcode
+% #| label = "root",
+% #| include = FALSE
+% root <- rprojroot::is_rstudio_project
+%% end.rcode
+
+%% begin.rcode
+% #| label = "knitr",
+% #| include = FALSE,
+% #| file = root$find_file(
+% #|   "latex",
+% #|   "r-scripts",
+% #|   "knitr.R"
+% #| )
+%% end.rcode
+
+%% begin.rcode
+% #| label = "biblatex",
+% #| echo = FALSE,
+% #| warning = FALSE,
+% #| results = "asis"
+% cat(
+%   .PreambleBiblatexCombined(
+%     path = root$find_file(
+%       "latex",
+%       "bib"
+%     ),
+%     output_path = root$find_file(
+%       "latex"
+%     )
+%   )
+% )
+%% end.rcode
+
+\renewcommand{\baselinestretch}{1}
+
+\title{betaSandwich: Methods}
+\author{Ivan Jacob Agaloos Pesigan}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+%% begin.rcode
+% object <- lm(
+%   QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+%   data = stevens
+% )
+%% end.rcode
+
+%% begin.rcode
+% out <- BetaHC(object, type = "hc5")
+% str(out)
+%% end.rcode
+
+\section*{print}
+
+%% begin.rcode
+% print(out)
+%% end.rcode
+
+\section*{coef}
+
+%% begin.rcode
+% coef(out)
+%% end.rcode
+
+\section*{vcov}
+
+%% begin.rcode
+% vcov(out)
+%% end.rcode
+
+\section*{confint}
+
+%% begin.rcode
+% confint(out, level = 0.95)
+%% end.rcode
+
+\section*{summary}
+
+%% begin.rcode
+% summary(out)
+%% end.rcode
+
+\nocite{Lib-R-Manual-2022}
+
+\nocite{Lib-Regression-Standardized-Coefficients-HC-Dudgeon-2017}
+
+\printbibliography
+
+\end{document}

@@ -1,0 +1,128 @@
+\documentclass{article}
+
+\input{latex/preamble/preamble}
+
+%% begin.rcode
+% #| label = "root",
+% #| include = FALSE
+% root <- rprojroot::is_rstudio_project
+%% end.rcode
+
+%% begin.rcode
+% #| label = "knitr",
+% #| include = FALSE,
+% #| file = root$find_file(
+% #|   "latex",
+% #|   "r-scripts",
+% #|   "knitr.R"
+% #| )
+%% end.rcode
+
+%% begin.rcode
+% #| label = "biblatex",
+% #| echo = FALSE,
+% #| warning = FALSE,
+% #| results = "asis"
+% cat(
+%   .PreambleBiblatexCombined(
+%     path = root$find_file(
+%       "latex",
+%       "bib"
+%     ),
+%     output_path = root$find_file(
+%       "latex"
+%     )
+%   )
+% )
+%% end.rcode
+
+\renewcommand{\baselinestretch}{1}
+
+\title{betaSandwich: Sampling Distribution of Standardized Slopes}
+\author{Ivan Jacob Agaloos Pesigan}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+%% begin.rcode
+% rm(list=ls())
+% foo <- function(n = 25,
+%                 rho = 0.0,
+%                 p = 2,
+%                 beta = 0.7) {
+%   beta <- rep(
+%     x = beta,
+%     times = p
+%   )
+%   sigmacapx <- matrix(
+%     data = rho,
+%     nrow = p,
+%     ncol = p
+%   )
+%   diag(sigmacapx) <- 1
+%   x <- MASS::mvrnorm(
+%     n = n,
+%     mu = rep(x = 0, times = p),
+%     Sigma = sigmacapx
+%   )
+%   e <- rnorm(
+%     n = n,
+%     sd = sqrt(
+%       as.vector(
+%         1 - crossprod(
+%           beta,
+%           sigmacapx
+%         ) %*% beta
+%       )
+%     )
+%   )
+%   y <- (x %*% beta) + e
+%   data <- as.data.frame(
+%     scale(
+%       cbind(
+%         y,
+%         x
+%       )
+%     )
+%   )
+%   colnames(data) <- c(
+%     "y",
+%     paste0(
+%       "x",
+%       1:p
+%     )
+%   )
+%   head(data)
+%   stats::coef(
+%     stats::lm(
+%       formula = y ~ .,
+%       data = data
+%     )
+%   )[-1]
+% }
+%% end.rcode
+
+%% begin.rcode
+% reps <- 10000
+% out <- do.call(
+%   what = "rbind",
+%   args = lapply(
+%     X = 1:reps,
+%     FUN = function(i) {
+%       foo()
+%     }
+%   )
+% )
+% hist(out[, 1])
+% hist(out[, 2])
+%% end.rcode
+
+\newpage
+
+\nocite{Lib-R-Manual-2022}
+
+\printbibliography
+
+\end{document}
