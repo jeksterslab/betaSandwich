@@ -46,21 +46,7 @@
 
 \maketitle
 
-%% begin.rcode
-% object <- lm(
-%   QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
-%   data = stevens
-% )
-% summary(object)
-%% end.rcode
-
-%% begin.rcode
-% out <- BetaHC(object, type = "hc5")
-% coef(out)
-% vcov(out)
-% summary(out)
-% confint(out, level = 0.95)
-%% end.rcode
+Staging...
 
 \nocite{Lib-R-Manual-2022}
 

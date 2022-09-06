@@ -48,7 +48,7 @@
 
 Generates robust confidence intervals for standardized regression coefficients
 using heteroscedasticity-consistent standard errors for models fitted by \texttt{lm()}
-as describe in \Textcite{Lib-Regression-Standardized-Coefficients-HC-Dudgeon-2017}.
+as described in \Textcite{Lib-Regression-Standardized-Coefficients-HC-Dudgeon-2017}.
 
 \section*{Installation}
 

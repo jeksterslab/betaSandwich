@@ -29,6 +29,3 @@
 ^docs$
 ^latex$
 ^latexmkrc$
-^betaSandwich\.Rcheck$
-^betaSandwich.*\.tar\.gz$
-^betaSandwich.*\.tgz$
