@@ -1,5 +1,6 @@
-# betaSandwich 0.9.1
+# betaSandwich 1.0.0
 
-## Major changes
+## Major
 
-* Add news here...
+* And so it begins.
+
