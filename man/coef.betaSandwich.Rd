@@ -14,4 +14,12 @@
 \description{
 Standardized Regression Slopes
 }
+\examples{
+object <- lm(rating ~ ., data = attitude)
+std <- BetaHC(object)
+coef(std)
+}
+\author{
+Ivan Jacob Agaloos Pesigan
+}
 \keyword{methods}

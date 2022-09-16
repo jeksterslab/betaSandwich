@@ -5,15 +5,19 @@
 #' @param d Numeric matrix.
 #'   Duplication matrix.
 #'
+#' @return Returns a matrix.
 #' @family Symmetric Functions
-#' @keywords linearAlgebra symmetric dot internal
+#' @keywords linearAlgebra symmetric internal
+#' @noRd
 .PInvDmat <- function(d) {
-  tcrossprod(
-    chol2inv(
-      chol(
-        crossprod(d)
-      )
-    ),
-    d
+  return(
+    tcrossprod(
+      chol2inv(
+        chol(
+          crossprod(d)
+        )
+      ),
+      d
+    )
   )
 }

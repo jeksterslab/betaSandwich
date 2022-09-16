@@ -35,7 +35,9 @@
 #'   If `FALSE`,
 #'   return both results of hypothesis tests and confidence intervals.
 #'
-#' @keywords internal
+#' @family Wald Confidence Intervals Functions
+#' @keywords wald ci internal
+#' @noRd
 .CIWald <- function(est,
                     se,
                     theta = 0,
@@ -95,5 +97,7 @@
     )
   }
   colnames(out) <- varnames
-  out
+  return(
+    out
+  )
 }

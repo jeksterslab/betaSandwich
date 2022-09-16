@@ -3,8 +3,10 @@
 #' @param p Positive integer.
 #'   `p` regressors.
 #'
+#' @return Returns a list of indices.
 #' @family Standardized Parameters Functions
-#' @keywords strRegression parametersstd dot internal
+#' @keywords strRegression parametersstd internal
+#' @noRd
 .ThetaStarIndex <- function(p) {
   if (p == 1) {
     return(

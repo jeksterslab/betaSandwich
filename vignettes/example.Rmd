@@ -16,34 +16,34 @@ knitr::opts_chunk$set(
 ```
 
 In this example, a multiple regression model is fitted
-using program quality ratings (`QUALITY`) as the regressand/outcome variable
-and number of published articles attributed to the program faculty members (`NARTIC`),
-percent of faculty members holding research grants (`PCTGRT`), and
-percentage of program graduates who received support (`PCTSUPP`) as regressor/predictor variables
-using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (Stevens, 2009).
+using the overall rating (`rating`) as the regressand/outcome variable
+and the rest of the variables as regressor/predictor variables
+using the `datasets::attitude` data set (Chatterjee & Price, 1977).
 Robust confidence intervals for the standardized regression coefficients are generated
 using the `BetaHC()` function from the `betaSandwich` package following Dudgeon (2017).
 
-```{r include = FALSE}
+```{r}
+#| message = FALSE
 library(betaSandwich)
 ```
 
 ## Fit the regression model using the `lm()` function.
 
 ```{r}
-object <- lm(
-  QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
-  data = stevens
-)
+object <- lm(rating ~ ., data = attitude)
 ```
 
 ## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
 ```{r}
-out <- BetaHC(object, type = "hc3")
+BetaHC(object, type = "hc3")
 ```
 
 ## Use the `methods` to get the results.
+
+```{r}
+out <- BetaHC(object, type = "hc3")
+```
 
 ### summary
 
@@ -65,7 +65,6 @@ coef(out)
 
 Calculate the robust sampling covariance matrix of the standardized regression slopes.
 
-
 ```{r}
 vcov(out)
 ```
@@ -85,6 +84,7 @@ Some improvements in confidence intervals for standardized regression coefficien
 *Psychometrika*, 82 (4), 928–951.
 https://doi.org/10.1007/s11336-017-9563-z
 
-Stevens, J. P. (2009).
-*Applied multivariate statistics for the social sciences* (5th ed.).
-New York: Psychology Press Taylor & Francis.
+Chatterjee, S. and Price, B. (1977).
+*Regression Analysis by Example*.
+New York: Wiley.
+(Section 3.7, p.68ff of 2nd ed.(1991).) 

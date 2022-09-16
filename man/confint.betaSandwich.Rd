@@ -4,18 +4,26 @@
 \alias{confint.betaSandwich}
 \title{Robust Confidence Intervals for Standardized Regression Slopes}
 \usage{
-\method{confint}{betaSandwich}(object, level = 0.95, digits = 4, ...)
+\method{confint}{betaSandwich}(object, parm = NULL, level = 0.95, ...)
 }
 \arguments{
 \item{object}{Object of class \code{betaSandwich}.}
 
-\item{level}{the confidence level required.}
+\item{parm}{a specification of which parameters are to be given confidence intervals, either a vector of numbers or a vector of names. If missing, all parameters are considered.}
 
-\item{digits}{Digits for rounding.}
+\item{level}{the confidence level required.}
 
 \item{...}{additional arguments.}
 }
 \description{
 Robust Confidence Intervals for Standardized Regression Slopes
+}
+\examples{
+object <- lm(rating ~ ., data = attitude)
+std <- BetaHC(object)
+confint(std, level = 0.95)
+}
+\author{
+Ivan Jacob Agaloos Pesigan
 }
 \keyword{methods}

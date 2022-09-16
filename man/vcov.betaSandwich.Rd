@@ -14,4 +14,12 @@
 \description{
 Robust Sampling Covariance Matrix of the Standardized Regression Slopes
 }
+\examples{
+object <- lm(rating ~ ., data = attitude)
+std <- BetaHC(object)
+vcov(std)
+}
+\author{
+Ivan Jacob Agaloos Pesigan
+}
 \keyword{methods}

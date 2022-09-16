@@ -1,10 +1,10 @@
-data_process_stevens <- function(overwrite = FALSE) {
+data_process_nas1982 <- function(overwrite = FALSE) {
   root <- rprojroot::is_rstudio_project
-  stevens_rda <- root$find_file(
+  nas1982_rda <- root$find_file(
     "data",
-    "stevens.rda"
+    "nas1982.rda"
   )
-  if (!file.exists(stevens_rda)) {
+  if (!file.exists(nas1982_rda)) {
     write <- TRUE
   } else {
     if (overwrite) {
@@ -14,18 +14,19 @@ data_process_stevens <- function(overwrite = FALSE) {
     }
   }
   if (write) {
-    stevens <- read.csv(
+    nas1982 <- read.csv(
       root$find_file(
         ".data-raw",
-        "stevens.txt"
+        "nas1982.txt"
       )
     )
     save(
-      stevens,
+      nas1982,
       file = root$find_file(
         "data",
-        "stevens.rda"
-      )
+        "nas1982.rda"
+      ),
+      compress = FALSE
     )
   }
 }

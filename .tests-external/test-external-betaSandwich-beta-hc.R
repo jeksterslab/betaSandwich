@@ -5,7 +5,13 @@ lapply(
                  tol,
                  text) {
     message(text)
-    object <- lm(rating ~ ., data = attitude)
+    nas1982 <- read.csv(
+      root$find_file(
+        ".data-raw",
+        "nas1982.txt"
+      )
+    )
+    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
     coefs <- coef(BetaHC(object))
     hc0 <- .BetaCI(BetaHC(object, type = "hc0"))
     hc1 <- .BetaCI(BetaHC(object, type = "hc1"))
@@ -14,77 +20,13 @@ lapply(
     hc4 <- .BetaCI(BetaHC(object, type = "hc4"))
     hc4m <- .BetaCI(BetaHC(object, type = "hc4m"))
     hc5 <- .BetaCI(BetaHC(object, type = "hc5"))
-    result_coef <- c(
-      0.67072520,
-      -0.07342743,
-      0.30887024,
-      0.06981172,
-      0.03119975,
-      -0.18346445
-    )
-    result_hc0 <- c(
-      0.1082482,
-      0.1079619,
-      0.1259760,
-      0.1211810,
-      0.1228721,
-      0.1278179
-    )
-    result_hc1 <- c(
-      0.1236282,
-      0.1233012,
-      0.1438748,
-      0.1383985,
-      0.1403298,
-      0.1459784
-    )
-    result_hc2 <- c(
-      0.1289287,
-      0.1298924,
-      0.1544300,
-      0.1469150,
-      0.1468358,
-      0.1505436
-    )
-    result_hc3 <- c(
-      0.1560447,
-      0.1593643,
-      0.1954076,
-      0.1843445,
-      0.1771669,
-      0.1801712
-    )
-    result_hc4 <- c(
-      0.1453437,
-      0.1518210,
-      0.1954437,
-      0.1856771,
-      0.1616663,
-      0.1670209
-    )
-    result_hc4m <- c(
-      0.1667964,
-      0.1725885,
-      0.2172358,
-      0.2025307,
-      0.1893406,
-      0.1905520
-    )
-    result_hc5 <- c(
-      0.1234665,
-      0.1251745,
-      0.1520500,
-      0.1445709,
-      0.1395534,
-      0.1439233
-    )
     testthat::test_that(
       paste(text, "coefs"),
       {
         testthat::expect_true(
           all(
             abs(
-              coefs - result_coef
+              coefs - c(0.4951, 0.3915, 0.2632)
             ) <= tol
           )
         )
@@ -96,7 +38,7 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              hc0[, "se"] - result_hc0
+              hc0[, "se"] - c(0.0668, 0.0703, 0.0760)
             ) <= tol
           )
         )
@@ -108,7 +50,7 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              hc1[, "se"] - result_hc1
+              hc1[, "se"] - c(0.0699, 0.0736, 0.0795)
             ) <= tol
           )
         )
@@ -120,7 +62,7 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              hc2[, "se"] - result_hc2
+              hc2[, "se"] - c(0.0723, 0.0758, 0.0805)
             ) <= tol
           )
         )
@@ -132,7 +74,7 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              hc3[, "se"] - result_hc3
+              hc3[, "se"] - c(0.0786, 0.0818, 0.0855)
             ) <= tol
           )
         )
@@ -144,7 +86,7 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              hc4[, "se"] - result_hc4
+              hc4[, "se"] - c(0.0810, 0.0821, 0.0834)
             ) <= tol
           )
         )
@@ -156,7 +98,7 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              hc4m[, "se"] - result_hc4m
+              hc4m[, "se"] - c(0.0811, 0.0843, 0.0868)
             ) <= tol
           )
         )
@@ -168,13 +110,22 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              hc5[, "se"] - result_hc5
+              hc5[, "se"] - c(0.0730, 0.0757, 0.0794)
             ) <= tol
           )
         )
       }
     )
+    object <- lm(rating ~ ., data = attitude)
+    print(.BetaCI(BetaHC(object, type = "hc0")))
+    print(.BetaCI(BetaHC(object, type = "hc1")))
+    print(.BetaCI(BetaHC(object, type = "hc2")))
+    print(.BetaCI(BetaHC(object, type = "hc3")))
+    print(.BetaCI(BetaHC(object, type = "hc4")))
+    print(.BetaCI(BetaHC(object, type = "hc4m")))
+    print(.BetaCI(BetaHC(object, type = "hc5")))
   },
   tol = 0.0001,
   text = "test-betaSandwich-beta-hc"
 )
+# This test compares the results of the package with Dudgeon (2017)

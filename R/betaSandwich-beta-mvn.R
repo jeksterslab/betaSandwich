@@ -1,4 +1,4 @@
-#' Estimate Standardized Regression Coefficients and Robust Sampling Covariance Matrix
+#' Estimate Standardized Regression Coefficients and Sampling Covariance Matrix Assuming Multivariate Normality
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -13,30 +13,9 @@
 #'   \item{df}{\eqn{n - p - 1} degrees of freedom}
 #' }
 #' @param object Object of class `lm`.
-#' @param type Character string.
-#'   Correction type.
-#'   Possible values are
-#'   `"hc0"`,
-#'   `"hc1"`,
-#'   `"hc2"`,
-#'   `"hc3"`,
-#'   `"hc4"`,
-#'   `"hc4m"`, and
-#'   `"hc5"`.
-#' @param g1 Numeric.
-#'   `g1` value for `type = "hc4m"` or `type = "hc5"`.
-#' @param g2 Numeric.
-#'   `g2` value for `type = "hc4m"`.
-#' @param k Numeric.
-#'   Constant for `type = "hc5"`
-#' @references
-#' Dudgeon, P. (2017).
-#' Some improvements in confidence intervals for standardized regression coefficients.
-#' *Psychometrika*, *82*(4), 928–951.
-#' \doi{10.1007/s11336-017-9563-z}
 #' @examples
 #' object <- lm(rating ~ ., data = attitude)
-#' std <- BetaHC(object)
+#' std <- BetaN(object)
 #' # Methods -------------------------------------------------------
 #' print(std)
 #' summary(std)
@@ -48,30 +27,13 @@
 #' @importFrom stats cov hatvalues
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich
-BetaHC <- function(object,
-                   type = "hc3",
-                   g1 = 1,
-                   g2 = 1.5,
-                   k = 0.7) {
+BetaN <- function(object) {
   stopifnot(
     methods::is(
       object,
       "lm"
     )
   )
-  stopifnot(
-    type %in% c(
-      "hc0",
-      "hc1",
-      "hc2",
-      "hc3",
-      "hc4",
-      "hc4m",
-      "hc5"
-    )
-  )
-  stopifnot(0 < k & k < 1)
-  constant <- k
   x <- data.matrix(object$model)
   varnames <- colnames(x)
   xnames <- varnames[-1]
@@ -80,6 +42,13 @@ BetaHC <- function(object,
   k <- dims[2]
   p <- k - 1
   df <- n - k
+  # consistent estimator
+  # sigmacap <- (
+  #  n / (
+  #    n - 1
+  #  )
+  # ) * stats::cov(x)
+  # unbiased estimator
   sigmacap <- stats::cov(x)
   sigma <- sqrt(diag(sigmacap))
   rhocap <- .RhoofSigma(
@@ -91,24 +60,6 @@ BetaHC <- function(object,
     k = k
   )
   names(betastar) <- xnames
-  gammacap <- .GammaHC(
-    d = .DofMat(
-      x,
-      center = colMeans(x),
-      n = n,
-      k = k
-    ),
-    sigmacap = sigmacap,
-    qcap = .QMat(
-      h = stats::hatvalues(object),
-      k = k,
-      type = type,
-      g1 = g1,
-      g2 = g2,
-      constant = constant
-    ),
-    n = n
-  )
   jcap <- .JacobianVechSigmaWRTThetaStar(
     betastar = betastar,
     sigmay = sigma[1],
@@ -121,21 +72,18 @@ BetaHC <- function(object,
     sigmacap = sigmacap,
     pinv_of_dcap = .PInvDmat(.DMat(k))
   )
-  avcov <- .AcovHC(
+  avcov <- .AcovN(
     jcap = jcap,
-    gammacap = gammacap,
     gammacap_mvn = gammacap_mvn
   )
-  vcov <- .CovHC(
+  vcov <- .CovN(
     acov = avcov,
-    type = type,
-    n = n,
-    df = df
+    n = n
   )[1:p, 1:p, drop = FALSE]
   colnames(vcov) <- rownames(vcov) <- xnames
   out <- list(
     call = match.call(),
-    type = type,
+    type = "mvn",
     beta = betastar,
     beta.vcov = vcov,
     n = n,

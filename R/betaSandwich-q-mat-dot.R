@@ -24,7 +24,8 @@
 #'   Constant for `type = "hc5"`
 #'
 #' @family BetaSandwich Functions
-#' @keywords betaSandwich leverage dot internal
+#' @keywords betaSandwich leverage internal
+#' @noRd
 .QMat <- function(h,
                   k,
                   type = "hc3",

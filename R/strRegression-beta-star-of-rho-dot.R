@@ -10,22 +10,26 @@
 #' @param k Positive integer.
 #'   Dimension of the `k` by `k` correlation matrix.
 #'
+#' @return Returns a matrix.
 #' @family Standardized Slopes Functions
-#' @keywords strRegression slopesstd dot internal
+#' @keywords strRegression slopesstd internal
+#' @noRd
 .BetaStarofRho <- function(rhocap,
                            k) {
-  .Vec(
-    solve(
-      rhocap[
-        2:k,
-        2:k,
-        drop = FALSE
-      ],
-      rhocap[
-        2:k,
-        1,
-        drop = FALSE
-      ]
+  return(
+    .Vec(
+      solve(
+        rhocap[
+          2:k,
+          2:k,
+          drop = FALSE
+        ],
+        rhocap[
+          2:k,
+          1,
+          drop = FALSE
+        ]
+      )
     )
   )
 }

@@ -6,12 +6,17 @@
 #'   Covariance matrix.
 #' @param q Numeric vector.
 #'   Inverse of the standard deviation vector.
+#' @return Returns a matrix.
+#'
 #' @family Correlation Functions
-#' @keywords rhoMatrix correlation dot internal
+#' @keywords rhoMatrix correlation internal
+#' @noRd
 .RhoofSigma <- function(x,
                         q) {
-  q * x * rep(
-    x = q,
-    each = dim(x)[1]
+  return(
+    q * x * rep(
+      x = q,
+      each = dim(x)[1]
+    )
   )
 }

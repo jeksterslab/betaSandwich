@@ -6,7 +6,7 @@
 \title{betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients}
 \description{
 Generates robust confidence intervals for standardized regression coefficients
-using heteroscedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017).
+using heteroscedasticity-consistent standard errors for models fitted by \code{lm()} as described in Dudgeon (2017).
 }
 \references{
 Dudgeon, P. (2017).

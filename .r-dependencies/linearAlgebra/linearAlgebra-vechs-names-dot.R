@@ -8,8 +8,10 @@
 #' @param sep Character string.
 #'   Separator for variable names.
 #'
+#' @return Returns a vector.
 #' @family Vectorization Functions
-#' @keywords linearAlgebra vectorization dot internal
+#' @keywords linearAlgebra vectorization internal
+#' @noRd
 .VechsNames <- function(x,
                         sep = ".") {
   out <- outer(

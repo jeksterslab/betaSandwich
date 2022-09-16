@@ -2,14 +2,16 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a vector of character stings.
+#' @return Returns a vector of character strings.
 #'
 #' @param x Character vector of names of length `k`.
 #' @param sep Character string.
 #'   Separator for variable names.
 #'
+#' @return Returns a vector.
 #' @family Vectorization Functions
-#' @keywords linearAlgebra vectorization dot internal
+#' @keywords linearAlgebra vectorization internal
+#' @noRd
 .VechNames <- function(x,
                        sep = ".") {
   out <- outer(
@@ -24,5 +26,7 @@
       )
     }
   )
-  .Vech(out)
+  return(
+    .Vech(out)
+  )
 }

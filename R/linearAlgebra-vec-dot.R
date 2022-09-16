@@ -7,8 +7,9 @@
 #' @param x Matrix.
 #'
 #' @family Vectorization Functions
-#' @keywords linearAlgebra vectorization dot internal
+#' @keywords linearAlgebra vectorization internal
+#' @noRd
 .Vec <- function(x) {
   dim(x) <- NULL
-  x
+  return(x)
 }

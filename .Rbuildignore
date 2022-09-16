@@ -3,6 +3,7 @@
 .*\.Rproj$
 .*\.html$
 .*\.md$
+.*\.pdf$
 .*\.sh$
 .*\.tar\.gz$
 .*\.tar\.xz$
@@ -29,3 +30,4 @@
 ^docs$
 ^latex$
 ^latexmkrc$
+^vignettes$

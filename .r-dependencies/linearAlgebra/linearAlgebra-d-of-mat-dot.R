@@ -11,19 +11,22 @@
 #' @param k Positive integer.
 #'   Number of columns in the data matrix `x`.
 #'
-#' @return A matrix.
+#' @return Returns a matrix.
 #'
 #' @family Scaling Functions
-#' @keywords linearAlgebra scaling dot internal
+#' @keywords linearAlgebra scaling internal
+#' @noRd
 .DofMat <- function(x,
                     center,
                     n,
                     k) {
-  x - rep(
-    x = center,
-    times = rep(
-      x = n,
-      times = k
+  return(
+    x - rep(
+      x = center,
+      times = rep(
+        x = n,
+        times = k
+      )
     )
   )
 }

@@ -17,8 +17,10 @@
 #' @param p Positive integer.
 #'   `p` regressors.
 #'
+#' @return Returns a matrix.
 #' @family Derivatives Functions
-#' @keywords strRegression derivatives dot internal
+#' @keywords strRegression derivatives internal
+#' @noRd
 .JacobianVechSigmaWRTThetaStar <- function(betastar,
                                            sigmay,
                                            sigmax,
@@ -184,5 +186,7 @@
       drop = FALSE
     ]
   }
-  jcap
+  return(
+    jcap
+  )
 }

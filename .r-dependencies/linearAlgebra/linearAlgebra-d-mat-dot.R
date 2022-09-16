@@ -8,7 +8,8 @@
 #' @return Returns a matrix.
 #'
 #' @family Symmetric Functions
-#' @keywords linearAlgebra symmetric dot internal
+#' @keywords linearAlgebra symmetric internal
+#' @noRd
 .DMat <- function(k) {
   sym <- matrix(
     0,

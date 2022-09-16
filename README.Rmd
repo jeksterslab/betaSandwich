@@ -38,8 +38,46 @@ install.packages("remotes")
 remotes::install_github("jeksterslab/betaSandwich")
 ```
 
-## More Information
+## Documentation
 
 See
 [GitHub Pages](https://jeksterslab.github.io/betaSandwich/index.html)
 for package documentation.
+
+## Example
+
+In this example, a multiple regression model is fitted
+using the overall rating (`rating`) as the regressand/outcome variable
+and the rest of the variables as regressor/predictor variables
+using the `datasets::attitude` data set (Chatterjee & Price, 1977).
+Robust confidence intervals for the standardized regression coefficients are generated
+using the `BetaHC()` function from the `betaSandwich` package following Dudgeon (2017).
+
+```{r}
+#| message = FALSE
+library(betaSandwich)
+```
+
+### Fit the regression model using the `lm()` function.
+
+```{r}
+object <- lm(rating ~ ., data = attitude)
+```
+
+### Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
+
+```{r}
+BetaHC(object, type = "hc3")
+```
+
+### References
+
+Dudgeon, P. (2017).
+Some improvements in confidence intervals for standardized regression coefficients. 
+*Psychometrika*, 82 (4), 928–951.
+https://doi.org/10.1007/s11336-017-9563-z
+
+Chatterjee, S. and Price, B. (1977).
+*Regression Analysis by Example*.
+New York: Wiley.
+(Section 3.7, p.68ff of 2nd ed.(1991).) 

@@ -16,11 +16,12 @@
 #'   `"hc5"`.
 #' @param n Integer.
 #'   Sample size.
-#' @param k Integer.
-#'   `p` regressors plus 1.
+#' @param df Integer.
+#'   Degrees of freedom.
 #'
 #' @family BetaSandwich Functions
-#' @keywords betaSandwich cov dot internal
+#' @keywords betaSandwich cov internal
+#' @noRd
 .CovHC <- function(acov,
                    type,
                    n,
@@ -30,5 +31,7 @@
   if (type == "hc1") {
     out <- (n / df) * out
   }
-  out
+  return(
+    out
+  )
 }

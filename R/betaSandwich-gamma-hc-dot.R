@@ -12,26 +12,29 @@
 #'   Sample size.
 #'
 #' @family BetaSandwich Functions
-#' @keywords betaSandwich gamma dot internal
+#' @keywords betaSandwich gamma internal
+#' @noRd
 .GammaHC <- function(d,
                      sigmacap,
                      qcap,
                      n) {
-  (
-    1 / n
-  ) * Reduce(
-    f = "+",
-    x = lapply(
-      X = seq_len(n),
-      FUN = function(i) {
-        qcap[i] * tcrossprod(
-          .Vech(
-            tcrossprod(
-              d[i, ]
-            ) - sigmacap
+  return(
+    (
+      1 / n
+    ) * Reduce(
+      f = "+",
+      x = lapply(
+        X = seq_len(n),
+        FUN = function(i) {
+          qcap[i] * tcrossprod(
+            .Vech(
+              tcrossprod(
+                d[i, ]
+              ) - sigmacap
+            )
           )
-        )
-      }
+        }
+      )
     )
   )
 }

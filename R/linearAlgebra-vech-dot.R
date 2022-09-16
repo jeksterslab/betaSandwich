@@ -4,13 +4,17 @@
 #'
 #' @param x Matrix.
 #'
+#' @return Returns a vector.
 #' @family Vectorization Functions
-#' @keywords linearAlgebra vectorization dot internal
+#' @keywords linearAlgebra vectorization internal
+#' @noRd
 .Vech <- function(x) {
-  x[
-    lower.tri(
-      x = x,
-      diag = TRUE
-    )
-  ]
+  return(
+    x[
+      lower.tri(
+        x = x,
+        diag = TRUE
+      )
+    ]
+  )
 }

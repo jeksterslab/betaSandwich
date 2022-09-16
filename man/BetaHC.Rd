@@ -30,14 +30,14 @@ Possible values are
 Constant for \code{type = "hc5"}}
 }
 \value{
-Returns a list with the following elements:
+Returns an object of class \code{betaSandwich} which is a list with the following elements:
 \describe{
-\item{call}{function call}
-\item{type}{standard error type}
-\item{beta}{vector of standardized slopes}
-\item{beta.vcov}{sampling covariance matrix of the standardized slopes}
-\item{n}{sample size}
-\item{p}{number of regressors}
+\item{call}{Function call.}
+\item{type}{Standard error type.}
+\item{beta}{Vector of standardized slopes.}
+\item{beta.vcov}{Sampling covariance matrix of the standardized slopes.}
+\item{n}{Sample size.}
+\item{p}{Number of regressors.}
 \item{df}{\eqn{n - p - 1} degrees of freedom}
 }
 }
@@ -45,9 +45,14 @@ Returns a list with the following elements:
 Estimate Standardized Regression Coefficients and Robust Sampling Covariance Matrix
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = stevens)
+object <- lm(rating ~ ., data = attitude)
 std <- BetaHC(object)
+# Methods -------------------------------------------------------
+print(std)
 summary(std)
+coef(std)
+vcov(std)
+confint(std, level = 0.95)
 }
 \references{
 Dudgeon, P. (2017).
@@ -57,7 +62,7 @@ Some improvements in confidence intervals for standardized regression coefficien
 }
 \seealso{
 Other Beta Sandwich Functions: 
-\code{\link{.BetaCI}()}
+\code{\link{BetaN}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan
