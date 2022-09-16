@@ -39,7 +39,7 @@ object <- lm(rating ~ ., data = attitude)
 BetaHC(object, type = "hc3")
 ```
 
-## Use the `methods` to get the results.
+## Methods
 
 ```{r}
 out <- BetaHC(object, type = "hc3")

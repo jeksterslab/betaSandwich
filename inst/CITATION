@@ -10,8 +10,8 @@ utils::citEntry(
       comment = c(ORCID = "0000-0003-4818-8420")
     )
   ),
-  title = "betaSandwich: Sandwich Type Confidence Intervals for Standardized Regression Coefficients",
+  title = "betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients",
   year = "2022",
   note = "R package version 0.9.1",
-  textVersion = "Pesigan, I. J. A. (2022). betaSandwich: Sandwich Type Confidence Intervals for Standardized Regression Coefficients. R package version 0.9.1"
+  textVersion = "Pesigan, I. J. A. (2022). betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients. R package version 0.9.1"
 )

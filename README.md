@@ -7,6 +7,7 @@ Ivan Jacob Agaloos Pesigan
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/jeksterslab/betaSandwich/workflows/R-CMD-check/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions)
+[![test-coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml)
 [![codecov](https://codecov.io/gh/jeksterslab/betaSandwich/branch/main/graph/badge.svg)](https://codecov.io/gh/jeksterslab/betaSandwich)
 <!-- badges: end -->
 
