@@ -15,6 +15,9 @@
 
 \item{...}{additional arguments.}
 }
+\value{
+Returns a matrix of standardized regression slopes, standard errors, test statistics, p-values, and confidence intervals.
+}
 \description{
 Summary of the Results of BetaHC
 }

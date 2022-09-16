@@ -11,6 +11,9 @@
 
 \item{...}{additional arguments.}
 }
+\value{
+Returns a vector of standardized regression slopes.
+}
 \description{
 Standardized Regression Slopes
 }

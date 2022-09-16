@@ -11,6 +11,9 @@
 
 \item{...}{additional arguments.}
 }
+\value{
+Returns a matrix of variance-covariance matrix of standardized slopes.
+}
 \description{
 Robust Sampling Covariance Matrix of the Standardized Regression Slopes
 }

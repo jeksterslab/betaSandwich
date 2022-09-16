@@ -15,6 +15,9 @@
 
 \item{...}{additional arguments.}
 }
+\value{
+Returns a matrix of confidence intervals.
+}
 \description{
 Robust Confidence Intervals for Standardized Regression Slopes
 }

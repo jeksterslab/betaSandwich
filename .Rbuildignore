@@ -31,3 +31,6 @@
 ^latex$
 ^latexmkrc$
 ^vignettes$
+^betaSandwich\.Rcheck$
+^betaSandwich.*\.tar\.gz$
+^betaSandwich.*\.tgz$

@@ -6,6 +6,7 @@
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
+#' @return Returns a matrix of standardized regression slopes, standard errors, test statistics, p-values, and confidence intervals.
 #' @examples
 #' object <- lm(rating ~ ., data = attitude)
 #' std <- BetaHC(object)
@@ -25,11 +26,6 @@ print.betaSandwich <- function(x,
     toupper(x$type),
     "standard errors:\n"
   )
-  if (x$type == "mvn") {
-    z <- TRUE
-  } else {
-    z <- FALSE
-  }
   base::print(
     .BetaCI(
       object = x,
@@ -46,6 +42,7 @@ print.betaSandwich <- function(x,
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
+#' @return Returns a matrix of standardized regression slopes, standard errors, test statistics, p-values, and confidence intervals.
 #' @examples
 #' object <- lm(rating ~ ., data = attitude)
 #' std <- BetaHC(object)
@@ -79,6 +76,7 @@ summary.betaSandwich <- function(object,
 #'
 #' @param object Object of class `betaSandwich`.
 #' @param ... additional arguments.
+#' @return Returns a matrix of variance-covariance matrix of standardized slopes.
 #' @examples
 #' object <- lm(rating ~ ., data = attitude)
 #' std <- BetaHC(object)
@@ -99,6 +97,7 @@ vcov.betaSandwich <- function(object,
 #'
 #' @param object Object of class `betaSandwich`.
 #' @param ... additional arguments.
+#' @return Returns a vector of standardized regression slopes.
 #' @examples
 #' object <- lm(rating ~ ., data = attitude)
 #' std <- BetaHC(object)
@@ -118,6 +117,7 @@ coef.betaSandwich <- function(object,
 #' @param ... additional arguments.
 #' @param parm 	a specification of which parameters are to be given confidence intervals, either a vector of numbers or a vector of names. If missing, all parameters are considered.
 #' @param level the confidence level required.
+#' @return Returns a matrix of confidence intervals.
 #' @examples
 #' object <- lm(rating ~ ., data = attitude)
 #' std <- BetaHC(object)
