@@ -14,7 +14,7 @@ Ivan Jacob Agaloos Pesigan
 ## Description
 
 Generates robust confidence intervals for standardized regression
-coefficients using heteroscedasticity-consistent standard errors for
+coefficients using heteroskedasticity-consistent standard errors for
 models fitted by `lm()` as described in Dudgeon (2017:
 <http://doi.org/10.1007/s11336-017-9563-z>).
 

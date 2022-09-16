@@ -9,17 +9,21 @@
 #' @param gammacap Numeric matrix.
 #'   Adjusted asymptotic covariance matrix.
 #' @param gammacap_mvn Numeric matrix.
-#'   Asymptotic covariance matrix assuming multivariate normal distribution.
+#'   Asymptotic covariance matrix of the sample covariance matrix assuming multivariate normal distribution.
 #'
-#' @family BetaSandwich Functions
+#' @family Beta Sandwich Functions
 #' @keywords betaSandwich acov internal
 #' @noRd
-.AcovHC <- function(jcap,
+.ACovHC <- function(jcap,
                     gammacap,
                     gammacap_mvn) {
-  inversemvn <- solve(gammacap_mvn)
+  inversemvn <- chol2inv(
+    chol(gammacap_mvn)
+  )
   tjcapinversemvn <- t(jcap) %*% inversemvn
-  bread <- solve(tjcapinversemvn %*% jcap)
+  bread <- chol2inv(
+    chol(tjcapinversemvn %*% jcap)
+  )
   meat <- tjcapinversemvn %*% gammacap %*% inversemvn %*% jcap
   return(
     bread %*% meat %*% bread

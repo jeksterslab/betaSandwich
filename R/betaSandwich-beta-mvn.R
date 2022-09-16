@@ -72,7 +72,7 @@ BetaN <- function(object) {
     sigmacap = sigmacap,
     pinv_of_dcap = .PInvDmat(.DMat(k))
   )
-  avcov <- .AcovN(
+  avcov <- .ACovN(
     jcap = jcap,
     gammacap_mvn = gammacap_mvn
   )

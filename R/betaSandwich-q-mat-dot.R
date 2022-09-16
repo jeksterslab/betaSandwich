@@ -23,7 +23,7 @@
 #' @param constant Numeric.
 #'   Constant for `type = "hc5"`
 #'
-#' @family BetaSandwich Functions
+#' @family Beta Sandwich Functions
 #' @keywords betaSandwich leverage internal
 #' @noRd
 .QMat <- function(h,

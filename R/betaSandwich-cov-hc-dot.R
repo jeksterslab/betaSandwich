@@ -19,7 +19,7 @@
 #' @param df Integer.
 #'   Degrees of freedom.
 #'
-#' @family BetaSandwich Functions
+#' @family Beta Sandwich Functions
 #' @keywords betaSandwich cov internal
 #' @noRd
 .CovHC <- function(acov,

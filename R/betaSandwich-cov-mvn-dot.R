@@ -7,7 +7,7 @@
 #' @param n Integer.
 #'   Sample size.
 #'
-#' @family BetaSandwich Functions
+#' @family Beta Sandwich Functions
 #' @keywords betaSandwich cov internal
 #' @noRd
 .CovN <- function(acov,
@@ -15,6 +15,8 @@
   return(
     (
       1 / n
-    ) * solve(acov)
+    ) * chol2inv(
+      chol(acov)
+    )
   )
 }

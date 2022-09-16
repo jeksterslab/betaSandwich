@@ -7,14 +7,16 @@
 #'   of the model-implied covariance matrix
 #'   with respect to the standardized parameter vector.
 #' @param gammacap_mvn Numeric matrix.
-#'   Asymptotic covariance matrix assuming multivariate normal distribution.
+#'   Asymptotic covariance matrix of the sample covariance matrix assuming multivariate normal distribution.
 #'
-#' @family BetaSandwich Functions
+#' @family Beta Sandwich Functions
 #' @keywords betaSandwich acov internal
 #' @noRd
-.AcovN <- function(jcap,
+.ACovN <- function(jcap,
                    gammacap_mvn) {
   return(
-    t(jcap) %*% solve(gammacap_mvn) %*% jcap
+    t(jcap) %*% chol2inv(
+      chol(gammacap_mvn)
+    ) %*% jcap
   )
 }

@@ -121,7 +121,7 @@ BetaHC <- function(object,
     sigmacap = sigmacap,
     pinv_of_dcap = .PInvDmat(.DMat(k))
   )
-  avcov <- .AcovHC(
+  avcov <- .ACovHC(
     jcap = jcap,
     gammacap = gammacap,
     gammacap_mvn = gammacap_mvn
