@@ -86,7 +86,7 @@ summary.betaSandwich <- function(object,
 vcov.betaSandwich <- function(object,
                               ...) {
   p <- length(object$beta)
-  out <- object$beta.vcov[1:p, 1:p, drop = FALSE]
+  out <- object$vcov[1:p, 1:p, drop = FALSE]
   rownames(out) <- colnames(out) <- names(object$beta)
   return(out)
 }

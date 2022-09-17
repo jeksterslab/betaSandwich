@@ -5,9 +5,6 @@ template:
   bootstrap: 5
 
 reference:
-- title: Package
-  contents:
-  - has_keyword("package")
 - title: Function
   contents:
   - has_concept("Beta Sandwich Functions")

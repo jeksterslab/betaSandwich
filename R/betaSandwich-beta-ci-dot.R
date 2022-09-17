@@ -15,7 +15,7 @@
   return(
     .CIWald(
       object$beta,
-      se = sqrt(diag(object$beta.vcov)),
+      se = sqrt(diag(object$vcov)),
       theta = 0,
       alpha = alpha,
       z = FALSE,

@@ -7,7 +7,7 @@
 #'   \item{call}{Function call.}
 #'   \item{type}{Standard error type.}
 #'   \item{beta}{Vector of standardized slopes.}
-#'   \item{beta.vcov}{Sampling covariance matrix of the standardized slopes.}
+#'   \item{vcov}{Sampling covariance matrix of the standardized slopes.}
 #'   \item{n}{Sample size.}
 #'   \item{p}{Number of regressors.}
 #'   \item{df}{\eqn{n - p - 1} degrees of freedom}
@@ -137,7 +137,7 @@ BetaHC <- function(object,
     call = match.call(),
     type = type,
     beta = betastar,
-    beta.vcov = vcov,
+    vcov = vcov,
     n = n,
     p = p,
     df = df

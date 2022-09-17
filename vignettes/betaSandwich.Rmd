@@ -1,0 +1,39 @@
+---
+title: "betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients"
+author: "Ivan Jacob Agaloos Pesigan"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/jeksterslab/betaSandwich/workflows/R-CMD-check/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions)
+[![test-coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml)
+[![codecov](https://codecov.io/gh/jeksterslab/betaSandwich/branch/main/graph/badge.svg)](https://codecov.io/gh/jeksterslab/betaSandwich)
+<!-- badges: end -->
+
+## Description
+
+Generates robust confidence intervals for standardized regression coefficients
+using heteroskedasticity-consistent standard errors for models fitted by `lm()` as described in Dudgeon (2017: http://doi.org/10.1007/s11336-017-9563-z).
+
+## Installation
+
+You can install the released version of
+`betaSandwich`
+from
+[GitHub](https://github.com/jeksterslab/betaSandwich) with:
+
+```r
+install.packages("remotes")
+remotes::install_github("jeksterslab/betaSandwich")
+```
+
+## References
+
+Dudgeon, P. (2017).
+Some improvements in confidence intervals for standardized regression coefficients. 
+*Psychometrika*, 82 (4), 928–951.
+https://doi.org/10.1007/s11336-017-9563-z
