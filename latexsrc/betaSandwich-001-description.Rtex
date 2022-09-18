@@ -1,0 +1,90 @@
+\documentclass{article}
+
+\input{latexsrc/preamble/preamble}
+
+%% begin.rcode
+% #| label = "root",
+% #| include = FALSE
+% root <- rprojroot::is_rstudio_project
+%% end.rcode
+
+%% begin.rcode
+% #| label = "knitr",
+% #| include = FALSE,
+% #| file = root$find_file(
+% #|   "latexsrc",
+% #|   "r-scripts",
+% #|   "knitr.R"
+% #| )
+%% end.rcode
+
+%% begin.rcode
+% #| label = "biblatex",
+% #| echo = FALSE,
+% #| warning = FALSE,
+% #| results = "asis"
+% cat(
+%   .PreambleBiblatexCombined(
+%     path = root$find_file(
+%       "latexsrc",
+%       "bib"
+%     ),
+%     output_path = root$find_file(
+%       "latexsrc"
+%     )
+%   )
+% )
+%% end.rcode
+
+\title{betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients}
+\author{Ivan Jacob Agaloos Pesigan}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Description}
+
+Generates robust confidence intervals for standardized regression coefficients
+using heteroscedasticity-consistent standard errors for models fitted by \texttt{lm()}
+as described in \Textcite{Lib-Regression-Standardized-Coefficients-HC-Dudgeon-2017}.
+
+\section*{Installation}
+
+You can install the released version of
+\texttt{betaSandwich}
+from
+\href{https://github.com/jeksterslab/betaSandwich}{GitHub}
+with:
+
+%% begin.rcode
+% #| eval = FALSE
+% install.packages("remotes")
+% remotes::install_github("jeksterslab/betaSandwich")
+%% end.rcode
+
+\section*{Example}
+
+Describe the data and model here.
+
+%% begin.rcode
+% object <- lm(rating ~ ., data = attitude)
+% summary(object)
+%% end.rcode
+
+%% begin.rcode
+% BetaHC(object, type = "hc5")
+%% end.rcode
+
+\section*{More Information}
+
+See
+\href{https://jeksterslab.github.io/betaSandwich/index.html}{GitHub Pages}
+for package documentation.
+
+\nocite{Lib-R-Manual-2022}
+
+\printbibliography
+
+\end{document}

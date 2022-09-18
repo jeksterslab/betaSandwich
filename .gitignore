@@ -45,8 +45,5 @@
 # secrets
 *secrets*
 
-# clone github repo script
-.clone.sh
-
-# latex
-latexmkrc
+# docs
+docs
