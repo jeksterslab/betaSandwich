@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">betaSandwich</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,8 @@
 
 
 <dt>parm</dt>
-<dd><p>a specification of which parameters are to be given confidence intervals, either a vector of numbers or a vector of names. If missing, all parameters are considered.</p></dd>
+<dd><p>a specification of which parameters are to be given confidence intervals,
+either a vector of numbers or a vector of names. If missing, all parameters are considered.</p></dd>
 
 
 <dt>level</dt>
@@ -95,16 +96,13 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">rating</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">attitude</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">nas1982</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu"><a href="BetaHC.html">BetaHC</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">std</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   2.5%     97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints  0.34792217 0.9935282</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges -0.40309753 0.2562427</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning   -0.09536107 0.7131016</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises     -0.31153391 0.4511573</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical   -0.33529792 0.3976974</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance    -0.55617704 0.1892481</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               2.5%     97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.33659828 0.6536920</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.22631203 0.5566654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.09068548 0.4358099</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

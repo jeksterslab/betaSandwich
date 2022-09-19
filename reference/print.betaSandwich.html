@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">betaSandwich</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,27 +95,17 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">rating</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">attitude</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">nas1982</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu"><a href="BetaHC.html">BetaHC</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BetaHC(object = object)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Standardized regression slopes with HC3 standard errors:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 est     se       t         p    0.05%    0.5%     2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints  0.67073 0.1560  4.2983 0.0002677  0.08281  0.2327  0.34792 0.9935</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges -0.07343 0.1594 -0.4608 0.6493035 -0.67385 -0.5208 -0.40310 0.2562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning    0.30887 0.1954  1.5806 0.1276145 -0.42735 -0.2397 -0.09536 0.7131</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises      0.06981 0.1843  0.3787 0.7083821 -0.62473 -0.4477 -0.31153 0.4512</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical    0.03120 0.1772  0.1761 0.8617538 -0.63630 -0.4662 -0.33530 0.3977</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance    -0.18346 0.1802 -1.0183 0.3191381 -0.86228 -0.6893 -0.55618 0.1892</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             99.5% 99.95%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints 1.1088 1.2586</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges 0.3740 0.5270</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning   0.8574 1.0451</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises     0.5873 0.7644</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical   0.5286 0.6987</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance    0.3223 0.4954</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            est     se      t      p   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4951 0.0786 6.3025 0.0000  0.2172 0.2832 0.3366 0.6537 0.7071 0.7731</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.3915 0.0818 4.7831 0.0000  0.1019 0.1707 0.2263 0.5567 0.6123 0.6810</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2632 0.0855 3.0786 0.0037 -0.0393 0.0325 0.0907 0.4358 0.4940 0.5658</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

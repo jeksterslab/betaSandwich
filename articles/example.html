@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">betaSandwich</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,14 +84,14 @@
 
     
     
-<p>In this example, a multiple regression model is fitted using the overall rating (<code>rating</code>) as the regressand/outcome variable and the rest of the variables as regressor/predictor variables using the <code><a href="https://rdrr.io/r/datasets/attitude.html" class="external-link">datasets::attitude</a></code> data set (Chatterjee &amp; Price, 1977). Robust confidence intervals for the standardized regression coefficients are generated using the <code><a href="../reference/BetaHC.html">BetaHC()</a></code> function from the <code>betaSandwich</code> package following Dudgeon (2017).</p>
+<p>In this example, a multiple regression model is fitted using program quality ratings (<code>QUALITY</code>) as the regressand/outcome variable and number of published articles attributed to the program faculty members (<code>NARTIC</code>), percent of faculty members holding research grants (<code>PCTGRT</code>), and percentage of program graduates who received support (<code>PCTSUPP</code>) as regressor/predictor variables using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982). Robust confidence intervals for the standardized regression coefficients are generated using the <code><a href="../reference/BetaHC.html">BetaHC()</a></code> function from the <code>betaSandwich</code> package following Dudgeon (2017).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaSandwich">betaSandwich</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="fit-the-regression-model-using-the-lm-function-">Fit the regression model using the <code>lm()</code> function.<a class="anchor" aria-label="anchor" href="#fit-the-regression-model-using-the-lm-function-"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">rating</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">attitude</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">nas1982</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="estimate-the-standardized-regression-slopes-and-the-corresponding-robust-sampling-covariance-matrix-">Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-standardized-regression-slopes-and-the-corresponding-robust-sampling-covariance-matrix-"></a>
@@ -102,20 +102,10 @@
 <span><span class="co">#&gt; BetaHC(object = object, type = "hc3")</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Standardized regression slopes with HC3 standard errors:</span></span>
-<span><span class="co">#&gt;                 est     se       t         p    0.05%    0.5%     2.5%  97.5%</span></span>
-<span><span class="co">#&gt; complaints  0.67073 0.1560  4.2983 0.0002677  0.08281  0.2327  0.34792 0.9935</span></span>
-<span><span class="co">#&gt; privileges -0.07343 0.1594 -0.4608 0.6493035 -0.67385 -0.5208 -0.40310 0.2562</span></span>
-<span><span class="co">#&gt; learning    0.30887 0.1954  1.5806 0.1276145 -0.42735 -0.2397 -0.09536 0.7131</span></span>
-<span><span class="co">#&gt; raises      0.06981 0.1843  0.3787 0.7083821 -0.62473 -0.4477 -0.31153 0.4512</span></span>
-<span><span class="co">#&gt; critical    0.03120 0.1772  0.1761 0.8617538 -0.63630 -0.4662 -0.33530 0.3977</span></span>
-<span><span class="co">#&gt; advance    -0.18346 0.1802 -1.0183 0.3191381 -0.86228 -0.6893 -0.55618 0.1892</span></span>
-<span><span class="co">#&gt;             99.5% 99.95%</span></span>
-<span><span class="co">#&gt; complaints 1.1088 1.2586</span></span>
-<span><span class="co">#&gt; privileges 0.3740 0.5270</span></span>
-<span><span class="co">#&gt; learning   0.8574 1.0451</span></span>
-<span><span class="co">#&gt; raises     0.5873 0.7644</span></span>
-<span><span class="co">#&gt; critical   0.5286 0.6987</span></span>
-<span><span class="co">#&gt; advance    0.3223 0.4954</span></span></code></pre></div>
+<span><span class="co">#&gt;            est     se      t      p   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0786 6.3025 0.0000  0.2172 0.2832 0.3366 0.6537 0.7071 0.7731</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0818 4.7831 0.0000  0.1019 0.1707 0.2263 0.5567 0.6123 0.6810</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0855 3.0786 0.0037 -0.0393 0.0325 0.0907 0.4358 0.4940 0.5658</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a>
@@ -132,20 +122,10 @@
 <span><span class="co">#&gt; BetaHC(object = object, type = "hc3")</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Standardized regression slopes with HC3 standard errors:</span></span>
-<span><span class="co">#&gt;                    est        se          t            p       0.05%       0.5%</span></span>
-<span><span class="co">#&gt; complaints  0.67072520 0.1560447  4.2982892 0.0002677147  0.08280705  0.2326554</span></span>
-<span><span class="co">#&gt; privileges -0.07342743 0.1593643 -0.4607521 0.6493034784 -0.67385252 -0.5208164</span></span>
-<span><span class="co">#&gt; learning    0.30887024 0.1954076  1.5806464 0.1276144566 -0.42735248 -0.2397043</span></span>
-<span><span class="co">#&gt; raises      0.06981172 0.1843445  0.3787025 0.7083820908 -0.62472951 -0.4477051</span></span>
-<span><span class="co">#&gt; critical    0.03119975 0.1771669  0.1761037 0.8617538415 -0.63629904 -0.4661672</span></span>
-<span><span class="co">#&gt; advance    -0.18346445 0.1801712 -1.0182783 0.3191381252 -0.86228242 -0.6892656</span></span>
-<span><span class="co">#&gt;                   2.5%     97.5%     99.5%    99.95%</span></span>
-<span><span class="co">#&gt; complaints  0.34792217 0.9935282 1.1087950 1.2586434</span></span>
-<span><span class="co">#&gt; privileges -0.40309753 0.2562427 0.3739616 0.5269977</span></span>
-<span><span class="co">#&gt; learning   -0.09536107 0.7131016 0.8574448 1.0450930</span></span>
-<span><span class="co">#&gt; raises     -0.31153391 0.4511573 0.5873286 0.7643529</span></span>
-<span><span class="co">#&gt; critical   -0.33529792 0.3976974 0.5285667 0.6986985</span></span>
-<span><span class="co">#&gt; advance    -0.55617704 0.1892481 0.3223367 0.4953535</span></span></code></pre></div>
+<span><span class="co">#&gt;            est     se      t      p   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span></span>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0786 6.3025 0.0000  0.2172 0.2832 0.3366 0.6537 0.7071 0.7731</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0818 4.7831 0.0000  0.1019 0.1707 0.2263 0.5567 0.6123 0.6810</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0855 3.0786 0.0037 -0.0393 0.0325 0.0907 0.4358 0.4940 0.5658</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="coef">coef<a class="anchor" aria-label="anchor" href="#coef"></a>
@@ -153,8 +133,8 @@
 <p>Calculate the standardized regression slopes.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  complaints  privileges    learning      raises    critical     advance </span></span>
-<span><span class="co">#&gt;  0.67072520 -0.07342743  0.30887024  0.06981172  0.03119975 -0.18346445</span></span></code></pre></div>
+<span><span class="co">#&gt;    NARTIC    PCTGRT   PCTSUPP </span></span>
+<span><span class="co">#&gt; 0.4951451 0.3914887 0.2632477</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="vcov">vcov<a class="anchor" aria-label="anchor" href="#vcov"></a>
@@ -162,20 +142,10 @@
 <p>Calculate the robust sampling covariance matrix of the standardized regression slopes.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
-<span><span class="co">#&gt;              complaints    privileges      learning       raises     critical</span></span>
-<span><span class="co">#&gt; complaints  0.024349945 -0.0134050194 -0.0128301528 -0.012214863  0.002279143</span></span>
-<span><span class="co">#&gt; privileges -0.013405019  0.0253969700 -0.0007948184  0.005897181 -0.004584845</span></span>
-<span><span class="co">#&gt; learning   -0.012830153 -0.0007948184  0.0381841112 -0.013696467  0.004818864</span></span>
-<span><span class="co">#&gt; raises     -0.012214863  0.0058971811 -0.0136964673  0.033982889 -0.010859760</span></span>
-<span><span class="co">#&gt; critical    0.002279143 -0.0045848451  0.0048188637 -0.010859760  0.031388113</span></span>
-<span><span class="co">#&gt; advance     0.010598636 -0.0100479388 -0.0083331127 -0.014248753  0.001774910</span></span>
-<span><span class="co">#&gt;                 advance</span></span>
-<span><span class="co">#&gt; complaints  0.010598636</span></span>
-<span><span class="co">#&gt; privileges -0.010047939</span></span>
-<span><span class="co">#&gt; learning   -0.008333113</span></span>
-<span><span class="co">#&gt; raises     -0.014248753</span></span>
-<span><span class="co">#&gt; critical    0.001774910</span></span>
-<span><span class="co">#&gt; advance     0.032461673</span></span></code></pre></div>
+<span><span class="co">#&gt;               NARTIC       PCTGRT      PCTSUPP</span></span>
+<span><span class="co">#&gt; NARTIC   0.006172168 -0.003602529 -0.001943469</span></span>
+<span><span class="co">#&gt; PCTGRT  -0.003602529  0.006699155 -0.002443584</span></span>
+<span><span class="co">#&gt; PCTSUPP -0.001943469 -0.002443584  0.007311625</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="confint">confint<a class="anchor" aria-label="anchor" href="#confint"></a>
@@ -183,20 +153,17 @@
 <p>Generate robust confidence intervals for standardized regression slopes.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">out</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                   2.5%     97.5%</span></span>
-<span><span class="co">#&gt; complaints  0.34792217 0.9935282</span></span>
-<span><span class="co">#&gt; privileges -0.40309753 0.2562427</span></span>
-<span><span class="co">#&gt; learning   -0.09536107 0.7131016</span></span>
-<span><span class="co">#&gt; raises     -0.31153391 0.4511573</span></span>
-<span><span class="co">#&gt; critical   -0.33529792 0.3976974</span></span>
-<span><span class="co">#&gt; advance    -0.55617704 0.1892481</span></span></code></pre></div>
+<span><span class="co">#&gt;               2.5%     97.5%</span></span>
+<span><span class="co">#&gt; NARTIC  0.33659828 0.6536920</span></span>
+<span><span class="co">#&gt; PCTGRT  0.22631203 0.5566654</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.09068548 0.4358099</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <p>Dudgeon, P. (2017). Some improvements in confidence intervals for standardized regression coefficients. <em>Psychometrika</em>, 82 (4), 928–951. <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">https://doi.org/10.1007/s11336-017-9563-z</a></p>
-<p>Chatterjee, S. and Price, B. (1977). <em>Regression Analysis by Example</em>. New York: Wiley. (Section 3.7, p.68ff of 2nd ed.(1991).)</p>
+<p>National Research Council. (1982). <em>An assessment of research-doctorate programs in the United States: Social and behavioral sciences</em>. <a href="https://doi.org/10.17226/9781" class="external-link uri">https://doi.org/10.17226/9781</a>. Reproduced with permission from the National Academy of Sciences, Courtesy of the National Academies Press, Washington, D.C.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

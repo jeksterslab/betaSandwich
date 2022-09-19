@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">betaSandwich</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,7 +108,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">rating</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">attitude</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">nas1982</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu">BetaN</span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Methods -------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
@@ -116,65 +116,32 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> BetaN(object = object)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Standardized regression slopes with MVN standard errors:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 est     se       t         p   0.05%     0.5%     2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints  0.67073 0.1433  4.6810 0.0001031  0.1309  0.26847  0.37431 0.96714</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges -0.07343 0.1197 -0.6136 0.5455017 -0.5243 -0.40937 -0.32098 0.17412</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning    0.30887 0.1431  2.1580 0.0416048 -0.2304 -0.09293  0.01279 0.60495</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises      0.06981 0.1657  0.4213 0.6774348 -0.5545 -0.39536 -0.27296 0.41259</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical    0.03120 0.1047  0.2980 0.7683711 -0.3632 -0.26271 -0.18538 0.24778</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance    -0.18346 0.1338 -1.3717 0.1834027 -0.6874 -0.55896 -0.46015 0.09323</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             99.5% 99.95%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints 1.0730 1.2106</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges 0.2625 0.3774</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning   0.7107 0.8481</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises     0.5350 0.6941</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical   0.3251 0.4256</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance    0.1920 0.3205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            est     se      t     p   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4951 0.0759 6.5272 0.000  0.2268 0.2905 0.3421 0.6482 0.6998 0.7635</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.3915 0.0770 5.0824 0.000  0.1190 0.1837 0.2360 0.5469 0.5993 0.6640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2632 0.0747 3.5224 0.001 -0.0011 0.0616 0.1124 0.4141 0.4649 0.5276</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BetaN(object = object)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Standardized regression slopes with MVN standard errors:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    est        se          t            p      0.05%        0.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints  0.67072520 0.1432881  4.6809545 0.0001030949  0.1308690  0.26846733</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges -0.07342743 0.1196668 -0.6135989 0.5455016623 -0.5242873 -0.40937234</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning    0.30887024 0.1431252  2.1580422 0.0416047589 -0.2303721 -0.09293027</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises      0.06981172 0.1656987  0.4213173 0.6774347660 -0.5544790 -0.39536008</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical    0.03119975 0.1046937  0.2980099 0.7683710623 -0.3632469 -0.26271051</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance    -0.18346445 0.1337535 -1.3716605 0.1834027121 -0.6873979 -0.55895555</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   2.5%      97.5%     99.5%    99.95%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints  0.37431113 0.96713928 1.0729831 1.2105814</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges -0.32097709 0.17412223 0.2625175 0.3774325</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning    0.01279319 0.60494730 0.7106708 0.8481126</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises     -0.27296210 0.41258553 0.5349835 0.6941025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical   -0.18537560 0.24777510 0.3251100 0.4256464</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance    -0.46015474 0.09322584 0.1920266 0.3204690</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            est     se      t     p   0.05%   0.5%   2.5%  97.5%  99.5% 99.95%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4951 0.0759 6.5272 0.000  0.2268 0.2905 0.3421 0.6482 0.6998 0.7635</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.3915 0.0770 5.0824 0.000  0.1190 0.1837 0.2360 0.5469 0.5993 0.6640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2632 0.0747 3.5224 0.001 -0.0011 0.0616 0.1124 0.4141 0.4649 0.5276</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  complaints  privileges    learning      raises    critical     advance </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.67072520 -0.07342743  0.30887024  0.06981172  0.03119975 -0.18346445 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    NARTIC    PCTGRT   PCTSUPP </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4951451 0.3914887 0.2632477 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               complaints    privileges     learning       raises      critical</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints  0.0205314876 -0.0063811296 -0.009324286 -0.013811718 -0.0002422133</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges -0.0063811296  0.0143201460 -0.002170471  0.001552377 -0.0002768442</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning   -0.0093242861 -0.0021704714  0.020484826 -0.004998152  0.0028372586</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises     -0.0138117179  0.0015523774 -0.004998152  0.027456049 -0.0048713593</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical   -0.0002422133 -0.0002768442  0.002837259 -0.004871359  0.0109607636</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance     0.0096650976 -0.0029432354 -0.006326814 -0.009305030 -0.0017608366</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 advance</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints  0.009665098</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges -0.002943235</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning   -0.006326814</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises     -0.009305030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical   -0.001760837</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance     0.017890011</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               NARTIC       PCTGRT      PCTSUPP</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.005754524 -0.003360334 -0.002166127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  -0.003360334  0.005933462 -0.001769723</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP -0.002166127 -0.001769723  0.005585256</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">std</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   2.5%      97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> complaints  0.37431113 0.96713928</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> privileges -0.32097709 0.17412223</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> learning    0.01279319 0.60494730</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raises     -0.27296210 0.41258553</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> critical   -0.18537560 0.24777510</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> advance    -0.46015474 0.09322584</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              2.5%     97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.3420563 0.6482339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.2360380 0.5469395</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.1124272 0.4140682</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
