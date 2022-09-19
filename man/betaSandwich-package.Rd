@@ -12,6 +12,7 @@ Generates robust confidence intervals for standardized regression coefficients u
 Useful links:
 \itemize{
   \item \url{https://github.com/jeksterslab/betaSandwich}
+  \item \url{https://jeksterslab.github.io/betaSandwich/}
   \item Report bugs at \url{https://github.com/jeksterslab/betaSandwich/issues}
 }
 

@@ -45,7 +45,7 @@ Returns an object of class \code{betaSandwich} which is a list with the followin
 Estimate Standardized Regression Coefficients and Robust Sampling Covariance Matrix
 }
 \examples{
-object <- lm(rating ~ ., data = attitude)
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
 # Methods -------------------------------------------------------
 print(std)

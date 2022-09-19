@@ -16,9 +16,11 @@ knitr::opts_chunk$set(
 ```
 
 In this example, a multiple regression model is fitted
-using the overall rating (`rating`) as the regressand/outcome variable
-and the rest of the variables as regressor/predictor variables
-using the `datasets::attitude` data set (Chatterjee & Price, 1977).
+using program quality ratings (`QUALITY`) as the regressand/outcome variable
+and number of published articles attributed to the program faculty members (`NARTIC`),
+percent of faculty members holding research grants (`PCTGRT`), and
+percentage of program graduates who received support (`PCTSUPP`) as regressor/predictor variables
+using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982).
 Robust confidence intervals for the standardized regression coefficients are generated
 using the `BetaHC()` function from the `betaSandwich` package following Dudgeon (2017).
 
@@ -30,7 +32,7 @@ library(betaSandwich)
 ## Fit the regression model using the `lm()` function.
 
 ```{r}
-object <- lm(rating ~ ., data = attitude)
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 ```
 
 ## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
@@ -84,7 +86,8 @@ Some improvements in confidence intervals for standardized regression coefficien
 *Psychometrika*, 82 (4), 928–951.
 https://doi.org/10.1007/s11336-017-9563-z
 
-Chatterjee, S. and Price, B. (1977).
-*Regression Analysis by Example*.
-New York: Wiley.
-(Section 3.7, p.68ff of 2nd ed.(1991).) 
+National Research Council. (1982).
+*An assessment of research-doctorate programs in the United States: Social and behavioral sciences*.
+https://doi.org/10.17226/9781.
+Reproduced with permission from the National Academy of Sciences,
+Courtesy of the National Academies Press, Washington, D.C.

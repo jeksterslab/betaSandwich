@@ -8,7 +8,7 @@
 #' @param digits Digits to print.
 #' @return Returns a matrix of standardized regression slopes, standard errors, test statistics, p-values, and confidence intervals.
 #' @examples
-#' object <- lm(rating ~ ., data = attitude)
+#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' print(std)
 #' @export
@@ -17,8 +17,6 @@ print.betaSandwich <- function(x,
                                alpha = c(0.05, 0.01, 0.001),
                                digits = 4,
                                ...) {
-  op <- options(digits = digits)
-  on.exit(options(op))
   cat("Call:\n")
   base::print(x$call)
   cat(
@@ -27,9 +25,12 @@ print.betaSandwich <- function(x,
     "standard errors:\n"
   )
   base::print(
-    .BetaCI(
-      object = x,
-      alpha = alpha
+    round(
+      .BetaCI(
+        object = x,
+        alpha = alpha
+      ),
+      digits = digits
     )
   )
 }
@@ -44,7 +45,7 @@ print.betaSandwich <- function(x,
 #' @param digits Digits to print.
 #' @return Returns a matrix of standardized regression slopes, standard errors, test statistics, p-values, and confidence intervals.
 #' @examples
-#' object <- lm(rating ~ ., data = attitude)
+#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' summary(std)
 #' @export
@@ -53,8 +54,6 @@ summary.betaSandwich <- function(object,
                                  alpha = c(0.05, 0.01, 0.001),
                                  digits = 4,
                                  ...) {
-  op <- options(digits = digits)
-  on.exit(options(op))
   cat("Call:\n")
   base::print(object$call)
   cat(
@@ -63,9 +62,12 @@ summary.betaSandwich <- function(object,
     "standard errors:\n"
   )
   return(
-    .BetaCI(
-      object = object,
-      alpha = alpha
+    round(
+      .BetaCI(
+        object = object,
+        alpha = alpha
+      ),
+      digits = digits
     )
   )
 }
@@ -78,7 +80,7 @@ summary.betaSandwich <- function(object,
 #' @param ... additional arguments.
 #' @return Returns a matrix of variance-covariance matrix of standardized slopes.
 #' @examples
-#' object <- lm(rating ~ ., data = attitude)
+#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' vcov(std)
 #' @export
@@ -99,7 +101,7 @@ vcov.betaSandwich <- function(object,
 #' @param ... additional arguments.
 #' @return Returns a vector of standardized regression slopes.
 #' @examples
-#' object <- lm(rating ~ ., data = attitude)
+#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' coef(std)
 #' @export
@@ -115,11 +117,12 @@ coef.betaSandwich <- function(object,
 #'
 #' @param object Object of class `betaSandwich`.
 #' @param ... additional arguments.
-#' @param parm 	a specification of which parameters are to be given confidence intervals, either a vector of numbers or a vector of names. If missing, all parameters are considered.
+#' @param parm a specification of which parameters are to be given confidence intervals,
+#'   either a vector of numbers or a vector of names. If missing, all parameters are considered.
 #' @param level the confidence level required.
 #' @return Returns a matrix of confidence intervals.
 #' @examples
-#' object <- lm(rating ~ ., data = attitude)
+#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' confint(std, level = 0.95)
 #' @export

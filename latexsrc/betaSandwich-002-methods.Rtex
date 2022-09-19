@@ -49,13 +49,13 @@
 \section{HC}
 
 %% begin.rcode
-% object <- lm(rating ~ ., data = attitude)
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 %% end.rcode
 
 %% begin.rcode
-% out <- BetaHC(object, type = "hc5")
+% out <- BetaHC(object, type = "hc3")
 % str(out)
-% BetaHC(object, type = "hc5")
+% BetaHC(object, type = "hc3")
 %% end.rcode
 
 \subsection*{print}

@@ -22,7 +22,7 @@ Returns a matrix of standardized regression slopes, standard errors, test statis
 Print Method for an Object of Class betaSandwich
 }
 \examples{
-object <- lm(rating ~ ., data = attitude)
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
 print(std)
 }

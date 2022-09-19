@@ -14,7 +14,7 @@
 #' }
 #' @param object Object of class `lm`.
 #' @examples
-#' object <- lm(rating ~ ., data = attitude)
+#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaN(object)
 #' # Methods -------------------------------------------------------
 #' print(std)
@@ -42,13 +42,6 @@ BetaN <- function(object) {
   k <- dims[2]
   p <- k - 1
   df <- n - k
-  # consistent estimator
-  # sigmacap <- (
-  #  n / (
-  #    n - 1
-  #  )
-  # ) * stats::cov(x)
-  # unbiased estimator
   sigmacap <- stats::cov(x)
   sigma <- sqrt(diag(sigmacap))
   rhocap <- .RhoofSigma(

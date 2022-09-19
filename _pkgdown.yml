@@ -11,3 +11,6 @@ reference:
 - title: Methods
   contents:
   - has_keyword("methods")
+- title: Data
+  contents:
+  - has_keyword("data")

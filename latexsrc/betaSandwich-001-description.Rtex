@@ -47,7 +47,7 @@
 \section*{Description}
 
 Generates robust confidence intervals for standardized regression coefficients
-using heteroscedasticity-consistent standard errors for models fitted by \texttt{lm()}
+using heteroskedasticity-consistent standard errors for models fitted by \texttt{lm()}
 as described in \Textcite{Lib-Regression-Standardized-Coefficients-HC-Dudgeon-2017}.
 
 \section*{Installation}
@@ -62,19 +62,6 @@ with:
 % #| eval = FALSE
 % install.packages("remotes")
 % remotes::install_github("jeksterslab/betaSandwich")
-%% end.rcode
-
-\section*{Example}
-
-Describe the data and model here.
-
-%% begin.rcode
-% object <- lm(rating ~ ., data = attitude)
-% summary(object)
-%% end.rcode
-
-%% begin.rcode
-% BetaHC(object, type = "hc5")
 %% end.rcode
 
 \section*{More Information}

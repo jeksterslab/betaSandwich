@@ -5,32 +5,16 @@ lapply(
                  tol,
                  text) {
     message(text)
-    object <- lm(rating ~ ., data = attitude)
+    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
     coefs <- coef(BetaN(object))
     mvn <- .BetaCI(BetaN(object))
-    result_coef <- c(
-      0.67072520,
-      -0.07342743,
-      0.30887024,
-      0.06981172,
-      0.03119975,
-      -0.18346445
-    )
-    result_se <- c(
-      0.1432881,
-      0.1196668,
-      0.1431252,
-      0.1656987,
-      0.1046937,
-      0.1337535
-    )
     testthat::test_that(
       paste(text, "coefs"),
       {
         testthat::expect_true(
           all(
             abs(
-              coefs - result_coef
+              coefs - c(0.4951, 0.3915, 0.2632)
             ) <= tol
           )
         )
@@ -42,7 +26,7 @@ lapply(
         testthat::expect_true(
           all(
             abs(
-              mvn[, "se"] - result_se
+              mvn[, "se"] - c(0.0759, 0.0770, 0.0747)
             ) <= tol
           )
         )
@@ -52,3 +36,4 @@ lapply(
   tol = 0.0001,
   text = "test-betaSandwich-beta-mvn"
 )
+# This test compares the results of the package with Dudgeon (2017)

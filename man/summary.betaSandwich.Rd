@@ -22,7 +22,7 @@ Returns a matrix of standardized regression slopes, standard errors, test statis
 Summary of the Results of BetaHC
 }
 \examples{
-object <- lm(rating ~ ., data = attitude)
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
 summary(std)
 }

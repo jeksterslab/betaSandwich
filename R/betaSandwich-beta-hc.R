@@ -35,7 +35,7 @@
 #' *Psychometrika*, *82*(4), 928–951.
 #' \doi{10.1007/s11336-017-9563-z}
 #' @examples
-#' object <- lm(rating ~ ., data = attitude)
+#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' # Methods -------------------------------------------------------
 #' print(std)

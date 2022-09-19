@@ -18,7 +18,7 @@ Returns a matrix of variance-covariance matrix of standardized slopes.
 Robust Sampling Covariance Matrix of the Standardized Regression Slopes
 }
 \examples{
-object <- lm(rating ~ ., data = attitude)
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
 vcov(std)
 }

@@ -4,7 +4,7 @@ lapply(
   FUN = function(i,
                  text) {
     message(text)
-    object <- lm(rating ~ ., data = attitude)
+    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
     hc <- BetaHC(object)
     print.betaSandwich(hc)
     summary.betaSandwich(hc)
@@ -17,7 +17,7 @@ lapply(
     coef.betaSandwich(mvn)
     vcov.betaSandwich(mvn)
     confint.betaSandwich(mvn)
-    object <- lm(rating ~ complaints, data = attitude)
+    object <- lm(QUALITY ~ NARTIC, data = nas1982)
     hc <- BetaHC(object)
     print.betaSandwich(hc)
     summary.betaSandwich(hc)

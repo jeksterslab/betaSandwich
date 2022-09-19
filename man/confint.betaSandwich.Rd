@@ -9,7 +9,8 @@
 \arguments{
 \item{object}{Object of class \code{betaSandwich}.}
 
-\item{parm}{a specification of which parameters are to be given confidence intervals, either a vector of numbers or a vector of names. If missing, all parameters are considered.}
+\item{parm}{a specification of which parameters are to be given confidence intervals,
+either a vector of numbers or a vector of names. If missing, all parameters are considered.}
 
 \item{level}{the confidence level required.}
 
@@ -22,7 +23,7 @@ Returns a matrix of confidence intervals.
 Robust Confidence Intervals for Standardized Regression Slopes
 }
 \examples{
-object <- lm(rating ~ ., data = attitude)
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
 confint(std, level = 0.95)
 }
