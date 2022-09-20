@@ -5,7 +5,7 @@ template:
   bootstrap: 5
 
 reference:
-- title: Function
+- title: Functions
   contents:
   - has_concept("Beta Sandwich Functions")
 - title: Methods
