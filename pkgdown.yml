@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   betaSandwich: betaSandwich.html
   example: example.html
-last_built: 2022-09-20T19:46Z
+last_built: 2022-09-20T20:53Z
 urls:
   reference: https://github.com/jeksterslab/betaSandwich/reference
   article: https://github.com/jeksterslab/betaSandwich/articles
