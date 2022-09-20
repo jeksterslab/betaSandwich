@@ -7,6 +7,8 @@ Ivan Jacob Agaloos Pesigan
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/jeksterslab/betaSandwich/workflows/R-CMD-check/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions)
+[![R-Universe
+Status](https://jeksterslab.r-universe.dev/badges/betaSandwich)](https://jeksterslab.r-universe.dev)
 [![test-coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml)
 [![codecov](https://codecov.io/gh/jeksterslab/betaSandwich/branch/main/graph/badge.svg)](https://codecov.io/gh/jeksterslab/betaSandwich)
 <!-- badges: end -->
@@ -20,7 +22,13 @@ models fitted by `lm()` as described in Dudgeon (2017:
 
 ## Installation
 
-You can install the released version of `betaSandwich` from
+You can install the CRAN release of `betaSandwich` with:
+
+``` r
+install.packages("betaSandwich")
+```
+
+You can install the development version of `betaSandwich` from
 [GitHub](https://github.com/jeksterslab/betaSandwich) with:
 
 ``` r
