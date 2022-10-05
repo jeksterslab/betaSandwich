@@ -1,4 +1,4 @@
-#' Print Method for an Object of Class betaSandwich
+#' Print Method for an Object of Class `betaSandwich`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -13,7 +13,7 @@
 #' print(std)
 #' @export
 #' @keywords methods
-print.betaSandwich <- function(x,
+print.betasandwich <- function(x,
                                alpha = c(0.05, 0.01, 0.001),
                                digits = 4,
                                ...) {
@@ -35,7 +35,7 @@ print.betaSandwich <- function(x,
   )
 }
 
-#' Summary of the Results of BetaHC
+#' Summary Method for an Object of Class `betaSandwich`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -50,7 +50,7 @@ print.betaSandwich <- function(x,
 #' summary(std)
 #' @export
 #' @keywords methods
-summary.betaSandwich <- function(object,
+summary.betasandwich <- function(object,
                                  alpha = c(0.05, 0.01, 0.001),
                                  digits = 4,
                                  ...) {
@@ -78,14 +78,14 @@ summary.betaSandwich <- function(object,
 #'
 #' @param object Object of class `betaSandwich`.
 #' @param ... additional arguments.
-#' @return Returns a matrix of variance-covariance matrix of standardized slopes.
+#' @return Returns a matrix of the variance-covariance matrix of standardized slopes.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' vcov(std)
 #' @export
 #' @keywords methods
-vcov.betaSandwich <- function(object,
+vcov.betasandwich <- function(object,
                               ...) {
   p <- length(object$beta)
   out <- object$vcov[1:p, 1:p, drop = FALSE]
@@ -106,7 +106,7 @@ vcov.betaSandwich <- function(object,
 #' coef(std)
 #' @export
 #' @keywords methods
-coef.betaSandwich <- function(object,
+coef.betasandwich <- function(object,
                               ...) {
   object$beta
 }
@@ -127,7 +127,7 @@ coef.betaSandwich <- function(object,
 #' confint(std, level = 0.95)
 #' @export
 #' @keywords methods
-confint.betaSandwich <- function(object,
+confint.betasandwich <- function(object,
                                  parm = NULL,
                                  level = 0.95,
                                  ...) {

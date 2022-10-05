@@ -1,7 +1,7 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2022-09-20
+2022-10-05
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -34,15 +34,9 @@ You can install the development version of `betaSandwich` from
 [GitHub](https://github.com/jeksterslab/betaSandwich) with:
 
 ``` r
-install.packages("remotes")
+if (!require("remotes")) install.packages("remotes")
 remotes::install_github("jeksterslab/betaSandwich")
 ```
-
-## Documentation
-
-See [GitHub
-Pages](https://jeksterslab.github.io/betaSandwich/index.html) for
-package documentation.
 
 ## Example
 
@@ -92,3 +86,9 @@ programs in the United States: Social and behavioral sciences*.
 <https://doi.org/10.17226/9781>. Reproduced with permission from the
 National Academy of Sciences, Courtesy of the National Academies Press,
 Washington, D.C.
+
+## Documentation
+
+See [GitHub
+Pages](https://jeksterslab.github.io/betaSandwich/index.html) for
+package documentation.

@@ -41,15 +41,9 @@ You can install the development version of `betaSandwich` from
 [GitHub](https://github.com/jeksterslab/betaSandwich) with:
 
 ```r
-install.packages("remotes")
+if (!require("remotes")) install.packages("remotes")
 remotes::install_github("jeksterslab/betaSandwich")
 ```
-
-## Documentation
-
-See
-[GitHub Pages](https://jeksterslab.github.io/betaSandwich/index.html)
-for package documentation.
 
 ## Example
 
@@ -91,3 +85,9 @@ National Research Council. (1982).
 https://doi.org/10.17226/9781.
 Reproduced with permission from the National Academy of Sciences,
 Courtesy of the National Academies Press, Washington, D.C.
+
+## Documentation
+
+See
+[GitHub Pages](https://jeksterslab.github.io/betaSandwich/index.html)
+for package documentation.

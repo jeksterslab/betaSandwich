@@ -1,0 +1,116 @@
+\documentclass[tikz, border=1mm]{standalone}
+
+\usepackage{amsmath}
+
+% convert -density 300 std-reg.pdf -quality 100 -background white -alpha remove -alpha off std-reg.png
+
+\begin{document}
+
+\usetikzlibrary{
+	er,
+	arrows,
+	positioning
+}
+
+\begin{tikzpicture}[
+		auto,
+		node distance = 10mm and 35mm,
+		latent/.style = {
+			ellipse,
+			draw,
+			thick,
+			inner sep = 0pt,
+			minimum size = 15mm,
+			align = center
+		},
+		manifest/.style = {
+			rectangle,
+			draw,
+			thick,
+			inner sep = 0pt,
+			minimum width = 15mm,
+			minimum height = 10mm
+		},
+		inv/.style = {
+			rectangle,
+			draw=none,
+			fill=none,
+			inner sep = 0pt,
+			minimum width = 15mm,
+			minimum height = 10mm
+		},
+		error/.style = {
+			ellipse,
+			draw,
+			thick,
+			inner sep = 0pt,
+			minimum size = 7mm,
+			align = center
+		},
+		mean/.style={
+			regular polygon,
+			regular polygon sides = 3,
+			draw,
+			thick,
+			inner sep = 0pt,
+			minimum width = 7mm,
+			minimum height = 7mm
+		},
+		path/.style = {
+			->,
+			thick,
+			>=stealth'
+		},
+		cov/.style = {
+			<->,
+			thick,
+			>=stealth'
+		},
+	]
+	% measurement model
+	\node[latent] (X1star) {$X_{1}^{\ast}$};
+	\node[manifest] (X1) [above right = of X1star] {$X_{1}$};
+	\node[error] (varepsilonX1) [right = 0.5cm of X1] {$\varepsilon_{X_{1}}$};
+	\draw[path] (varepsilonX1) to node[above] {$1$} (X1);
+	\draw[cov] (varepsilonX1) to[out = 70, in = 110, looseness = 5] node[above] {$0$} (varepsilonX1);
+	\node[inv] (vdots1tilde) [below = of X1star] {$\vdots$};
+	\node[latent] (Xjstar) [below = of vdots1tilde] {$X_{j}^{\ast}$};
+	\node[manifest] (Xj) [above right = of Xjstar] {$X_{j}$};
+	\node[error] (varepsilonXj) [right = 0.5cm of Xj] {$\varepsilon_{X_{j}}$};
+	\draw[path] (varepsilonXj) to node[above] {$1$} (Xj);
+	\draw[cov] (varepsilonXj) to[out = 70, in = 110, looseness = 5] node[above] {$0$} (varepsilonXj);
+	\node[inv] (vdots2tilde) [below = of Xjstar] {$\vdots$};
+	\node[latent] (Xpstar) [below = of vdots2tilde] {$X_{p}^{\ast}$};
+	\node[manifest] (Xp) [above right = of Xpstar] {$X_{p}$};
+	\node[error] (varepsilonXp) [right = 0.5cm of Xp] {$\varepsilon_{X_{p}}$};
+	\draw[path] (varepsilonXp) to node[above] {$1$} (Xp);
+	\draw[cov] (varepsilonXp) to[out = 70, in = 110, looseness = 5] node[above] {$0$} (varepsilonXp);
+	\node[latent] (Ystar) [left = of Xjstar] {$Y^{\ast}$};
+	\node[manifest] (Y) [left = 1cm of Ystar] {$Y$};
+	\node[error] (varepsilonY) [above = of Y] {$\varepsilon_{Y}$};
+	\draw[path] (varepsilonY) to node[left] {$1$} (Y);
+	\draw[cov] (varepsilonY) to[out = 70, in = 110, looseness = 5] node[above] {$0$} (varepsilonY);
+	\node[inv] (vdots1) [below = of X1] {$\vdots$};
+	\node[inv] (vdots2) [below = of Xj] {$\vdots$};
+	% latent variances and covariances
+	\draw[cov] (X1star) to[out = 75, in = 105, looseness = 4] node[above] {$1$} (X1star);
+	\draw[cov] (Xjstar) to[out = 75, in = 105, looseness = 4] node[above] {$1$} (Xjstar);
+	\draw[cov] (Xpstar) to[out = 75, in = 105, looseness = 4] node[above] {$1$} (Xpstar);
+	\draw[cov] (X1star) to[out = 360, in = 360, looseness = 0.5] node[right] {$\rho_{X_{1}, X_{j}}$} (Xjstar);
+	\draw[cov] (Xjstar) to[out = 360, in = 360, looseness = 0.5] node[right] {$\rho_{X_{j}, X_{p}}$} (Xpstar);
+	\draw[cov] (X1star) to[out = 360, in = 360, looseness = 1] node[right] {$\rho_{X_{1}, X_{p}}$} (Xpstar);
+	% regression
+	\draw[path] (X1star) to node[above] {$\sigma_{X_{1}}$} (X1);
+	\draw[path] (Xjstar) to node[above] {$\sigma_{X_{j}}$} (Xj);
+	\draw[path] (Xpstar) to node[above] {$\sigma_{X_{p}}$} (Xp);		
+	\draw[path] (X1star) to node[above] {$\beta_{1}^{\ast}$} (Ystar);
+	\draw[path] (Xjstar) to node {$\beta_{j}^{\ast}$} (Ystar);
+	\draw[path] (Xpstar) to node {$\beta_{p}^{\ast}$} (Ystar);
+	% error variance
+	\node[error] (varepsilonstar) [below = of Ystar] {$\varepsilon^{\ast}$};
+	\draw[path] (Ystar) to node[above] {$\sigma_{Y}$} (Y);
+	\draw[path] (varepsilonstar) to node {$1$} (Ystar);
+	\draw[cov] (varepsilonstar) to[out = 290, in = 250, looseness = 5] node[below] {$\sigma^{\ast 2} := 1 - \boldsymbol{\beta}^{\ast \prime}\mathbf{P}_{\mathbf{X}, \mathbf{X}}\boldsymbol{\beta}^{\ast}$} (varepsilonstar);
+\end{tikzpicture}
+
+\end{document}

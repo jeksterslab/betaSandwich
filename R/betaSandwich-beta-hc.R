@@ -72,7 +72,9 @@ BetaHC <- function(object,
   )
   stopifnot(0 < k & k < 1)
   constant <- k
-  x <- data.matrix(object$model)
+  y <- object$model[, 1]
+  x <- stats::model.matrix(object)
+  x[, 1] <- y
   varnames <- colnames(x)
   xnames <- varnames[-1]
   dims <- dim(x)
@@ -143,7 +145,7 @@ BetaHC <- function(object,
     df = df
   )
   class(out) <- c(
-    "betaSandwich",
+    "betasandwich",
     class(out)
   )
   return(

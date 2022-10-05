@@ -11,7 +11,12 @@
 #' @noRd
 .BetaCI <- function(object,
                     alpha = c(0.05, 0.01, 0.001)) {
-  stopifnot(methods::is(object, "betaSandwich"))
+  stopifnot(
+    methods::is(
+      object,
+      "betasandwich"
+    )
+  )
   return(
     .CIWald(
       object$beta,
