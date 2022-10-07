@@ -12,6 +12,6 @@ utils::citEntry(
   ),
   title = "betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients",
   year = "2022",
-  note = "R package version 1.0.1",
-  textVersion = "Pesigan, I. J. A. (2022). betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients. R package version 1.0.1"
+  note = "R package version 1.0.2",
+  textVersion = "Pesigan, I. J. A. (2022). betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients. R package version 1.0.2"
 )

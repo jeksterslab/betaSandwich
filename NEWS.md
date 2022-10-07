@@ -1,4 +1,4 @@
-# betaSandwich 1.0.1.9000
+# betaSandwich 1.0.2
 
 ## Patch
 
