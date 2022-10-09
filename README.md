@@ -1,7 +1,7 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2022-10-07
+2022-10-09
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -12,6 +12,7 @@ Status](https://www.r-pkg.org/badges/version/betaSandwich)](https://cran.r-proje
 Status](https://jeksterslab.r-universe.dev/badges/betaSandwich)](https://jeksterslab.r-universe.dev)
 [![R-CMD-check](https://github.com/jeksterslab/betaSandwich/workflows/R-CMD-check/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions)
 [![test-coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml)
+[![lint](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yaml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yaml)
 [![codecov](https://codecov.io/gh/jeksterslab/betaSandwich/branch/main/graph/badge.svg?token=KVLUET3DJ6)](https://codecov.io/gh/jeksterslab/betaSandwich)
 <!-- badges: end -->
 

@@ -1,4 +1,4 @@
-#' out Matrix of the Half-Vectorization
+#' Jacobian Matrix of the Half-Vectorization
 #' of the Model-Implied Covariance Matrix
 #' with Respect to the Standardized Parameter Vector
 #'
