@@ -44,8 +44,6 @@
 #' vcov(std)
 #' confint(std, level = 0.95)
 #' @export
-#' @importFrom methods is
-#' @importFrom stats cov hatvalues
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich
 BetaHC <- function(object,
