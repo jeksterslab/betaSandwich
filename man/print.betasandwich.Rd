@@ -16,7 +16,8 @@
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of standardized regression slopes, standard errors, test statistics, p-values, and confidence intervals.
+Returns a matrix of standardized regression slopes,
+standard errors, test statistics, p-values, and confidence intervals.
 }
 \description{
 Print Method for an Object of Class \code{betaSandwich}

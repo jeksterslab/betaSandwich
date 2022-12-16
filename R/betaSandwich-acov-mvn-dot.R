@@ -7,7 +7,8 @@
 #'   of the model-implied covariance matrix
 #'   with respect to the standardized parameter vector.
 #' @param gammacap_mvn Numeric matrix.
-#'   Asymptotic covariance matrix of the sample covariance matrix assuming multivariate normal distribution.
+#'   Asymptotic covariance matrix of the sample covariance matrix
+#'   assuming multivariate normal distribution.
 #'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich acov internal

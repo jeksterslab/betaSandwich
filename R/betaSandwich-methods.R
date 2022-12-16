@@ -1,3 +1,4 @@
+################################################################################
 #' Print Method for an Object of Class `betaSandwich`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
@@ -6,7 +7,8 @@
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
-#' @return Returns a matrix of standardized regression slopes, standard errors, test statistics, p-values, and confidence intervals.
+#' @return Returns a matrix of standardized regression slopes,
+#'   standard errors, test statistics, p-values, and confidence intervals.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
@@ -43,7 +45,8 @@ print.betasandwich <- function(x,
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
-#' @return Returns a matrix of standardized regression slopes, standard errors, test statistics, p-values, and confidence intervals.
+#' @return Returns a matrix of standardized regression slopes,
+#'   standard errors, test statistics, p-values, and confidence intervals.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
@@ -78,7 +81,8 @@ summary.betasandwich <- function(object,
 #'
 #' @param object Object of class `betaSandwich`.
 #' @param ... additional arguments.
-#' @return Returns a matrix of the variance-covariance matrix of standardized slopes.
+#' @return Returns a matrix of the variance-covariance matrix
+#'   of standardized slopes.
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
@@ -117,8 +121,10 @@ coef.betasandwich <- function(object,
 #'
 #' @param object Object of class `betaSandwich`.
 #' @param ... additional arguments.
-#' @param parm a specification of which parameters are to be given confidence intervals,
-#'   either a vector of numbers or a vector of names. If missing, all parameters are considered.
+#' @param parm a specification of which parameters
+#'   are to be given confidence intervals,
+#'   either a vector of numbers or a vector of names.
+#'   If missing, all parameters are considered.
 #' @param level the confidence level required.
 #' @return Returns a matrix of confidence intervals.
 #' @examples

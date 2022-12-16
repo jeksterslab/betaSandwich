@@ -46,6 +46,8 @@
 
 \maketitle
 
+\newpage
+
 \section{All Tests Under tests-benchmark}
 
 %% begin.rcode

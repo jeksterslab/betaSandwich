@@ -1,8 +1,10 @@
-#' Estimate Standardized Regression Coefficients and Sampling Covariance Matrix Assuming Multivariate Normality
+#' Estimate Standardized Regression Coefficients
+#' and Sampling Covariance Matrix Assuming Multivariate Normality
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns an object of class `betaSandwich` which is a list with the following elements:
+#' @return Returns an object of class `betaSandwich`
+#' which is a list with the following elements:
 #' \describe{
 #'   \item{call}{Function call.}
 #'   \item{type}{Standard error type.}

@@ -2,7 +2,8 @@
 % Please edit documentation in R/betaSandwich-beta-hc.R
 \name{BetaHC}
 \alias{BetaHC}
-\title{Estimate Standardized Regression Coefficients and Robust Sampling Covariance Matrix}
+\title{Estimate Standardized Regression Coefficients
+and Robust Sampling Covariance Matrix}
 \usage{
 BetaHC(object, type = "hc3", g1 = 1, g2 = 1.5, k = 0.7)
 }
@@ -30,7 +31,8 @@ Possible values are
 Constant for \code{type = "hc5"}}
 }
 \value{
-Returns an object of class \code{betaSandwich} which is a list with the following elements:
+Returns an object of class \code{betaSandwich}
+which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
 \item{type}{Standard error type.}
@@ -42,7 +44,8 @@ Returns an object of class \code{betaSandwich} which is a list with the followin
 }
 }
 \description{
-Estimate Standardized Regression Coefficients and Robust Sampling Covariance Matrix
+Estimate Standardized Regression Coefficients
+and Robust Sampling Covariance Matrix
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
@@ -56,7 +59,8 @@ confint(std, level = 0.95)
 }
 \references{
 Dudgeon, P. (2017).
-Some improvements in confidence intervals for standardized regression coefficients.
+Some improvements in confidence intervals
+for standardized regression coefficients.
 \emph{Psychometrika}, \emph{82}(4), 928–951.
 \doi{10.1007/s11336-017-9563-z}
 }

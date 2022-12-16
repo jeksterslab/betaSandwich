@@ -2,7 +2,8 @@
 % Please edit documentation in R/betaSandwich-beta-mvn.R
 \name{BetaN}
 \alias{BetaN}
-\title{Estimate Standardized Regression Coefficients and Sampling Covariance Matrix Assuming Multivariate Normality}
+\title{Estimate Standardized Regression Coefficients
+and Sampling Covariance Matrix Assuming Multivariate Normality}
 \usage{
 BetaN(object)
 }
@@ -10,7 +11,8 @@ BetaN(object)
 \item{object}{Object of class \code{lm}.}
 }
 \value{
-Returns an object of class \code{betaSandwich} which is a list with the following elements:
+Returns an object of class \code{betaSandwich}
+which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
 \item{type}{Standard error type.}
@@ -22,7 +24,8 @@ Returns an object of class \code{betaSandwich} which is a list with the followin
 }
 }
 \description{
-Estimate Standardized Regression Coefficients and Sampling Covariance Matrix Assuming Multivariate Normality
+Estimate Standardized Regression Coefficients
+and Sampling Covariance Matrix Assuming Multivariate Normality
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

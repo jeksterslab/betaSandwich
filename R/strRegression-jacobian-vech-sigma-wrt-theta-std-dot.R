@@ -61,13 +61,6 @@
       }
     )
   )
-  vechnames_sigmacapx <- paste0(
-    "sigma",
-    .VechNames(
-      x = paste0("x", seq_len(p)),
-      sep = ""
-    )
-  )
   vecnames_sigmacapx <- paste0(
     "sigma",
     outer(

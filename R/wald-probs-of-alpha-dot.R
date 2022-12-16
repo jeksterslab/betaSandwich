@@ -1,6 +1,7 @@
 #' Probabilities
 #'
-#' Generates a vector of probabilities associated with the two-tailed `alpha` level provided in increasing order.
+#' Generates a vector of probabilities
+#' associated with the two-tailed `alpha` level provided in increasing order.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

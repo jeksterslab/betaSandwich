@@ -1,8 +1,10 @@
-#' Estimate Standardized Regression Coefficients and Robust Sampling Covariance Matrix
+#' Estimate Standardized Regression Coefficients
+#' and Robust Sampling Covariance Matrix
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns an object of class `betaSandwich` which is a list with the following elements:
+#' @return Returns an object of class `betaSandwich`
+#' which is a list with the following elements:
 #' \describe{
 #'   \item{call}{Function call.}
 #'   \item{type}{Standard error type.}
@@ -31,7 +33,8 @@
 #'   Constant for `type = "hc5"`
 #' @references
 #' Dudgeon, P. (2017).
-#' Some improvements in confidence intervals for standardized regression coefficients.
+#' Some improvements in confidence intervals
+#' for standardized regression coefficients.
 #' *Psychometrika*, *82*(4), 928–951.
 #' \doi{10.1007/s11336-017-9563-z}
 #' @examples

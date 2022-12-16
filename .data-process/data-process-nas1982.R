@@ -1,4 +1,6 @@
-data_process_nas1982 <- function(overwrite = FALSE) {
+#' Data Process - `data/nas1982.rda`
+#'
+DataProcessNAS1982 <- function(overwrite = FALSE) {
   root <- rprojroot::is_rstudio_project
   nas1982_rda <- root$find_file(
     "data",
@@ -30,3 +32,5 @@ data_process_nas1982 <- function(overwrite = FALSE) {
     )
   }
 }
+DataProcessNAS1982(overwrite = TRUE)
+rm(DataProcessNAS1982)
