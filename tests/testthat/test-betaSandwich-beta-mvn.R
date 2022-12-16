@@ -5,7 +5,17 @@ lapply(
                  tol,
                  text) {
     message(text)
-    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+    if (!exists("nas1982")) {
+      try(
+        data(
+          "nas1982",
+          package = "betaSandwich"
+        ),
+        silent = TRUE
+      )
+    }
+    df <- nas1982
+    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
     coefs <- coef(BetaN(object))
     mvn <- .BetaCI(BetaN(object))
     testthat::test_that(

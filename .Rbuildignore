@@ -27,6 +27,3 @@
 ^make.*$
 ^betaSandwich.pdf$
 ^vignettes$
-^betaSandwich\.Rcheck$
-^betaSandwich.*\.tar\.gz$
-^betaSandwich.*\.tgz$

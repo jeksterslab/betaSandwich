@@ -4,7 +4,17 @@ lapply(
   FUN = function(i,
                  text) {
     message(text)
-    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+    if (!exists("nas1982")) {
+      try(
+        data(
+          "nas1982",
+          package = "betaSandwich"
+        ),
+        silent = TRUE
+      )
+    }
+    df <- nas1982
+    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
     hc <- BetaHC(object)
     print.betasandwich(hc)
     summary.betasandwich(hc)
