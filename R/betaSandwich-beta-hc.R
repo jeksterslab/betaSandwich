@@ -54,12 +54,7 @@ BetaHC <- function(object,
                    g1 = 1,
                    g2 = 1.5,
                    k = 0.7) {
-  stopifnot(
-    methods::is(
-      object,
-      "lm"
-    )
-  )
+  input <- .ProcessLM(object)
   stopifnot(
     type %in% c(
       "hc0",
@@ -73,56 +68,35 @@ BetaHC <- function(object,
   )
   stopifnot(0 < k & k < 1)
   constant <- k
-  y <- object$model[, 1]
-  x <- stats::model.matrix(object)
-  x[, 1] <- y
-  varnames <- colnames(x)
-  xnames <- varnames[-1]
-  dims <- dim(x)
-  n <- dims[1]
-  k <- dims[2]
-  p <- k - 1
-  df <- n - k
-  sigmacap <- stats::cov(x)
-  sigma <- sqrt(diag(sigmacap))
-  rhocap <- .RhoofSigma(
-    sigmacap,
-    q = 1 / sigma
-  )
-  betastar <- .BetaStarofRho(
-    rhocap = rhocap,
-    k = k
-  )
-  names(betastar) <- xnames
   gammacap <- .GammaHC(
     d = .DofMat(
-      x,
-      center = colMeans(x),
-      n = n,
-      k = k
+      input$x,
+      center = colMeans(input$x),
+      n = input$n,
+      k = input$k
     ),
-    sigmacap = sigmacap,
+    sigmacap = input$sigmacap,
     qcap = .QMat(
       h = stats::hatvalues(object),
-      k = k,
+      k = input$k,
       type = type,
       g1 = g1,
       g2 = g2,
       constant = constant
     ),
-    n = n
+    n = input$n
   )
   jcap <- .JacobianVechSigmaWRTThetaStar(
-    betastar = betastar,
-    sigmay = sigma[1],
-    sigmax = sigma[-1],
-    rhocapx = rhocap[2:k, 2:k, drop = FALSE],
-    q = p + 1 + 0.5 * p * (p + 1),
-    p = p
+    betastar = input$betastar,
+    sigmay = input$sigma[1],
+    sigmax = input$sigma[-1],
+    rhocapx = input$rhocap[2:input$k, 2:input$k, drop = FALSE],
+    q = input$p + 1 + 0.5 * input$p * (input$p + 1),
+    p = input$p
   )
   gammacap_mvn <- .GammaN(
-    sigmacap = sigmacap,
-    pinv_of_dcap = .PInvDmat(.DMat(k))
+    sigmacap = input$sigmacap,
+    pinv_of_dcap = .PInvDmat(.DMat(input$k))
   )
   avcov <- .ACovHC(
     jcap = jcap,
@@ -132,18 +106,18 @@ BetaHC <- function(object,
   vcov <- .CovHC(
     acov = avcov,
     type = type,
-    n = n,
-    df = df
-  )[1:p, 1:p, drop = FALSE]
-  colnames(vcov) <- rownames(vcov) <- xnames
+    n = input$n,
+    df = input$df
+  )[1:input$p, 1:input$p, drop = FALSE]
+  colnames(vcov) <- rownames(vcov) <- input$xnames
   out <- list(
     call = match.call(),
     type = type,
-    beta = betastar,
+    beta = input$betastar,
     vcov = vcov,
-    n = n,
-    p = p,
-    df = df
+    n = input$n,
+    p = input$p,
+    df = input$df
   )
   class(out) <- c(
     "betasandwich",

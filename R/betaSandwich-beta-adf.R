@@ -34,45 +34,19 @@
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich
 BetaADF <- function(object) {
-  stopifnot(
-    methods::is(
-      object,
-      "lm"
-    )
-  )
-  y <- object$model[, 1]
-  x <- stats::model.matrix(object)
-  x[, 1] <- y
-  varnames <- colnames(x)
-  xnames <- varnames[-1]
-  dims <- dim(x)
-  n <- dims[1]
-  k <- dims[2]
-  p <- k - 1
-  df <- n - k
-  sigmacap <- stats::cov(x)
-  sigma <- sqrt(diag(sigmacap))
-  rhocap <- .RhoofSigma(
-    sigmacap,
-    q = 1 / sigma
-  )
-  betastar <- .BetaStarofRho(
-    rhocap = rhocap,
-    k = k
-  )
-  names(betastar) <- xnames
+  input <- .ProcessLM(object)
   jcap <- .JacobianVechSigmaWRTThetaStar(
-    betastar = betastar,
-    sigmay = sigma[1],
-    sigmax = sigma[-1],
-    rhocapx = rhocap[2:k, 2:k, drop = FALSE],
-    q = p + 1 + 0.5 * p * (p + 1),
-    p = p
+    betastar = input$betastar,
+    sigmay = input$sigma[1],
+    sigmax = input$sigma[-1],
+    rhocapx = input$rhocap[2:input$k, 2:input$k, drop = FALSE],
+    q = input$p + 1 + 0.5 * input$p * (input$p + 1),
+    p = input$p
   )
   sigmacap_consistent <- (
-    sigmacap * (
-      n - 1
-    ) / n
+    input$sigmacap * (
+      input$n - 1
+    ) / input$n
   )
   vechsigmacap_consistent <- .Vech(
     sigmacap_consistent
@@ -80,20 +54,20 @@ BetaADF <- function(object) {
   gammacap_adf <- .GammaADFUnbiased(
     gammacapadf_consistent = .GammaADFConsistent(
       d = .DofMat(
-        x,
-        center = colMeans(x),
-        n = n,
-        k = k
+        input$x,
+        center = colMeans(input$x),
+        n = input$n,
+        k = input$k
       ),
       vechsigmacap_consistent = vechsigmacap_consistent,
-      n = n
+      n = input$n
     ),
     gammacapmvn_consistent = .GammaN(
       sigmacap = sigmacap_consistent,
-      pinv_of_dcap = .PInvDmat(.DMat(k))
+      pinv_of_dcap = .PInvDmat(.DMat(input$k))
     ),
     vechsigmacap_consistent = vechsigmacap_consistent,
-    n = n
+    n = input$n
   )
   # the procedure from here on is the same as normal
   avcov <- .ACovN(
@@ -102,17 +76,17 @@ BetaADF <- function(object) {
   )
   vcov <- .CovN(
     acov = avcov,
-    n = n
-  )[1:p, 1:p, drop = FALSE]
-  colnames(vcov) <- rownames(vcov) <- xnames
+    n = input$n
+  )[1:input$p, 1:input$p, drop = FALSE]
+  colnames(vcov) <- rownames(vcov) <- input$xnames
   out <- list(
     call = match.call(),
     type = "adf",
-    beta = betastar,
+    beta = input$betastar,
     vcov = vcov,
-    n = n,
-    p = p,
-    df = df
+    n = input$n,
+    p = input$p,
+    df = input$df
   )
   class(out) <- c(
     "betasandwich",
