@@ -1,4 +1,5 @@
 #' Asymptotic Covariance Matrix of the Sample Covariance Matrix
+#' (Multivariate Normal Distribution)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -6,8 +7,8 @@
 #'   Covariance matrix.
 #' @param pinv_of_dcap Numeric matrix.
 #'   Moore-Penrose inverse of the duplication matrix.
-#' @family gammaMatrix Functions
-#' @keywords gammaMatrix gamma internal
+#' @family gammaN Functions
+#' @keywords gammaN gamma internal
 #' @noRd
 .GammaN <- function(sigmacap,
                     pinv_of_dcap) {

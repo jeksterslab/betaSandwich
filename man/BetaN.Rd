@@ -27,6 +27,10 @@ which is a list with the following elements:
 Estimate Standardized Regression Coefficients
 and Sampling Covariance Matrix Assuming Multivariate Normality
 }
+\details{
+\code{BetaN()} assumes multivariate normality.
+\code{BetaHC()} is recommended in most situations.
+}
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaN(object)
@@ -39,6 +43,7 @@ confint(std, level = 0.95)
 }
 \seealso{
 Other Beta Sandwich Functions: 
+\code{\link{BetaADF}()},
 \code{\link{BetaHC}()}
 }
 \author{

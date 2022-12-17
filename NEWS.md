@@ -1,6 +1,8 @@
 # betaSandwich 1.0.2.9000
 
-* Minor code clean-up.
+## Patch
+
+* Added the `BetaADF` function.
 
 # betaSandwich 1.0.2
 

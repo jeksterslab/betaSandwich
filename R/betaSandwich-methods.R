@@ -1,4 +1,3 @@
-################################################################################
 #' Print Method for an Object of Class `betaSandwich`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
