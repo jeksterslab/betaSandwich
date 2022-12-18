@@ -1,4 +1,4 @@
-#' Print Method for an Object of Class `betaSandwich`
+#' Print Method for an Object of Class `betasandwich`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -36,7 +36,7 @@ print.betasandwich <- function(x,
   )
 }
 
-#' Summary Method for an Object of Class `betaSandwich`
+#' Summary Method for an Object of Class `betasandwich`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

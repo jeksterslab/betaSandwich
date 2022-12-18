@@ -2,7 +2,7 @@
 % Please edit documentation in R/betaSandwich-methods.R
 \name{print.betasandwich}
 \alias{print.betasandwich}
-\title{Print Method for an Object of Class \code{betaSandwich}}
+\title{Print Method for an Object of Class \code{betasandwich}}
 \usage{
 \method{print}{betasandwich}(x, alpha = c(0.05, 0.01, 0.001), digits = 4, ...)
 }
@@ -20,7 +20,7 @@ Returns a matrix of standardized regression slopes,
 standard errors, test statistics, p-values, and confidence intervals.
 }
 \description{
-Print Method for an Object of Class \code{betaSandwich}
+Print Method for an Object of Class \code{betasandwich}
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
