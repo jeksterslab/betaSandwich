@@ -16,6 +16,7 @@
   )
   y <- object$model[, 1]
   x <- stats::model.matrix(object)
+  beta <- object$coefficients[-1]
   x[, 1] <- y
   varnames <- colnames(x)
   xnames <- varnames[-1]
@@ -48,6 +49,7 @@
     sigmacap = sigmacap,
     sigma = sigma,
     rhocap = rhocap,
-    betastar = betastar
+    betastar = betastar,
+    beta = beta
   )
 }

@@ -11,7 +11,7 @@ BetaN(object)
 \item{object}{Object of class \code{lm}.}
 }
 \value{
-Returns an object of class \code{betaSandwich}
+Returns an object of class \code{betasandwich}
 which is a list with the following elements:
 \describe{
 \item{call}{Function call.}

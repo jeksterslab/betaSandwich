@@ -7,7 +7,7 @@
 \method{coef}{betasandwich}(object, ...)
 }
 \arguments{
-\item{object}{Object of class \code{betaSandwich}.}
+\item{object}{Object of class \code{betasandwich}.}
 
 \item{...}{additional arguments.}
 }

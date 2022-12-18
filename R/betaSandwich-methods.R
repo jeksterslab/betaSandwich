@@ -2,7 +2,7 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param x Object of class `betaSandwich`.
+#' @param x Object of class `betasandwich`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
@@ -40,7 +40,7 @@ print.betasandwich <- function(x,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `betaSandwich`.
+#' @param object Object of class `betasandwich`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
@@ -74,11 +74,11 @@ summary.betasandwich <- function(object,
   )
 }
 
-#' Robust Sampling Covariance Matrix of the Standardized Regression Slopes
+#' Sampling Covariance Matrix of the Standardized Regression Slopes
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `betaSandwich`.
+#' @param object Object of class `betasandwich`.
 #' @param ... additional arguments.
 #' @return Returns a matrix of the variance-covariance matrix
 #'   of standardized slopes.
@@ -100,7 +100,7 @@ vcov.betasandwich <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `betaSandwich`.
+#' @param object Object of class `betasandwich`.
 #' @param ... additional arguments.
 #' @return Returns a vector of standardized regression slopes.
 #' @examples
@@ -114,11 +114,11 @@ coef.betasandwich <- function(object,
   object$beta
 }
 
-#' Robust Confidence Intervals for Standardized Regression Slopes
+#' Confidence Intervals for Standardized Regression Slopes
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `betaSandwich`.
+#' @param object Object of class `betasandwich`.
 #' @param ... additional arguments.
 #' @param parm a specification of which parameters
 #'   are to be given confidence intervals,

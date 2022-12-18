@@ -1,7 +1,7 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2022-12-17
+2022-12-18
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -56,10 +56,14 @@ function from the `betaSandwich` package following Dudgeon (2017).
 library(betaSandwich)
 ```
 
+``` r
+df <- betaSandwich::nas1982
+```
+
 ### Fit the regression model using the `lm()` function.
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ### Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.

@@ -3,7 +3,7 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns an object of class `betaSandwich`
+#' @return Returns an object of class `betasandwich`
 #' which is a list with the following elements:
 #' \describe{
 #'   \item{call}{Function call.}

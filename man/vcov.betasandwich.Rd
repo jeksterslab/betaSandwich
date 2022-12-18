@@ -2,12 +2,12 @@
 % Please edit documentation in R/betaSandwich-methods.R
 \name{vcov.betasandwich}
 \alias{vcov.betasandwich}
-\title{Robust Sampling Covariance Matrix of the Standardized Regression Slopes}
+\title{Sampling Covariance Matrix of the Standardized Regression Slopes}
 \usage{
 \method{vcov}{betasandwich}(object, ...)
 }
 \arguments{
-\item{object}{Object of class \code{betaSandwich}.}
+\item{object}{Object of class \code{betasandwich}.}
 
 \item{...}{additional arguments.}
 }
@@ -16,7 +16,7 @@ Returns a matrix of the variance-covariance matrix
 of standardized slopes.
 }
 \description{
-Robust Sampling Covariance Matrix of the Standardized Regression Slopes
+Sampling Covariance Matrix of the Standardized Regression Slopes
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

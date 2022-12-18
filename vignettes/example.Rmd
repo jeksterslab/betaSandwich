@@ -29,10 +29,28 @@ using the `BetaHC()` function from the `betaSandwich` package following Dudgeon 
 library(betaSandwich)
 ```
 
+```{r}
+#| echo = FALSE
+if (!exists("nas1982")) {
+  try(
+    data(
+      "nas1982",
+      package = "betaSandwich"
+    ),
+    silent = TRUE
+  )
+}
+df <- nas1982
+```
+
+```{r}
+df <- betaSandwich::nas1982
+```
+
 ## Fit the regression model using the `lm()` function.
 
 ```{r}
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.

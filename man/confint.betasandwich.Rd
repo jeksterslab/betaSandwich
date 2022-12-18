@@ -2,12 +2,12 @@
 % Please edit documentation in R/betaSandwich-methods.R
 \name{confint.betasandwich}
 \alias{confint.betasandwich}
-\title{Robust Confidence Intervals for Standardized Regression Slopes}
+\title{Confidence Intervals for Standardized Regression Slopes}
 \usage{
 \method{confint}{betasandwich}(object, parm = NULL, level = 0.95, ...)
 }
 \arguments{
-\item{object}{Object of class \code{betaSandwich}.}
+\item{object}{Object of class \code{betasandwich}.}
 
 \item{parm}{a specification of which parameters
 are to be given confidence intervals,
@@ -22,7 +22,7 @@ If missing, all parameters are considered.}
 Returns a matrix of confidence intervals.
 }
 \description{
-Robust Confidence Intervals for Standardized Regression Slopes
+Confidence Intervals for Standardized Regression Slopes
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

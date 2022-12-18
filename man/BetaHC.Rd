@@ -31,7 +31,7 @@ Possible values are
 Constant for \code{type = "hc5"}}
 }
 \value{
-Returns an object of class \code{betaSandwich}
+Returns an object of class \code{betasandwich}
 which is a list with the following elements:
 \describe{
 \item{call}{Function call.}

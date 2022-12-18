@@ -7,7 +7,7 @@
 \method{summary}{betasandwich}(object, alpha = c(0.05, 0.01, 0.001), digits = 4, ...)
 }
 \arguments{
-\item{object}{Object of class \code{betaSandwich}.}
+\item{object}{Object of class \code{betasandwich}.}
 
 \item{alpha}{Significance level.}
 

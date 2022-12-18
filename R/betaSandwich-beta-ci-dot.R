@@ -1,10 +1,10 @@
-#' Robust Confidence Intervals for Standardized Regression Coefficients
+#' Confidence Intervals for Standardized Regression Coefficients
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix.
 #'
-#' @param object Object of class `betaSandwich`.
+#' @param object Object of class `betasandwich`.
 #'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich ci internal
