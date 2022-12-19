@@ -26,6 +26,9 @@
   p <- k - 1
   df <- n - k
   sigmacap <- stats::cov(x)
+  vechsigmacap <- .Vech(
+    sigmacap
+  )
   sigma <- sqrt(diag(sigmacap))
   rhocap <- .RhoofSigma(
     sigmacap,
@@ -36,6 +39,20 @@
     k = k
   )
   names(betastar) <- xnames
+  theta <- c(
+    beta,
+    summary(object)$sigma^2,
+    .Vech(sigmacap[2:k, 2:k, drop = FALSE])
+  )
+  sigmacap_consistent <- (
+    sigmacap * (
+      n - 1
+    ) / n
+  )
+  vechsigmacap_consistent <- .Vech(
+    sigmacap_consistent
+  )
+  pinv_of_dcap <- .PInvDmat(.DMat(k))
   list(
     y = y,
     x = x,
@@ -44,12 +61,17 @@
     k = k,
     p = p,
     df = df,
+    pinv_of_dcap = pinv_of_dcap,
     varnames = varnames,
     xnames = xnames,
     sigmacap = sigmacap,
+    vechsigmacap = vechsigmacap,
     sigma = sigma,
+    sigmacap_consistent = sigmacap_consistent,
+    vechsigmacap_consistent = vechsigmacap_consistent,
     rhocap = rhocap,
     betastar = betastar,
-    beta = beta
+    beta = beta,
+    theta = theta
   )
 }
