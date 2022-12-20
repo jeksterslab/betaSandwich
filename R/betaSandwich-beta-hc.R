@@ -92,7 +92,7 @@ BetaHC <- function(object,
     sigmay = input$sigma[1],
     sigmax = input$sigma[-1],
     rhocapx = input$rhocap[2:input$k, 2:input$k, drop = FALSE],
-    q = input$p + 1 + 0.5 * input$p * (input$p + 1),
+    q = input$q,
     p = input$p
   )
   gammacap_mvn <- .GammaN(

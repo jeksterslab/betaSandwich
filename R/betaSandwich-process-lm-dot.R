@@ -25,6 +25,7 @@
   k <- dims[2]
   p <- k - 1
   df <- n - k
+  q <- p + 1 + 0.5 * p * (p + 1)
   sigmacap <- stats::cov(x)
   vechsigmacap <- .Vech(
     sigmacap
@@ -54,19 +55,19 @@
   )
   pinv_of_dcap <- .PInvDmat(.DMat(k))
   list(
-    y = y,
-    x = x,
+    x = x, # {y, X}
     dims = dims,
     n = n,
     k = k,
     p = p,
+    q = q,
     df = df,
     pinv_of_dcap = pinv_of_dcap,
     varnames = varnames,
     xnames = xnames,
     sigmacap = sigmacap,
     vechsigmacap = vechsigmacap,
-    sigma = sigma,
+    sigma = sigma, # standard deviations
     sigmacap_consistent = sigmacap_consistent,
     vechsigmacap_consistent = vechsigmacap_consistent,
     rhocap = rhocap,
