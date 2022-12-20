@@ -11,6 +11,7 @@
 #' which is a list with the following elements:
 #' \describe{
 #'   \item{call}{Function call.}
+#'   \item{lm}{Object of class `lm`.}
 #'   \item{type}{Standard error type.}
 #'   \item{beta}{Vector of standardized slopes.}
 #'   \item{vcov}{Sampling covariance matrix of the standardized slopes.}
@@ -56,6 +57,7 @@ BetaN <- function(object) {
   colnames(vcov) <- rownames(vcov) <- input$xnames
   out <- list(
     call = match.call(),
+    lm = object,
     type = "mvn",
     beta = input$betastar,
     vcov = vcov,
