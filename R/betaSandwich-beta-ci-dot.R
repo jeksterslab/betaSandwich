@@ -5,6 +5,8 @@
 #' @return Returns a matrix.
 #'
 #' @param object Object of class `betasandwich`.
+#' @param alpha Numeric vector.
+#'   Significance level.
 #'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich ci internal
