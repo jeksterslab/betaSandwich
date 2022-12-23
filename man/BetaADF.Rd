@@ -22,7 +22,7 @@ which is a list with the following elements:
 \item{vcov}{Sampling covariance matrix of the standardized slopes.}
 \item{n}{Sample size.}
 \item{p}{Number of regressors.}
-\item{df}{\eqn{n - p - 1} degrees of freedom}
+\item{df}{\eqn{n - p - 1} degrees of freedom.}
 }
 }
 \description{
