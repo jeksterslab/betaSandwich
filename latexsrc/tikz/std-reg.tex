@@ -103,14 +103,14 @@
 	\draw[path] (X1star) to node[above] {$\sigma_{X_{1}}$} (X1);
 	\draw[path] (Xjstar) to node[above] {$\sigma_{X_{j}}$} (Xj);
 	\draw[path] (Xpstar) to node[above] {$\sigma_{X_{p}}$} (Xp);		
-	\draw[path] (X1star) to node[above] {$\beta_{1}^{\ast}$} (Ystar);
-	\draw[path] (Xjstar) to node {$\beta_{j}^{\ast}$} (Ystar);
-	\draw[path] (Xpstar) to node {$\beta_{p}^{\ast}$} (Ystar);
+	\draw[path] (X1star) to node[above] {$\beta_{1}$} (Ystar);
+	\draw[path] (Xjstar) to node {$\beta_{j}$} (Ystar);
+	\draw[path] (Xpstar) to node {$\beta_{p}$} (Ystar);
 	% error variance
 	\node[error] (varepsilonstar) [below = of Ystar] {$\varepsilon^{\ast}$};
 	\draw[path] (Ystar) to node[above] {$\sigma_{Y}$} (Y);
 	\draw[path] (varepsilonstar) to node {$1$} (Ystar);
-	\draw[cov] (varepsilonstar) to[out = 290, in = 250, looseness = 5] node[below] {$\sigma^{\ast 2} := 1 - \boldsymbol{\beta}^{\ast \prime}\mathbf{P}_{\mathbf{X}, \mathbf{X}}\boldsymbol{\beta}^{\ast}$} (varepsilonstar);
+	\draw[cov] (varepsilonstar) to[out = 290, in = 250, looseness = 5] node[below] {$1 - \boldsymbol{\beta}^{\prime}\mathbf{P}_{\mathbf{X}, \mathbf{X}}\boldsymbol{\beta}$} (varepsilonstar);
 \end{tikzpicture}
 
 \end{document}
