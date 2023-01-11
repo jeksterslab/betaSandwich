@@ -3,6 +3,9 @@
 #' Using the Asymptotic Distribution-Free Approach
 #'
 #' @details
+#' Note that while the calculation in `BetaADF()`
+#' is different from `betaDelta::BetaDelta()` with `type = "adf"`,
+#' the results are numerically equivalent.
 #' `BetaADF()` is appropriate when sample sizes are moderate to large
 #' (`n > 250`).
 #' `BetaHC()` is recommended in most situations.

@@ -29,6 +29,9 @@ Estimate Standardized Regression Coefficients
 and Sampling Covariance Matrix Assuming Multivariate Normality
 }
 \details{
+Note that while the calculation in \code{BetaN()}
+is different from \code{betaDelta::BetaDelta()} with \code{type = "mvn"},
+the results are numerically equivalent.
 \code{BetaN()} assumes multivariate normality.
 \code{BetaHC()} is recommended in most situations.
 }

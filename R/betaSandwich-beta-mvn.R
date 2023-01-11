@@ -4,6 +4,9 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @details
+#' Note that while the calculation in `BetaN()`
+#' is different from `betaDelta::BetaDelta()` with `type = "mvn"`,
+#' the results are numerically equivalent.
 #' `BetaN()` assumes multivariate normality.
 #' `BetaHC()` is recommended in most situations.
 #'

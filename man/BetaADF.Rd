@@ -31,6 +31,9 @@ and Sampling Covariance Matrix
 Using the Asymptotic Distribution-Free Approach
 }
 \details{
+Note that while the calculation in \code{BetaADF()}
+is different from \code{betaDelta::BetaDelta()} with \code{type = "adf"},
+the results are numerically equivalent.
 \code{BetaADF()} is appropriate when sample sizes are moderate to large
 (\code{n > 250}).
 \code{BetaHC()} is recommended in most situations.
