@@ -1,4 +1,4 @@
-## ---- test-betaSandwich-beta-hc
+## ---- test-betaSandwich-beta-sandwich-hc
 lapply(
   X = 1,
   FUN = function(i,
@@ -122,6 +122,6 @@ lapply(
     )
   },
   tol = 0.0001,
-  text = "test-betaSandwich-beta-hc"
+  text = "test-betaSandwich-beta-sandwich-hc"
 )
 # This test compares the results of the package with Dudgeon (2017)

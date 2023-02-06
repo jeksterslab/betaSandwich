@@ -90,10 +90,13 @@ summary.betasandwich <- function(object,
 #' @keywords methods
 vcov.betasandwich <- function(object,
                               ...) {
-  p <- length(object$beta)
-  out <- object$vcov[1:p, 1:p, drop = FALSE]
-  rownames(out) <- colnames(out) <- names(object$beta)
-  return(out)
+  return(
+    object$vcov[
+      1:object$lm_process$p,
+      1:object$lm_process$p,
+      drop = FALSE
+    ]
+  )
 }
 
 #' Standardized Regression Slopes
@@ -111,7 +114,9 @@ vcov.betasandwich <- function(object,
 #' @keywords methods
 coef.betasandwich <- function(object,
                               ...) {
-  object$beta
+  return(
+    object$beta
+  )
 }
 
 #' Confidence Intervals for Standardized Regression Slopes
@@ -137,7 +142,7 @@ confint.betasandwich <- function(object,
                                  level = 0.95,
                                  ...) {
   if (is.null(parm)) {
-    parm <- 1:object$p
+    parm <- 1:object$lm_process$p
   }
   return(
     .BetaCI(

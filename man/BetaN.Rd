@@ -16,12 +16,12 @@ which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
 \item{lm}{Object of class \code{lm}.}
+\item{lm_process}{Pre-processed object of class \code{lm}.}
 \item{type}{Standard error type.}
-\item{beta}{Vector of standardized slopes.}
+\item{gamma}{Asymptotic covariance matrix of the sample covariance matrix.}
+\item{acov}{Asymptotic covariance matrix of the standardized slopes.}
 \item{vcov}{Sampling covariance matrix of the standardized slopes.}
-\item{n}{Sample size.}
-\item{p}{Number of regressors.}
-\item{df}{\eqn{n - p - 1} degrees of freedom.}
+\item{est}{Vector of standardized slopes.}
 }
 }
 \description{

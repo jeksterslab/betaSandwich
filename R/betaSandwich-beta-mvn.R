@@ -15,12 +15,12 @@
 #' \describe{
 #'   \item{call}{Function call.}
 #'   \item{lm}{Object of class `lm`.}
+#'   \item{lm_process}{Pre-processed object of class `lm`.}
 #'   \item{type}{Standard error type.}
-#'   \item{beta}{Vector of standardized slopes.}
+#'   \item{gamma}{Asymptotic covariance matrix of the sample covariance matrix.}
+#'   \item{acov}{Asymptotic covariance matrix of the standardized slopes.}
 #'   \item{vcov}{Sampling covariance matrix of the standardized slopes.}
-#'   \item{n}{Sample size.}
-#'   \item{p}{Number of regressors.}
-#'   \item{df}{\eqn{n - p - 1} degrees of freedom.}
+#'   \item{est}{Vector of standardized slopes.}
 #' }
 #' @param object Object of class `lm`.
 #' @examples
@@ -36,37 +36,45 @@
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich
 BetaN <- function(object) {
-  input <- .ProcessLM(object)
+  lm_process <- .ProcessLM(object)
   jcap <- .JacobianVechSigmaWRTThetaStar(
-    betastar = input$betastar,
-    sigmay = input$sigma[1],
-    sigmax = input$sigma[-1],
-    rhocapx = input$rhocap[2:input$k, 2:input$k, drop = FALSE],
-    q = input$q,
-    p = input$p
+    betastar = lm_process$betastar,
+    sigmay = lm_process$sigma[1],
+    sigmax = lm_process$sigma[-1],
+    rhocapx = lm_process$rhocap[
+      2:lm_process$k,
+      2:lm_process$k,
+      drop = FALSE
+    ],
+    q = lm_process$q,
+    p = lm_process$p
   )
   gammacap_mvn <- .GammaN(
-    sigmacap = input$sigmacap,
-    pinv_of_dcap = .PInvDmat(.DMat(input$k))
+    sigmacap = lm_process$sigmacap,
+    pinv_of_dcap = .PInvDmat(.DMat(lm_process$k))
   )
-  avcov <- .ACovN(
+  acov <- .ACovN(
     jcap = jcap,
     gammacap_mvn = gammacap_mvn
   )
   vcov <- .CovN(
-    acov = avcov,
-    n = input$n
-  )[1:input$p, 1:input$p, drop = FALSE]
-  colnames(vcov) <- rownames(vcov) <- input$xnames
+    acov = acov,
+    n = lm_process$n
+  )[
+    seq_len(lm_process$p),
+    seq_len(lm_process$p),
+    drop = FALSE
+  ]
+  colnames(vcov) <- rownames(vcov) <- lm_process$xnames
   out <- list(
     call = match.call(),
     lm = object,
+    lm_process = lm_process,
     type = "mvn",
-    beta = input$betastar,
+    gamma = gammacap_mvn,
+    acov = acov,
     vcov = vcov,
-    n = input$n,
-    p = input$p,
-    df = input$df
+    est = lm_process$betastar
   )
   class(out) <- c(
     "betasandwich",

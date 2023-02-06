@@ -1,4 +1,4 @@
-## ---- test-betaSandwich-methods
+## ---- test-betaSandwich-beta-sandwich-methods
 lapply(
   X = 1,
   FUN = function(i,
@@ -53,5 +53,5 @@ lapply(
     vcov.betasandwich(adf)
     confint.betasandwich(adf)
   },
-  text = "test-betaSandwich-methods"
+  text = "test-betaSandwich-beta-sandwich-methods"
 )

@@ -2,6 +2,8 @@
 
 Latest development version.
 
+* Added the `dif` method.
+
 # betaSandwich 1.0.3
 
 ## Patch

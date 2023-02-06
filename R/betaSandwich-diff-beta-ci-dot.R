@@ -1,22 +1,22 @@
-#' Confidence Intervals for Standardized Regression Coefficients
+#' Confidence Intervals for Differences of Standardized Regression Slopes
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix.
 #'
-#' @param object Object of class `betasandwich`.
+#' @param object Object of class `difbetadelta`.
 #' @param alpha Numeric vector.
 #'   Significance level.
 #'
 #' @family Beta Sandwich Functions
-#' @keywords betaSandwich ci internal
+#' @keywords betaSandwich dif ci internal
 #' @noRd
-.BetaCI <- function(object,
-                    alpha = c(0.05, 0.01, 0.001)) {
+.DiffBetaCI <- function(object,
+                        alpha = c(0.05, 0.01, 0.001)) {
   stopifnot(
     methods::is(
       object,
-      "betasandwich"
+      "difbetasandwich"
     )
   )
   return(
@@ -25,8 +25,7 @@
       se = sqrt(diag(object$vcov)),
       theta = 0,
       alpha = alpha,
-      z = FALSE,
-      df = object$lm_process$df
+      z = TRUE
     )
   )
 }
