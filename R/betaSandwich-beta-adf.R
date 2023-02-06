@@ -97,7 +97,9 @@ BetaADF <- function(object) {
     lm_process = lm_process,
     type = "adf",
     gamma = gammacap_adf,
-    acov = acov,
+    acov = chol2inv(
+      chol(acov)
+    ),
     vcov = vcov,
     est = lm_process$betastar
   )

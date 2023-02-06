@@ -92,8 +92,8 @@ vcov.betasandwich <- function(object,
                               ...) {
   return(
     object$vcov[
-      1:object$lm_process$p,
-      1:object$lm_process$p,
+      seq_len(object$lm_process$p),
+      seq_len(object$lm_process$p),
       drop = FALSE
     ]
   )
@@ -142,7 +142,7 @@ confint.betasandwich <- function(object,
                                  level = 0.95,
                                  ...) {
   if (is.null(parm)) {
-    parm <- 1:object$lm_process$p
+    parm <- seq_len(object$lm_process$p)
   }
   return(
     .BetaCI(

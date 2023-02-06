@@ -7,15 +7,17 @@ dif.betasandwich <- function(object, # nolint: object_name_linter
     stop("Two or more regressors is required.")
   }
   est <- object$lm_process$dif_betastar
-  acov <- .ACovN(
-    jcap = .JacobianDiffBetastar(
-      p = object$lm_process$p
-    ),
-    gammacap = object$acov[
-      seq_len(object$lm_process$p),
-      seq_len(object$lm_process$p),
-      drop = FALSE
-    ]
+  jcap <- .JacobianDiffBetastar(
+    p = object$lm_process$p
+  )
+  gammacap <- object$acov[
+    seq_len(object$lm_process$p),
+    seq_len(object$lm_process$p),
+    drop = FALSE
+  ]
+  acov <- jcap %*% tcrossprod(
+    gammacap,
+    jcap
   )
   colnames(acov) <- rownames(acov) <- object$lm_process$xnames
   vcov <- (1 / object$lm_process$n) * acov

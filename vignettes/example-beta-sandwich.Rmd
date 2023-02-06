@@ -1,9 +1,9 @@
 ---
-title: "betaSandwich: Example"
+title: "betaSandwich: Example using BetaSandwich"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{betaSandwich: Example}
+  %\VignetteIndexEntry{betaSandwich: Example using BetaSandwich}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
