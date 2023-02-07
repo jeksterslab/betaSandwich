@@ -19,7 +19,7 @@ dif.betasandwich <- function(object, # nolint: object_name_linter
     gammacap,
     jcap
   )
-  colnames(acov) <- rownames(acov) <- object$lm_process$xnames
+  colnames(acov) <- rownames(acov) <- names(object$lm_process$dif_betastar)
   vcov <- (1 / object$lm_process$n) * acov
   out <- list(
     fit = object,

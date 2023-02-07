@@ -14,6 +14,7 @@
       "lm"
     )
   )
+  summary_lm <- summary(object)
   y <- object$model[, 1]
   x <- stats::model.matrix(object)
   x[, 1] <- y
@@ -42,7 +43,7 @@
   names(betastar) <- xnames
   theta <- c(
     beta,
-    summary(object)$sigma^2,
+    summary_lm$sigma^2,
     .Vech(sigmacap[2:k, 2:k, drop = FALSE])
   )
   sigmacap_consistent <- (
@@ -70,8 +71,10 @@
   } else {
     dif_betastar <- NULL
     dif_beta <- NULL
+    dif_idx <- NULL
   }
   list(
+    summary_lm = summary_lm,
     x = x, # {y, X}
     dims = dims,
     n = n,
@@ -92,6 +95,7 @@
     beta = beta,
     theta = theta,
     dif_betastar = dif_betastar,
-    dif_beta = dif_beta
+    dif_beta = dif_beta,
+    dif_idx = dif_idx
   )
 }
