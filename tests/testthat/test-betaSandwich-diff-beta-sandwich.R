@@ -174,7 +174,7 @@ lapply(
       paste(text, "mvn", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaN(object, type = "mvn"))
+          dif(BetaN(object))
         )
       }
     )
@@ -182,7 +182,7 @@ lapply(
       paste(text, "adf", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaADF(object, type = "adf"))
+          dif(BetaADF(object))
         )
       }
     )
