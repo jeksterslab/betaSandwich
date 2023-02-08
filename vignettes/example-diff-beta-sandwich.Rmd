@@ -75,7 +75,7 @@ std_hc3 <- BetaHC(object, type = "hc3")
 
 ## Methods
 
-### diff
+### dif
 
 ```{r}
 mvn <- dif(std_mvn)
