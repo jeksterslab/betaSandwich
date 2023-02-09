@@ -1,16 +1,16 @@
-#' Print Method for an Object of Class `difbetasandwich`
+#' Print Method for an Object of Class `rsqbetasandwich`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of
-#'   differences of standardized regression slopes,
+#'   standardized regression slopes,
 #'   standard errors,
 #'   test statistics,
 #'   p-values,
 #'   and
 #'   confidence intervals.
 #'
-#' @param x Object of class `difbetasandwich`.
+#' @param x Object of class `rsqbetasandwich`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
@@ -18,22 +18,22 @@
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- dif(std)
+#' out <- rsq(std)
 #' print(out)
 #' @export
 #' @keywords methods
-print.difbetasandwich <- function(x,
+print.rsqbetasandwich <- function(x,
                                   alpha = c(0.05, 0.01, 0.001),
                                   digits = 4,
                                   ...) {
   cat(
-    "Difference between standardized regression coefficients with",
+    "Multiple correlation with",
     toupper(x$fit$type),
     "standard errors:\n"
   )
   base::print(
     round(
-      .DiffBetaCI(
+      .RSqCI(
         object = x,
         alpha = alpha
       ),
@@ -42,19 +42,19 @@ print.difbetasandwich <- function(x,
   )
 }
 
-#' Summary Method for an Object of Class `difbetasandwich`
+#' Summary Method for an Object of Class `rsqbetasandwich`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of
-#'   differences of standardized regression slopes,
+#'   standardized regression slopes,
 #'   standard errors,
 #'   test statistics,
 #'   p-values,
 #'   and
 #'   confidence intervals.
 #'
-#' @param object Object of class `difbetasandwich`.
+#' @param object Object of class `rsqbetasandwich`.
 #' @param ... additional arguments.
 #' @param alpha Significance level.
 #' @param digits Digits to print.
@@ -62,22 +62,22 @@ print.difbetasandwich <- function(x,
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- dif(std)
+#' out <- rsq(std)
 #' summary(out)
 #' @export
 #' @keywords methods
-summary.difbetasandwich <- function(object,
+summary.rsqbetasandwich <- function(object,
                                     alpha = c(0.05, 0.01, 0.001),
                                     digits = 4,
                                     ...) {
   cat(
-    "Difference between standardized regression coefficients with",
+    "Multiple correlation with",
     toupper(object$fit$type),
     "standard errors:\n"
   )
   return(
     round(
-      .DiffBetaCI(
+      .RSqCI(
         object = object,
         alpha = alpha
       ),
@@ -95,20 +95,20 @@ summary.difbetasandwich <- function(object,
 #'   variance-covariance matrix
 #'   of differences of standardized regression slopes.
 #'
-#' @param object Object of class `difbetasandwich`.
+#' @param object Object of class `rsqbetasandwich`.
 #' @param ... additional arguments.
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- dif(std)
+#' out <- rsq(std)
 #' vcov(out)
 #' @export
 #' @keywords methods
-vcov.difbetasandwich <- function(object,
+vcov.rsqbetasandwich <- function(object,
                                  ...) {
   return(
-    object$vcov
+    .RSqCov(object)
   )
 }
 
@@ -118,20 +118,23 @@ vcov.difbetasandwich <- function(object,
 #'
 #' @return Returns a vector of differences of standardized regression slopes.
 #'
-#' @param object Object of class `difbetasandwich`.
+#' @param object Object of class `rsqbetasandwich`.
 #' @param ... additional arguments.
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- dif(std)
+#' out <- rsq(std)
 #' coef(out)
 #' @export
 #' @keywords methods
-coef.difbetasandwich <- function(object,
+coef.rsqbetasandwich <- function(object,
                                  ...) {
   return(
-    object$est
+    c(
+      rsq = object$fit$lm_process$summary_lm$r.squared,
+      adj = object$fit$lm_process$summary_lm$adj.r.squared
+    )
   )
 }
 
@@ -142,7 +145,7 @@ coef.difbetasandwich <- function(object,
 #'
 #' @return Returns a matrix of confidence intervals.
 #'
-#' @param object Object of class `difbetasandwich`.
+#' @param object Object of class `rsqbetasandwich`.
 #' @param ... additional arguments.
 #' @param parm a specification of which parameters
 #'   are to be given confidence intervals,
@@ -153,21 +156,19 @@ coef.difbetasandwich <- function(object,
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- dif(std)
+#' out <- rsq(std)
 #' confint(out, level = 0.95)
 #' @export
 #' @keywords methods
-confint.difbetasandwich <- function(object,
+confint.rsqbetasandwich <- function(object,
                                     parm = NULL,
                                     level = 0.95,
                                     ...) {
   if (is.null(parm)) {
-    parm <- seq_len(
-      length(object$est)
-    )
+    parm <- seq_len(2)
   }
   return(
-    .DiffBetaCI(
+    .RSqCI(
       object = object,
       alpha = 1 - level[1]
     )[parm, 5:6]

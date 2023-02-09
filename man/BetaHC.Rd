@@ -38,6 +38,9 @@ which is a list with the following elements:
 \item{lm}{Object of class \code{lm}.}
 \item{lm_process}{Pre-processed object of class \code{lm}.}
 \item{type}{Standard error type.}
+\item{gamman}{Asymptotic covariance matrix of the sample covariance matrix
+assuming multivariate normal distribution.}
+\item{gammahc}{Asymptotic covariance matrix HC adjustment.}
 \item{gamma}{Asymptotic covariance matrix of the sample covariance matrix.}
 \item{acov}{Asymptotic covariance matrix of the standardized slopes.}
 \item{vcov}{Sampling covariance matrix of the standardized slopes.}
@@ -51,12 +54,26 @@ and Robust Sampling Covariance Matrix
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
-# Methods -------------------------------------------------------
+# Methods ----------------------------------------------------
 print(std)
 summary(std)
 coef(std)
 vcov(std)
 confint(std, level = 0.95)
+## Differences of standardized regression coefficients -------
+out <- dif(std)
+print(out)
+summary(out)
+coef(out)
+vcov(out)
+confint(out, level = 0.95)
+## Multiple Correlation --------------------------------------
+out <- rsq(std)
+print(out)
+summary(out)
+coef(out)
+vcov(out)
+confint(out, level = 0.95)
 }
 \references{
 Dudgeon, P. (2017).

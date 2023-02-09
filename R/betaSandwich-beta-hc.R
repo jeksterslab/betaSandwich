@@ -10,11 +10,15 @@
 #'   \item{lm}{Object of class `lm`.}
 #'   \item{lm_process}{Pre-processed object of class `lm`.}
 #'   \item{type}{Standard error type.}
+#'   \item{gamman}{Asymptotic covariance matrix of the sample covariance matrix
+#'     assuming multivariate normal distribution.}
+#'   \item{gammahc}{Asymptotic covariance matrix HC adjustment.}
 #'   \item{gamma}{Asymptotic covariance matrix of the sample covariance matrix.}
 #'   \item{acov}{Asymptotic covariance matrix of the standardized slopes.}
 #'   \item{vcov}{Sampling covariance matrix of the standardized slopes.}
 #'   \item{est}{Vector of standardized slopes.}
 #' }
+#'
 #' @param object Object of class `lm`.
 #' @param type Character string.
 #'   Correction type.
@@ -32,21 +36,37 @@
 #'   `g2` value for `type = "hc4m"`.
 #' @param k Numeric.
 #'   Constant for `type = "hc5"`
+#'
 #' @references
 #' Dudgeon, P. (2017).
 #' Some improvements in confidence intervals
 #' for standardized regression coefficients.
 #' *Psychometrika*, *82*(4), 928–951.
 #' \doi{10.1007/s11336-017-9563-z}
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' # Methods -------------------------------------------------------
+#' # Methods ----------------------------------------------------
 #' print(std)
 #' summary(std)
 #' coef(std)
 #' vcov(std)
 #' confint(std, level = 0.95)
+#' ## Differences of standardized regression coefficients -------
+#' out <- dif(std)
+#' print(out)
+#' summary(out)
+#' coef(out)
+#' vcov(out)
+#' confint(out, level = 0.95)
+#' ## Multiple Correlation --------------------------------------
+#' out <- rsq(std)
+#' print(out)
+#' summary(out)
+#' coef(out)
+#' vcov(out)
+#' confint(out, level = 0.95)
 #' @export
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich
@@ -91,7 +111,11 @@ BetaHC <- function(object,
     betastar = lm_process$betastar,
     sigmay = lm_process$sigma[1],
     sigmax = lm_process$sigma[-1],
-    rhocapx = lm_process$rhocap[2:lm_process$k, 2:lm_process$k, drop = FALSE],
+    rhocapx = lm_process$rhocap[
+      2:lm_process$k,
+      2:lm_process$k,
+      drop = FALSE
+    ],
     q = lm_process$q,
     p = lm_process$p
   )
@@ -121,6 +145,8 @@ BetaHC <- function(object,
     lm = object,
     lm_process = lm_process,
     type = type,
+    gamman = gammacap_mvn,
+    gammahc = gammacap,
     gamma = (
       gammacap_mvn %*% (
         wcap %*% gammacap %*% wcap

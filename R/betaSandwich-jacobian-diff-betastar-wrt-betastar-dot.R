@@ -6,7 +6,6 @@
 #' @param p positive integer.
 #'   Number of regressors.
 #'
-#' @return Returns a matrix.
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich derivatives internal
 #' @noRd

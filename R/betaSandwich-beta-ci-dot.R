@@ -1,8 +1,15 @@
-#' Confidence Intervals for Standardized Regression Coefficients
+#' Confidence Intervals for
+#' Standardized Regression Coefficients
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a matrix.
+#' @return Returns a matrix of
+#'   standardized regression slopes,
+#'   standard errors,
+#'   test statistics,
+#'   p-values,
+#'   and
+#'   confidence intervals.
 #'
 #' @param object Object of class `betasandwich`.
 #' @param alpha Numeric vector.

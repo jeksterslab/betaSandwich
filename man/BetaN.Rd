@@ -38,12 +38,26 @@ the results are numerically equivalent.
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaN(object)
-# Methods -------------------------------------------------------
+# Methods ----------------------------------------------------
 print(std)
 summary(std)
 coef(std)
 vcov(std)
 confint(std, level = 0.95)
+## Differences of standardized regression coefficients -------
+out <- dif(std)
+print(out)
+summary(out)
+coef(out)
+vcov(out)
+confint(out, level = 0.95)
+## Multiple Correlation --------------------------------------
+out <- rsq(std)
+print(out)
+summary(out)
+coef(out)
+vcov(out)
+confint(out, level = 0.95)
 }
 \seealso{
 Other Beta Sandwich Functions: 

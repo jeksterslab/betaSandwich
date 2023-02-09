@@ -21,6 +21,5 @@ Imports: methods
 Suggests:
     knitr,
     rmarkdown,
-    testthat,
-    betaDelta
+    testthat
 RoxygenNote: 7.2.3

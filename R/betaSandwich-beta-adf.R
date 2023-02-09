@@ -13,27 +13,43 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns an object of class `betasandwich`
-#' which is a list with the following elements:
-#' \describe{
-#'   \item{call}{Function call.}
-#'   \item{lm}{Object of class `lm`.}
-#'   \item{lm_process}{Pre-processed object of class `lm`.}
-#'   \item{type}{Standard error type.}
-#'   \item{gamma}{Asymptotic covariance matrix of the sample covariance matrix.}
-#'   \item{acov}{Asymptotic covariance matrix of the standardized slopes.}
-#'   \item{vcov}{Sampling covariance matrix of the standardized slopes.}
-#'   \item{est}{Vector of standardized slopes.}
-#' }
+#'   which is a list with the following elements:
+#'   \describe{
+#'     \item{call}{Function call.}
+#'     \item{lm}{Object of class `lm`.}
+#'     \item{lm_process}{Pre-processed object of class `lm`.}
+#'     \item{type}{Standard error type.}
+#'     \item{gamma}{Asymptotic covariance matrix of the sample covariance matrix.}
+#'     \item{acov}{Asymptotic covariance matrix of the standardized slopes.}
+#'     \item{vcov}{Sampling covariance matrix of the standardized slopes.}
+#'     \item{est}{Vector of standardized slopes.}
+#'   }
+#'
 #' @param object Object of class `lm`.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaADF(object)
-#' # Methods -------------------------------------------------------
+#' # Methods ----------------------------------------------------
 #' print(std)
 #' summary(std)
 #' coef(std)
 #' vcov(std)
 #' confint(std, level = 0.95)
+#' ## Differences of standardized regression coefficients -------
+#' out <- dif(std)
+#' print(out)
+#' summary(out)
+#' coef(out)
+#' vcov(out)
+#' confint(out, level = 0.95)
+#' ## Multiple Correlation --------------------------------------
+#' out <- rsq(std)
+#' print(out)
+#' summary(out)
+#' coef(out)
+#' vcov(out)
+#' confint(out, level = 0.95)
 #' @export
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich
@@ -78,9 +94,9 @@ BetaADF <- function(object) {
     n = lm_process$n
   )
   # the procedure from here on is the same as normal
-  acov <- .ACovN(
+  acov <- .ACovSEM(
     jcap = jcap,
-    gammacap_mvn = gammacap_adf
+    acov = gammacap_adf
   )
   vcov <- .CovN(
     acov = acov,
@@ -97,9 +113,7 @@ BetaADF <- function(object) {
     lm_process = lm_process,
     type = "adf",
     gamma = gammacap_adf,
-    acov = chol2inv(
-      chol(acov)
-    ),
+    acov = acov,
     vcov = vcov,
     est = lm_process$betastar
   )

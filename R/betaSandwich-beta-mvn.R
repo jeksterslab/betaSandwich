@@ -11,27 +11,43 @@
 #' `BetaHC()` is recommended in most situations.
 #'
 #' @return Returns an object of class `betasandwich`
-#' which is a list with the following elements:
-#' \describe{
-#'   \item{call}{Function call.}
-#'   \item{lm}{Object of class `lm`.}
-#'   \item{lm_process}{Pre-processed object of class `lm`.}
-#'   \item{type}{Standard error type.}
-#'   \item{gamma}{Asymptotic covariance matrix of the sample covariance matrix.}
-#'   \item{acov}{Asymptotic covariance matrix of the standardized slopes.}
-#'   \item{vcov}{Sampling covariance matrix of the standardized slopes.}
-#'   \item{est}{Vector of standardized slopes.}
-#' }
+#'   which is a list with the following elements:
+#'   \describe{
+#'     \item{call}{Function call.}
+#'     \item{lm}{Object of class `lm`.}
+#'     \item{lm_process}{Pre-processed object of class `lm`.}
+#'     \item{type}{Standard error type.}
+#'     \item{gamma}{Asymptotic covariance matrix of the sample covariance matrix.}
+#'     \item{acov}{Asymptotic covariance matrix of the standardized slopes.}
+#'     \item{vcov}{Sampling covariance matrix of the standardized slopes.}
+#'     \item{est}{Vector of standardized slopes.}
+#'   }
+#'
 #' @param object Object of class `lm`.
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaN(object)
-#' # Methods -------------------------------------------------------
+#' # Methods ----------------------------------------------------
 #' print(std)
 #' summary(std)
 #' coef(std)
 #' vcov(std)
 #' confint(std, level = 0.95)
+#' ## Differences of standardized regression coefficients -------
+#' out <- dif(std)
+#' print(out)
+#' summary(out)
+#' coef(out)
+#' vcov(out)
+#' confint(out, level = 0.95)
+#' ## Multiple Correlation --------------------------------------
+#' out <- rsq(std)
+#' print(out)
+#' summary(out)
+#' coef(out)
+#' vcov(out)
+#' confint(out, level = 0.95)
 #' @export
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich
@@ -53,9 +69,9 @@ BetaN <- function(object) {
     sigmacap = lm_process$sigmacap,
     pinv_of_dcap = .PInvDmat(.DMat(lm_process$k))
   )
-  acov <- .ACovN(
+  acov <- .ACovSEM(
     jcap = jcap,
-    gammacap_mvn = gammacap_mvn
+    acov = gammacap_mvn
   )
   vcov <- .CovN(
     acov = acov,
@@ -72,9 +88,7 @@ BetaN <- function(object) {
     lm_process = lm_process,
     type = "mvn",
     gamma = gammacap_mvn,
-    acov = chol2inv(
-      chol(acov)
-    ),
+    acov = acov,
     vcov = vcov,
     est = lm_process$betastar
   )
