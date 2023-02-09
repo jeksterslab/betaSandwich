@@ -19,7 +19,8 @@ which is a list with the following elements:
 \item{lm}{Object of class \code{lm}.}
 \item{lm_process}{Pre-processed object of class \code{lm}.}
 \item{type}{Standard error type.}
-\item{gamma}{Asymptotic covariance matrix of the sample covariance matrix.}
+\item{gamma}{Asymptotic covariance matrix
+of the sample covariance matrix.}
 \item{acov}{Asymptotic covariance matrix of the standardized slopes.}
 \item{vcov}{Sampling covariance matrix of the standardized slopes.}
 \item{est}{Vector of standardized slopes.}
