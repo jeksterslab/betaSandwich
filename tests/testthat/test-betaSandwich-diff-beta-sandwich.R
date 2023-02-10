@@ -16,15 +16,15 @@ lapply(
     }
     df <- nas1982
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    mvn <- dif(BetaN(object))
-    adf <- dif(BetaADF(object))
-    hc0 <- dif(BetaHC(object, type = "hc0"))
-    hc1 <- dif(BetaHC(object, type = "hc1"))
-    hc2 <- dif(BetaHC(object, type = "hc2"))
-    hc3 <- dif(BetaHC(object, type = "hc3"))
-    hc4 <- dif(BetaHC(object, type = "hc4"))
-    hc4m <- dif(BetaHC(object, type = "hc4m"))
-    hc5 <- dif(BetaHC(object, type = "hc5"))
+    mvn <- DiffBetaSandwich(BetaN(object))
+    adf <- DiffBetaSandwich(BetaADF(object))
+    hc0 <- DiffBetaSandwich(BetaHC(object, type = "hc0"))
+    hc1 <- DiffBetaSandwich(BetaHC(object, type = "hc1"))
+    hc2 <- DiffBetaSandwich(BetaHC(object, type = "hc2"))
+    hc3 <- DiffBetaSandwich(BetaHC(object, type = "hc3"))
+    hc4 <- DiffBetaSandwich(BetaHC(object, type = "hc4"))
+    hc4m <- DiffBetaSandwich(BetaHC(object, type = "hc4m"))
+    hc5 <- DiffBetaSandwich(BetaHC(object, type = "hc5"))
     testthat::test_that(
       paste(text, "mvn", "multiple regression"),
       {
@@ -174,7 +174,7 @@ lapply(
       paste(text, "mvn", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaN(object))
+          DiffBetaSandwich(BetaN(object))
         )
       }
     )
@@ -182,7 +182,7 @@ lapply(
       paste(text, "adf", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaADF(object))
+          DiffBetaSandwich(BetaADF(object))
         )
       }
     )
@@ -190,7 +190,7 @@ lapply(
       paste(text, "hc0", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaHC(object, type = "hc0"))
+          DiffBetaSandwich(BetaHC(object, type = "hc0"))
         )
       }
     )
@@ -198,7 +198,7 @@ lapply(
       paste(text, "hc1", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaHC(object, type = "hc1"))
+          DiffBetaSandwich(BetaHC(object, type = "hc1"))
         )
       }
     )
@@ -206,7 +206,7 @@ lapply(
       paste(text, "hc2", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaHC(object, type = "hc2"))
+          DiffBetaSandwich(BetaHC(object, type = "hc2"))
         )
       }
     )
@@ -214,7 +214,7 @@ lapply(
       paste(text, "hc3", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaHC(object, type = "hc3"))
+          DiffBetaSandwich(BetaHC(object, type = "hc3"))
         )
       }
     )
@@ -222,7 +222,7 @@ lapply(
       paste(text, "hc4", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaHC(object, type = "hc4"))
+          DiffBetaSandwich(BetaHC(object, type = "hc4"))
         )
       }
     )
@@ -230,7 +230,7 @@ lapply(
       paste(text, "hc4m", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaHC(object, type = "hc4m"))
+          DiffBetaSandwich(BetaHC(object, type = "hc4m"))
         )
       }
     )
@@ -238,7 +238,7 @@ lapply(
       paste(text, "hc5", "simple regression"),
       {
         testthat::expect_error(
-          dif(BetaHC(object, type = "hc5"))
+          DiffBetaSandwich(BetaHC(object, type = "hc5"))
         )
       }
     )

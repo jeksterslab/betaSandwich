@@ -1,9 +1,9 @@
 ---
-title: "betaSandwich: Example using the rsq Method"
+title: "betaSandwich: Example Using the RSqBetaSandwich Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{betaSandwich: Example using the rsq Method}
+  %\VignetteIndexEntry{betaSandwich: Example Using the RSqBetaSandwich Function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,10 +18,10 @@ knitr::opts_chunk$set(
 Confidence intervals for
 multiple correlation
 are generated using
-the `rsq()` method from the `betaSandwich` package.
+the `RSqBetaSandwich()` function from the `betaSandwich` package.
 In this example,
 we use the data set and the model used in
-[betaSandwich: Example using BetaHC](example-beta-sandwich.html).
+[betaSandwich: Example Using the BetaHC Function](example-beta-sandwich.html).
 
 ```{r}
 #| message = FALSE
@@ -73,19 +73,19 @@ std_adf <- BetaADF(object)
 std_hc3 <- BetaHC(object, type = "hc3")
 ```
 
-## Methods
-
-### rsq
+## Estimate the multiple correlation coefficients (R-squared and adjusted R-squared) and the corresponding sampling covariance matrix.
 
 ```{r}
-mvn <- rsq(std_mvn)
-adf <- rsq(std_adf)
-hc3 <- rsq(std_hc3)
+mvn <- RSqBetaSandwich(std_mvn)
+adf <- RSqBetaSandwich(std_adf)
+hc3 <- RSqBetaSandwich(std_hc3)
 ```
+
+## Methods
 
 ### summary
 
-Summary of the results of `rsq()`.
+Summary of the results of `RSqBetaSandwich()`.
 
 ```{r}
 summary(mvn)

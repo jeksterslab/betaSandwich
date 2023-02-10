@@ -18,8 +18,8 @@
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- rsq(std)
-#' print(out)
+#' rsq <- RSqBetaSandwich(std)
+#' print(rsq)
 #' @export
 #' @keywords methods
 print.rsqbetasandwich <- function(x,
@@ -62,8 +62,8 @@ print.rsqbetasandwich <- function(x,
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- rsq(std)
-#' summary(out)
+#' rsq <- RSqBetaSandwich(std)
+#' summary(rsq)
 #' @export
 #' @keywords methods
 summary.rsqbetasandwich <- function(object,
@@ -101,8 +101,8 @@ summary.rsqbetasandwich <- function(object,
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- rsq(std)
-#' vcov(out)
+#' rsq <- RSqBetaSandwich(std)
+#' vcov(rsq)
 #' @export
 #' @keywords methods
 vcov.rsqbetasandwich <- function(object,
@@ -124,8 +124,8 @@ vcov.rsqbetasandwich <- function(object,
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- rsq(std)
-#' coef(out)
+#' rsq <- RSqBetaSandwich(std)
+#' coef(rsq)
 #' @export
 #' @keywords methods
 coef.rsqbetasandwich <- function(object,
@@ -156,8 +156,8 @@ coef.rsqbetasandwich <- function(object,
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
-#' out <- rsq(std)
-#' confint(out, level = 0.95)
+#' rsq <- RSqBetaSandwich(std)
+#' confint(rsq, level = 0.95)
 #' @export
 #' @keywords methods
 confint.rsqbetasandwich <- function(object,

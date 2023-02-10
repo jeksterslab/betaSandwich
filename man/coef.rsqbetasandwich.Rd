@@ -20,8 +20,8 @@ Differences of Standardized Regression Slopes
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
-out <- rsq(std)
-coef(out)
+rsq <- RSqBetaSandwich(std)
+coef(rsq)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

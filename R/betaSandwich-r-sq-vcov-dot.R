@@ -6,7 +6,7 @@
 #' @param object Object of class `rsqbetasandwich`.
 #'
 #' @family Beta Sandwich Functions
-#' @keywords betaSandwich ci rsq internal
+#' @keywords betaSandwich vcov rsq internal
 #' @noRd
 .RSqCov <- function(object) {
   stopifnot(

@@ -23,7 +23,7 @@
   stopifnot(
     methods::is(
       object,
-      "difbetasandwich"
+      "diffbetasandwich"
     )
   )
   return(

@@ -52,4 +52,28 @@ Staging...
 
 \printbibliography
 
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% std_mvn <- BetaN(object)
+% std_adf <- BetaADF(object)
+% std_hc3 <- BetaHC(object, type = "hc3")
+% mvn <- RSqBetaSandwich(std_mvn)
+% adf <- RSqBetaSandwich(std_adf)
+% hc3 <- RSqBetaSandwich(std_hc3)
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn, level = 0.95)
+% confint(adf, level = 0.95)
+% confint(hc3, level = 0.95)
+%% end.rcode
+
+
 \end{document}

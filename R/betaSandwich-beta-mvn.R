@@ -17,10 +17,17 @@
 #'     \item{lm}{Object of class `lm`.}
 #'     \item{lm_process}{Pre-processed object of class `lm`.}
 #'     \item{type}{Standard error type.}
+#'     \item{gamman}{Asymptotic covariance matrix
+#'       of the sample covariance matrix
+#'       assuming multivariate normality.}
+#'     \item{gammahc}{Asymptotic covariance matrix
+#'       HC correction.}
 #'     \item{gamma}{Asymptotic covariance matrix
 #'       of the sample covariance matrix.}
-#'     \item{acov}{Asymptotic covariance matrix of the standardized slopes.}
-#'     \item{vcov}{Sampling covariance matrix of the standardized slopes.}
+#'     \item{acov}{Asymptotic covariance matrix
+#'       of the standardized slopes.}
+#'     \item{vcov}{Sampling covariance matrix
+#'       of the standardized slopes.}
 #'     \item{est}{Vector of standardized slopes.}
 #'   }
 #'
@@ -29,26 +36,12 @@
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaN(object)
-#' # Methods ----------------------------------------------------
+#' # Methods -------------------------------------------------------
 #' print(std)
 #' summary(std)
 #' coef(std)
 #' vcov(std)
 #' confint(std, level = 0.95)
-#' ## Differences of standardized regression coefficients -------
-#' out <- dif(std)
-#' print(out)
-#' summary(out)
-#' coef(out)
-#' vcov(out)
-#' confint(out, level = 0.95)
-#' ## Multiple Correlation --------------------------------------
-#' out <- rsq(std)
-#' print(out)
-#' summary(out)
-#' coef(out)
-#' vcov(out)
-#' confint(out, level = 0.95)
 #' @export
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich
@@ -88,6 +81,8 @@ BetaN <- function(object) {
     lm = object,
     lm_process = lm_process,
     type = "mvn",
+    gamman = gammacap_mvn,
+    gammahc = NULL,
     gamma = gammacap_mvn,
     acov = chol2inv(chol(acov)),
     vcov = vcov,

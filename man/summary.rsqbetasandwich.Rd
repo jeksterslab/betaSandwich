@@ -30,8 +30,8 @@ Summary Method for an Object of Class \code{rsqbetasandwich}
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
-out <- rsq(std)
-summary(out)
+rsq <- RSqBetaSandwich(std)
+summary(rsq)
 }
 \author{
 Ivan Jacob Agaloos Pesigan

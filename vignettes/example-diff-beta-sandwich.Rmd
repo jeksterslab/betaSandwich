@@ -1,9 +1,9 @@
 ---
-title: "betaSandwich: Example using the dif Method"
+title: "betaSandwich: Example Using the DiffBetaSandwich Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{betaSandwich: Example using the dif Method}
+  %\VignetteIndexEntry{betaSandwich: Example Using the DiffBetaSandwich Function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,10 +18,10 @@ knitr::opts_chunk$set(
 Confidence intervals for
 differences of standardized regression slopes
 are generated using
-the `dif()` method from the `betaSandwich` package.
+the `DiffBetaSandwich()` function from the `betaSandwich` package.
 In this example,
 we use the data set and the model used in
-[betaSandwich: Example using BetaSandwich](example-beta-sandwich.html).
+[betaSandwich: Example Using the BetaHC Function](example-beta-sandwich.html).
 
 ```{r}
 #| message = FALSE
@@ -73,19 +73,19 @@ std_adf <- BetaADF(object)
 std_hc3 <- BetaHC(object, type = "hc3")
 ```
 
-## Methods
-
-### dif
+## Estimate differences of standardized regression slopes and the corresponding sampling covariance matrix.
 
 ```{r}
-mvn <- dif(std_mvn)
-adf <- dif(std_adf)
-hc3 <- dif(std_hc3)
+mvn <- DiffBetaSandwich(std_mvn)
+adf <- DiffBetaSandwich(std_adf)
+hc3 <- DiffBetaSandwich(std_hc3)
 ```
+
+## Methods
 
 ### summary
 
-Summary of the results of `dif()`.
+Summary of the results of `DiffBetaSandwich()`.
 
 ```{r}
 summary(mvn)

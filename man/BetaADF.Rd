@@ -19,10 +19,17 @@ which is a list with the following elements:
 \item{lm}{Object of class \code{lm}.}
 \item{lm_process}{Pre-processed object of class \code{lm}.}
 \item{type}{Standard error type.}
+\item{gamman}{Asymptotic covariance matrix
+of the sample covariance matrix
+assuming multivariate normality.}
+\item{gammahc}{Asymptotic covariance matrix
+HC correction.}
 \item{gamma}{Asymptotic covariance matrix
 of the sample covariance matrix.}
-\item{acov}{Asymptotic covariance matrix of the standardized slopes.}
-\item{vcov}{Sampling covariance matrix of the standardized slopes.}
+\item{acov}{Asymptotic covariance matrix
+of the standardized slopes.}
+\item{vcov}{Sampling covariance matrix
+of the standardized slopes.}
 \item{est}{Vector of standardized slopes.}
 }
 }
@@ -42,31 +49,19 @@ the results are numerically equivalent.
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaADF(object)
-# Methods ----------------------------------------------------
+# Methods -------------------------------------------------------
 print(std)
 summary(std)
 coef(std)
 vcov(std)
 confint(std, level = 0.95)
-## Differences of standardized regression coefficients -------
-out <- dif(std)
-print(out)
-summary(out)
-coef(out)
-vcov(out)
-confint(out, level = 0.95)
-## Multiple Correlation --------------------------------------
-out <- rsq(std)
-print(out)
-summary(out)
-coef(out)
-vcov(out)
-confint(out, level = 0.95)
 }
 \seealso{
 Other Beta Sandwich Functions: 
 \code{\link{BetaHC}()},
-\code{\link{BetaN}()}
+\code{\link{BetaN}()},
+\code{\link{DiffBetaSandwich}()},
+\code{\link{RSqBetaSandwich}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

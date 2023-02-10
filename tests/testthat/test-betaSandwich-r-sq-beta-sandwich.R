@@ -18,9 +18,9 @@ lapply(
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
     r_sq <- summary(object)$r.squared
     adj <- summary(object)$adj.r.squared
-    mvn <- rsq(BetaN(object))
-    adf <- rsq(BetaADF(object))
-    hc3 <- rsq(BetaHC(object))
+    mvn <- RSqBetaSandwich(BetaN(object))
+    adf <- RSqBetaSandwich(BetaADF(object))
+    hc3 <- RSqBetaSandwich(BetaHC(object))
     testthat::test_that(
       paste(text, "mvn", "multiple regression"),
       {
@@ -90,9 +90,9 @@ lapply(
     object <- lm(QUALITY ~ NARTIC, data = df)
     r_sq <- summary(object)$r.squared
     adj <- summary(object)$adj.r.squared
-    mvn <- rsq(BetaN(object))
-    adf <- rsq(BetaADF(object))
-    hc3 <- rsq(BetaHC(object))
+    mvn <- RSqBetaSandwich(BetaN(object))
+    adf <- RSqBetaSandwich(BetaADF(object))
+    hc3 <- RSqBetaSandwich(BetaHC(object))
     testthat::test_that(
       paste(text, "mvn", "simple regression"),
       {
