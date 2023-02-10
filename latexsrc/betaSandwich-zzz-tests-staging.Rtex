@@ -52,40 +52,4 @@ Staging...
 
 \printbibliography
 
-%% begin.rcode
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-% sqrt(diag(sandwich::vcovHC(object)))
-% hc <- BetaN(object)
-% out <- rsq(hc)
-% print(out)
-% summary(out)
-% coef(out)
-% vcov(out)
-% confint(out)
-%% end.rcode
-
-%% begin.rcode
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-% sqrt(diag(sandwich::vcovHC(object)))
-% hc <- BetaADF(object)
-% out <- rsq(hc)
-% print(out)
-% summary(out)
-% coef(out)
-% vcov(out)
-% confint(out)
-%% end.rcode
-
-%% begin.rcode
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-% sqrt(diag(sandwich::vcovHC(object)))
-% hc <- BetaHC(object)
-% out <- rsq(hc)
-% print(out)
-% summary(out)
-% coef(out)
-% vcov(out)
-% confint(out)
-%% end.rcode
-
 \end{document}
