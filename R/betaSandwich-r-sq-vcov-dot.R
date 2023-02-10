@@ -23,7 +23,11 @@
   jcap <- c(
     1,
     (
-      -1 * (1 - object$fit$lm_process$n) / (object$fit$lm_process$n - object$fit$lm_process$k)
+      -1 * (
+        1 - object$fit$lm_process$n
+      ) / (
+        object$fit$lm_process$n - object$fit$lm_process$k
+      )
     )
   )
   vcov <- jcap %*% vcov %*% t(jcap)
