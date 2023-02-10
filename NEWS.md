@@ -2,7 +2,7 @@
 
 Latest development version.
 
-* Added the `dif` method.
+* Added the `dif` and the `rsq` methods.
 
 # betaSandwich 1.0.3
 
