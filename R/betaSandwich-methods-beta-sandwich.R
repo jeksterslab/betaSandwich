@@ -134,7 +134,7 @@ vcov.betasandwich <- function(object,
 coef.betasandwich <- function(object,
                               ...) {
   return(
-    object$beta
+    object$est
   )
 }
 

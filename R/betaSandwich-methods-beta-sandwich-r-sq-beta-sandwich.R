@@ -49,7 +49,6 @@ rsq.betasandwich <- function(object, # nolint: object_name_linter
   }
   out <- list(
     fit = object,
-    acov = acov,
     vcov = vcov,
     est = est
   )

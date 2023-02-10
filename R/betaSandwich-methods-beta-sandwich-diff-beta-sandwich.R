@@ -10,20 +10,18 @@ dif.betasandwich <- function(object, # nolint: object_name_linter
   jcap <- .JacobianDiffBetastar(
     p = object$lm_process$p
   )
-  gammacap <- object$acov[
+  vcov <- object$vcov[
     seq_len(object$lm_process$p),
     seq_len(object$lm_process$p),
     drop = FALSE
   ]
-  acov <- jcap %*% tcrossprod(
-    gammacap,
+  vcov <- jcap %*% tcrossprod(
+    vcov,
     jcap
   )
-  colnames(acov) <- rownames(acov) <- names(object$lm_process$dif_betastar)
-  vcov <- (1 / object$lm_process$n) * acov
+  colnames(vcov) <- rownames(vcov) <- names(object$lm_process$dif_betastar)
   out <- list(
     fit = object,
-    acov = acov,
     vcov = vcov,
     est = est
   )

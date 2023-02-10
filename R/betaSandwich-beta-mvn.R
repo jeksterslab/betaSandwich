@@ -89,7 +89,7 @@ BetaN <- function(object) {
     lm_process = lm_process,
     type = "mvn",
     gamma = gammacap_mvn,
-    acov = acov,
+    acov = chol2inv(chol(acov)),
     vcov = vcov,
     est = lm_process$betastar
   )

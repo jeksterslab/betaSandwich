@@ -152,7 +152,7 @@ BetaHC <- function(object,
         wcap %*% gammacap %*% wcap
       ) %*% gammacap_mvn
     ),
-    acov = acov,
+    acov = chol2inv(chol(acov)),
     vcov = vcov,
     est = lm_process$betastar
   )
