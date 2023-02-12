@@ -17,7 +17,8 @@
 }
 \value{
 Returns a matrix of
-standardized regression slopes,
+multiple correlation coefficients
+(R-squared and adjusted R-squared),
 standard errors,
 test statistics,
 p-values,

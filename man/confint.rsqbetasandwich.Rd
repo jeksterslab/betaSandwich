@@ -2,8 +2,9 @@
 % Please edit documentation in R/betaSandwich-methods-r-sq-beta-sandwich.R
 \name{confint.rsqbetasandwich}
 \alias{confint.rsqbetasandwich}
-\title{Confidence Intervals for Differences
-of Standardized Regression Slopes}
+\title{Confidence Intervals for
+Multiple Correlation Coefficients
+(R-squared and adjusted R-squared)}
 \usage{
 \method{confint}{rsqbetasandwich}(object, parm = NULL, level = 0.95, ...)
 }
@@ -23,8 +24,9 @@ If missing, all parameters are considered.}
 Returns a matrix of confidence intervals.
 }
 \description{
-Confidence Intervals for Differences
-of Standardized Regression Slopes
+Confidence Intervals for
+Multiple Correlation Coefficients
+(R-squared and adjusted R-squared)
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

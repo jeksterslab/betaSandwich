@@ -4,7 +4,7 @@
 \alias{RSqBetaSandwich}
 \title{Estimate Multiple Correlation Coefficients
 (R-squared and adjusted R-squared)
-and Sampling Covariance Matrix}
+and the Corresponding Sampling Covariance Matrix}
 \usage{
 RSqBetaSandwich(object)
 }
@@ -28,7 +28,7 @@ multiple correlation coefficients
 \description{
 Estimate Multiple Correlation Coefficients
 (R-squared and adjusted R-squared)
-and Sampling Covariance Matrix
+and the Corresponding Sampling Covariance Matrix
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

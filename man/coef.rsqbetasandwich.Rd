@@ -2,7 +2,8 @@
 % Please edit documentation in R/betaSandwich-methods-r-sq-beta-sandwich.R
 \name{coef.rsqbetasandwich}
 \alias{coef.rsqbetasandwich}
-\title{Differences of Standardized Regression Slopes}
+\title{Multiple Correlation Coefficients
+(R-squared and adjusted R-squared)}
 \usage{
 \method{coef}{rsqbetasandwich}(object, ...)
 }
@@ -12,10 +13,12 @@
 \item{...}{additional arguments.}
 }
 \value{
-Returns a vector of differences of standardized regression slopes.
+Returns a vector of multiple correlation coefficients
+(R-squared and adjusted R-squared)
 }
 \description{
-Differences of Standardized Regression Slopes
+Multiple Correlation Coefficients
+(R-squared and adjusted R-squared)
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

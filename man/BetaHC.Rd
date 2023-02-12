@@ -3,7 +3,8 @@
 \name{BetaHC}
 \alias{BetaHC}
 \title{Estimate Standardized Regression Coefficients
-and Robust Sampling Covariance Matrix}
+and the Corresponding Robust Sampling Covariance Matrix
+Using the Heteroskedasticity Consistent Approach}
 \usage{
 BetaHC(object, type = "hc3", g1 = 1, g2 = 1.5, k = 0.7)
 }
@@ -38,10 +39,10 @@ which is a list with the following elements:
 \item{lm}{Object of class \code{lm}.}
 \item{lm_process}{Pre-processed object of class \code{lm}.}
 \item{type}{Standard error type.}
-\item{gamman}{Asymptotic covariance matrix
+\item{gamma_n}{Asymptotic covariance matrix
 of the sample covariance matrix
 assuming multivariate normality.}
-\item{gammahc}{Asymptotic covariance matrix
+\item{gamma_hc}{Asymptotic covariance matrix
 HC correction.}
 \item{gamma}{Asymptotic covariance matrix
 of the sample covariance matrix.}
@@ -54,7 +55,8 @@ of the standardized slopes.}
 }
 \description{
 Estimate Standardized Regression Coefficients
-and Robust Sampling Covariance Matrix
+and the Corresponding Robust Sampling Covariance Matrix
+Using the Heteroskedasticity Consistent Approach
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
@@ -85,3 +87,4 @@ Ivan Jacob Agaloos Pesigan
 }
 \concept{Beta Sandwich Functions}
 \keyword{betaSandwich}
+\keyword{std}

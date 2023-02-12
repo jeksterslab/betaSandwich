@@ -3,7 +3,8 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of
-#'   standardized regression slopes,
+#'   multiple correlation coefficients
+#'   (R-squared and adjusted R-squared),
 #'   standard errors,
 #'   test statistics,
 #'   p-values,
@@ -47,7 +48,8 @@ print.rsqbetasandwich <- function(x,
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of
-#'   standardized regression slopes,
+#'   multiple correlation coefficients
+#'   (R-squared and adjusted R-squared),
 #'   standard errors,
 #'   test statistics,
 #'   p-values,
@@ -87,13 +89,15 @@ summary.rsqbetasandwich <- function(object,
 }
 
 #' Sampling Covariance Matrix of
-#' Differences of Standardized Regression Slopes
+#' Multiple Correlation Coefficients
+#' (R-squared and adjusted R-squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @return Returns a matrix of the
 #'   variance-covariance matrix
-#'   of differences of standardized regression slopes.
+#'   of multiple correlation coefficients
+#'   (R-squared and adjusted R-squared).
 #'
 #' @param object Object of class `rsqbetasandwich`.
 #' @param ... additional arguments.
@@ -112,11 +116,13 @@ vcov.rsqbetasandwich <- function(object,
   )
 }
 
-#' Differences of Standardized Regression Slopes
+#' Multiple Correlation Coefficients
+#' (R-squared and adjusted R-squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a vector of differences of standardized regression slopes.
+#' @return Returns a vector of multiple correlation coefficients
+#' (R-squared and adjusted R-squared)
 #'
 #' @param object Object of class `rsqbetasandwich`.
 #' @param ... additional arguments.
@@ -138,8 +144,9 @@ coef.rsqbetasandwich <- function(object,
   )
 }
 
-#' Confidence Intervals for Differences
-#' of Standardized Regression Slopes
+#' Confidence Intervals for
+#' Multiple Correlation Coefficients
+#' (R-squared and adjusted R-squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

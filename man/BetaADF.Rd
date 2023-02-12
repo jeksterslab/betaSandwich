@@ -3,7 +3,7 @@
 \name{BetaADF}
 \alias{BetaADF}
 \title{Estimate Standardized Regression Coefficients
-and Sampling Covariance Matrix
+and the Corresponding Sampling Covariance Matrix
 Using the Asymptotic Distribution-Free Approach}
 \usage{
 BetaADF(object)
@@ -19,10 +19,10 @@ which is a list with the following elements:
 \item{lm}{Object of class \code{lm}.}
 \item{lm_process}{Pre-processed object of class \code{lm}.}
 \item{type}{Standard error type.}
-\item{gamman}{Asymptotic covariance matrix
+\item{gamma_n}{Asymptotic covariance matrix
 of the sample covariance matrix
 assuming multivariate normality.}
-\item{gammahc}{Asymptotic covariance matrix
+\item{gamma_hc}{Asymptotic covariance matrix
 HC correction.}
 \item{gamma}{Asymptotic covariance matrix
 of the sample covariance matrix.}
@@ -35,7 +35,7 @@ of the standardized slopes.}
 }
 \description{
 Estimate Standardized Regression Coefficients
-and Sampling Covariance Matrix
+and the Corresponding Sampling Covariance Matrix
 Using the Asymptotic Distribution-Free Approach
 }
 \details{
@@ -56,6 +56,18 @@ coef(std)
 vcov(std)
 confint(std, level = 0.95)
 }
+\references{
+Browne, M. W. (1984).
+Asymptotically distribution-free methods for the analysis of covariance structures.
+\emph{British Journal of Mathematical and Statistical Psychology}, \emph{37}(1), 62–83.
+\doi{10.1111/j.2044-8317.1984.tb00789.x}
+
+Dudgeon, P. (2017).
+Some improvements in confidence intervals
+for standardized regression coefficients.
+\emph{Psychometrika}, \emph{82}(4), 928–951.
+\doi{10.1007/s11336-017-9563-z}
+}
 \seealso{
 Other Beta Sandwich Functions: 
 \code{\link{BetaHC}()},
@@ -68,3 +80,4 @@ Ivan Jacob Agaloos Pesigan
 }
 \concept{Beta Sandwich Functions}
 \keyword{betaSandwich}
+\keyword{std}

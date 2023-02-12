@@ -125,6 +125,11 @@ confint(hc3, level = 0.95)
 
 ## References
 
+Dudgeon, P. (2017).
+Some improvements in confidence intervals for standardized regression coefficients. 
+*Psychometrika*, *82*(4), 928–951.
+https://doi.org/10.1007/s11336-017-9563-z
+
 National Research Council. (1982).
 *An assessment of research-doctorate programs in the United States: Social and behavioral sciences*.
 https://doi.org/10.17226/9781.

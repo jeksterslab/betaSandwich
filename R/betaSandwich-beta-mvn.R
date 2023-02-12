@@ -1,5 +1,6 @@
 #' Estimate Standardized Regression Coefficients
-#' and Sampling Covariance Matrix Assuming Multivariate Normality
+#' and the Corresponding Sampling Covariance Matrix
+#' Assuming Multivariate Normality
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -17,10 +18,10 @@
 #'     \item{lm}{Object of class `lm`.}
 #'     \item{lm_process}{Pre-processed object of class `lm`.}
 #'     \item{type}{Standard error type.}
-#'     \item{gamman}{Asymptotic covariance matrix
+#'     \item{gamma_n}{Asymptotic covariance matrix
 #'       of the sample covariance matrix
 #'       assuming multivariate normality.}
-#'     \item{gammahc}{Asymptotic covariance matrix
+#'     \item{gamma_hc}{Asymptotic covariance matrix
 #'       HC correction.}
 #'     \item{gamma}{Asymptotic covariance matrix
 #'       of the sample covariance matrix.}
@@ -33,6 +34,13 @@
 #'
 #' @param object Object of class `lm`.
 #'
+#' @references
+#' Dudgeon, P. (2017).
+#' Some improvements in confidence intervals
+#' for standardized regression coefficients.
+#' *Psychometrika*, *82*(4), 928–951.
+#' \doi{10.1007/s11336-017-9563-z}
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaN(object)
@@ -44,7 +52,7 @@
 #' confint(std, level = 0.95)
 #' @export
 #' @family Beta Sandwich Functions
-#' @keywords betaSandwich
+#' @keywords betaSandwich std
 BetaN <- function(object) {
   lm_process <- .ProcessLM(object)
   jcap <- .JacobianVechSigmaWRTThetaStar(
@@ -63,14 +71,16 @@ BetaN <- function(object) {
     sigmacap = lm_process$sigmacap,
     pinv_of_dcap = .PInvDmat(.DMat(lm_process$k))
   )
-  acov <- .ACovSEM(
-    jcap = jcap,
-    acov = gammacap_mvn
+  acov <- chol2inv(
+    chol(
+      .ACovSEMInverse(
+        jcap = jcap,
+        acov = gammacap_mvn
+      )
+    )
   )
-  vcov <- .CovN(
-    acov = acov,
-    n = lm_process$n
-  )[
+  vcov <- (1 / lm_process$n) * acov
+  vcov <- vcov[
     seq_len(lm_process$p),
     seq_len(lm_process$p),
     drop = FALSE
@@ -81,10 +91,10 @@ BetaN <- function(object) {
     lm = object,
     lm_process = lm_process,
     type = "mvn",
-    gamman = gammacap_mvn,
-    gammahc = NULL,
+    gamma_n = gammacap_mvn,
+    gamma_hc = NULL,
     gamma = gammacap_mvn,
-    acov = chol2inv(chol(acov)),
+    acov = acov,
     vcov = vcov,
     est = lm_process$betastar
   )

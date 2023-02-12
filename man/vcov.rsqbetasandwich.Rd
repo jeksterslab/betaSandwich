@@ -3,7 +3,8 @@
 \name{vcov.rsqbetasandwich}
 \alias{vcov.rsqbetasandwich}
 \title{Sampling Covariance Matrix of
-Differences of Standardized Regression Slopes}
+Multiple Correlation Coefficients
+(R-squared and adjusted R-squared)}
 \usage{
 \method{vcov}{rsqbetasandwich}(object, ...)
 }
@@ -15,11 +16,13 @@ Differences of Standardized Regression Slopes}
 \value{
 Returns a matrix of the
 variance-covariance matrix
-of differences of standardized regression slopes.
+of multiple correlation coefficients
+(R-squared and adjusted R-squared).
 }
 \description{
 Sampling Covariance Matrix of
-Differences of Standardized Regression Slopes
+Multiple Correlation Coefficients
+(R-squared and adjusted R-squared)
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

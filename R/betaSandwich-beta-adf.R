@@ -1,5 +1,5 @@
 #' Estimate Standardized Regression Coefficients
-#' and Sampling Covariance Matrix
+#' and the Corresponding Sampling Covariance Matrix
 #' Using the Asymptotic Distribution-Free Approach
 #'
 #' @details
@@ -19,10 +19,10 @@
 #'     \item{lm}{Object of class `lm`.}
 #'     \item{lm_process}{Pre-processed object of class `lm`.}
 #'     \item{type}{Standard error type.}
-#'     \item{gamman}{Asymptotic covariance matrix
+#'     \item{gamma_n}{Asymptotic covariance matrix
 #'       of the sample covariance matrix
 #'       assuming multivariate normality.}
-#'     \item{gammahc}{Asymptotic covariance matrix
+#'     \item{gamma_hc}{Asymptotic covariance matrix
 #'       HC correction.}
 #'     \item{gamma}{Asymptotic covariance matrix
 #'       of the sample covariance matrix.}
@@ -35,6 +35,18 @@
 #'
 #' @param object Object of class `lm`.
 #'
+#' @references
+#' Browne, M. W. (1984).
+#' Asymptotically distribution-free methods for the analysis of covariance structures.
+#' *British Journal of Mathematical and Statistical Psychology*, *37*(1), 62–83.
+#' \doi{10.1111/j.2044-8317.1984.tb00789.x}
+#'
+#' Dudgeon, P. (2017).
+#' Some improvements in confidence intervals
+#' for standardized regression coefficients.
+#' *Psychometrika*, *82*(4), 928–951.
+#' \doi{10.1007/s11336-017-9563-z}
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaADF(object)
@@ -46,7 +58,7 @@
 #' confint(std, level = 0.95)
 #' @export
 #' @family Beta Sandwich Functions
-#' @keywords betaSandwich
+#' @keywords betaSandwich std
 BetaADF <- function(object) {
   lm_process <- .ProcessLM(object)
   jcap <- .JacobianVechSigmaWRTThetaStar(
@@ -88,14 +100,16 @@ BetaADF <- function(object) {
     n = lm_process$n
   )
   # the procedure from here on is the same as normal
-  acov <- .ACovSEM(
-    jcap = jcap,
-    acov = gammacap_adf
+  acov <- chol2inv(
+    chol(
+      .ACovSEMInverse(
+        jcap = jcap,
+        acov = gammacap_adf
+      )
+    )
   )
-  vcov <- .CovN(
-    acov = acov,
-    n = lm_process$n
-  )[
+  vcov <- (1 / lm_process$n) * acov
+  vcov <- vcov[
     seq_len(lm_process$p),
     seq_len(lm_process$p),
     drop = FALSE
@@ -106,13 +120,13 @@ BetaADF <- function(object) {
     lm = object,
     lm_process = lm_process,
     type = "adf",
-    gamman = .GammaN(
+    gamma_n = .GammaN(
       sigmacap = lm_process$sigmacap,
       pinv_of_dcap = .PInvDmat(.DMat(lm_process$k))
     ),
-    gammahc = NULL,
+    gamma_hc = NULL,
     gamma = gammacap_adf,
-    acov = chol2inv(chol(acov)),
+    acov = acov,
     vcov = vcov,
     est = lm_process$betastar
   )

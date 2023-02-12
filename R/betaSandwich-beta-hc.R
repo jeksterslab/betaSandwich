@@ -1,5 +1,6 @@
 #' Estimate Standardized Regression Coefficients
-#' and Robust Sampling Covariance Matrix
+#' and the Corresponding Robust Sampling Covariance Matrix
+#' Using the Heteroskedasticity Consistent Approach
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -10,10 +11,10 @@
 #'     \item{lm}{Object of class `lm`.}
 #'     \item{lm_process}{Pre-processed object of class `lm`.}
 #'     \item{type}{Standard error type.}
-#'     \item{gamman}{Asymptotic covariance matrix
+#'     \item{gamma_n}{Asymptotic covariance matrix
 #'       of the sample covariance matrix
 #'       assuming multivariate normality.}
-#'     \item{gammahc}{Asymptotic covariance matrix
+#'     \item{gamma_hc}{Asymptotic covariance matrix
 #'       HC correction.}
 #'     \item{gamma}{Asymptotic covariance matrix
 #'       of the sample covariance matrix.}
@@ -60,7 +61,7 @@
 #' confint(std, level = 0.95)
 #' @export
 #' @family Beta Sandwich Functions
-#' @keywords betaSandwich
+#' @keywords betaSandwich std
 BetaHC <- function(object,
                    type = "hc3",
                    g1 = 1,
@@ -136,14 +137,14 @@ BetaHC <- function(object,
     lm = object,
     lm_process = lm_process,
     type = type,
-    gamman = gammacap_mvn,
-    gammahc = gammacap,
+    gamma_n = gammacap_mvn,
+    gamma_hc = gammacap,
     gamma = (
       gammacap_mvn %*% (
         wcap %*% gammacap %*% wcap
       ) %*% gammacap_mvn
     ),
-    acov = chol2inv(chol(acov)),
+    acov = acov,
     vcov = vcov,
     est = lm_process$betastar
   )

@@ -1,4 +1,4 @@
-#' Asymptotic Covariance Matrix of the
+#' Inverse of The Asymptotic Covariance Matrix of the
 #' Standardized Parameter Vector
 #'
 #' @author Ivan Jacob Agaloos Pesigan
@@ -13,8 +13,8 @@
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich acov internal
 #' @noRd
-.ACovSEM <- function(jcap,
-                     acov) {
+.ACovSEMInverse <- function(jcap,
+                            acov) {
   return(
     t(jcap) %*% chol2inv(
       chol(acov)

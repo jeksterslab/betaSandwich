@@ -22,7 +22,7 @@ percent of faculty members holding research grants (`PCTGRT`), and
 percentage of program graduates who received support (`PCTSUPP`) as regressor/predictor variables
 using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982).
 Robust confidence intervals for the standardized regression coefficients are generated
-using the `BetaHC()` function from the `betaSandwich` package following Dudgeon (2017).^[The `BetaN()`, and `BetaADF()` functions are also available using the normal-theory and the asymptotic distribution-free approaches respectively.]
+using the `BetaHC()` function from the `betaSandwich` package following Dudgeon (2017).^[The `BetaN()`, and `BetaADF()` functions are also available using the normal-theory and the asymptotic distribution-free approaches, respectively.]
 
 ```{r}
 #| message = FALSE

@@ -1,6 +1,6 @@
 #' Estimate Multiple Correlation Coefficients
 #' (R-squared and adjusted R-squared)
-#' and Sampling Covariance Matrix
+#' and the Corresponding Sampling Covariance Matrix
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -62,19 +62,16 @@ RSqBetaSandwich <- function(object) {
     rsq = object$lm_process$summary_lm$r.squared
   )
   if (object$type %in% c("mvn", "adf")) {
-    acov <- .ACovSEM(
+    acov <- chol2inv(chol(.ACovSEMInverse(
       jcap = jcap,
       acov = object$gamma
-    )
-    vcov <- .CovN(
-      acov = acov,
-      n = object$lm_process$n
-    )
+    )))
+    vcov <- (1 / object$lm_process$n) * acov
   } else {
     acov <- .ACovHC(
       jcap = jcap,
-      gammacap = object$gammahc,
-      gammacap_mvn = object$gamman
+      gammacap = object$gamma_hc,
+      gammacap_mvn = object$gamma_n
     )
     vcov <- .CovHC(
       acov = acov,

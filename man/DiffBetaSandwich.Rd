@@ -3,7 +3,7 @@
 \name{DiffBetaSandwich}
 \alias{DiffBetaSandwich}
 \title{Estimate Differences of Standardized Slopes
-and Sampling Covariance Matrix}
+and the Corresponding Sampling Covariance Matrix}
 \usage{
 DiffBetaSandwich(object)
 }
@@ -25,7 +25,7 @@ differences of standardized slopes.}
 }
 \description{
 Estimate Differences of Standardized Slopes
-and Sampling Covariance Matrix
+and the Corresponding Sampling Covariance Matrix
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

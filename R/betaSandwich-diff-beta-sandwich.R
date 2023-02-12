@@ -1,5 +1,5 @@
 #' Estimate Differences of Standardized Slopes
-#' and Sampling Covariance Matrix
+#' and the Corresponding Sampling Covariance Matrix
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
