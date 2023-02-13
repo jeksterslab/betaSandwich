@@ -52,6 +52,30 @@ Staging...
 
 \printbibliography
 
+\section{Standardized Slopes}
+
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% mvn <- BetaN(object)
+% adf <- BetaADF(object)
+% hc3 <- BetaHC(object, type = "hc3")
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
+%% end.rcode
+
+\section{Multiple Correlation}
+
 %% begin.rcode
 % df <- nas1982
 % object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
@@ -70,10 +94,34 @@ Staging...
 % vcov(mvn)
 % vcov(adf)
 % vcov(hc3)
-% confint(mvn, level = 0.95)
-% confint(adf, level = 0.95)
-% confint(hc3, level = 0.95)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
 %% end.rcode
 
+\section{Differences of Standardized Slopes}
+
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% std_mvn <- BetaN(object)
+% std_adf <- BetaADF(object)
+% std_hc3 <- BetaHC(object, type = "hc3")
+% mvn <- DiffBetaSandwich(std_mvn)
+% adf <- DiffBetaSandwich(std_adf)
+% hc3 <- DiffBetaSandwich(std_hc3)
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
+%% end.rcode
 
 \end{document}
