@@ -78,7 +78,7 @@ Other Beta Sandwich Functions:
 \code{\link{RSqBetaSandwich}()}
 }
 \author{
- Ivan Jacob Agaloos Pesigan
+Ivan Jacob Agaloos Pesigan
 }
 \concept{Beta Sandwich Functions}
 \keyword{betaSandwich}
