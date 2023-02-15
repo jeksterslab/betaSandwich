@@ -90,7 +90,7 @@ summary.rsqbetasandwich <- function(object,
 
 #' Sampling Covariance Matrix of
 #' Multiple Correlation Coefficients
-#' (R-squared and adjusted R-squared)
+#' (R-Squared and Adjusted R-Squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -117,7 +117,7 @@ vcov.rsqbetasandwich <- function(object,
 }
 
 #' Multiple Correlation Coefficients
-#' (R-squared and adjusted R-squared)
+#' (R-Squared and Adjusted R-Squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -146,7 +146,7 @@ coef.rsqbetasandwich <- function(object,
 
 #' Confidence Intervals for
 #' Multiple Correlation Coefficients
-#' (R-squared and adjusted R-squared)
+#' (R-Squared and Adjusted R-Squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

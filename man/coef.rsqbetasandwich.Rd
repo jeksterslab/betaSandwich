@@ -3,7 +3,7 @@
 \name{coef.rsqbetasandwich}
 \alias{coef.rsqbetasandwich}
 \title{Multiple Correlation Coefficients
-(R-squared and adjusted R-squared)}
+(R-Squared and Adjusted R-Squared)}
 \usage{
 \method{coef}{rsqbetasandwich}(object, ...)
 }
@@ -18,7 +18,7 @@ Returns a vector of multiple correlation coefficients
 }
 \description{
 Multiple Correlation Coefficients
-(R-squared and adjusted R-squared)
+(R-Squared and Adjusted R-Squared)
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

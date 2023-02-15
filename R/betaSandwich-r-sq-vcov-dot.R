@@ -1,5 +1,6 @@
 #' Sampling Variance-Covariance Matrix of
-#' Multiple Correlation
+#' Multiple Correlation Coefficients
+#' (R-Squared and Adjusted R-Squared)
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

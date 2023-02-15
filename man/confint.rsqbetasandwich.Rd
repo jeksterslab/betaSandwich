@@ -4,7 +4,7 @@
 \alias{confint.rsqbetasandwich}
 \title{Confidence Intervals for
 Multiple Correlation Coefficients
-(R-squared and adjusted R-squared)}
+(R-Squared and Adjusted R-Squared)}
 \usage{
 \method{confint}{rsqbetasandwich}(object, parm = NULL, level = 0.95, ...)
 }
@@ -26,7 +26,7 @@ Returns a matrix of confidence intervals.
 \description{
 Confidence Intervals for
 Multiple Correlation Coefficients
-(R-squared and adjusted R-squared)
+(R-Squared and Adjusted R-Squared)
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
