@@ -92,6 +92,12 @@ programs in the United States: Social and behavioral sciences*.
 National Academy of Sciences, Courtesy of the National Academies Press,
 Washington, D.C.
 
+## Other Features
+
+The package can also be used to generate confidence intervals for
+R-squared, adjusted R-squared, and differences of standardized
+regression coefficients.
+
 ## Documentation
 
 See [GitHub

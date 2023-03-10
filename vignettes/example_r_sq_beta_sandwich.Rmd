@@ -21,7 +21,7 @@ are generated using
 the `RSqBetaSandwich()` function from the `betaSandwich` package.
 In this example,
 we use the data set and the model used in
-[betaSandwich: Example Using the BetaHC Function](example-beta-sandwich.html).
+[betaSandwich: Example Using the BetaHC Function](example_beta_sandwich.html).
 
 ```{r}
 #| message = FALSE
