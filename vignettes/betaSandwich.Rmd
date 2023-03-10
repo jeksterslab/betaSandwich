@@ -38,6 +38,14 @@ if (!require("remotes")) install.packages("remotes")
 remotes::install_github("jeksterslab/betaSandwich")
 ```
 
+## Other Features
+
+The package can also be used to generate confidence intervals for
+R-squared,
+adjusted R-squared,
+and
+differences of standardized regression coefficients.
+
 ## References
 
 Dudgeon, P. (2017).
