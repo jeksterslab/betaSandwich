@@ -29,7 +29,7 @@ print.rsqbetasandwich <- function(x,
                                   ...) {
   cat(
     "Multiple correlation with",
-    toupper(x$fit$type),
+    toupper(x$fit$args$type),
     "standard errors:\n"
   )
   base::print(
@@ -74,7 +74,7 @@ summary.rsqbetasandwich <- function(object,
                                     ...) {
   cat(
     "Multiple correlation with",
-    toupper(object$fit$type),
+    toupper(object$fit$args$type),
     "standard errors:\n"
   )
   return(

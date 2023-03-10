@@ -32,13 +32,12 @@ Possible values are
 Constant for \code{type = "hc5"}}
 }
 \value{
-Returns an object of class \code{betasandwich}
-which is a list with the following elements:
+Returns an object
+of class \code{betasandwich} which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
-\item{lm}{Object of class \code{lm}.}
-\item{lm_process}{Pre-processed object of class \code{lm}.}
-\item{type}{Standard error type.}
+\item{args}{Function arguments.}
+\item{lm_process}{Processed \code{lm} object.}
 \item{gamma_n}{Asymptotic covariance matrix
 of the sample covariance matrix
 assuming multivariate normality.}

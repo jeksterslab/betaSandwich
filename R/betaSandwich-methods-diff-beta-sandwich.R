@@ -28,7 +28,7 @@ print.diffbetasandwich <- function(x,
                                    ...) {
   cat(
     "Difference between standardized regression coefficients with",
-    toupper(x$fit$type),
+    toupper(x$fit$args$type),
     "standard errors:\n"
   )
   base::print(
@@ -72,7 +72,7 @@ summary.diffbetasandwich <- function(object,
                                      ...) {
   cat(
     "Difference between standardized regression coefficients with",
-    toupper(object$fit$type),
+    toupper(object$fit$args$type),
     "standard errors:\n"
   )
   return(

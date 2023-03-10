@@ -29,7 +29,7 @@ print.betasandwich <- function(x,
   base::print(x$call)
   cat(
     "\nStandardized regression slopes with",
-    toupper(x$type),
+    toupper(x$args$type),
     "standard errors:\n"
   )
   base::print(
@@ -74,7 +74,7 @@ summary.betasandwich <- function(object,
   base::print(object$call)
   cat(
     "\nStandardized regression slopes with",
-    toupper(object$type),
+    toupper(object$args$type),
     "standard errors:\n"
   )
   return(

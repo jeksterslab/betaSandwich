@@ -12,13 +12,12 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns an object of class `betasandwich`
-#'   which is a list with the following elements:
+#' @return Returns an object
+#'   of class `betasandwich` which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
-#'     \item{lm}{Object of class `lm`.}
-#'     \item{lm_process}{Pre-processed object of class `lm`.}
-#'     \item{type}{Standard error type.}
+#'     \item{args}{Function arguments.}
+#'     \item{lm_process}{Processed `lm` object.}
 #'     \item{gamma_n}{Asymptotic covariance matrix
 #'       of the sample covariance matrix
 #'       assuming multivariate normality.}
@@ -119,9 +118,11 @@ BetaADF <- function(object) {
   colnames(vcov) <- rownames(vcov) <- lm_process$xnames
   out <- list(
     call = match.call(),
-    lm = object,
+    args = list(
+      object = object,
+      type = "mvn"
+    ),
     lm_process = lm_process,
-    type = "adf",
     gamma_n = .GammaN(
       sigmacap = lm_process$sigmacap,
       pinv_of_dcap = .PInvDmat(.DMat(lm_process$k))

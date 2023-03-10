@@ -61,7 +61,7 @@ RSqBetaSandwich <- function(object) {
     p = object$lm_process$p,
     rsq = object$lm_process$summary_lm$r.squared
   )
-  if (object$type %in% c("mvn", "adf")) {
+  if (object$args$type %in% c("mvn", "adf")) {
     acov <- chol2inv(chol(.ACovSEMInverse(
       jcap = jcap,
       acov = object$gamma
@@ -75,7 +75,7 @@ RSqBetaSandwich <- function(object) {
     )
     vcov <- .CovHC(
       acov = acov,
-      type = object$type,
+      type = object$args$type,
       n = object$lm_process$n,
       df = object$lm_process$df
     )
