@@ -6,7 +6,7 @@
 \alias{_PACKAGE}
 \title{betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients}
 \description{
-Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017) \doi{10.1007/s11336-017-9563-z}.
+Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017) \doi{10.1007/s11336-017-9563-z}. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (In Press: Multivariate Behavioral Research).
 }
 \seealso{
 Useful links:

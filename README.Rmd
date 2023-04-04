@@ -28,7 +28,10 @@ knitr::opts_chunk$set(
 ## Description
 
 Generates robust confidence intervals for standardized regression coefficients
-using heteroskedasticity-consistent standard errors for models fitted by `lm()` as described in Dudgeon (2017: http://doi.org/10.1007/s11336-017-9563-z).
+using heteroskedasticity-consistent standard errors for models fitted by `lm()`
+as described in Dudgeon (2017: http://doi.org/10.1007/s11336-017-9563-z).
+A description of the package and code examples
+are presented in Pesigan, Sun, and Cheung (In Press: Multivariate Behavioral Research).
 
 ## Installation
 
@@ -104,6 +107,10 @@ National Research Council. (1982).
 https://doi.org/10.17226/9781.
 Reproduced with permission from the National Academy of Sciences,
 Courtesy of the National Academies Press, Washington, D.C.
+
+Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (In Press).
+betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.
+*Multivariate Behavioral Research*.
 
 ## Other Features
 

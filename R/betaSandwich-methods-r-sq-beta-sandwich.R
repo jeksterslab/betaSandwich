@@ -27,8 +27,10 @@ print.rsqbetasandwich <- function(x,
                                   alpha = c(0.05, 0.01, 0.001),
                                   digits = 4,
                                   ...) {
+  cat("Call:\n")
+  base::print(x$call)
   cat(
-    "Multiple correlation with",
+    "\nMultiple correlation with",
     toupper(x$fit$args$type),
     "standard errors:\n"
   )
@@ -72,8 +74,10 @@ summary.rsqbetasandwich <- function(object,
                                     alpha = c(0.05, 0.01, 0.001),
                                     digits = 4,
                                     ...) {
+  cat("Call:\n")
+  base::print(object$call)
   cat(
-    "Multiple correlation with",
+    "\nMultiple correlation with",
     toupper(object$fit$args$type),
     "standard errors:\n"
   )

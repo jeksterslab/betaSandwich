@@ -1,5 +1,5 @@
 year <- 2023
-author_text <- "Pesigan, I. J. A., Cheung, S. F., & Sun, R. W."
+author_text <- "Pesigan, I. J. A., Sun, R. W., & Cheung, S. F."
 pkg <- meta$Package
 title <- "betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R"
 version <- meta$Version
@@ -21,16 +21,22 @@ author <- c(
            comment = c(ORCID = "0000-0002-9871-9448"))
     )
 
+note <- sprintf(
+  "R package version %s",
+  meta$Version
+)
+
 bibentry(
   bibtype = "Unpublished",
   author = author,
   title = title,
   year = year,
-  note = "Under Review",
+  note = note,
   textVersion = paste0(
     author_text, " ",
-    "(", "Under Review", ")", ".", " ",
-    title, " "
+    "(", "In Press", ")", ".", " ",
+    title, ".", " ",
+    "Multivariate Behavioral Research", ".", " "
   ),
   header = paste(
     "To cite",

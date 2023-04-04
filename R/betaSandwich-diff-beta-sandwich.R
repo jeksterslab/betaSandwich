@@ -6,6 +6,7 @@
 #' @return Returns an object of class `diffbetasandwich`
 #'   which is a list with the following elements:
 #'   \describe{
+#'     \item{call}{Function call.}
 #'     \item{fit}{The argument `object`.}
 #'     \item{vcov}{Sampling covariance matrix of
 #'       differences of standardized slopes.}
@@ -55,6 +56,7 @@ DiffBetaSandwich <- function(object) {
   )
   colnames(vcov) <- rownames(vcov) <- names(object$lm_process$dif_betastar)
   out <- list(
+    call = match.call(),
     fit = object,
     vcov = vcov,
     est = est

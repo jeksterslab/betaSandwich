@@ -17,6 +17,7 @@ the output of the \code{BetaHC()}, \code{BetaN()}, or \code{BetaADF()} functions
 Returns an object of class \code{rsqbetasandwich}
 which is a list with the following elements:
 \describe{
+\item{call}{Function call.}
 \item{fit}{The argument \code{object}.}
 \item{vcov}{Sampling covariance matrix of
 multiple correlation coefficients

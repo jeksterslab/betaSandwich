@@ -7,6 +7,7 @@
 #' @return Returns an object of class `rsqbetasandwich`
 #'   which is a list with the following elements:
 #'   \describe{
+#'     \item{call}{Function call.}
 #'     \item{fit}{The argument `object`.}
 #'     \item{vcov}{Sampling covariance matrix of
 #'       multiple correlation coefficients
@@ -81,6 +82,7 @@ RSqBetaSandwich <- function(object) {
     )
   }
   out <- list(
+    call = match.call(),
     fit = object,
     vcov = vcov,
     est = est
