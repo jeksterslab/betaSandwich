@@ -27,16 +27,19 @@ note <- sprintf(
 )
 
 bibentry(
-  bibtype = "Unpublished",
+  bibtype = "Article",
   author = author,
   title = title,
   year = year,
+  doi = "10.1080/00273171.2023.2201277",
+  journal = "Multivariate Behavioral Research",
   note = note,
   textVersion = paste0(
     author_text, " ",
-    "(", "In Press", ")", ".", " ",
+    "(", year, ")", ".", " ",
     title, ".", " ",
-    "Multivariate Behavioral Research", ".", " "
+    "Multivariate Behavioral Research", ".", " ",
+    "https://doi.org/10.1080/00273171.2023.2201277", " "
   ),
   header = paste(
     "To cite",

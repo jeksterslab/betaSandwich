@@ -49,6 +49,12 @@
 #' *Psychometrika*, *82*(4), 928–951.
 #' \doi{10.1007/s11336-017-9563-z}
 #'
+#' Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
+#' betaDelta and betaSandwich:
+#' Confidence intervals for standardized regression coefficients in R.
+#' *Multivariate Behavioral Research*.
+#' \doi{10.1080/00273171.2023.2201277}
+#'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
