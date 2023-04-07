@@ -135,3 +135,8 @@ National Research Council. (1982).
 https://doi.org/10.17226/9781.
 Reproduced with permission from the National Academy of Sciences,
 Courtesy of the National Academies Press, Washington, D.C.
+
+Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
+betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.
+*Multivariate Behavioral Research*.
+https://doi.org/10.1080/00273171.2023.2201277
