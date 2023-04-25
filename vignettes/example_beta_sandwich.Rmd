@@ -15,6 +15,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+To cite `betaSandwich` in publications, please use:
+
+Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
+betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.
+*Multivariate Behavioral Research*.
+https://doi.org/10.1080/00273171.2023.2201277
+
 In this example, a multiple regression model is fitted
 using program quality ratings (`QUALITY`) as the regressand/outcome variable
 and number of published articles attributed to the program faculty members (`NARTIC`),
