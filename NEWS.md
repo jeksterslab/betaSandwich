@@ -1,3 +1,7 @@
+# betaSandwich 1.0.4.9000
+
+Latest development version.
+
 # betaSandwich 1.0.4
 
 * Added the `DiffBetaSandwich()` and the `RSqBetaSandwich()` functions.
