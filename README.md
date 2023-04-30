@@ -10,6 +10,7 @@ Ivan Jacob Agaloos Pesigan
 Status](https://www.r-pkg.org/badges/version/betaSandwich)](https://cran.r-project.org/package=betaSandwich)
 [![R-Universe
 Status](https://jeksterslab.r-universe.dev/badges/betaSandwich)](https://jeksterslab.r-universe.dev)
+[![DOI](https://zenodo.org/badge/DOI/10.1080/00273171.2023.2201277.svg)](https://doi.org/10.1080/00273171.2023.2201277)
 [![R-CMD-check](https://github.com/jeksterslab/betaSandwich/workflows/R-CMD-check/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions)
 [![test-coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml)
 [![lint](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yaml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yaml)
