@@ -41,6 +41,52 @@ if (!require("remotes")) install.packages("remotes")
 remotes::install_github("jeksterslab/betaSandwich")
 ```
 
+## Example
+
+In this example, a multiple regression model is fitted
+using program quality ratings (`QUALITY`) as the regressand/outcome variable
+and number of published articles attributed to the program faculty members (`NARTIC`),
+percent of faculty members holding research grants (`PCTGRT`), and
+percentage of program graduates who received support (`PCTSUPP`) as regressor/predictor variables
+using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982).
+Robust confidence intervals for the standardized regression coefficients are generated
+using the `BetaHC()` function from the `betaSandwich` package following Dudgeon (2017).
+
+```{r}
+#| message = FALSE
+library(betaSandwich)
+```
+
+```{r}
+#| echo = FALSE
+if (!exists("nas1982")) {
+  try(
+    data(
+      "nas1982",
+      package = "betaSandwich"
+    ),
+    silent = TRUE
+  )
+}
+df <- nas1982
+```
+
+```{r}
+df <- betaSandwich::nas1982
+```
+
+### Fit the regression model using the `lm()` function.
+
+```{r}
+object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+```
+
+### Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
+
+```{r}
+BetaHC(object, type = "hc3")
+```
+
 ## Other Features
 
 The package can also be used to generate confidence intervals for
@@ -49,12 +95,27 @@ adjusted R-squared,
 and
 differences of standardized regression coefficients.
 
+## Citation
+
+To cite `betaSandwich` in publications, please use: 
+
+Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
+betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.
+*Multivariate Behavioral Research*.
+https://doi.org/10.1080/00273171.2023.2201277
+
 ## References
 
 Dudgeon, P. (2017).
 Some improvements in confidence intervals for standardized regression coefficients. 
 *Psychometrika*, *82*(4), 928–951.
 https://doi.org/10.1007/s11336-017-9563-z
+
+National Research Council. (1982).
+*An assessment of research-doctorate programs in the United States: Social and behavioral sciences*.
+https://doi.org/10.17226/9781.
+Reproduced with permission from the National Academy of Sciences,
+Courtesy of the National Academies Press, Washington, D.C.
 
 Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
 betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.

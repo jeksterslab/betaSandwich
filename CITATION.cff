@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+title: betaSandwich
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Ivan Jacob Agaloos
+    family-names: Pesigan
+    email: r.jeksterslab@gmail.com
+    orcid: 'https://orcid.org/0000-0003-4818-8420'
+identifiers:
+  - type: doi
+    value: 10.1080/00273171.2023.2201277
+    description: >-
+      betaDelta and betaSandwich: Confidence intervals for
+      standardized regression coefficients in R
+  - type: url
+    value: 'https://CRAN.R-project.org/package=betaSandwich'
+    description: betaSandwich
+repository-code: 'https://github.com/jeksterslab/betaSandwich'
+url: 'https://jeksterslab.github.io/betaSandwich/index.html'
+abstract: >-
+  Generates robust confidence intervals for standardized
+  regression coefficients using
+  heteroskedasticity-consistent standard errors for models
+  fitted by lm() as described in Dudgeon (2017:
+  http://doi.org/10.1007/s11336-017-9563-z). A description
+  of the package and code examples are presented in Pesigan,
+  Sun, and Cheung (2023:
+  https://doi.org/10.1080/00273171.2023.2201277).
+keywords:
+  - standardized regression coefficients
+  - confidence intervals
+  - delta method standard errors
+  - heteroskedasticity-consistent standard errors
+  - R package
+license: MIT
+version: 1.0.4
+date-released: '2023-04-25'

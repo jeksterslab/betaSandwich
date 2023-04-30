@@ -1,7 +1,7 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2023-04-26
+2023-04-30
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -82,7 +82,22 @@ BetaHC(object, type = "hc3")
 #> PCTSUPP 0.2632 0.0855 3.0786 0.0037 -0.0393 0.0325 0.0907 0.4358 0.4940 0.5658
 ```
 
-### References
+## Other Features
+
+The package can also be used to generate confidence intervals for
+R-squared, adjusted R-squared, and differences of standardized
+regression coefficients.
+
+## Citation
+
+To cite `betaSandwich` in publications, please use:
+
+Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023). betaDelta and
+betaSandwich: Confidence intervals for standardized regression
+coefficients in R. *Multivariate Behavioral Research*.
+<https://doi.org/10.1080/00273171.2023.2201277>
+
+## References
 
 Dudgeon, P. (2017). Some improvements in confidence intervals for
 standardized regression coefficients. *Psychometrika*, *82*(4), 928–951.
@@ -98,12 +113,6 @@ Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023). betaDelta and
 betaSandwich: Confidence intervals for standardized regression
 coefficients in R. *Multivariate Behavioral Research*.
 <https://doi.org/10.1080/00273171.2023.2201277>
-
-## Other Features
-
-The package can also be used to generate confidence intervals for
-R-squared, adjusted R-squared, and differences of standardized
-regression coefficients.
 
 ## Documentation
 

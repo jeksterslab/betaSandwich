@@ -95,7 +95,24 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 BetaHC(object, type = "hc3")
 ```
 
-### References
+## Other Features
+
+The package can also be used to generate confidence intervals for
+R-squared,
+adjusted R-squared,
+and
+differences of standardized regression coefficients.
+
+## Citation
+
+To cite `betaSandwich` in publications, please use: 
+
+Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
+betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.
+*Multivariate Behavioral Research*.
+https://doi.org/10.1080/00273171.2023.2201277
+
+## References
 
 Dudgeon, P. (2017).
 Some improvements in confidence intervals for standardized regression coefficients. 
@@ -112,14 +129,6 @@ Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
 betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.
 *Multivariate Behavioral Research*.
 https://doi.org/10.1080/00273171.2023.2201277
-
-## Other Features
-
-The package can also be used to generate confidence intervals for
-R-squared,
-adjusted R-squared,
-and
-differences of standardized regression coefficients.
 
 ## Documentation
 
