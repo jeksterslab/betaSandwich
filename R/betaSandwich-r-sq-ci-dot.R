@@ -23,7 +23,7 @@
 .RSqCI <- function(object,
                    alpha = c(0.05, 0.01, 0.001)) {
   stopifnot(
-    methods::is(
+    inherits(
       object,
       "rsqbetasandwich"
     )
@@ -31,8 +31,8 @@
   return(
     .CIWald(
       c(
-        rsq = object$fit$lm_process$summary_lm$r.squared,
-        adj = object$fit$lm_process$summary_lm$adj.r.squared
+        rsq = object$fit$lm_process$rsq[1],
+        adj = object$fit$lm_process$rsq[2]
       ),
       se = sqrt(diag(.RSqCov(object))),
       theta = 0,

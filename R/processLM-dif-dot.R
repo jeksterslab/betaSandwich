@@ -27,7 +27,11 @@
     for (i in seq_len(p_dif)) {
       dif_betastar[i] <- betastar[dif_idx[1, i]] - betastar[dif_idx[2, i]]
       dif_beta[i] <- beta[dif_idx[1, i]] - beta[dif_idx[2, i]]
-      dif_names[i] <- paste0(xnames[dif_idx[1, i]], "-", xnames[dif_idx[2, i]])
+      dif_names[i] <- paste0(
+        xnames[dif_idx[1, i]],
+        "-",
+        xnames[dif_idx[2, i]]
+      )
     }
     names(dif_betastar) <- dif_names
     names(dif_beta) <- dif_names
@@ -38,8 +42,8 @@
   }
   return(
     list(
-      dif_betastar = dif_betastar,
       dif_beta = dif_beta,
+      dif_betastar = dif_betastar,
       dif_idx = dif_idx
     )
   )

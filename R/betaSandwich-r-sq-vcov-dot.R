@@ -11,7 +11,7 @@
 #' @noRd
 .RSqCov <- function(object) {
   stopifnot(
-    methods::is(
+    inherits(
       object,
       "rsqbetasandwich"
     )

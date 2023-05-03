@@ -9,7 +9,7 @@
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich derivatives internal
 #' @noRd
-.JacobianDiffBetastar <- function(p) {
+.JacobianDiffBetaStar <- function(p) {
   idx <- utils::combn(seq_len(p), 2)
   q <- dim(idx)[2]
   out <- matrix(

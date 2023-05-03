@@ -38,11 +38,11 @@ and the Corresponding Sampling Covariance Matrix
 Assuming Multivariate Normality
 }
 \details{
-Note that while the calculation in \code{BetaN()}
-is different from \code{betaDelta::BetaDelta()} with \code{type = "mvn"},
+Note that while the calculation in \code{\link[=BetaN]{BetaN()}}
+is different from \code{\link[betaDelta:BetaDelta]{betaDelta::BetaDelta()}} with \code{type = "mvn"},
 the results are numerically equivalent.
-\code{BetaN()} assumes multivariate normality.
-\code{BetaHC()} is recommended in most situations.
+\code{\link[=BetaN]{BetaN()}} assumes multivariate normality.
+\code{\link[=BetaHC]{BetaHC()}} is recommended in most situations.
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)

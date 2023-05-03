@@ -11,7 +11,7 @@ RSqBetaSandwich(object)
 \arguments{
 \item{object}{Object of class \code{betasandwich},
 that is,
-the output of the \code{BetaHC()}, \code{BetaN()}, or \code{BetaADF()} functions.}
+the output of the \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaN]{BetaN()}}, or \code{\link[=BetaADF]{BetaADF()}} functions.}
 }
 \value{
 Returns an object of class \code{rsqbetasandwich}

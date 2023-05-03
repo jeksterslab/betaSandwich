@@ -5,11 +5,11 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @details
-#' Note that while the calculation in `BetaN()`
-#' is different from `betaDelta::BetaDelta()` with `type = "mvn"`,
+#' Note that while the calculation in [BetaN()]
+#' is different from [betaDelta::BetaDelta()] with `type = "mvn"`,
 #' the results are numerically equivalent.
-#' `BetaN()` assumes multivariate normality.
-#' `BetaHC()` is recommended in most situations.
+#' [BetaN()] assumes multivariate normality.
+#' [BetaHC()] is recommended in most situations.
 #'
 #' @return Returns an object
 #'   of class `betasandwich` which is a list with the following elements:

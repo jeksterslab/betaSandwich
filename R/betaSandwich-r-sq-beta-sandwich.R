@@ -18,7 +18,7 @@
 #'
 #' @param object Object of class `betasandwich`,
 #'   that is,
-#'   the output of the `BetaHC()`, `BetaN()`, or `BetaADF()` functions.
+#'   the output of the [BetaHC()], [BetaN()], or [BetaADF()] functions.
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
@@ -35,14 +35,14 @@
 #' @keywords betaSandwich rsq
 RSqBetaSandwich <- function(object) {
   stopifnot(
-    methods::is(
+    inherits(
       object,
       "betasandwich"
     )
   )
   est <- c(
     object$lm_process$beta,
-    object$lm_process$summary_lm$r.squared,
+    object$fit$lm_process$rsq[1],
     .Vech(
       object$lm_process$sigmacap[
         2:object$lm_process$k,
@@ -60,7 +60,7 @@ RSqBetaSandwich <- function(object) {
     ],
     q = object$lm_process$q,
     p = object$lm_process$p,
-    rsq = object$lm_process$summary_lm$r.squared
+    rsq = object$fit$lm_process$rsq[1]
   )
   if (object$args$type %in% c("mvn", "adf")) {
     acov <- chol2inv(chol(.ACovSEMInverse(

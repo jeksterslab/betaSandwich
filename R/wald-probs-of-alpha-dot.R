@@ -11,7 +11,7 @@
 #'   Significance level/s.
 #'
 #' @family Wald Confidence Intervals Functions
-#' @keywords alpha internal
+#' @keywords wald alpha internal
 #' @noRd
 .ProbsofAlpha <- function(alpha = c(
                             0.05,

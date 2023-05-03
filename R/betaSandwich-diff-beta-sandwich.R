@@ -16,7 +16,7 @@
 #'
 #' @param object Object of class `betasandwich`,
 #'   that is,
-#'   the output of the `BetaHC()`, `BetaN()`, or `BetaADF()` functions.
+#'   the output of the [BetaHC()], [BetaN()], or [BetaADF()] functions.
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
@@ -33,7 +33,7 @@
 #' @keywords betaSandwich diff
 DiffBetaSandwich <- function(object) {
   stopifnot(
-    methods::is(
+    inherits(
       object,
       "betasandwich"
     )
@@ -42,7 +42,7 @@ DiffBetaSandwich <- function(object) {
     stop("Two or more regressors is required.")
   }
   est <- object$lm_process$dif_betastar
-  jcap <- .JacobianDiffBetastar(
+  jcap <- .JacobianDiffBetaStar(
     p = object$lm_process$p
   )
   vcov <- object$vcov[

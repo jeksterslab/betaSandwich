@@ -142,8 +142,8 @@ coef.rsqbetasandwich <- function(object,
                                  ...) {
   return(
     c(
-      rsq = object$fit$lm_process$summary_lm$r.squared,
-      adj = object$fit$lm_process$summary_lm$adj.r.squared
+      rsq = object$fit$lm_process$rsq[1],
+      adj = object$fit$lm_process$rsq[2]
     )
   )
 }
