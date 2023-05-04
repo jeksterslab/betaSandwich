@@ -6,6 +6,7 @@
 #'   differences of standardized regression slopes,
 #'   standard errors,
 #'   test statistics,
+#'   degrees of freedom,
 #'   p-values,
 #'   and
 #'   confidence intervals.
@@ -52,6 +53,7 @@ print.diffbetasandwich <- function(x,
 #'   differences of standardized regression slopes,
 #'   standard errors,
 #'   test statistics,
+#'   degrees of freedom,
 #'   p-values,
 #'   and
 #'   confidence intervals.
@@ -174,6 +176,6 @@ confint.diffbetasandwich <- function(object,
     .DiffBetaCI(
       object = object,
       alpha = 1 - level[1]
-    )[parm, 5:6]
+    )[parm, 5:6] # always z
   )
 }

@@ -6,6 +6,7 @@
 #'   standardized regression slopes,
 #'   standard errors,
 #'   test statistics,
+#'   degrees of freedom,
 #'   p-values,
 #'   and
 #'   confidence intervals.
@@ -51,6 +52,7 @@ print.betasandwich <- function(x,
 #'   standardized regression slopes,
 #'   standard errors,
 #'   test statistics,
+#'   degrees of freedom,
 #'   p-values,
 #'   and
 #'   confidence intervals.
@@ -169,6 +171,6 @@ confint.betasandwich <- function(object,
     .BetaCI(
       object = object,
       alpha = 1 - level[1]
-    )[parm, 5:6]
+    )[parm, 6:7] # always t
   )
 }

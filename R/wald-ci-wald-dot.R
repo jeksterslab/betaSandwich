@@ -54,7 +54,18 @@
       est + stats::qnorm(probs) * se
     }
     p <- 2 * stats::pnorm(-abs(stat))
-    stat_name <- "z"
+    out <- cbind(
+      est,
+      se,
+      stat,
+      p
+    )
+    varnames <- c(
+      "est",
+      "se",
+      "z",
+      "p"
+    )
   } else {
     foo <- function(probs,
                     est,
@@ -62,20 +73,21 @@
       est + stats::qt(probs, df = df) * se
     }
     p <- 2 * stats::pt(-abs(stat), df = df)
-    stat_name <- "t"
+    out <- cbind(
+      est,
+      se,
+      stat,
+      df,
+      p
+    )
+    varnames <- c(
+      "est",
+      "se",
+      "t",
+      "df",
+      "p"
+    )
   }
-  out <- cbind(
-    est,
-    se,
-    stat,
-    p
-  )
-  varnames <- c(
-    "est",
-    "se",
-    stat_name,
-    "p"
-  )
   if (!test) {
     ci <- lapply(
       X = probs,

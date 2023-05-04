@@ -20,6 +20,7 @@ Returns a matrix of
 differences of standardized regression slopes,
 standard errors,
 test statistics,
+degrees of freedom,
 p-values,
 and
 confidence intervals.

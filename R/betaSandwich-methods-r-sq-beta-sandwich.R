@@ -7,6 +7,7 @@
 #'   (R-squared and adjusted R-squared),
 #'   standard errors,
 #'   test statistics,
+#'   degrees of freedom,
 #'   p-values,
 #'   and
 #'   confidence intervals.
@@ -54,6 +55,7 @@ print.rsqbetasandwich <- function(x,
 #'   (R-squared and adjusted R-squared),
 #'   standard errors,
 #'   test statistics,
+#'   degrees of freedom,
 #'   p-values,
 #'   and
 #'   confidence intervals.
@@ -182,6 +184,6 @@ confint.rsqbetasandwich <- function(object,
     .RSqCI(
       object = object,
       alpha = 1 - level[1]
-    )[parm, 5:6]
+    )[parm, 6:7]
   )
 }
