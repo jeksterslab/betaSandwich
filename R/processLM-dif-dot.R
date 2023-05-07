@@ -3,9 +3,11 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param beta Numeric vector.
-#'   Regression slopes.
+#'   Partial regression slopes
+#'   \eqn{\boldsymbol{\beta}}.
 #' @param betastar Numeric vector.
-#'   Standardized regression slopes.
+#'   Standardized partial regression slopes
+#'   \eqn{\boldsymbol{\beta}^{\ast}}.
 #' @param p Positive integer.
 #'   `p` regressors.
 #' @param xnames Character vector.

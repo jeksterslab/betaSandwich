@@ -30,10 +30,7 @@
   )
   return(
     .CIWald(
-      c(
-        rsq = object$fit$lm_process$rsq[1],
-        adj = object$fit$lm_process$rsq[2]
-      ),
+      est = object$fit$lm_process$rsq,
       se = sqrt(diag(.RSqCov(object))),
       theta = 0,
       alpha = alpha,

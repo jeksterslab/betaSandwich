@@ -7,7 +7,6 @@
 #'     \item{call}{[lm()] function call.}
 #'     \item{object}{Object of class `lm`.}
 #'     \item{summary_lm}{Summary of the `lm` object.}
-#'     \item{data}{Original data.}
 #'     \item{x}{Model matrix (\eqn{Y, X_{1}, \dots, X_{p}} ).}
 #'     \item{varnames}{Variable names of the model matrix.}
 #'     \item{xnames}{Variable names of the regressors in the model matrix.}
@@ -40,6 +39,8 @@
 #'     \item{theta}{Parameters in the covariance structure,
 #'       that is, `beta`, `sigmasq`, `vechsigmacapx`.}
 #'     \item{betastar}{Vector of standardized regression slopes.}
+#'     \item{scor}{Vector of semipatial correlations.}
+#'     \item{pcor}{Vector of squared patial correlations.}
 #'     \item{rsq}{Vector of multiple correlation coefficients
 #'       (R-squared and adjusted R-squared).}
 #'     \item{dif_beta}{Differences of partial regression slopes.}
@@ -63,12 +64,7 @@
   # summary
   summary_lm <- summary(object)
   # call
-  call <- stats::getCall(object)
-  # original data
-  data <- eval(
-    expr = call$data,
-    envir = parent.frame()
-  )
+  call0 <- stats::getCall(object)
   # data set used by lm
   y <- object$model[, 1]
   x <- stats::model.matrix(object)
@@ -144,6 +140,23 @@
     rsq = rsq,
     adj = adj
   )
+  ## semi-partial correlations
+  ## squared partial correlations
+  if (p > 1) {
+    scor <- .SPCor(
+      betastar = betastar,
+      sigmacapx = sigmacapx
+    )
+    pcor <- .PCorSq(
+      srsq = scor^2,
+      rsq = rsq[1]
+    )
+    names(scor) <- xnames
+    names(pcor) <- xnames
+  } else {
+    scor <- NA
+    pcor <- NA
+  }
   ## differences of slopes
   dif <- .Dif(
     beta = beta,
@@ -154,11 +167,11 @@
   return(
     list(
       # lm
-      call = call,
+      call = call0,
       object = object,
       summary_lm = summary_lm,
       # data
-      data = data,
+      ## data used by lm
       x = x, # {y, X}
       # names
       varnames = varnames,
@@ -192,9 +205,11 @@
       theta = theta,
       # effect sizes
       betastar = betastar,
+      scor = scor,
+      pcor = pcor,
       rsq = rsq,
-      dif_betastar = dif$dif_betastar,
       dif_beta = dif$dif_beta,
+      dif_betastar = dif$dif_betastar,
       dif_idx = dif$dif_idx
     )
   )

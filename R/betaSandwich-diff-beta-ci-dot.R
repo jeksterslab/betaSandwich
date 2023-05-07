@@ -28,7 +28,7 @@
   )
   return(
     .CIWald(
-      object$est,
+      est = object$est,
       se = sqrt(diag(object$vcov)),
       theta = 0,
       alpha = alpha,
