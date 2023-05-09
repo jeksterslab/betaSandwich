@@ -28,9 +28,10 @@
 #' coef(diff)
 #' vcov(diff)
 #' confint(diff, level = 0.95)
-#' @export
+#'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich diff
+#' @export
 DiffBetaSandwich <- function(object) {
   stopifnot(
     inherits(

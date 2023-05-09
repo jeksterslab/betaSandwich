@@ -55,9 +55,10 @@
 #' coef(std)
 #' vcov(std)
 #' confint(std, level = 0.95)
-#' @export
+#'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich std
+#' @export
 BetaN <- function(object) {
   lm_process <- .ProcessLM(object)
   jcap <- .JacobianVechSigmaWRTThetaStar(

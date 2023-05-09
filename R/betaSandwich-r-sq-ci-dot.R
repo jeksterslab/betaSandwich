@@ -9,6 +9,7 @@
 #'   (R-squared and adjusted R-squared),
 #'   standard errors,
 #'   test statistics,
+#'   degrees of freedom,
 #'   p-values,
 #'   and
 #'   confidence intervals.

@@ -23,13 +23,14 @@ Possible values are
 \code{"hc5"}.}
 
 \item{g1}{Numeric.
-\code{g1} value for \code{type = "hc4m"} or \code{type = "hc5"}.}
+\code{g1} value for \code{type = "hc4m"}.}
 
 \item{g2}{Numeric.
 \code{g2} value for \code{type = "hc4m"}.}
 
 \item{k}{Numeric.
-Constant for \code{type = "hc5"}}
+Constant \code{k} for \code{type = "hc5"}
+\eqn{0 \leq k \leq 1}.}
 }
 \value{
 Returns an object
@@ -66,6 +67,7 @@ summary(std)
 coef(std)
 vcov(std)
 confint(std, level = 0.95)
+
 }
 \references{
 Dudgeon, P. (2017).
@@ -85,7 +87,22 @@ Other Beta Sandwich Functions:
 \code{\link{BetaADF}()},
 \code{\link{BetaN}()},
 \code{\link{DiffBetaSandwich}()},
-\code{\link{RSqBetaSandwich}()}
+\code{\link{RSqBetaSandwich}()},
+\code{\link{coef.betasandwich}()},
+\code{\link{coef.diffbetasandwich}()},
+\code{\link{coef.rsqbetasandwich}()},
+\code{\link{confint.betasandwich}()},
+\code{\link{confint.diffbetasandwich}()},
+\code{\link{confint.rsqbetasandwich}()},
+\code{\link{print.betasandwich}()},
+\code{\link{print.diffbetasandwich}()},
+\code{\link{print.rsqbetasandwich}()},
+\code{\link{summary.betasandwich}()},
+\code{\link{summary.diffbetasandwich}()},
+\code{\link{summary.rsqbetasandwich}()},
+\code{\link{vcov.betasandwich}()},
+\code{\link{vcov.diffbetasandwich}()},
+\code{\link{vcov.rsqbetasandwich}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

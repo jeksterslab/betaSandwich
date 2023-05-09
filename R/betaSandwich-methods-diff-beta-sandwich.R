@@ -21,8 +21,10 @@
 #' std <- BetaHC(object)
 #' diff <- DiffBetaSandwich(std)
 #' print(diff)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 print.diffbetasandwich <- function(x,
                                    alpha = c(0.05, 0.01, 0.001),
                                    digits = 4,
@@ -68,8 +70,10 @@ print.diffbetasandwich <- function(x,
 #' std <- BetaHC(object)
 #' diff <- DiffBetaSandwich(std)
 #' summary(diff)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 summary.diffbetasandwich <- function(object,
                                      alpha = c(0.05, 0.01, 0.001),
                                      digits = 4,
@@ -109,8 +113,10 @@ summary.diffbetasandwich <- function(object,
 #' std <- BetaHC(object)
 #' diff <- DiffBetaSandwich(std)
 #' vcov(diff)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 vcov.diffbetasandwich <- function(object,
                                   ...) {
   return(
@@ -132,8 +138,10 @@ vcov.diffbetasandwich <- function(object,
 #' std <- BetaHC(object)
 #' diff <- DiffBetaSandwich(std)
 #' coef(diff)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 coef.diffbetasandwich <- function(object,
                                   ...) {
   return(
@@ -161,8 +169,10 @@ coef.diffbetasandwich <- function(object,
 #' std <- BetaHC(object)
 #' diff <- DiffBetaSandwich(std)
 #' confint(diff, level = 0.95)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 confint.diffbetasandwich <- function(object,
                                      parm = NULL,
                                      level = 0.95,

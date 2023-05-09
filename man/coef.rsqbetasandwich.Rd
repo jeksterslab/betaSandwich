@@ -25,8 +25,32 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
 rsq <- RSqBetaSandwich(std)
 coef(rsq)
+
+}
+\seealso{
+Other Beta Sandwich Functions: 
+\code{\link{BetaADF}()},
+\code{\link{BetaHC}()},
+\code{\link{BetaN}()},
+\code{\link{DiffBetaSandwich}()},
+\code{\link{RSqBetaSandwich}()},
+\code{\link{coef.betasandwich}()},
+\code{\link{coef.diffbetasandwich}()},
+\code{\link{confint.betasandwich}()},
+\code{\link{confint.diffbetasandwich}()},
+\code{\link{confint.rsqbetasandwich}()},
+\code{\link{print.betasandwich}()},
+\code{\link{print.diffbetasandwich}()},
+\code{\link{print.rsqbetasandwich}()},
+\code{\link{summary.betasandwich}()},
+\code{\link{summary.diffbetasandwich}()},
+\code{\link{summary.rsqbetasandwich}()},
+\code{\link{vcov.betasandwich}()},
+\code{\link{vcov.diffbetasandwich}()},
+\code{\link{vcov.rsqbetasandwich}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan
 }
+\concept{Beta Sandwich Functions}
 \keyword{methods}

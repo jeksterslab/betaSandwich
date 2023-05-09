@@ -20,8 +20,10 @@
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' print(std)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 print.betasandwich <- function(x,
                                alpha = c(0.05, 0.01, 0.001),
                                digits = 4,
@@ -66,8 +68,10 @@ print.betasandwich <- function(x,
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' summary(std)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 summary.betasandwich <- function(object,
                                  alpha = c(0.05, 0.01, 0.001),
                                  digits = 4,
@@ -105,8 +109,10 @@ summary.betasandwich <- function(object,
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' vcov(std)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 vcov.betasandwich <- function(object,
                               ...) {
   return(
@@ -131,8 +137,10 @@ vcov.betasandwich <- function(object,
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' coef(std)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 coef.betasandwich <- function(object,
                               ...) {
   return(
@@ -158,8 +166,10 @@ coef.betasandwich <- function(object,
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 #' std <- BetaHC(object)
 #' confint(std, level = 0.95)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 confint.betasandwich <- function(object,
                                  parm = NULL,
                                  level = 0.95,

@@ -22,8 +22,10 @@
 #' std <- BetaHC(object)
 #' rsq <- RSqBetaSandwich(std)
 #' print(rsq)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 print.rsqbetasandwich <- function(x,
                                   alpha = c(0.05, 0.01, 0.001),
                                   digits = 4,
@@ -70,8 +72,10 @@ print.rsqbetasandwich <- function(x,
 #' std <- BetaHC(object)
 #' rsq <- RSqBetaSandwich(std)
 #' summary(rsq)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 summary.rsqbetasandwich <- function(object,
                                     alpha = c(0.05, 0.01, 0.001),
                                     digits = 4,
@@ -113,8 +117,10 @@ summary.rsqbetasandwich <- function(object,
 #' std <- BetaHC(object)
 #' rsq <- RSqBetaSandwich(std)
 #' vcov(rsq)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 vcov.rsqbetasandwich <- function(object,
                                  ...) {
   return(
@@ -138,8 +144,10 @@ vcov.rsqbetasandwich <- function(object,
 #' std <- BetaHC(object)
 #' rsq <- RSqBetaSandwich(std)
 #' coef(rsq)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 coef.rsqbetasandwich <- function(object,
                                  ...) {
   return(
@@ -171,8 +179,10 @@ coef.rsqbetasandwich <- function(object,
 #' std <- BetaHC(object)
 #' rsq <- RSqBetaSandwich(std)
 #' confint(rsq, level = 0.95)
-#' @export
+#'
+#' @family Beta Sandwich Functions
 #' @keywords methods
+#' @export
 confint.rsqbetasandwich <- function(object,
                                     parm = NULL,
                                     level = 0.95,

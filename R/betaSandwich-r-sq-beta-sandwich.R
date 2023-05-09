@@ -30,9 +30,10 @@
 #' coef(rsq)
 #' vcov(rsq)
 #' confint(rsq, level = 0.95)
-#' @export
+#'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich rsq
+#' @export
 RSqBetaSandwich <- function(object) {
   stopifnot(
     inherits(
