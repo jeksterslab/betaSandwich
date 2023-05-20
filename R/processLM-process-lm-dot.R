@@ -6,7 +6,8 @@
 #'   \describe{
 #'     \item{call}{[lm()] function call.}
 #'     \item{object}{Object of class `lm`.}
-#'     \item{x}{Model matrix (\eqn{Y, X_{1}, \dots, X_{p}} ).}
+#'     \item{X}{Model matrix (\eqn{1, X_{1}, \dots, X_{p}} ).}
+#'     \item{x}{Data matrix (\eqn{Y, X_{1}, \dots, X_{p}} ).}
 #'     \item{varnames}{Variable names of the model matrix.}
 #'     \item{xnames}{Variable names of the regressors in the model matrix.}
 #'     \item{dims}{Dimensions of the model matrix.}
@@ -65,6 +66,7 @@
   # data set used by lm
   y <- object$model[, 1]
   x <- stats::model.matrix(object)
+  X <- x
   x[, 1] <- y
   varnames <- colnames(x)
   varnames[1] <- colnames(object$model)[1]
@@ -168,6 +170,7 @@
       object = object,
       # data
       ## data used by lm
+      X = X, # {1, X} model matrix
       x = x, # {y, X}
       # names
       varnames = varnames,
