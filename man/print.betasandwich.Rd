@@ -4,7 +4,7 @@
 \alias{print.betasandwich}
 \title{Print Method for an Object of Class \code{betasandwich}}
 \usage{
-\method{print}{betasandwich}(x, alpha = c(0.05, 0.01, 0.001), digits = 4, ...)
+\method{print}{betasandwich}(x, alpha = 0.05, digits = 4, ...)
 }
 \arguments{
 \item{x}{Object of class \code{betasandwich}.}

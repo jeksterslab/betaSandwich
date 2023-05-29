@@ -27,7 +27,7 @@
 #' @keywords methods
 #' @export
 print.rsqbetasandwich <- function(x,
-                                  alpha = c(0.05, 0.01, 0.001),
+                                  alpha = 0.05,
                                   digits = 4,
                                   ...) {
   cat("Call:\n")
