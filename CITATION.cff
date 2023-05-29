@@ -51,5 +51,6 @@ contact:
 keywords:
 - confidence-intervals
 - heteroskedasticity-consistent-standard-errors
+- r
 - r-package
 - standardized-regression-coefficients
