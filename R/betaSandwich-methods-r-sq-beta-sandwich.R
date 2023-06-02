@@ -26,7 +26,6 @@
 #' rsq <- RSqBetaSandwich(std)
 #' print(rsq)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 print.rsqbetasandwich <- function(x,
@@ -37,7 +36,7 @@ print.rsqbetasandwich <- function(x,
   base::print(x$call)
   cat(
     "\nMultiple correlation with",
-    toupper(x$fit$args$type),
+    toupper(x$betasandwich$args$type),
     "standard errors:\n"
   )
   base::print(
@@ -79,7 +78,6 @@ print.rsqbetasandwich <- function(x,
 #' rsq <- RSqBetaSandwich(std)
 #' summary(rsq)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 summary.rsqbetasandwich <- function(object,
@@ -90,7 +88,7 @@ summary.rsqbetasandwich <- function(object,
   base::print(object$call)
   cat(
     "\nMultiple correlation with",
-    toupper(object$fit$args$type),
+    toupper(object$betasandwich$args$type),
     "standard errors:\n"
   )
   return(
@@ -124,7 +122,6 @@ summary.rsqbetasandwich <- function(object,
 #' rsq <- RSqBetaSandwich(std)
 #' vcov(rsq)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 vcov.rsqbetasandwich <- function(object,
@@ -151,15 +148,14 @@ vcov.rsqbetasandwich <- function(object,
 #' rsq <- RSqBetaSandwich(std)
 #' coef(rsq)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 coef.rsqbetasandwich <- function(object,
                                  ...) {
   return(
     c(
-      rsq = object$fit$lm_process$rsq[1],
-      adj = object$fit$lm_process$rsq[2]
+      rsq = object$betasandwich$lm_process$rsq[1],
+      adj = object$betasandwich$lm_process$rsq[2]
     )
   )
 }
@@ -186,7 +182,6 @@ coef.rsqbetasandwich <- function(object,
 #' rsq <- RSqBetaSandwich(std)
 #' confint(rsq, level = 0.95)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 confint.rsqbetasandwich <- function(object,

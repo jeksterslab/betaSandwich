@@ -21,7 +21,7 @@ Returns an object of class \code{rsqbetasandwich}
 which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
-\item{fit}{The argument \code{object}.}
+\item{betasandwich}{The argument \code{object}.}
 \item{vcov}{Sampling covariance matrix of
 multiple correlation coefficients
 (R-squared and adjusted R-squared).}
@@ -51,22 +51,7 @@ Other Beta Sandwich Functions:
 \code{\link{BetaADF}()},
 \code{\link{BetaHC}()},
 \code{\link{BetaN}()},
-\code{\link{DiffBetaSandwich}()},
-\code{\link{coef.betasandwich}()},
-\code{\link{coef.diffbetasandwich}()},
-\code{\link{coef.rsqbetasandwich}()},
-\code{\link{confint.betasandwich}()},
-\code{\link{confint.diffbetasandwich}()},
-\code{\link{confint.rsqbetasandwich}()},
-\code{\link{print.betasandwich}()},
-\code{\link{print.diffbetasandwich}()},
-\code{\link{print.rsqbetasandwich}()},
-\code{\link{summary.betasandwich}()},
-\code{\link{summary.diffbetasandwich}()},
-\code{\link{summary.rsqbetasandwich}()},
-\code{\link{vcov.betasandwich}()},
-\code{\link{vcov.diffbetasandwich}()},
-\code{\link{vcov.rsqbetasandwich}()}
+\code{\link{DiffBetaSandwich}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

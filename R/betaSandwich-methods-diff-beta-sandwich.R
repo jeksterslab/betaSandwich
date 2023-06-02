@@ -25,7 +25,6 @@
 #' diff <- DiffBetaSandwich(std)
 #' print(diff)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 print.diffbetasandwich <- function(x,
@@ -36,7 +35,7 @@ print.diffbetasandwich <- function(x,
   base::print(x$call)
   cat(
     "\nDifference between standardized regression coefficients with",
-    toupper(x$fit$args$type),
+    toupper(x$betasandwich$args$type),
     "standard errors:\n"
   )
   base::print(
@@ -77,7 +76,6 @@ print.diffbetasandwich <- function(x,
 #' diff <- DiffBetaSandwich(std)
 #' summary(diff)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 summary.diffbetasandwich <- function(object,
@@ -88,7 +86,7 @@ summary.diffbetasandwich <- function(object,
   base::print(object$call)
   cat(
     "\nDifference between standardized regression coefficients with",
-    toupper(object$fit$args$type),
+    toupper(object$betasandwich$args$type),
     "standard errors:\n"
   )
   return(
@@ -120,7 +118,6 @@ summary.diffbetasandwich <- function(object,
 #' diff <- DiffBetaSandwich(std)
 #' vcov(diff)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 vcov.diffbetasandwich <- function(object,
@@ -145,7 +142,6 @@ vcov.diffbetasandwich <- function(object,
 #' diff <- DiffBetaSandwich(std)
 #' coef(diff)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 coef.diffbetasandwich <- function(object,
@@ -176,7 +172,6 @@ coef.diffbetasandwich <- function(object,
 #' diff <- DiffBetaSandwich(std)
 #' confint(diff, level = 0.95)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 confint.diffbetasandwich <- function(object,

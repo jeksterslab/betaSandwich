@@ -7,7 +7,7 @@
 #'   which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
-#'     \item{fit}{The argument `object`.}
+#'     \item{betasandwich}{The argument `object`.}
 #'     \item{vcov}{Sampling covariance matrix of
 #'       differences of standardized slopes.}
 #'     \item{est}{Vector of
@@ -61,7 +61,7 @@ DiffBetaSandwich <- function(object,
   colnames(vcov) <- rownames(vcov) <- names(object$lm_process$dif_betastar)
   out <- list(
     call = match.call(),
-    fit = object,
+    betasandwich = object,
     args = list(
       alpha = alpha
     ),

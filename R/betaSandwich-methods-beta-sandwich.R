@@ -24,7 +24,6 @@
 #' std <- BetaHC(object)
 #' print(std)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 print.betasandwich <- function(x,
@@ -75,7 +74,6 @@ print.betasandwich <- function(x,
 #' std <- BetaHC(object)
 #' summary(std)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 summary.betasandwich <- function(object,
@@ -116,7 +114,6 @@ summary.betasandwich <- function(object,
 #' std <- BetaHC(object)
 #' vcov(std)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 vcov.betasandwich <- function(object,
@@ -144,7 +141,6 @@ vcov.betasandwich <- function(object,
 #' std <- BetaHC(object)
 #' coef(std)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 coef.betasandwich <- function(object,
@@ -173,7 +169,6 @@ coef.betasandwich <- function(object,
 #' std <- BetaHC(object)
 #' confint(std, level = 0.95)
 #'
-#' @family Beta Sandwich Functions
 #' @keywords methods
 #' @export
 confint.betasandwich <- function(object,

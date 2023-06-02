@@ -8,7 +8,7 @@
 #'   which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
-#'     \item{fit}{The argument `object`.}
+#'     \item{betasandwich}{The argument `object`.}
 #'     \item{vcov}{Sampling covariance matrix of
 #'       multiple correlation coefficients
 #'       (R-squared and adjusted R-squared).}
@@ -46,7 +46,7 @@ RSqBetaSandwich <- function(object,
   )
   est <- c(
     object$lm_process$beta,
-    object$fit$lm_process$rsq[1],
+    object$betasandwich$lm_process$rsq[1],
     .Vech(
       object$lm_process$sigmacap[
         2:object$lm_process$k,
@@ -64,7 +64,7 @@ RSqBetaSandwich <- function(object,
     ],
     q = object$lm_process$q,
     p = object$lm_process$p,
-    rsq = object$fit$lm_process$rsq[1]
+    rsq = object$betasandwich$lm_process$rsq[1]
   )
   if (object$args$type %in% c("mvn", "adf")) {
     acov <- chol2inv(chol(.ACovSEMInverse(
@@ -87,7 +87,7 @@ RSqBetaSandwich <- function(object,
   }
   out <- list(
     call = match.call(),
-    fit = object,
+    betasandwich = object,
     args = list(
       alpha = alpha
     ),
