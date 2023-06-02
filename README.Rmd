@@ -93,7 +93,7 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ### Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
 ```{r}
-BetaHC(object, type = "hc3")
+BetaHC(object, type = "hc3", alpha = 0.05)
 ```
 
 ## Other Features

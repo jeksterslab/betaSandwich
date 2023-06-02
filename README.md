@@ -1,7 +1,7 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2023-05-29
+2023-06-02
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -72,9 +72,9 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ### Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
 ``` r
-BetaHC(object, type = "hc3")
+BetaHC(object, type = "hc3", alpha = 0.05)
 #> Call:
-#> BetaHC(object = object, type = "hc3")
+#> BetaHC(object = object, type = "hc3", alpha = 0.05)
 #> 
 #> Standardized regression slopes with HC3 standard errors:
 #>            est     se      t df      p   2.5%  97.5%

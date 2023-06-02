@@ -17,6 +17,8 @@
 #' @param object Object of class `betasandwich`,
 #'   that is,
 #'   the output of the [BetaHC()], [BetaN()], or [BetaADF()] functions.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
 #'
 #' @examples
 #' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
@@ -32,7 +34,8 @@
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich diff
 #' @export
-DiffBetaSandwich <- function(object) {
+DiffBetaSandwich <- function(object,
+                             alpha = c(0.05, 0.01, 0.001)) {
   stopifnot(
     inherits(
       object,
@@ -59,6 +62,9 @@ DiffBetaSandwich <- function(object) {
   out <- list(
     call = match.call(),
     fit = object,
+    args = list(
+      alpha = alpha
+    ),
     vcov = vcov,
     est = est
   )

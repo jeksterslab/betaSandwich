@@ -4,12 +4,15 @@
 \alias{print.betasandwich}
 \title{Print Method for an Object of Class \code{betasandwich}}
 \usage{
-\method{print}{betasandwich}(x, alpha = 0.05, digits = 4, ...)
+\method{print}{betasandwich}(x, alpha = NULL, digits = 4, ...)
 }
 \arguments{
 \item{x}{Object of class \code{betasandwich}.}
 
-\item{alpha}{Significance level.}
+\item{alpha}{Numeric vector.
+Significance level \eqn{\alpha}.
+If \code{alpha = NULL},
+use the argument \code{alpha} used in \code{x}.}
 
 \item{digits}{Digits to print.}
 

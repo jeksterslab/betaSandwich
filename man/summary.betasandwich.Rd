@@ -4,12 +4,15 @@
 \alias{summary.betasandwich}
 \title{Summary Method for an Object of Class \code{betasandwich}}
 \usage{
-\method{summary}{betasandwich}(object, alpha = c(0.05, 0.01, 0.001), digits = 4, ...)
+\method{summary}{betasandwich}(object, alpha = NULL, digits = 4, ...)
 }
 \arguments{
 \item{object}{Object of class \code{betasandwich}.}
 
-\item{alpha}{Significance level.}
+\item{alpha}{Numeric vector.
+Significance level \eqn{\alpha}.
+If \code{alpha = NULL},
+use the argument \code{alpha} used in \code{object}.}
 
 \item{digits}{Digits to print.}
 

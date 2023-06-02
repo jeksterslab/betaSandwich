@@ -6,10 +6,13 @@
 and the Corresponding Sampling Covariance Matrix
 Using the Asymptotic Distribution-Free Approach}
 \usage{
-BetaADF(object)
+BetaADF(object, alpha = c(0.05, 0.01, 0.001))
 }
 \arguments{
 \item{object}{Object of class \code{lm}.}
+
+\item{alpha}{Numeric vector.
+Significance level \eqn{\alpha}.}
 }
 \value{
 Returns an object

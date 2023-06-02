@@ -35,6 +35,8 @@
 #'   `"hc4"`,
 #'   `"hc4m"`, and
 #'   `"hc5"`.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
 #' @param g1 Numeric.
 #'   `g1` value for `type = "hc4m"`.
 #' @param g2 Numeric.
@@ -71,6 +73,7 @@
 #' @export
 BetaHC <- function(object,
                    type = "hc3",
+                   alpha = c(0.05, 0.01, 0.001),
                    g1 = 1,
                    g2 = 1.5,
                    k = 0.7) {
@@ -144,6 +147,7 @@ BetaHC <- function(object,
     args = list(
       object = object,
       type = type,
+      alpha = alpha,
       g1 = g1,
       g2 = g2,
       k = k

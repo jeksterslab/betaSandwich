@@ -4,12 +4,15 @@
 \alias{print.diffbetasandwich}
 \title{Print Method for an Object of Class \code{diffbetasandwich}}
 \usage{
-\method{print}{diffbetasandwich}(x, alpha = 0.05, digits = 4, ...)
+\method{print}{diffbetasandwich}(x, alpha = NULL, digits = 4, ...)
 }
 \arguments{
 \item{x}{Object of class \code{diffbetasandwich}.}
 
-\item{alpha}{Significance level.}
+\item{alpha}{Numeric vector.
+Significance level \eqn{\alpha}.
+If \code{alpha = NULL},
+use the argument \code{alpha} used in \code{x}.}
 
 \item{digits}{Digits to print.}
 

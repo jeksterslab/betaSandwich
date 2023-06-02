@@ -32,6 +32,8 @@
 #'   }
 #'
 #' @param object Object of class `lm`.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
 #'
 #' @references
 #' Dudgeon, P. (2017).
@@ -59,7 +61,8 @@
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich std
 #' @export
-BetaN <- function(object) {
+BetaN <- function(object,
+                  alpha = c(0.05, 0.01, 0.001)) {
   lm_process <- .ProcessLM(object)
   jcap <- .JacobianVechSigmaWRTThetaStar(
     betastar = lm_process$betastar,
@@ -96,7 +99,8 @@ BetaN <- function(object) {
     call = match.call(),
     args = list(
       object = object,
-      type = "mvn"
+      type = "mvn",
+      alpha = alpha
     ),
     lm_process = lm_process,
     gamma_n = gammacap_mvn,

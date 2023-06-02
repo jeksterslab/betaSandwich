@@ -4,12 +4,15 @@
 \alias{summary.rsqbetasandwich}
 \title{Summary Method for an Object of Class \code{rsqbetasandwich}}
 \usage{
-\method{summary}{rsqbetasandwich}(object, alpha = c(0.05, 0.01, 0.001), digits = 4, ...)
+\method{summary}{rsqbetasandwich}(object, alpha = NULL, digits = 4, ...)
 }
 \arguments{
 \item{object}{Object of class \code{rsqbetasandwich}.}
 
-\item{alpha}{Significance level.}
+\item{alpha}{Numeric vector.
+Significance level \eqn{\alpha}.
+If \code{alpha = NULL},
+use the argument \code{alpha} used in \code{object}.}
 
 \item{digits}{Digits to print.}
 

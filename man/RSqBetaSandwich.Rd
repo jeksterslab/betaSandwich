@@ -6,12 +6,15 @@
 (R-squared and adjusted R-squared)
 and the Corresponding Sampling Covariance Matrix}
 \usage{
-RSqBetaSandwich(object)
+RSqBetaSandwich(object, alpha = c(0.05, 0.01, 0.001))
 }
 \arguments{
 \item{object}{Object of class \code{betasandwich},
 that is,
 the output of the \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaN]{BetaN()}}, or \code{\link[=BetaADF]{BetaADF()}} functions.}
+
+\item{alpha}{Numeric vector.
+Significance level \eqn{\alpha}.}
 }
 \value{
 Returns an object of class \code{rsqbetasandwich}

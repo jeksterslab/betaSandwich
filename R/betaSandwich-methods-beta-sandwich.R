@@ -13,7 +13,10 @@
 #'
 #' @param x Object of class `betasandwich`.
 #' @param ... additional arguments.
-#' @param alpha Significance level.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
+#'   If `alpha = NULL`,
+#'   use the argument `alpha` used in `x`.
 #' @param digits Digits to print.
 #'
 #' @examples
@@ -25,7 +28,7 @@
 #' @keywords methods
 #' @export
 print.betasandwich <- function(x,
-                               alpha = 0.05,
+                               alpha = NULL,
                                digits = 4,
                                ...) {
   cat("Call:\n")
@@ -61,7 +64,10 @@ print.betasandwich <- function(x,
 #'
 #' @param object Object of class `betasandwich`.
 #' @param ... additional arguments.
-#' @param alpha Significance level.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
+#'   If `alpha = NULL`,
+#'   use the argument `alpha` used in `object`.
 #' @param digits Digits to print.
 #'
 #' @examples
@@ -73,7 +79,7 @@ print.betasandwich <- function(x,
 #' @keywords methods
 #' @export
 summary.betasandwich <- function(object,
-                                 alpha = c(0.05, 0.01, 0.001),
+                                 alpha = NULL,
                                  digits = 4,
                                  ...) {
   cat("Call:\n")
@@ -177,10 +183,18 @@ confint.betasandwich <- function(object,
   if (is.null(parm)) {
     parm <- seq_len(object$lm_process$p)
   }
+  ci <- .BetaCI(
+    object = object,
+    alpha = 1 - level[1]
+  )[parm, 6:7, drop = FALSE] # always t
+  varnames <- colnames(ci)
+  varnames <- gsub(
+    pattern = "%",
+    replacement = " %",
+    x = varnames
+  )
+  colnames(ci) <- varnames
   return(
-    .BetaCI(
-      object = object,
-      alpha = 1 - level[1]
-    )[parm, 6:7] # always t
+    ci
   )
 }

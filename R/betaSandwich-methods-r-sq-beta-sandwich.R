@@ -14,7 +14,10 @@
 #'
 #' @param x Object of class `rsqbetasandwich`.
 #' @param ... additional arguments.
-#' @param alpha Significance level.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
+#'   If `alpha = NULL`,
+#'   use the argument `alpha` used in `x`.
 #' @param digits Digits to print.
 #'
 #' @examples
@@ -27,7 +30,7 @@
 #' @keywords methods
 #' @export
 print.rsqbetasandwich <- function(x,
-                                  alpha = 0.05,
+                                  alpha = NULL,
                                   digits = 4,
                                   ...) {
   cat("Call:\n")
@@ -64,7 +67,10 @@ print.rsqbetasandwich <- function(x,
 #'
 #' @param object Object of class `rsqbetasandwich`.
 #' @param ... additional arguments.
-#' @param alpha Significance level.
+#' @param alpha Numeric vector.
+#'   Significance level \eqn{\alpha}.
+#'   If `alpha = NULL`,
+#'   use the argument `alpha` used in `object`.
 #' @param digits Digits to print.
 #'
 #' @examples
@@ -77,7 +83,7 @@ print.rsqbetasandwich <- function(x,
 #' @keywords methods
 #' @export
 summary.rsqbetasandwich <- function(object,
-                                    alpha = c(0.05, 0.01, 0.001),
+                                    alpha = NULL,
                                     digits = 4,
                                     ...) {
   cat("Call:\n")
@@ -190,10 +196,18 @@ confint.rsqbetasandwich <- function(object,
   if (is.null(parm)) {
     parm <- seq_len(2)
   }
+  ci <- .RSqCI(
+    object = object,
+    alpha = 1 - level[1]
+  )[parm, 6:7, drop = FALSE]
+  varnames <- colnames(ci)
+  varnames <- gsub(
+    pattern = "%",
+    replacement = " %",
+    x = varnames
+  )
+  colnames(ci) <- varnames
   return(
-    .RSqCI(
-      object = object,
-      alpha = 1 - level[1]
-    )[parm, 6:7]
+    ci
   )
 }

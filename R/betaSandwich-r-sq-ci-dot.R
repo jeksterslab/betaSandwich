@@ -16,18 +16,24 @@
 #'
 #' @param object Object of class `rsqbetasandwich`.
 #' @param alpha Numeric vector.
-#'   Significance level.
+#'   Significance level \eqn{\alpha}.
 #'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich ci rsq internal
 #' @noRd
 .RSqCI <- function(object,
-                   alpha = c(0.05, 0.01, 0.001)) {
+                   alpha = NULL) {
   stopifnot(
     inherits(
       object,
       "rsqbetasandwich"
     )
+  )
+  if (is.null(alpha)) {
+    alpha <- object$args$alpha
+  }
+  stopifnot(
+    all(alpha > 0 & alpha < 1)
   )
   return(
     .CIWald(

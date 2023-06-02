@@ -13,18 +13,24 @@
 #'
 #' @param object Object of class `difbetadelta`.
 #' @param alpha Numeric vector.
-#'   Significance level.
+#'   Significance level \eqn{\alpha}.
 #'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich dif ci internal
 #' @noRd
 .DiffBetaCI <- function(object,
-                        alpha = c(0.05, 0.01, 0.001)) {
+                        alpha = NULL) {
   stopifnot(
     inherits(
       object,
       "diffbetasandwich"
     )
+  )
+  if (is.null(alpha)) {
+    alpha <- object$args$alpha
+  }
+  stopifnot(
+    all(alpha > 0 & alpha < 1)
   )
   return(
     .CIWald(
