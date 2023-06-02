@@ -20,7 +20,8 @@ Returns an object of class \code{diffbetasandwich}
 which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
-\item{betasandwich}{The argument \code{object}.}
+\item{fit}{The argument \code{object}.}
+\item{args}{Function arguments.}
 \item{vcov}{Sampling covariance matrix of
 differences of standardized slopes.}
 \item{est}{Vector of

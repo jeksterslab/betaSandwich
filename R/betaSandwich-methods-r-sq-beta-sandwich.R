@@ -36,7 +36,7 @@ print.rsqbetasandwich <- function(x,
   base::print(x$call)
   cat(
     "\nMultiple correlation with",
-    toupper(x$betasandwich$args$type),
+    toupper(x$fit$args$type),
     "standard errors:\n"
   )
   base::print(
@@ -88,7 +88,7 @@ summary.rsqbetasandwich <- function(object,
   base::print(object$call)
   cat(
     "\nMultiple correlation with",
-    toupper(object$betasandwich$args$type),
+    toupper(object$fit$args$type),
     "standard errors:\n"
   )
   return(
@@ -154,8 +154,8 @@ coef.rsqbetasandwich <- function(object,
                                  ...) {
   return(
     c(
-      rsq = object$betasandwich$lm_process$rsq[1],
-      adj = object$betasandwich$lm_process$rsq[2]
+      rsq = object$fit$lm_process$rsq[1],
+      adj = object$fit$lm_process$rsq[2]
     )
   )
 }

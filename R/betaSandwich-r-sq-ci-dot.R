@@ -37,12 +37,12 @@
   )
   return(
     .CIWald(
-      est = object$betasandwich$lm_process$rsq,
+      est = object$fit$lm_process$rsq,
       se = sqrt(diag(.RSqCov(object))),
       theta = 0,
       alpha = alpha,
       z = FALSE,
-      df = object$betasandwich$lm_process$df
+      df = object$fit$lm_process$df
     )
   )
 }

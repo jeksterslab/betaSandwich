@@ -17,17 +17,17 @@
     )
   )
   vcov <- object$vcov[
-    object$betasandwich$lm_process$k,
-    object$betasandwich$lm_process$k,
+    object$fit$lm_process$k,
+    object$fit$lm_process$k,
     drop = FALSE
   ]
   jcap <- c(
     1,
     (
       -1 * (
-        1 - object$betasandwich$lm_process$n
+        1 - object$fit$lm_process$n
       ) / (
-        object$betasandwich$lm_process$n - object$betasandwich$lm_process$k
+        object$fit$lm_process$n - object$fit$lm_process$k
       )
     )
   )

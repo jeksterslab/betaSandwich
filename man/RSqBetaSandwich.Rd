@@ -21,7 +21,8 @@ Returns an object of class \code{rsqbetasandwich}
 which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
-\item{betasandwich}{The argument \code{object}.}
+\item{fit}{The argument \code{object}.}
+\item{args}{Function arguments.}
 \item{vcov}{Sampling covariance matrix of
 multiple correlation coefficients
 (R-squared and adjusted R-squared).}
