@@ -15,6 +15,7 @@
 ^\.data-.*$
 ^\.Rproj\.user$
 ^\.covrignore$
+^\.dotfiles$
 ^\.git.*$
 ^\.library$
 ^\.lintr$

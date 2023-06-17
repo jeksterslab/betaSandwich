@@ -67,6 +67,9 @@ make-*
 # sh
 .clone.sh
 
+# dotfiles
+.dotfiles
+
 # library
 .library
 

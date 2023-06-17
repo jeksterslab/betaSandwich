@@ -1,6 +1,6 @@
-# betaSandwich 1.0.4.9000
+# betaSandwich 1.0.5
 
-Latest development version.
+* Added degrees of freedom to the table of results.
 
 # betaSandwich 1.0.4
 

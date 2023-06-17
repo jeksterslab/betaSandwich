@@ -8,7 +8,7 @@ message: 'To cite package "betaSandwich" in publications use:'
 type: software
 license: MIT
 title: 'betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients'
-version: 1.0.4.9000
+version: 1.0.5
 doi: 10.1080/00273171.2023.2201277
 abstract: Generates robust confidence intervals for standardized regression coefficients
   using heteroskedasticity-consistent standard errors for models fitted by lm() as
@@ -39,7 +39,7 @@ preferred-citation:
   year: '2023'
   doi: 10.1080/00273171.2023.2201277
   journal: Multivariate Behavioral Research
-  notes: R package version 1.0.4.9000
+  notes: R package version 1.0.5
 repository: https://packagemanager.rstudio.com/all/__linux__/focal/latest/
 repository-code: https://github.com/jeksterslab/betaSandwich
 url: https://jeksterslab.github.io/betaSandwich/

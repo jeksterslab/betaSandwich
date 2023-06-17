@@ -1,7 +1,7 @@
-.PHONY: build all git ssh term termall project pkg tinytex clean cleanpkg cleantinytex cleanall coverage lint
+.PHONY: build all git ssh term termtmux termxterm dotfiles project pkg tinytex clean cleanpkg cleantinytex cleanall coverage lint
 
 build: pkg clean
-	@echo Installing TinyTex...
+	@echo TinyTex...
 	@Rscript -e "rProject::TinyTex(\"${PWD}\", force = FALSE)"
 	@echo Styling...
 	@Rscript -e "rProject::Style(\"${PWD}\")"
@@ -42,11 +42,18 @@ term:
 	@echo Building .vimrc...
 	@(cd .setup/vim && make)
 
-termall: term
+termtmux: term project
+	@Rscript -e "rProject::Tmux()"
 	@echo Building .tmux.conf...
 	@(cd .setup/tmux && make)
+
+termxterm: term
 	@echo Building .Xresources...
 	@(cd .setup/xterm && make)
+
+dotfiles:
+	@echo Building dotfiles...
+	@bash .dotfiles
 
 project:
 	@echo Building project...
@@ -68,6 +75,10 @@ cleanpkg:
 	@echo Cleaning packages...
 	@Rscript -e "rProject::CleanPkg(\"${PWD}\")"
 
+cleanproj:
+	@echo Cleaning project...
+	@Rscript -e "rProject::CleanProj(\"${PWD}\")"
+
 cleantinytex:
 	@echo Cleaning TinyTex...
 	@Rscript -e "rProject::CleanTinyTex(\"${PWD}\")"
@@ -84,3 +95,12 @@ lint:
 
 latex:
 	@Rscript -e "rProject::LatexMake(\"${PWD}\")"
+
+# make all
+# make git
+# make ssh
+# make term
+# make termtmux
+# make termxterm
+# - for local build
+# - not for git clone
