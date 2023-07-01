@@ -33,3 +33,4 @@ ignore <- "^vignettes$"
 
 git_user <- "jeksterslab"
 git_email <- "learn.jeksterslab@gmail.com"
+r_email <- "r.jeksterslab@gmail.com"

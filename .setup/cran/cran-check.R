@@ -3,7 +3,7 @@ CRANCheck <- function() {
   root <- rprojroot::is_rstudio_project
   path <- dirname(
     root$find_file(
-      project.Rproj
+      "project.Rproj"
     )
   )
   source(
@@ -15,6 +15,6 @@ CRANCheck <- function() {
   )
   rhub::check_for_cran(
     path = path,
-    email = git_email
+    email = r_email
   )
 }
