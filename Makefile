@@ -1,4 +1,6 @@
-.PHONY: build all git ssh term termtmux termxterm dotfiles project pkg tinytex clean cleanpkg cleantinytex cleanall coverage lint
+.PHONY: all build local localforce dotfiles project pkg tinytex clean cleanpkg cleantinytex cleanall coverage lint qmd
+
+all: build latex
 
 build: pkg clean
 	@echo TinyTex...
@@ -24,52 +26,38 @@ build: pkg clean
 	@echo Building CITATION.cff...
 	@Rscript -e "rProject::CFF(\"${PWD}\")"
 
-all: git ssh term build latex
-
 cleanall: clean cleanpkg cleantinytex
-
-git:
-	@echo Setting git...
-	@(cd .setup/git && make)
-
-ssh:
-	@echo Setting ssh keys...
-	@(cd .setup/ssh && make)
-
-term:
-	@echo Building .bashrc...
-	@(cd .setup/bash && make)
-	@echo Building .vimrc...
-	@(cd .setup/vim && make)
-
-termtmux: term project
-	@Rscript -e "rProject::Tmux()"
-	@echo Building .tmux.conf...
-	@(cd .setup/tmux && make)
-
-termxterm: term
-	@echo Building .Xresources...
-	@(cd .setup/xterm && make)
 
 dotfiles:
 	@echo Building dotfiles...
-	@bash .dotfiles
+	@Rscript -e "source('tools/project.R') ; rProject::ConfigFiles(git_user)"
 
 project:
 	@echo Building project...
-	@Rscript make-project.R ${PWD}
+	@Rscript tools/make-project.R ${PWD}
 
 pkg: project
 	@echo Installing packages...
-	@Rscript make-packages.R ${PWD}
+	@Rscript tools/make-packages.R ${PWD}
 
 tinytex:
 	@echo Installing TinyTex...
 	@Rscript -e "rProject::TinyTex(\"${PWD}\", force = TRUE)"
 
+local: project
+	@echo Installing local applications...
+	@Rscript -e "rProject::InstallLocal(all = TRUE)"
+	@Rscript tools/make-config.R ${PWD}
+
+localforce: project
+	@echo Installing local applications...
+	@Rscript -e "rProject::InstallLocal(all = TRUE, force = TRUE)"
+	@Rscript tools/make-config.R ${PWD}
+
 clean:
 	@echo Cleaning...
 	@Rscript -e "rProject::Clean(\"${PWD}\")"
+	@rm -rf "${PWD}/TEMPDIR.*"
 
 cleanpkg:
 	@echo Cleaning packages...
@@ -96,11 +84,6 @@ lint:
 latex:
 	@Rscript -e "rProject::LatexMake(\"${PWD}\")"
 
-# make all
-# make git
-# make ssh
-# make term
-# make termtmux
-# make termxterm
-# - for local build
-# - not for git clone
+qmd: lint
+	@Rscript qmd/r-script/prerender.R
+	@quarto render ${PWD}

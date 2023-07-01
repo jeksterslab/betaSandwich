@@ -1,8 +1,12 @@
 # betaSandwich 1.0.5
 
+## Patch
+
 * Added degrees of freedom to the table of results.
 
 # betaSandwich 1.0.4
+
+## Patch
 
 * Added the `DiffBetaSandwich()` and the `RSqBetaSandwich()` functions.
 
