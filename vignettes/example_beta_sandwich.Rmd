@@ -2,6 +2,11 @@
 title: "betaSandwich: Example Using the BetaHC Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
+bibliography: "vignettes.bib"
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
+nocite: |
+  @Pesigan-Sun-Cheung-2023
+  @Dudgeon-2017
 vignette: >
   %\VignetteIndexEntry{betaSandwich: Example Using the BetaHC Function}
   %\VignetteEngine{knitr::rmarkdown}
@@ -15,21 +20,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-To cite `betaSandwich` in publications, please use:
-
-Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
-betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.
-*Multivariate Behavioral Research*.
-https://doi.org/10.1080/00273171.2023.2201277
-
 In this example, a multiple regression model is fitted
 using program quality ratings (`QUALITY`) as the regressand/outcome variable
 and number of published articles attributed to the program faculty members (`NARTIC`),
 percent of faculty members holding research grants (`PCTGRT`), and
 percentage of program graduates who received support (`PCTSUPP`) as regressor/predictor variables
-using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982).
+using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA [@NationalResearchCouncil-1982].
 Robust confidence intervals for the standardized regression coefficients are generated
-using the `BetaHC()` function from the `betaSandwich` package following Dudgeon (2017).^[The `BetaN()`, and `BetaADF()` functions are also available using the normal-theory and the asymptotic distribution-free approaches, respectively.]
+using the `BetaHC()` function from the `betaSandwich` package following @Dudgeon-2017.^[The `BetaN()`, and `BetaADF()` functions are also available using the normal-theory and the asymptotic distribution-free approaches, respectively.]
 
 ```{r}
 #| message = FALSE

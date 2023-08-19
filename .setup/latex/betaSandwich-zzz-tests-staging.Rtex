@@ -1,0 +1,162 @@
+\documentclass{article}
+
+\input{.setup/latex/preamble/preamble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLATEX APA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%% begin.rcode
+% #| label = "root",
+% #| include = FALSE
+% root <- rprojroot::is_rstudio_project
+%% end.rcode
+
+%% begin.rcode
+% #| label = "knitr",
+% #| include = FALSE,
+% #| file = root$find_file(
+% #|   ".setup",
+% #|   "latex",
+% #|   "r-scripts",
+% #|   "knitr.R"
+% #| )
+%% end.rcode
+
+%% begin.rcode
+% #| label = "biblatex",
+% #| echo = FALSE,
+% #| message = FALSE,
+% #| warning = FALSE,
+% #| results = "asis"
+% if (require("rProject")) {
+%   Bib(
+%     path = dirname(
+%       root$find_file(
+%         "project.Rproj"
+%       )
+%     )
+%   )
+%   cat(
+%     .PreambleBiblatex(
+%       path = root$find_file(
+%         ".setup",
+%         "latex",
+%         "bib"
+%       )
+%     )
+%   )
+% } else {
+%   cat(
+%     .PreambleBiblatexCombined(
+%       path = root$find_file(
+%         ".setup",
+%         "latex",
+%         "bib"
+%       ),
+%       output_path = root$find_file(
+%         ".setup",
+%         "latex"
+%       )
+%     )
+%   )
+% }
+%% end.rcode
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1}
+
+\title{betaSandwich: Staging}
+\author{Ivan Jacob Agaloos Pesigan}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+Staging...
+
+\nocite{Lib-R-Manual-2023}
+
+\printbibliography
+
+\section{Standardized Slopes}
+
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% mvn <- BetaN(object)
+% adf <- BetaADF(object)
+% hc3 <- BetaHC(object, type = "hc3")
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
+%% end.rcode
+
+\section{Multiple Correlation}
+
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% std_mvn <- BetaN(object)
+% std_adf <- BetaADF(object)
+% std_hc3 <- BetaHC(object, type = "hc3")
+% mvn <- RSqBetaSandwich(std_mvn)
+% adf <- RSqBetaSandwich(std_adf)
+% hc3 <- RSqBetaSandwich(std_hc3)
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
+%% end.rcode
+
+\section{Differences of Standardized Slopes}
+
+%% begin.rcode
+% df <- nas1982
+% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% std_mvn <- BetaN(object)
+% std_adf <- BetaADF(object)
+% std_hc3 <- BetaHC(object, type = "hc3")
+% mvn <- DiffBetaSandwich(std_mvn)
+% adf <- DiffBetaSandwich(std_adf)
+% hc3 <- DiffBetaSandwich(std_hc3)
+% summary(mvn)
+% summary(adf)
+% summary(hc3)
+% coef(mvn)
+% coef(adf)
+% coef(hc3)
+% vcov(mvn)
+% vcov(adf)
+% vcov(hc3)
+% confint(mvn)
+% confint(adf)
+% confint(hc3)
+%% end.rcode
+
+\nocite{RCoreTeam-2023}
+
+\nocite{Pesigan-Sun-Cheung-2023}
+
+\printbibliography
+
+\end{document}

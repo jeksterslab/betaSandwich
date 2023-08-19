@@ -2,6 +2,12 @@
 title: "betaSandwich: Example Using the DiffBetaSandwich Function"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
+bibliography: "vignettes.bib"
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
+nocite: |
+  @Pesigan-Sun-Cheung-2023
+  @Dudgeon-2017
+  @NationalResearchCouncil-1982
 vignette: >
   %\VignetteIndexEntry{betaSandwich: Example Using the DiffBetaSandwich Function}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,13 +20,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-
-To cite `betaSandwich` in publications, please use:
-
-Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
-betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.
-*Multivariate Behavioral Research*.
-https://doi.org/10.1080/00273171.2023.2201277
 
 Confidence intervals for
 differences of standardized regression slopes
@@ -131,19 +130,3 @@ confint(hc3, level = 0.95)
 ```
 
 ## References
-
-Dudgeon, P. (2017).
-Some improvements in confidence intervals for standardized regression coefficients. 
-*Psychometrika*, *82*(4), 928–951.
-https://doi.org/10.1007/s11336-017-9563-z
-
-National Research Council. (1982).
-*An assessment of research-doctorate programs in the United States: Social and behavioral sciences*.
-https://doi.org/10.17226/9781.
-Reproduced with permission from the National Academy of Sciences,
-Courtesy of the National Academies Press, Washington, D.C.
-
-Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
-betaDelta and betaSandwich: Confidence intervals for standardized regression coefficients in R.
-*Multivariate Behavioral Research*.
-https://doi.org/10.1080/00273171.2023.2201277

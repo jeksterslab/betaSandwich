@@ -1,7 +1,7 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2023-07-08
+2023-08-19
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -11,9 +11,20 @@ Status](https://www.r-pkg.org/badges/version/betaSandwich)](https://cran.r-proje
 [![R-Universe
 Status](https://jeksterslab.r-universe.dev/badges/betaSandwich)](https://jeksterslab.r-universe.dev)
 [![DOI](https://zenodo.org/badge/DOI/10.1080/00273171.2023.2201277.svg)](https://doi.org/10.1080/00273171.2023.2201277)
-[![R-CMD-check](https://github.com/jeksterslab/betaSandwich/workflows/R-CMD-check/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions)
-[![test-coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yaml)
-[![lint](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yaml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yaml)
+[![Make
+Project](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml)
+[![R-CMD-check](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml)
+[![R Package Test
+Coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml)
+[![Lint R
+Package](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml)
+[![Package Website (GitHub
+Pages)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml)
+[![Compile
+LaTeX](https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml)
+[![Shell
+Check](https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml)
+[![pages-build-deployment](https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment)
 [![codecov](https://codecov.io/gh/jeksterslab/betaSandwich/branch/main/graph/badge.svg?token=KVLUET3DJ6)](https://codecov.io/gh/jeksterslab/betaSandwich)
 <!-- badges: end -->
 
@@ -89,34 +100,46 @@ The package can also be used to generate confidence intervals for
 R-squared, adjusted R-squared, and differences of standardized
 regression coefficients.
 
-## Citation
-
-To cite `betaSandwich` in publications, please use:
-
-Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023). betaDelta and
-betaSandwich: Confidence intervals for standardized regression
-coefficients in R. *Multivariate Behavioral Research*.
-<https://doi.org/10.1080/00273171.2023.2201277>
-
-## References
-
-Dudgeon, P. (2017). Some improvements in confidence intervals for
-standardized regression coefficients. *Psychometrika*, *82*(4), 928–951.
-<https://doi.org/10.1007/s11336-017-9563-z>
-
-National Research Council. (1982). *An assessment of research-doctorate
-programs in the United States: Social and behavioral sciences*.
-<https://doi.org/10.17226/9781>. Reproduced with permission from the
-National Academy of Sciences, Courtesy of the National Academies Press,
-Washington, D.C.
-
-Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023). betaDelta and
-betaSandwich: Confidence intervals for standardized regression
-coefficients in R. *Multivariate Behavioral Research*.
-<https://doi.org/10.1080/00273171.2023.2201277>
-
 ## Documentation
 
 See [GitHub
 Pages](https://jeksterslab.github.io/betaSandwich/index.html) for
 package documentation.
+
+## Citation
+
+To cite `betaSandwich` in publications, please cite Pesigan et al.
+(2023).
+
+## References
+
+<div id="refs" class="references csl-bib-body hanging-indent"
+line-spacing="2">
+
+<div id="ref-Dudgeon-2017" class="csl-entry">
+
+Dudgeon, P. (2017). Some improvements in confidence intervals for
+standardized regression coefficients. *Psychometrika*, *82*(4), 928–951.
+<https://doi.org/10.1007/s11336-017-9563-z>
+
+</div>
+
+<div id="ref-NationalResearchCouncil-1982" class="csl-entry">
+
+National Research Council. (1982). *An assessment of research-doctorate
+programs in the United States: Social and behavioral sciences*. National
+Academies Press. <https://doi.org/10.17226/9781>
+
+</div>
+
+<div id="ref-Pesigan-Sun-Cheung-2023" class="csl-entry">
+
+Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
+<span class="nocase">betaDelta</span> and
+<span class="nocase">betaSandwich</span>: Confidence intervals for
+standardized regression coefficients in R. *Multivariate Behavioral
+Research*, 1–4. <https://doi.org/10.1080/00273171.2023.2201277>
+
+</div>
+
+</div>
