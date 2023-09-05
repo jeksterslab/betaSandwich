@@ -83,12 +83,89 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-Generates robust confidence intervals for standardized regression coefficients
-    using heteroskedasticity-consistent standard errors for models fitted by lm()
-    as described in Dudgeon (2017) &lt;<a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link">doi:10.1007/s11336-017-9563-z</a>&gt;.
-    A description of the package and code examples
-    are presented in Pesigan, Sun, and Cheung (2023) &lt;<a href="https://doi.org/10.1080/00273171.2023.2201277" class="external-link">doi:10.1080/00273171.2023.2201277</a>&gt;.
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="betasandwich">betaSandwich<a class="anchor" aria-label="anchor" href="#betasandwich"></a>
+</h1></div>
+<p>Ivan Jacob Agaloos Pesigan 2023-09-05</p>
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
+
+<div class="section level2">
+<h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
+</h2>
+<p>Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> as described in Dudgeon (2017: <a href="http://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">http://doi.org/10.1007/s11336-017-9563-z</a>). A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023: <a href="https://doi.org/10.1080/00273171.2023.2201277" class="external-link uri">https://doi.org/10.1080/00273171.2023.2201277</a>).</p>
+</div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the CRAN release of <code>betaSandwich</code> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"betaSandwich"</span><span class="op">)</span></span></code></pre></div>
+<p>You can install the development version of <code>betaSandwich</code> from <a href="https://github.com/jeksterslab/betaSandwich">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"jeksterslab/betaSandwich"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>In this example, a multiple regression model is fitted using program quality ratings (<code>QUALITY</code>) as the regressand/outcome variable and number of published articles attributed to the program faculty members (<code>NARTIC</code>), percent of faculty members holding research grants (<code>PCTGRT</code>), and percentage of program graduates who received support (<code>PCTSUPP</code>) as regressor/predictor variables using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982). Robust confidence intervals for the standardized regression coefficients are generated using the <code><a href="reference/BetaHC.html">BetaHC()</a></code> function from the <code>betaSandwich</code> package following Dudgeon (2017).</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaSandwich">betaSandwich</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">betaSandwich</span><span class="fu">::</span><span class="va"><a href="reference/nas1982.html">nas1982</a></span></span></code></pre></div>
+<div class="section level3">
+<h3 id="fit-the-regression-model-using-the-lm-function">Fit the regression model using the <code>lm()</code> function.<a class="anchor" aria-label="anchor" href="#fit-the-regression-model-using-the-lm-function"></a>
+</h3>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="estimate-the-standardized-regression-slopes-and-the-corresponding-robust-sampling-covariance-matrix">Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-standardized-regression-slopes-and-the-corresponding-robust-sampling-covariance-matrix"></a>
+</h3>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/BetaHC.html">BetaHC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; BetaHC(object = object, type = "hc3", alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Standardized regression slopes with HC3 standard errors:</span></span>
+<span><span class="co">#&gt;            est     se      t df      p   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; NARTIC  0.4951 0.0786 6.3025 42 0.0000 0.3366 0.6537</span></span>
+<span><span class="co">#&gt; PCTGRT  0.3915 0.0818 4.7831 42 0.0000 0.2263 0.5567</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.2632 0.0855 3.0786 42 0.0037 0.0907 0.4358</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="other-features">Other Features<a class="anchor" aria-label="anchor" href="#other-features"></a>
+</h2>
+<p>The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, and differences of standardized regression coefficients.</p>
+</div>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
+<p>See <a href="https://jeksterslab.github.io/betaSandwich/index.html" class="external-link">GitHub Pages</a> for package documentation.</p>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>To cite <code>betaSandwich</code> in publications, please cite Pesigan et al. (2023).</p>
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" line-spacing="2">
+<div id="ref-Dudgeon-2017" class="csl-entry">
+Dudgeon, P. (2017). Some improvements in confidence intervals for standardized regression coefficients. <em>Psychometrika</em>, <em>82</em>(4), 928–951. <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">https://doi.org/10.1007/s11336-017-9563-z</a>
+</div>
+<div id="ref-NationalResearchCouncil-1982" class="csl-entry">
+National Research Council. (1982). <em>An assessment of research-doctorate programs in the United States: Social and behavioral sciences</em>. National Academies Press. <a href="https://doi.org/10.17226/9781" class="external-link uri">https://doi.org/10.17226/9781</a>
+</div>
+<div id="ref-Pesigan-Sun-Cheung-2023" class="csl-entry">
+Pesigan, I. J. A., Sun, R. W., &amp; Cheung, S. F. (2023). <span class="nocase">betaDelta</span> and <span class="nocase">betaSandwich</span>: Confidence intervals for standardized regression coefficients in R. <em>Multivariate Behavioral Research</em>, 1–4. <a href="https://doi.org/10.1080/00273171.2023.2201277" class="external-link uri">https://doi.org/10.1080/00273171.2023.2201277</a>
+</div>
+</div>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -121,7 +198,23 @@ Generates robust confidence intervals for standardized regression coefficients
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=betaSandwich" class="external-link"><img src="https://www.r-pkg.org/badges/version/betaSandwich" alt="CRAN Status"></a></li>
+<li><a href="https://jeksterslab.r-universe.dev" class="external-link"><img src="https://jeksterslab.r-universe.dev/badges/betaSandwich" alt="R-Universe Status"></a></li>
+<li><a href="https://doi.org/10.1080/00273171.2023.2201277" class="external-link"><img src="https://zenodo.org/badge/DOI/10.1080/00273171.2023.2201277.svg" alt="DOI"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml/badge.svg" alt="Make Project"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml/badge.svg" alt="R Package Test Coverage"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml/badge.svg" alt="Lint R Package"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml/badge.svg" alt="Package Website (GitHub Pages)"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml/badge.svg" alt="Compile LaTeX"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml/badge.svg" alt="Shell Check"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a></li>
+<li><a href="https://codecov.io/gh/jeksterslab/betaSandwich" class="external-link"><img src="https://codecov.io/gh/jeksterslab/betaSandwich/branch/main/graph/badge.svg?token=KVLUET3DJ6" alt="codecov"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
