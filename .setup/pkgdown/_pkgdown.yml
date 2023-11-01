@@ -24,3 +24,13 @@ reference:
 - title: Data
   contents:
   - has_keyword("data")
+
+articles:
+- title: Examples
+  contents:
+  - example-beta-sandwich
+  - example-diff-beta-sandwich
+  - example-r-sq-beta-sandwich
+- title: Session Information
+  contents:
+  - session/session
