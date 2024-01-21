@@ -1,0 +1,56 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.5.0
+# See also: https://docs.ropensci.org/cffr/
+# -----------------------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "betaSandwich" in publications use:'
+type: software
+license: MIT
+title: 'betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients'
+version: 1.0.6.9000
+doi: 10.1080/00273171.2023.2201277
+abstract: Generates robust confidence intervals for standardized regression coefficients
+  using heteroskedasticity-consistent standard errors for models fitted by lm() as
+  described in Dudgeon (2017) <doi:10.1007/s11336-017-9563-z>. A description of the
+  package and code examples are presented in Pesigan, Sun, and Cheung (2023) <doi:10.1080/00273171.2023.2201277>.
+authors:
+- family-names: Pesigan
+  given-names: Ivan Jacob Agaloos
+  email: r.jeksterslab@gmail.com
+  orcid: https://orcid.org/0000-0003-4818-8420
+preferred-citation:
+  type: article
+  title: 'betaDelta and betaSandwich: Confidence intervals for standardized regression
+    coefficients in R'
+  authors:
+  - family-names: Pesigan
+    given-names: Ivan Jacob Agaloos
+    email: r.jeksterslab@gmail.com
+    orcid: https://orcid.org/0000-0003-4818-8420
+  - family-names: Sun
+    given-names: Rongwei
+    email: irissun_s@hotmail.com
+    orcid: https://orcid.org/0000-0003-0034-1422
+  - family-names: Cheung
+    given-names: Shu Fai
+    email: shufai.cheung@gmail.com
+    orcid: https://orcid.org/0000-0002-9871-9448
+  year: '2023'
+  doi: 10.1080/00273171.2023.2201277
+  journal: Multivariate Behavioral Research
+  notes: R package version 1.0.6.9000
+repository: https://packagemanager.rstudio.com/all/__linux__/jammy/latest/
+repository-code: https://github.com/jeksterslab/betaSandwich
+url: https://jeksterslab.github.io/betaSandwich/
+contact:
+- family-names: Pesigan
+  given-names: Ivan Jacob Agaloos
+  email: r.jeksterslab@gmail.com
+  orcid: https://orcid.org/0000-0003-4818-8420
+keywords:
+- confidence-intervals
+- heteroskedasticity-consistent-standard-errors
+- r
+- r-package
+- standardized-regression-coefficients
