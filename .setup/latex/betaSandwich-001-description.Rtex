@@ -78,6 +78,8 @@
 Generates robust confidence intervals for standardized regression coefficients
 using heteroskedasticity-consistent standard errors for models fitted by \texttt{lm()}
 as described in \Textcite{Dudgeon-2017}.
+The package can also be used to generate confidence intervals for R-squared,
+adjusted R-squared, and differences of standardized regression coefficients.
 A description of the package and code examples
 are presented in \Textcite{Pesigan-Sun-Cheung-2023}.
 

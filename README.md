@@ -1,7 +1,7 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2024-04-09
+2024-04-11
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -33,9 +33,11 @@ Check](https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.
 Generates robust confidence intervals for standardized regression
 coefficients using heteroskedasticity-consistent standard errors for
 models fitted by `lm()` as described in Dudgeon (2017:
-<http://doi.org/10.1007/s11336-017-9563-z>). A description of the
-package and code examples are presented in Pesigan, Sun, and Cheung
-(2023: <https://doi.org/10.1080/00273171.2023.2201277>).
+<http://doi.org/10.1007/s11336-017-9563-z>). The package can also be
+used to generate confidence intervals for R-squared, adjusted R-squared,
+and differences of standardized regression coefficients. A description
+of the package and code examples are presented in Pesigan, Sun, and
+Cheung (2023: <https://doi.org/10.1080/00273171.2023.2201277>).
 
 ## Installation
 

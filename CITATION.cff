@@ -1,7 +1,7 @@
-# -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v1.0.0
+# --------------------------------------------
+# CITATION file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
-# -----------------------------------------------------------
+# --------------------------------------------
  
 cff-version: 1.2.0
 message: 'To cite package "betaSandwich" in publications use:'
@@ -12,9 +12,10 @@ version: 1.0.6.9000
 doi: 10.1080/00273171.2023.2201277
 abstract: Generates robust confidence intervals for standardized regression coefficients
   using heteroskedasticity-consistent standard errors for models fitted by lm() as
-  described in Dudgeon (2017) <https://doi.org/10.1007/s11336-017-9563-z>. A description
-  of the package and code examples are presented in Pesigan, Sun, and Cheung (2023)
-  <https://doi.org/10.1080/00273171.2023.2201277>.
+  described in Dudgeon (2017) <https://doi.org/10.1007/s11336-017-9563-z>. The package
+  can also be used to generate confidence intervals for R-squared, adjusted R-squared,
+  and differences of standardized regression coefficients. A description of the package
+  and code examples are presented in Pesigan, Sun, and Cheung (2023) <https://doi.org/10.1080/00273171.2023.2201277>.
 authors:
 - family-names: Pesigan
   given-names: Ivan Jacob Agaloos
@@ -55,3 +56,4 @@ keywords:
 - r
 - r-package
 - standardized-regression-coefficients
+
