@@ -18,6 +18,3 @@
 ^quarto$
 ^scripts$
 ^vignettes$
-^betaSandwich\.Rcheck$
-^betaSandwich.*\.tar\.gz$
-^betaSandwich.*\.tgz$
