@@ -1,6 +1,6 @@
 Package: betaSandwich
 Title: Robust Confidence Intervals for Standardized Regression Coefficients
-Version: 1.0.6.9000
+Version: 1.0.7
 Authors@R: 
     person(given = "Ivan Jacob Agaloos",
            family = "Pesigan",
