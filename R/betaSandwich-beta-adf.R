@@ -41,13 +41,13 @@
 #' Asymptotically distribution-free methods
 #' for the analysis of covariance structures.
 #' *British Journal of Mathematical and Statistical Psychology*,
-#' *37*(1), 62–83.
+#' *37*(1), 62<U+2013>83.
 #' \doi{10.1111/j.2044-8317.1984.tb00789.x}
 #'
 #' Dudgeon, P. (2017).
 #' Some improvements in confidence intervals
 #' for standardized regression coefficients.
-#' *Psychometrika*, *82*(4), 928–951.
+#' *Psychometrika*, *82*(4), 928<U+2013>951.
 #' \doi{10.1007/s11336-017-9563-z}
 #'
 #' Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
