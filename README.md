@@ -116,7 +116,7 @@ To cite `betaSandwich` in publications, please cite Pesigan et al.
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent"
-line-spacing="2">
+entry-spacing="0" line-spacing="2">
 
 <div id="ref-Dudgeon-2017" class="csl-entry">
 
