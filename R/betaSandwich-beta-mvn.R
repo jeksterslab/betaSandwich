@@ -39,7 +39,7 @@
 #' Dudgeon, P. (2017).
 #' Some improvements in confidence intervals
 #' for standardized regression coefficients.
-#' *Psychometrika*, *82*(4), 928<U+2013>951.
+#' *Psychometrika*, *82*(4), 928–951.
 #' \doi{10.1007/s11336-017-9563-z}
 #'
 #' Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
