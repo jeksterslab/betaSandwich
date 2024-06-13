@@ -41,7 +41,6 @@ preferred-citation:
   year: '2023'
   doi: 10.1080/00273171.2023.2201277
   journal: Multivariate Behavioral Research
-  notes: R package version 1.0.7.9000
 repository: https://CRAN.R-project.org/package=betaSandwich
 repository-code: https://github.com/jeksterslab/betaSandwich
 url: https://jeksterslab.github.io/betaSandwich/
