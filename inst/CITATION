@@ -33,7 +33,6 @@ bibentry(
   year = year,
   doi = "10.1080/00273171.2023.2201277",
   journal = "Multivariate Behavioral Research",
-  note = note,
   textVersion = paste0(
     author_text, " ",
     "(", year, ")", ".", " ",
