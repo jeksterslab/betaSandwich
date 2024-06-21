@@ -1,7 +1,7 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2024-06-18
+2024-06-21
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -140,7 +140,8 @@ Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
 <span class="nocase">betaDelta</span> and
 <span class="nocase">betaSandwich</span>: Confidence intervals for
 standardized regression coefficients in R. *Multivariate Behavioral
-Research*, 1–4. <https://doi.org/10.1080/00273171.2023.2201277>
+Research*, *58*(6), 1183–1186.
+<https://doi.org/10.1080/00273171.2023.2201277>
 
 </div>
 
