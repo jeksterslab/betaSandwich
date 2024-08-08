@@ -91,9 +91,6 @@ summary(mvn)
 #>        est     se      t df      p    2.5%  97.5%
 #> rsq 0.8045 4.1345 0.1946 42 0.8467 -7.5393 9.1483
 #> adj 0.7906 4.4299 0.1785 42 0.8592 -8.1492 9.7304
-```
-
-``` r
 summary(adf)
 #> Call:
 #> RSqBetaSandwich(object = std_adf, alpha = 0.05)
@@ -102,9 +99,6 @@ summary(adf)
 #>        est     se      t df      p    2.5%  97.5%
 #> rsq 0.8045 3.6172 0.2224 42 0.8251 -6.4953 8.1044
 #> adj 0.7906 3.8756 0.2040 42 0.8394 -7.0307 8.6118
-```
-
-``` r
 summary(hc3)
 #> Call:
 #> RSqBetaSandwich(object = std_hc3, alpha = 0.05)
@@ -124,15 +118,9 @@ Calculate R-squared and adjusted R-squared.
 coef(mvn)
 #>   rsq.rsq   adj.adj 
 #> 0.8045263 0.7905638
-```
-
-``` r
 coef(adf)
 #>   rsq.rsq   adj.adj 
 #> 0.8045263 0.7905638
-```
-
-``` r
 coef(hc3)
 #>   rsq.rsq   adj.adj 
 #> 0.8045263 0.7905638
@@ -148,16 +136,10 @@ vcov(mvn)
 #>          rsq      adj
 #> rsq 17.09432 18.31534
 #> adj 18.31534 19.62358
-```
-
-``` r
 vcov(adf)
 #>          rsq      adj
 #> rsq 13.08433 14.01893
 #> adj 14.01893 15.02028
-```
-
-``` r
 vcov(hc3)
 #>          rsq      adj
 #> rsq 15.58911 16.70262
@@ -174,16 +156,10 @@ confint(mvn, level = 0.95)
 #>         2.5 %   97.5 %
 #> rsq -7.539288 9.148341
 #> adj -8.149238 9.730365
-```
-
-``` r
 confint(adf, level = 0.95)
 #>         2.5 %   97.5 %
 #> rsq -6.495334 8.104386
 #> adj -7.030715 8.611842
-```
-
-``` r
 confint(hc3, level = 0.95)
 #>         2.5 %   97.5 %
 #> rsq -7.163476 8.772529
