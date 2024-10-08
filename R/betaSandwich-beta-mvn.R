@@ -63,6 +63,12 @@
 #' @export
 BetaN <- function(object,
                   alpha = c(0.05, 0.01, 0.001)) {
+  stopifnot(
+    inherits(
+      x = object,
+      what = "lm"
+    )
+  )
   lm_process <- .ProcessLM(object)
   jcap <- .JacobianVechSigmaWRTThetaStar(
     betastar = lm_process$betastar,

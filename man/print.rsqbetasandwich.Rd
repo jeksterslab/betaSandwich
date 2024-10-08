@@ -19,7 +19,7 @@ use the argument \code{alpha} used in \code{x}.}
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of
+Prints a matrix of
 multiple correlation coefficients
 (R-squared and adjusted R-squared),
 standard errors,

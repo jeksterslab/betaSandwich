@@ -39,8 +39,8 @@ DiffBetaSandwich <- function(object,
                              alpha = c(0.05, 0.01, 0.001)) {
   stopifnot(
     inherits(
-      object,
-      "betasandwich"
+      x = object,
+      what = "betasandwich"
     )
   )
   if (object$lm_process$p < 2) {

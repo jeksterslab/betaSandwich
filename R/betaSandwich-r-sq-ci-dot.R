@@ -23,12 +23,6 @@
 #' @noRd
 .RSqCI <- function(object,
                    alpha = NULL) {
-  stopifnot(
-    inherits(
-      object,
-      "rsqbetasandwich"
-    )
-  )
   if (is.null(alpha)) {
     alpha <- object$args$alpha
   }

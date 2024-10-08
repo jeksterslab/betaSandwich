@@ -20,12 +20,6 @@
 #' @noRd
 .DiffBetaCI <- function(object,
                         alpha = NULL) {
-  stopifnot(
-    inherits(
-      object,
-      "diffbetasandwich"
-    )
-  )
   if (is.null(alpha)) {
     alpha <- object$args$alpha
   }

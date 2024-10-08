@@ -21,12 +21,6 @@
 #' @noRd
 .BetaCI <- function(object,
                     alpha = NULL) {
-  stopifnot(
-    inherits(
-      object,
-      "betasandwich"
-    )
-  )
   if (is.null(alpha)) {
     alpha <- object$args$alpha
   }

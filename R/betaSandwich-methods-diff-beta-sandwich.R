@@ -2,7 +2,7 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a matrix of
+#' @return Prints a matrix of
 #'   differences of standardized regression slopes,
 #'   standard errors,
 #'   test statistics,
