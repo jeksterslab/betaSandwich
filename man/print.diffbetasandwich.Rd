@@ -19,7 +19,7 @@ use the argument \code{alpha} used in \code{x}.}
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of
+Prints a matrix of
 differences of standardized regression slopes,
 standard errors,
 test statistics,

@@ -10,12 +10,6 @@
 #' @keywords betaSandwich vcov rsq internal
 #' @noRd
 .RSqCov <- function(object) {
-  stopifnot(
-    inherits(
-      object,
-      "rsqbetasandwich"
-    )
-  )
   vcov <- object$vcov[
     object$fit$lm_process$k,
     object$fit$lm_process$k,

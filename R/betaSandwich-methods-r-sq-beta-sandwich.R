@@ -2,7 +2,7 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a matrix of
+#' @return Prints a matrix of
 #'   multiple correlation coefficients
 #'   (R-squared and adjusted R-squared),
 #'   standard errors,

@@ -77,6 +77,12 @@ BetaHC <- function(object,
                    g1 = 1,
                    g2 = 1.5,
                    k = 0.7) {
+  stopifnot(
+    inherits(
+      x = object,
+      what = "lm"
+    )
+  )
   lm_process <- .ProcessLM(object)
   stopifnot(
     type %in% c(
