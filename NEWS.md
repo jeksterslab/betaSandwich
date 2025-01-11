@@ -1,6 +1,8 @@
-# betaSandwich 1.0.7.9000
+# betaSandwich 1.0.8
 
-* Latest development version.
+## Patch
+
+* Minor edits to tests.
 
 # betaSandwich 1.0.7
 

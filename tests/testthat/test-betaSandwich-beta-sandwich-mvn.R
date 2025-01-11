@@ -5,21 +5,22 @@ lapply(
                  tol,
                  text) {
     message(text)
-    if (!exists("nas1982")) {
-      try(
-        data(
-          "nas1982",
-          package = "betaSandwich"
-        ),
-        silent = TRUE
-      )
-    }
-    df <- nas1982
-    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    out <- BetaN(object)
     testthat::test_that(
       paste(text, "coef"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaN(object)
         testthat::expect_true(
           all(
             abs(
@@ -39,6 +40,19 @@ lapply(
     testthat::test_that(
       paste(text, "se"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaN(object)
         testthat::expect_true(
           all(
             abs(

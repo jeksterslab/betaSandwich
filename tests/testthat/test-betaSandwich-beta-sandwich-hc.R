@@ -5,28 +5,22 @@ lapply(
                  tol,
                  text) {
     message(text)
-    if (!exists("nas1982")) {
-      try(
-        data(
-          "nas1982",
-          package = "betaSandwich"
-        ),
-        silent = TRUE
-      )
-    }
-    df <- nas1982
-    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    out <- BetaHC(object)
-    hc0 <- BetaHC(object, type = "hc0")
-    hc1 <- BetaHC(object, type = "hc1")
-    hc2 <- BetaHC(object, type = "hc2")
-    hc3 <- BetaHC(object, type = "hc3")
-    hc4 <- BetaHC(object, type = "hc4")
-    hc4m <- BetaHC(object, type = "hc4m")
-    hc5 <- BetaHC(object, type = "hc5")
     testthat::test_that(
       paste(text, "coef"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaHC(object)
         testthat::expect_true(
           all(
             abs(
@@ -46,6 +40,20 @@ lapply(
     testthat::test_that(
       paste(text, "hc0"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaHC(object)
+        hc0 <- BetaHC(object, type = "hc0")
         testthat::expect_true(
           all(
             abs(
@@ -65,6 +73,20 @@ lapply(
     testthat::test_that(
       paste(text, "hc1"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaHC(object)
+        hc1 <- BetaHC(object, type = "hc1")
         testthat::expect_true(
           all(
             abs(
@@ -84,6 +106,20 @@ lapply(
     testthat::test_that(
       paste(text, "hc2"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaHC(object)
+        hc2 <- BetaHC(object, type = "hc2")
         testthat::expect_true(
           all(
             abs(
@@ -103,6 +139,20 @@ lapply(
     testthat::test_that(
       paste(text, "hc3"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaHC(object)
+        hc3 <- BetaHC(object, type = "hc3")
         testthat::expect_true(
           all(
             abs(
@@ -122,6 +172,20 @@ lapply(
     testthat::test_that(
       paste(text, "hc4"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaHC(object)
+        hc4 <- BetaHC(object, type = "hc4")
         testthat::expect_true(
           all(
             abs(
@@ -141,6 +205,20 @@ lapply(
     testthat::test_that(
       paste(text, "hc4m"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaHC(object)
+        hc4m <- BetaHC(object, type = "hc4m")
         testthat::expect_true(
           all(
             abs(
@@ -160,6 +238,20 @@ lapply(
     testthat::test_that(
       paste(text, "hc5"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        out <- BetaHC(object)
+        hc5 <- BetaHC(object, type = "hc5")
         testthat::expect_true(
           all(
             abs(

@@ -5,29 +5,22 @@ lapply(
                  text,
                  tol) {
     message(text)
-    if (!exists("nas1982")) {
-      try(
-        data(
-          "nas1982",
-          package = "betaSandwich"
-        ),
-        silent = TRUE
-      )
-    }
-    df <- nas1982
-    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    mvn <- DiffBetaSandwich(BetaN(object))
-    adf <- DiffBetaSandwich(BetaADF(object))
-    hc0 <- DiffBetaSandwich(BetaHC(object, type = "hc0"))
-    hc1 <- DiffBetaSandwich(BetaHC(object, type = "hc1"))
-    hc2 <- DiffBetaSandwich(BetaHC(object, type = "hc2"))
-    hc3 <- DiffBetaSandwich(BetaHC(object, type = "hc3"))
-    hc4 <- DiffBetaSandwich(BetaHC(object, type = "hc4"))
-    hc4m <- DiffBetaSandwich(BetaHC(object, type = "hc4m"))
-    hc5 <- DiffBetaSandwich(BetaHC(object, type = "hc5"))
     testthat::test_that(
       paste(text, "mvn", "multiple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        mvn <- DiffBetaSandwich(BetaN(object))
         testthat::expect_true(
           all(
             abs(
@@ -44,6 +37,19 @@ lapply(
     testthat::test_that(
       paste(text, "adf", "multiple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        adf <- DiffBetaSandwich(BetaADF(object))
         testthat::expect_true(
           all(
             abs(
@@ -60,6 +66,19 @@ lapply(
     testthat::test_that(
       paste(text, "hc0", "multiple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        hc0 <- DiffBetaSandwich(BetaHC(object, type = "hc0"))
         testthat::expect_true(
           all(
             abs(
@@ -76,6 +95,19 @@ lapply(
     testthat::test_that(
       paste(text, "hc1", "multiple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        hc1 <- DiffBetaSandwich(BetaHC(object, type = "hc1"))
         testthat::expect_true(
           all(
             abs(
@@ -92,6 +124,19 @@ lapply(
     testthat::test_that(
       paste(text, "hc2", "multiple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        hc2 <- DiffBetaSandwich(BetaHC(object, type = "hc2"))
         testthat::expect_true(
           all(
             abs(
@@ -108,6 +153,19 @@ lapply(
     testthat::test_that(
       paste(text, "hc3", "multiple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        hc3 <- DiffBetaSandwich(BetaHC(object, type = "hc3"))
         testthat::expect_true(
           all(
             abs(
@@ -124,6 +182,19 @@ lapply(
     testthat::test_that(
       paste(text, "hc4m", "multiple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        hc4m <- DiffBetaSandwich(BetaHC(object, type = "hc4m"))
         testthat::expect_true(
           all(
             abs(
@@ -140,6 +211,19 @@ lapply(
     testthat::test_that(
       paste(text, "hc4", "multiple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        hc4 <- DiffBetaSandwich(BetaHC(object, type = "hc4"))
         testthat::expect_true(
           all(
             abs(
@@ -156,6 +240,19 @@ lapply(
     testthat::test_that(
       paste(text, "hc5", "multiple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        hc5 <- DiffBetaSandwich(BetaHC(object, type = "hc5"))
         testthat::expect_true(
           all(
             abs(
@@ -169,10 +266,21 @@ lapply(
         )
       }
     )
-    object <- lm(QUALITY ~ NARTIC, data = df)
     testthat::test_that(
       paste(text, "mvn", "simple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC, data = df)
         testthat::expect_error(
           DiffBetaSandwich(BetaN(object))
         )
@@ -181,6 +289,18 @@ lapply(
     testthat::test_that(
       paste(text, "adf", "simple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC, data = df)
         testthat::expect_error(
           DiffBetaSandwich(BetaADF(object))
         )
@@ -189,6 +309,18 @@ lapply(
     testthat::test_that(
       paste(text, "hc0", "simple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC, data = df)
         testthat::expect_error(
           DiffBetaSandwich(BetaHC(object, type = "hc0"))
         )
@@ -197,6 +329,18 @@ lapply(
     testthat::test_that(
       paste(text, "hc1", "simple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC, data = df)
         testthat::expect_error(
           DiffBetaSandwich(BetaHC(object, type = "hc1"))
         )
@@ -205,6 +349,18 @@ lapply(
     testthat::test_that(
       paste(text, "hc2", "simple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC, data = df)
         testthat::expect_error(
           DiffBetaSandwich(BetaHC(object, type = "hc2"))
         )
@@ -213,6 +369,18 @@ lapply(
     testthat::test_that(
       paste(text, "hc3", "simple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC, data = df)
         testthat::expect_error(
           DiffBetaSandwich(BetaHC(object, type = "hc3"))
         )
@@ -221,6 +389,18 @@ lapply(
     testthat::test_that(
       paste(text, "hc4", "simple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC, data = df)
         testthat::expect_error(
           DiffBetaSandwich(BetaHC(object, type = "hc4"))
         )
@@ -229,6 +409,18 @@ lapply(
     testthat::test_that(
       paste(text, "hc4m", "simple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC, data = df)
         testthat::expect_error(
           DiffBetaSandwich(BetaHC(object, type = "hc4m"))
         )
@@ -237,6 +429,18 @@ lapply(
     testthat::test_that(
       paste(text, "hc5", "simple regression"),
       {
+        testthat::skip_on_cran()
+        if (!exists("nas1982")) {
+          try(
+            data(
+              "nas1982",
+              package = "betaSandwich"
+            ),
+            silent = TRUE
+          )
+        }
+        df <- nas1982
+        object <- lm(QUALITY ~ NARTIC, data = df)
         testthat::expect_error(
           DiffBetaSandwich(BetaHC(object, type = "hc5"))
         )
