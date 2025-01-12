@@ -1,4 +1,5 @@
 ## ---- test-betaSandwich-diff-beta-sandwich
+# nolint start: cyclocomp_linter
 lapply(
   X = 1,
   FUN = function(i,
@@ -450,3 +451,4 @@ lapply(
   text = "test-betaSandwich-diff-beta-sandwich",
   tol = 0.0001
 )
+# nolint end
