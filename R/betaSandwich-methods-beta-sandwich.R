@@ -91,15 +91,17 @@ summary.betasandwich <- function(object,
     )
     # nocov end
   }
-  return(
-    round(
-      .BetaCI(
-        object = object,
-        alpha = alpha
-      ),
+  ci <- .BetaCI(
+    object = object,
+    alpha = alpha
+  )
+  if (!is.null(digits)) {
+    ci <- round(
+      x = ci,
       digits = digits
     )
-  )
+  }
+  ci
 }
 
 #' Sampling Covariance Matrix of the Standardized Regression Slopes
@@ -122,13 +124,11 @@ summary.betasandwich <- function(object,
 #' @export
 vcov.betasandwich <- function(object,
                               ...) {
-  return(
-    object$vcov[
-      seq_len(object$lm_process$p),
-      seq_len(object$lm_process$p),
-      drop = FALSE
-    ]
-  )
+  object$vcov[
+    seq_len(object$lm_process$p),
+    seq_len(object$lm_process$p),
+    drop = FALSE
+  ]
 }
 
 #' Standardized Regression Slopes
@@ -149,9 +149,7 @@ vcov.betasandwich <- function(object,
 #' @export
 coef.betasandwich <- function(object,
                               ...) {
-  return(
-    object$est
-  )
+  object$est
 }
 
 #' Confidence Intervals for Standardized Regression Slopes
@@ -193,7 +191,5 @@ confint.betasandwich <- function(object,
     x = varnames
   )
   colnames(ci) <- varnames
-  return(
-    ci
-  )
+  ci
 }

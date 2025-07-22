@@ -26,13 +26,11 @@
   stopifnot(
     all(alpha > 0 & alpha < 1)
   )
-  return(
-    .CIWald(
-      est = object$est,
-      se = sqrt(diag(object$vcov)),
-      theta = 0,
-      alpha = alpha,
-      z = TRUE
-    )
+  .CIWald(
+    est = object$est,
+    se = sqrt(diag(object$vcov)),
+    theta = 0,
+    alpha = alpha,
+    z = TRUE
   )
 }

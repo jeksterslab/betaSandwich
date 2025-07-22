@@ -22,5 +22,5 @@
     out[i, j[1]] <- 1
     out[i, j[2]] <- -1
   }
-  return(out)
+  out
 }

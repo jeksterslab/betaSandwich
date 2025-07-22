@@ -20,12 +20,10 @@
       0.001
     )) {
   lower <- 0.5 * alpha
-  return(
-    sort(
-      c(
-        lower,
-        1 - lower
-      )
+  sort(
+    c(
+      lower,
+      1 - lower
     )
   )
 }

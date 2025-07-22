@@ -74,7 +74,5 @@ DiffBetaSandwich <- function(object,
     "diffbetasandwich",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }

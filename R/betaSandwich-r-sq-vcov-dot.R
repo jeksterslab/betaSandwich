@@ -30,5 +30,5 @@
     "rsq",
     "adj"
   )
-  return(vcov)
+  vcov
 }

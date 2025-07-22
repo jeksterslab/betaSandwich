@@ -29,14 +29,12 @@
   stopifnot(
     all(alpha > 0 & alpha < 1)
   )
-  return(
-    .CIWald(
-      est = object$fit$lm_process$rsq,
-      se = sqrt(diag(.RSqCov(object))),
-      theta = 0,
-      alpha = alpha,
-      z = FALSE,
-      df = object$fit$lm_process$df
-    )
+  .CIWald(
+    est = object$fit$lm_process$rsq,
+    se = sqrt(diag(.RSqCov(object))),
+    theta = 0,
+    alpha = alpha,
+    z = FALSE,
+    df = object$fit$lm_process$df
   )
 }
