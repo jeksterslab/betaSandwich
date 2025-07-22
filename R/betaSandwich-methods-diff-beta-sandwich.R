@@ -82,13 +82,17 @@ summary.diffbetasandwich <- function(object,
                                      alpha = NULL,
                                      digits = 4,
                                      ...) {
-  cat("Call:\n")
-  base::print(object$call)
-  cat(
-    "\nDifference between standardized regression coefficients with",
-    toupper(object$fit$args$type),
-    "standard errors:\n"
-  )
+  if (interactive()) {
+    # nocov start
+    cat("Call:\n")
+    base::print(object$call)
+    cat(
+      "\nDifference between standardized regression coefficients with",
+      toupper(object$fit$args$type),
+      "standard errors:\n"
+    )
+    # nocov end
+  }
   return(
     round(
       .DiffBetaCI(

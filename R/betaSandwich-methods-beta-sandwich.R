@@ -80,13 +80,17 @@ summary.betasandwich <- function(object,
                                  alpha = NULL,
                                  digits = 4,
                                  ...) {
-  cat("Call:\n")
-  base::print(object$call)
-  cat(
-    "\nStandardized regression slopes with",
-    toupper(object$args$type),
-    "standard errors:\n"
-  )
+  if (interactive()) {
+    # nocov start
+    cat("Call:\n")
+    base::print(object$call)
+    cat(
+      "\nStandardized regression slopes with",
+      toupper(object$args$type),
+      "standard errors:\n"
+    )
+    # nocov end
+  }
   return(
     round(
       .BetaCI(

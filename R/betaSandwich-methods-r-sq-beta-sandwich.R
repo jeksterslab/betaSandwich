@@ -84,13 +84,17 @@ summary.rsqbetasandwich <- function(object,
                                     alpha = NULL,
                                     digits = 4,
                                     ...) {
-  cat("Call:\n")
-  base::print(object$call)
-  cat(
-    "\nMultiple correlation with",
-    toupper(object$fit$args$type),
-    "standard errors:\n"
-  )
+  if (interactive()) {
+    # nocov start
+    cat("Call:\n")
+    base::print(object$call)
+    cat(
+      "\nMultiple correlation with",
+      toupper(object$fit$args$type),
+      "standard errors:\n"
+    )
+    # nocov end
+  }
   return(
     round(
       .RSqCI(
