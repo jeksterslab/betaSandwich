@@ -84,26 +84,14 @@ Summary of the results of `RSqBetaSandwich()`.
 
 ``` r
 summary(mvn)
-#> Call:
-#> RSqBetaSandwich(object = std_mvn, alpha = 0.05)
-#> 
-#> Multiple correlation with MVN standard errors:
 #>        est     se      t df      p    2.5%  97.5%
 #> rsq 0.8045 4.1345 0.1946 42 0.8467 -7.5393 9.1483
 #> adj 0.7906 4.4299 0.1785 42 0.8592 -8.1492 9.7304
 summary(adf)
-#> Call:
-#> RSqBetaSandwich(object = std_adf, alpha = 0.05)
-#> 
-#> Multiple correlation with MVN standard errors:
 #>        est     se      t df      p    2.5%  97.5%
 #> rsq 0.8045 3.6172 0.2224 42 0.8251 -6.4953 8.1044
 #> adj 0.7906 3.8756 0.2040 42 0.8394 -7.0307 8.6118
 summary(hc3)
-#> Call:
-#> RSqBetaSandwich(object = std_hc3, alpha = 0.05)
-#> 
-#> Multiple correlation with HC3 standard errors:
 #>        est     se      t df      p    2.5%  97.5%
 #> rsq 0.8045 3.9483 0.2038 42 0.8395 -7.1635 8.7725
 #> adj 0.7906 4.2303 0.1869 42 0.8527 -7.7466 9.3277

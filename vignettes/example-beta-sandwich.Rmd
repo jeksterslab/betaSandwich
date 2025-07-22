@@ -73,10 +73,6 @@ Summary of the results of `BetaHC()`.
 
 ``` r
 summary(out)
-#> Call:
-#> BetaHC(object = object, type = "hc3", alpha = 0.05)
-#> 
-#> Standardized regression slopes with HC3 standard errors:
 #>            est     se      t df      p   2.5%  97.5%
 #> NARTIC  0.4951 0.0786 6.3025 42 0.0000 0.3366 0.6537
 #> PCTGRT  0.3915 0.0818 4.7831 42 0.0000 0.2263 0.5567
