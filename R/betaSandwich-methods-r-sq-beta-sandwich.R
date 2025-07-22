@@ -95,15 +95,17 @@ summary.rsqbetasandwich <- function(object,
     )
     # nocov end
   }
-  return(
-    round(
-      .RSqCI(
-        object = object,
-        alpha = alpha
-      ),
+  ci <- .RSqCI(
+    object = object,
+    alpha = alpha
+  )
+  if (!is.null(digits)) {
+    ci <- round(
+      x = ci,
       digits = digits
     )
-  )
+  }
+  ci
 }
 
 #' Sampling Covariance Matrix of
@@ -130,9 +132,7 @@ summary.rsqbetasandwich <- function(object,
 #' @export
 vcov.rsqbetasandwich <- function(object,
                                  ...) {
-  return(
-    .RSqCov(object)
-  )
+  .RSqCov(object)
 }
 
 #' Multiple Correlation Coefficients
@@ -156,11 +156,9 @@ vcov.rsqbetasandwich <- function(object,
 #' @export
 coef.rsqbetasandwich <- function(object,
                                  ...) {
-  return(
-    c(
-      rsq = object$fit$lm_process$rsq[1],
-      adj = object$fit$lm_process$rsq[2]
-    )
+  c(
+    rsq = object$fit$lm_process$rsq[1],
+    adj = object$fit$lm_process$rsq[2]
   )
 }
 
@@ -206,7 +204,5 @@ confint.rsqbetasandwich <- function(object,
     x = varnames
   )
   colnames(ci) <- varnames
-  return(
-    ci
-  )
+  ci
 }

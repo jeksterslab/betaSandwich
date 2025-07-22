@@ -100,7 +100,5 @@ RSqBetaSandwich <- function(object,
     "rsqbetasandwich",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }

@@ -179,7 +179,5 @@
       drop = FALSE
     ]
   }
-  return(
-    jcap
-  )
+  jcap
 }

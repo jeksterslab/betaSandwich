@@ -174,7 +174,5 @@ BetaHC <- function(object,
     "betasandwich",
     class(out)
   )
-  return(
-    out
-  )
+  out
 }
