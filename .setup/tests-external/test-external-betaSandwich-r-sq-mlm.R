@@ -42,7 +42,7 @@ lapply(
     lav <- lavaan::sem(
       model = model,
       data = df,
-      estimator = "ML"
+      estimator = "MLM"
     )
     std <- lavaan::standardizedSolution(lav)
     testthat::test_that(
