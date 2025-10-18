@@ -31,10 +31,12 @@ print.diffbetasandwich <- function(x,
                                    alpha = NULL,
                                    digits = 4,
                                    ...) {
-  summary.diffbetasandwich(
-    object = x,
-    alpha = alpha,
-    digits = digits
+  print.summary.diffbetasandwich(
+    summary.diffbetasandwich(
+      object = x,
+      alpha = alpha,
+      digits = digits
+    )
   )
 }
 

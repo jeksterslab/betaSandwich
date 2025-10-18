@@ -32,10 +32,12 @@ print.rsqbetasandwich <- function(x,
                                   alpha = NULL,
                                   digits = 4,
                                   ...) {
-  summary.rsqbetasandwich(
-    object = x,
-    alpha = alpha,
-    digits = digits
+  print.summary.rsqbetasandwich(
+    summary.rsqbetasandwich(
+      object = x,
+      alpha = alpha,
+      digits = digits
+    )
   )
 }
 
