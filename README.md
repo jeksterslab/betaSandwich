@@ -7,11 +7,11 @@ Ivan Jacob Agaloos Pesigan
 
 <!-- badges: start -->
 
+[![DOI](https://zenodo.org/badge/DOI/10.1080/00273171.2023.2201277.svg)](https://doi.org/10.1080/00273171.2023.2201277)
 [![CRAN
 Status](https://www.r-pkg.org/badges/version/betaSandwich)](https://cran.r-project.org/package=betaSandwich)
 [![R-Universe
 Status](https://jeksterslab.r-universe.dev/badges/betaSandwich)](https://jeksterslab.r-universe.dev/betaSandwich)
-[![DOI](https://zenodo.org/badge/DOI/10.1080/00273171.2023.2201277.svg)](https://doi.org/10.1080/00273171.2023.2201277)
 [![Make
 Project](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml)
 [![R-CMD-check](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml)
