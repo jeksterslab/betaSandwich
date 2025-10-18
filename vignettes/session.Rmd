@@ -43,7 +43,7 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] betaSandwich_1.0.9
+#> [1] betaSandwich_1.0.8
 #> 
 #> loaded via a namespace (and not attached):
 #> [1] compiler_4.5.1  tools_4.5.1     rProject_0.0.21 knitr_1.50     
@@ -56,7 +56,7 @@ sessionInfo()
 ``` r
 installed.packages()[, c("Package", "Version")]
 #>                   Package             Version      
-#> betaSandwich      "betaSandwich"      "1.0.9"      
+#> betaSandwich      "betaSandwich"      "1.0.8"      
 #> abind             "abind"             "1.4-8"      
 #> Amelia            "Amelia"            "1.8.3"      
 #> arm               "arm"               "1.14-4"     
@@ -460,7 +460,7 @@ installed.packages()[, c("Package", "Version")]
 #> Core(s) per socket:                   12
 #> Socket(s):                            2
 #> Stepping:                             2
-#> CPU(s) scaling MHz:                   69%
+#> CPU(s) scaling MHz:                   65%
 #> CPU max MHz:                          3300.0000
 #> CPU min MHz:                          1200.0000
 #> BogoMIPS:                             4988.69
