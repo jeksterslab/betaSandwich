@@ -16,8 +16,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Robust Confidence Intervals for Standardized Regression Coefficients">
 <meta name="description" content="Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017) &lt;doi:10.1007/s11336-017-9563-z&gt;. The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, and differences of standardized regression coefficients. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023) &lt;doi:10.1080/00273171.2023.2201277&gt;.">
 <meta property="og:description" content="Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017) &lt;doi:10.1007/s11336-017-9563-z&gt;. The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, and differences of standardized regression coefficients. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023) &lt;doi:10.1080/00273171.2023.2201277&gt;.">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -27,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="index.html">betaSandwich</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.9</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +55,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="betasandwich">betaSandwich<a class="anchor" aria-label="anchor" href="#betasandwich"></a>
 </h1></div>
-<p>Ivan Jacob Agaloos Pesigan 2025-07-22</p>
+<p>Ivan Jacob Agaloos Pesigan 2025-10-18</p>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
@@ -94,15 +93,7 @@
 <h3 id="estimate-the-standardized-regression-slopes-and-the-corresponding-robust-sampling-covariance-matrix">Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-standardized-regression-slopes-and-the-corresponding-robust-sampling-covariance-matrix"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/BetaHC.html">BetaHC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Call:</span></span>
-<span><span class="co">#&gt; BetaHC(object = object, type = "hc3", alpha = 0.05)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Standardized regression slopes with HC3 standard errors:</span></span>
-<span><span class="co">#&gt;            est     se      t df      p   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; NARTIC  0.4951 0.0786 6.3025 42 0.0000 0.3366 0.6537</span></span>
-<span><span class="co">#&gt; PCTGRT  0.3915 0.0818 4.7831 42 0.0000 0.2263 0.5567</span></span>
-<span><span class="co">#&gt; PCTSUPP 0.2632 0.0855 3.0786 42 0.0037 0.0907 0.4358</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/BetaHC.html">BetaHC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">

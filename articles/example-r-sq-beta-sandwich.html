@@ -14,8 +14,7 @@
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="betaSandwich: Example Using the RSqBetaSandwich Function">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -25,7 +24,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">betaSandwich</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.9</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -125,17 +124,29 @@ matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-multiple-correl
 <p>Summary of the results of <code><a href="../reference/RSqBetaSandwich.html">RSqBetaSandwich()</a></code>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        est     se      t df      p    2.5%  97.5%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 4.1345 0.1946 42 0.8467 -7.5393 9.1483</span></span>
-<span><span class="co">#&gt; adj 0.7906 4.4299 0.1785 42 0.8592 -8.1492 9.7304</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; RSqBetaSandwich(object = std_mvn, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Multiple correlation with MVN standard errors:</span></span>
+<span><span class="co">#&gt;        est     se       t df p   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0328 24.5344 42 0 0.7383 0.8707</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0351 22.5014 42 0 0.7197 0.8615</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        est     se      t df      p    2.5%  97.5%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 3.6172 0.2224 42 0.8251 -6.4953 8.1044</span></span>
-<span><span class="co">#&gt; adj 0.7906 3.8756 0.2040 42 0.8394 -7.0307 8.6118</span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; RSqBetaSandwich(object = std_adf, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Multiple correlation with MVN standard errors:</span></span>
+<span><span class="co">#&gt;        est     se       t df p   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0287 28.0431 42 0 0.7466 0.8624</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0307 25.7193 42 0 0.7285 0.8526</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        est     se      t df      p    2.5%  97.5%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 3.9483 0.2038 42 0.8395 -7.1635 8.7725</span></span>
-<span><span class="co">#&gt; adj 0.7906 4.2303 0.1869 42 0.8527 -7.7466 9.3277</span></span></code></pre></div>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; RSqBetaSandwich(object = std_hc3, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Multiple correlation with HC3 standard errors:</span></span>
+<span><span class="co">#&gt;        est     se       t df p   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0313 25.6916 42 0 0.7413 0.8677</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0336 23.5627 42 0 0.7229 0.8583</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="coef">coef<a class="anchor" aria-label="anchor" href="#coef"></a>
@@ -159,17 +170,17 @@ matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-multiple-correl
 R-squared.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
-<span><span class="co">#&gt;          rsq      adj</span></span>
-<span><span class="co">#&gt; rsq 17.09432 18.31534</span></span>
-<span><span class="co">#&gt; adj 18.31534 19.62358</span></span>
+<span><span class="co">#&gt;             rsq         adj</span></span>
+<span><span class="co">#&gt; rsq 0.001075300 0.001152107</span></span>
+<span><span class="co">#&gt; adj 0.001152107 0.001234400</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
-<span><span class="co">#&gt;          rsq      adj</span></span>
-<span><span class="co">#&gt; rsq 13.08433 14.01893</span></span>
-<span><span class="co">#&gt; adj 14.01893 15.02028</span></span>
+<span><span class="co">#&gt;              rsq          adj</span></span>
+<span><span class="co">#&gt; rsq 0.0008230557 0.0008818454</span></span>
+<span><span class="co">#&gt; adj 0.0008818454 0.0009448343</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
-<span><span class="co">#&gt;          rsq      adj</span></span>
-<span><span class="co">#&gt; rsq 15.58911 16.70262</span></span>
-<span><span class="co">#&gt; adj 16.70262 17.89567</span></span></code></pre></div>
+<span><span class="co">#&gt;              rsq         adj</span></span>
+<span><span class="co">#&gt; rsq 0.0009806163 0.001050660</span></span>
+<span><span class="co">#&gt; adj 0.0010506603 0.001125707</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="confint">confint<a class="anchor" aria-label="anchor" href="#confint"></a>
@@ -178,17 +189,17 @@ R-squared.</p>
 R-squared.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">mvn</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         2.5 %   97.5 %</span></span>
-<span><span class="co">#&gt; rsq -7.539288 9.148341</span></span>
-<span><span class="co">#&gt; adj -8.149238 9.730365</span></span>
+<span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
+<span><span class="co">#&gt; rsq 0.7383498 0.8707027</span></span>
+<span><span class="co">#&gt; adj 0.7196605 0.8614672</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">adf</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         2.5 %   97.5 %</span></span>
-<span><span class="co">#&gt; rsq -6.495334 8.104386</span></span>
-<span><span class="co">#&gt; adj -7.030715 8.611842</span></span>
+<span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
+<span><span class="co">#&gt; rsq 0.7466296 0.8624229</span></span>
+<span><span class="co">#&gt; adj 0.7285317 0.8525960</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
-<span><span class="co">#&gt;         2.5 %   97.5 %</span></span>
-<span><span class="co">#&gt; rsq -7.163476 8.772529</span></span>
-<span><span class="co">#&gt; adj -7.746582 9.327709</span></span></code></pre></div>
+<span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
+<span><span class="co">#&gt; rsq 0.7413304 0.8677221</span></span>
+<span><span class="co">#&gt; adj 0.7228540 0.8582736</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2 unnumbered">
