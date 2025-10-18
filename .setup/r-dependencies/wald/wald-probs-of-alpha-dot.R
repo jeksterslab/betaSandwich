@@ -14,11 +14,12 @@
 #' @keywords wald alpha internal
 #' @noRd
 .ProbsofAlpha <- function(
-    alpha = c(
-      0.05,
-      0.01,
-      0.001
-    )) {
+  alpha = c(
+    0.05,
+    0.01,
+    0.001
+  )
+) {
   lower <- 0.5 * alpha
   sort(
     c(
