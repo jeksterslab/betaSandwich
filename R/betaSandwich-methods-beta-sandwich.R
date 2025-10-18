@@ -30,10 +30,12 @@ print.betasandwich <- function(x,
                                alpha = NULL,
                                digits = 4,
                                ...) {
-  summary.betasandwich(
-    object = x,
-    alpha = alpha,
-    digits = digits
+  print.summary.betasandwich(
+    summary.betasandwich(
+      object = x,
+      alpha = alpha,
+      digits = digits
+    )
   )
 }
 
