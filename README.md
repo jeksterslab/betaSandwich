@@ -1,7 +1,7 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2025-10-19
+2026-02-28
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -52,8 +52,8 @@ You can install the development version of `betaSandwich` from
 [GitHub](https://github.com/jeksterslab/betaSandwich) with:
 
 ``` r
-if (!require("remotes")) install.packages("remotes")
-remotes::install_github("jeksterslab/betaSandwich")
+if (!require("pak")) install.packages("pak")
+pak::pkg_install("jeksterslab/betaSandwich")
 ```
 
 ## Example

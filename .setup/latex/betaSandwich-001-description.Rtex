@@ -98,8 +98,8 @@ with:
 
 %% begin.rcode
 % #| eval = FALSE
-% if (!require("remotes")) install.packages("remotes")
-% remotes::install_github("jeksterslab/betaSandwich")
+% if (!require("pak")) install.packages("pak")
+% pak::pkg_install("jeksterslab/betaSandwich")
 %% end.rcode
 
 \section*{More Information}
