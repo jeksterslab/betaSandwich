@@ -43,7 +43,7 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] betaSandwich_1.0.8.9000
+#> [1] betaSandwich_1.0.9
 #> 
 #> loaded via a namespace (and not attached):
 #> [1] compiler_4.5.2  cli_3.6.5.9000  tools_4.5.2     otel_0.2.0     
@@ -57,7 +57,7 @@ sessionInfo()
 ``` r
 installed.packages()[, c("Package", "Version")]
 #>                   Package             Version     
-#> betaSandwich      "betaSandwich"      "1.0.8.9000"
+#> betaSandwich      "betaSandwich"      "1.0.9"     
 #> abind             "abind"             "1.4-8"     
 #> Amelia            "Amelia"            "1.8.3"     
 #> arm               "arm"               "1.14-4"    
@@ -519,7 +519,7 @@ installed.packages()[, c("Package", "Version")]
 
 ```
 #>                total        used        free      shared  buff/cache   available
-#> Mem:            23Gi       4.1Gi       7.2Gi        87Mi        12Gi        19Gi
+#> Mem:            23Gi       5.5Gi       5.6Gi       175Mi        12Gi        17Gi
 #> Swap:           11Gi       5.0Mi        11Gi
-#> Total:          34Gi       4.1Gi        18Gi
+#> Total:          34Gi       5.5Gi        17Gi
 ```
