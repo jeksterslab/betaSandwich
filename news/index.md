@@ -1,10 +1,10 @@
 # Changelog
 
-## betaSandwich 1.0.8.9000
+## betaSandwich 1.0.9
 
 ### Patch
 
-- Latest development version.
+- Minor edits to methods.
 
 ## betaSandwich 1.0.8
 
