@@ -1,6 +1,6 @@
 # betaSandwich
 
-Ivan Jacob Agaloos Pesigan 2026-03-01
+Ivan Jacob Agaloos Pesigan 2026-06-10
 
 ## Description
 
@@ -109,3 +109,7 @@ Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023). betaDelta and
 betaSandwich: Confidence intervals for standardized regression
 coefficients in R. *Multivariate Behavioral Research*, *58*(6),
 1183–1186. <https://doi.org/10.1080/00273171.2023.2201277>
+
+R Core Team. (2026). *R: A language and environment for statistical
+computing*. R Foundation for Statistical Computing.
+<https://www.R-project.org/>
