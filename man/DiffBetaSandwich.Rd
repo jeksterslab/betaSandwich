@@ -45,11 +45,11 @@ confint(diff, level = 0.95)
 
 }
 \seealso{
-Other Beta Sandwich Functions: 
-\code{\link{BetaADF}()},
-\code{\link{BetaHC}()},
-\code{\link{BetaN}()},
-\code{\link{RSqBetaSandwich}()}
+Other Beta Sandwich Functions:
+\code{\link[=BetaADF]{BetaADF()}},
+\code{\link[=BetaHC]{BetaHC()}},
+\code{\link[=BetaN]{BetaN()}},
+\code{\link[=RSqBetaSandwich]{RSqBetaSandwich()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

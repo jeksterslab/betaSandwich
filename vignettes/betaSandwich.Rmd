@@ -7,6 +7,7 @@ csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa
 nocite: |
   @Pesigan-Sun-Cheung-2023
   @Dudgeon-2017
+  @RCoreTeam-2026
 vignette: >
   %\VignetteIndexEntry{betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients}
   %\VignetteEngine{knitr::rmarkdown}
@@ -18,7 +19,8 @@ vignette: >
 [![CRAN Status](https://www.r-pkg.org/badges/version/betaSandwich)](https://cran.r-project.org/package=betaSandwich)
 [![R-Universe Status](https://jeksterslab.r-universe.dev/badges/betaSandwich)](https://jeksterslab.r-universe.dev)
 [![Make Project](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml)
-[![R-CMD-check](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml)
+[![R-CMD-check-standard](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml)
+[![R-CMD-check-oldrel](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml)
 [![R Package Test Coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml)
 [![Lint R Package](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml)
 [![Package Website (GitHub Pages)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml)

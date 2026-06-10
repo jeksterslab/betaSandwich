@@ -80,11 +80,11 @@ Confidence intervals for standardized regression coefficients in R.
 \doi{10.1080/00273171.2023.2201277}
 }
 \seealso{
-Other Beta Sandwich Functions: 
-\code{\link{BetaHC}()},
-\code{\link{BetaN}()},
-\code{\link{DiffBetaSandwich}()},
-\code{\link{RSqBetaSandwich}()}
+Other Beta Sandwich Functions:
+\code{\link[=BetaHC]{BetaHC()}},
+\code{\link[=BetaN]{BetaN()}},
+\code{\link[=DiffBetaSandwich]{DiffBetaSandwich()}},
+\code{\link[=RSqBetaSandwich]{RSqBetaSandwich()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan
