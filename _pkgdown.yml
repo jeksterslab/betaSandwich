@@ -1,0 +1,42 @@
+destination: pkgdown
+url: https://github.com/jeksterslab/betaSandwich/
+
+template:
+  params:
+    mathjax: true
+  bootstrap: 5
+  includes:
+    in_header: |
+      <script id="MathJax-script" async
+              src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  bslib:
+    base_font: {google: "Roboto"}
+    heading_font: {google: "Roboto Slab"}
+    code_font: {google: "JetBrains Mono"}
+
+reference:
+- title: Standardized Regression Coefficients
+  contents:
+  - has_keyword("std")
+- title: Multiple Correlation
+  contents:
+  - has_keyword("rsq")
+- title: Differences of Standardized Regression Coefficients
+  contents:
+  - has_keyword("diff")
+- title: Methods
+  contents:
+  - has_keyword("methods")
+- title: Data
+  contents:
+  - has_keyword("data")
+
+articles:
+- title: Examples
+  contents:
+  - example-beta-sandwich
+  - example-diff-beta-sandwich
+  - example-r-sq-beta-sandwich
+- title: Session Information
+  contents:
+  - session
