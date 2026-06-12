@@ -1,6 +1,14 @@
 # Changelog
 
+## betaSandwich 1.0.9.9000
+
+### Patch
+
+- Latest development version.
+
 ## betaSandwich 1.0.9
+
+CRAN release: 2026-06-11
 
 ### Patch
 
