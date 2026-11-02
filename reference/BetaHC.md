@@ -11,6 +11,8 @@ BetaHC(
   object,
   type = "hc3",
   alpha = c(0.05, 0.01, 0.001),
+  std_y = TRUE,
+  std_x = NULL,
   g1 = 1,
   g2 = 1.5,
   k = 0.7
@@ -31,6 +33,19 @@ BetaHC(
 - alpha:
 
   Numeric vector. Significance level \\(\alpha\\).
+
+- std_y:
+
+  Logical. Standardize \\(y\\). With `std_y = FALSE`, \\(y\\) is left in
+  its original units (\\(b_j \sigma\_{x_j}\\)).
+
+- std_x:
+
+  Character vector or `NULL`. Names of the regressors to standardize.
+  `NULL` (default) standardizes all regressors; `character(0)`
+  standardizes none (\\(b_j / \sigma_y\\)). Leaving a dummy variable out
+  keeps its 0-1 contrast. The delta method accounts for the sampling
+  variability of the standard deviations.
 
 - g1:
 

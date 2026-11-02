@@ -36,7 +36,7 @@ object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
 rsq <- RSqBetaSandwich(std)
 vcov(rsq)
-#>              rsq         adj
-#> rsq 0.0009806163 0.001050660
-#> adj 0.0010506603 0.001125707
+#>             rsq         adj
+#> rsq 0.003288894 0.003523815
+#> adj 0.003523815 0.003775516
 ```

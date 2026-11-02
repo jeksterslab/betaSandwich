@@ -53,7 +53,7 @@ Using the Asymptotic Distribution-Free Approach</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">BetaADF</span><span class="op">(</span><span class="va">object</span>, alpha <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">BetaADF</span><span class="op">(</span><span class="va">object</span>, alpha <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.01</span>, <span class="fl">0.001</span><span class="op">)</span>, std_y <span class="op">=</span> <span class="cn">TRUE</span>, std_x <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -67,6 +67,23 @@ Using the Asymptotic Distribution-Free Approach</p>
 <dt id="arg-alpha">alpha<a class="anchor" aria-label="anchor" href="#arg-alpha"></a></dt>
 <dd><p>Numeric vector.
 Significance level \(\alpha\).</p></dd>
+
+
+<dt id="arg-std-y">std_y<a class="anchor" aria-label="anchor" href="#arg-std-y"></a></dt>
+<dd><p>Logical.
+Standardize \(y\).
+With <code>std_y = FALSE</code>, \(y\) is left in its original units
+(\(b_j \sigma_{x_j}\)).</p></dd>
+
+
+<dt id="arg-std-x">std_x<a class="anchor" aria-label="anchor" href="#arg-std-x"></a></dt>
+<dd><p>Character vector or <code>NULL</code>.
+Names of the regressors to standardize.
+<code>NULL</code> (default) standardizes all regressors;
+<code>character(0)</code> standardizes none (\(b_j / \sigma_y\)).
+Leaving a dummy variable out keeps its 0-1 contrast.
+The delta method accounts for the sampling variability
+of the standard deviations.</p></dd>
 
 </dl></div>
     <div class="section level2">

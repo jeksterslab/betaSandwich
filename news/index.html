@@ -43,8 +43,14 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.9.9000" id="betasandwich-1099000">betaSandwich 1.0.9.9000<a class="anchor" aria-label="anchor" href="#betasandwich-1099000"></a></h2>
 <div class="section level3">
+<h3 id="minor-1-0-9-9000">Minor<a class="anchor" aria-label="anchor" href="#minor-1-0-9-9000"></a></h3>
+<ul><li>Selective standardization: the arguments <code>std_y</code> and <code>std_x</code> standardize only y or only the named regressors (for example, leave a dummy variable in its 0-1 units). The defaults give the same results as before.</li>
+<li>
+<code><a href="../reference/DiffBetaSandwich.html">DiffBetaSandwich()</a></code> stops when the slopes are not fully standardized.</li>
+</ul></div>
+<div class="section level3">
 <h3 id="patch-1-0-9-9000">Patch<a class="anchor" aria-label="anchor" href="#patch-1-0-9-9000"></a></h3>
-<ul><li>Latest development version.</li>
+<ul><li>Fixed the standard error of R-squared in <code><a href="../reference/RSqBetaSandwich.html">RSqBetaSandwich()</a></code>, which was about three times too small for every covariance type. With R-squared as a parameter, the variance of y is beta’ Sigma_X beta / R-squared, so its derivatives with respect to beta and Sigma_X are now divided by R-squared.</li>
 </ul></div>
 </div>
     <div class="section level2">

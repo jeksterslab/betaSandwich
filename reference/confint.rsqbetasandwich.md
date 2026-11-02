@@ -46,6 +46,6 @@ std <- BetaHC(object)
 rsq <- RSqBetaSandwich(std)
 confint(rsq, level = 0.95)
 #>         2.5 %    97.5 %
-#> rsq 0.7413304 0.8677221
-#> adj 0.7228540 0.8582736
+#> rsq 0.6887915 0.9202610
+#> adj 0.6665624 0.9145653
 ```
