@@ -32,6 +32,17 @@
 #'   }
 #'
 #' @param object Object of class `lm`.
+#' @param std_y Logical.
+#'   Standardize \eqn{y}.
+#'   With `std_y = FALSE`, \eqn{y} is left in its original units
+#'   (\eqn{b_j \sigma_{x_j}}).
+#' @param std_x Character vector or `NULL`.
+#'   Names of the regressors to standardize.
+#'   `NULL` (default) standardizes all regressors;
+#'   `character(0)` standardizes none (\eqn{b_j / \sigma_y}).
+#'   Leaving a dummy variable out keeps its 0-1 contrast.
+#'   The delta method accounts for the sampling variability
+#'   of the standard deviations.
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
 #'
@@ -62,7 +73,9 @@
 #' @keywords betaSandwich std
 #' @export
 BetaN <- function(object,
-                  alpha = c(0.05, 0.01, 0.001)) {
+                  alpha = c(0.05, 0.01, 0.001),
+                  std_y = TRUE,
+                  std_x = NULL) {
   stopifnot(
     inherits(
       x = object,
@@ -70,6 +83,10 @@ BetaN <- function(object,
     )
   )
   lm_process <- .ProcessLM(object)
+  index <- .BetaStarSelectIndex(
+    std_x = std_x,
+    xnames = lm_process$xnames
+  )
   jcap <- .JacobianVechSigmaWRTThetaStar(
     betastar = lm_process$betastar,
     sigmay = lm_process$sigma[1],
@@ -95,18 +112,21 @@ BetaN <- function(object,
     )
   )
   vcov <- (1 / lm_process$n) * acov
-  vcov <- vcov[
-    seq_len(lm_process$p),
-    seq_len(lm_process$p),
-    drop = FALSE
-  ]
+  vcov <- .BetaStarSelectVCov(
+    vcov = vcov,
+    lm_process = lm_process,
+    std_y = std_y,
+    std_x = index
+  )
   colnames(vcov) <- rownames(vcov) <- lm_process$xnames
   out <- list(
     call = match.call(),
     args = list(
       object = object,
       type = "mvn",
-      alpha = alpha
+      alpha = alpha,
+      std_y = std_y,
+      std_x = std_x
     ),
     lm_process = lm_process,
     gamma_n = gammacap_mvn,
@@ -114,8 +134,13 @@ BetaN <- function(object,
     gamma = gammacap_mvn,
     acov = acov,
     vcov = vcov,
-    est = lm_process$betastar
+    est = .BetaStarSelectLM(
+      lm_process = lm_process,
+      std_y = std_y,
+      std_x = index
+    )
   )
+  attributes(out)$std <- std_y && all(index)
   class(out) <- c(
     "betasandwich",
     class(out)
