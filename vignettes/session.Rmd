@@ -47,7 +47,7 @@ sessionInfo()
 #> 
 #> loaded via a namespace (and not attached):
 #> [1] compiler_4.6.2  cli_3.6.6.9000  tools_4.6.2     otel_0.2.0     
-#> [5] rProject_0.0.60 knitr_1.52      xfun_0.62       rlang_1.3.0    
+#> [5] rProject_0.0.61 knitr_1.52      xfun_0.62       rlang_1.3.0    
 #> [9] evaluate_1.0.5
 ```
 
@@ -58,7 +58,7 @@ sessionInfo()
 installed.packages()[, c("Package", "Version")]
 #>                   Package             Version     
 #> betaSandwich      "betaSandwich"      "1.0.9.9000"
-#> rProject          "rProject"          "0.0.60"    
+#> rProject          "rProject"          "0.0.61"    
 #> abind             "abind"             "1.4-8"     
 #> Amelia            "Amelia"            "1.8.3"     
 #> arm               "arm"               "1.15-3"    
@@ -481,7 +481,7 @@ installed.packages()[, c("Package", "Version")]
 #> Socket(s):                               1
 #> Stepping:                                0
 #> Frequency boost:                         enabled
-#> CPU(s) scaling MHz:                      65%
+#> CPU(s) scaling MHz:                      67%
 #> CPU max MHz:                             5060.9761
 #> CPU min MHz:                             1219.5129
 #> BogoMIPS:                                4990.58
@@ -518,7 +518,7 @@ installed.packages()[, c("Package", "Version")]
 
 ```
 #>                total        used        free      shared  buff/cache   available
-#> Mem:            44Gi       3.7Gi        33Gi        35Mi       7.7Gi        40Gi
+#> Mem:            44Gi       3.1Gi        29Gi        14Mi        11Gi        41Gi
 #> Swap:           22Gi          0B        22Gi
-#> Total:          66Gi       3.7Gi        56Gi
+#> Total:          66Gi       3.1Gi        52Gi
 ```
