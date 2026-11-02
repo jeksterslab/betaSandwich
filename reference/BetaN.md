@@ -17,7 +17,7 @@ BetaN(object, alpha = c(0.05, 0.01, 0.001))
 
 - alpha:
 
-  Numeric vector. Significance level \\\alpha\\.
+  Numeric vector. Significance level \\(\alpha\\).
 
 ## Value
 

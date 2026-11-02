@@ -12,100 +12,82 @@ standardized regression coefficients are generated using the
 [`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)
 function from the `betaSandwich` package following Dudgeon (2017).[^1]
 
-``` r
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
 
-library(betaSandwich)
-```
-
-``` r
-
-df <- betaSandwich::nas1982
-```
+\
+`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://github.com/jeksterslab/betaSandwich/reference/nas1982.md)
 
 ## Fit the regression model using the `lm()` function.
 
-``` r
-
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-```
+\
+`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
-``` r
-
-BetaHC(object, type = "hc3", alpha = 0.05)
-#> Call:
-#> BetaHC(object = object, type = "hc3", alpha = 0.05)
-#> 
-#> Standardized regression slopes with HC3 standard errors:
-#>            est     se      t df      p   2.5%  97.5%
-#> NARTIC  0.4951 0.0786 6.3025 42 0.0000 0.3366 0.6537
-#> PCTGRT  0.3915 0.0818 4.7831 42 0.0000 0.2263 0.5567
-#> PCTSUPP 0.2632 0.0855 3.0786 42 0.0037 0.0907 0.4358
-```
+\
+[`BetaHC`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`\
+`#> Call:`\
+`#> BetaHC(object = object, type = "hc3", alpha = 0.05)`\
+`#> `\
+`#> Standardized regression slopes with HC3 standard errors:`\
+`#>            est     se      t df      p   2.5%  97.5%`\
+`#> NARTIC  0.4951 0.0786 6.3025 42 0.0000 0.3366 0.6537`\
+`#> PCTGRT  0.3915 0.0818 4.7831 42 0.0000 0.2263 0.5567`\
+`#> PCTSUPP 0.2632 0.0855 3.0786 42 0.0037 0.0907 0.4358`
 
 ## Methods
 
-``` r
-
-out <- BetaHC(object, type = "hc3", alpha = 0.05)
-```
+\
+`out`` ``<-`` `[`BetaHC`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`
 
 ### summary
 
 Summary of the results of
 [`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md).
 
-``` r
-
-summary(out)
-#> Call:
-#> BetaHC(object = object, type = "hc3", alpha = 0.05)
-#> 
-#> Standardized regression slopes with HC3 standard errors:
-#>            est     se      t df      p   2.5%  97.5%
-#> NARTIC  0.4951 0.0786 6.3025 42 0.0000 0.3366 0.6537
-#> PCTGRT  0.3915 0.0818 4.7831 42 0.0000 0.2263 0.5567
-#> PCTSUPP 0.2632 0.0855 3.0786 42 0.0037 0.0907 0.4358
-```
+\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``out``)`\
+`#> Call:`\
+`#> BetaHC(object = object, type = "hc3", alpha = 0.05)`\
+`#> `\
+`#> Standardized regression slopes with HC3 standard errors:`\
+`#>            est     se      t df      p   2.5%  97.5%`\
+`#> NARTIC  0.4951 0.0786 6.3025 42 0.0000 0.3366 0.6537`\
+`#> PCTGRT  0.3915 0.0818 4.7831 42 0.0000 0.2263 0.5567`\
+`#> PCTSUPP 0.2632 0.0855 3.0786 42 0.0037 0.0907 0.4358`
 
 ### coef
 
 Calculate the standardized regression slopes.
 
-``` r
-
-coef(out)
-#>    NARTIC    PCTGRT   PCTSUPP 
-#> 0.4951451 0.3914887 0.2632477
-```
+\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``out``)`\
+`#>    NARTIC    PCTGRT   PCTSUPP `\
+`#> 0.4951451 0.3914887 0.2632477`
 
 ### vcov
 
 Calculate the robust sampling covariance matrix of the standardized
 regression slopes.
 
-``` r
-
-vcov(out)
-#>               NARTIC       PCTGRT      PCTSUPP
-#> NARTIC   0.006172168 -0.003602529 -0.001943469
-#> PCTGRT  -0.003602529  0.006699155 -0.002443584
-#> PCTSUPP -0.001943469 -0.002443584  0.007311625
-```
+\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``out``)`\
+`#>               NARTIC       PCTGRT      PCTSUPP`\
+`#> NARTIC   0.006172168 -0.003602529 -0.001943469`\
+`#> PCTGRT  -0.003602529  0.006699155 -0.002443584`\
+`#> PCTSUPP -0.001943469 -0.002443584  0.007311625`
 
 ### confint
 
 Generate robust confidence intervals for standardized regression slopes.
 
-``` r
-
-confint(out, level = 0.95)
-#>              2.5 %    97.5 %
-#> NARTIC  0.33659828 0.6536920
-#> PCTGRT  0.22631203 0.5566654
-#> PCTSUPP 0.09068548 0.4358099
-```
+\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``out``, level ``=`` ``0.95``)`\
+`#>              2.5 %    97.5 %`\
+`#> NARTIC  0.33659828 0.6536920`\
+`#> PCTGRT  0.22631203 0.5566654`\
+`#> PCTSUPP 0.09068548 0.4358099`
 
 ## References
 

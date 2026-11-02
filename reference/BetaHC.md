@@ -30,7 +30,7 @@ BetaHC(
 
 - alpha:
 
-  Numeric vector. Significance level \\\alpha\\.
+  Numeric vector. Significance level \\(\alpha\\).
 
 - g1:
 
@@ -42,7 +42,7 @@ BetaHC(
 
 - k:
 
-  Numeric. Constant `k` for `type = "hc5"` \\0 \leq k \leq 1\\.
+  Numeric. Constant `k` for `type = "hc5"` \\(0 \leq k \leq 1\\).
 
 ## Value
 

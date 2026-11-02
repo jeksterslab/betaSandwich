@@ -38,19 +38,15 @@ presented in Pesigan, Sun, and Cheung (2023:
 
 You can install the CRAN release of `betaSandwich` with:
 
-``` r
-
-install.packages("betaSandwich")
-```
+\
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"betaSandwich"``)`
 
 You can install the development version of `betaSandwich` from
 [GitHub](https://github.com/jeksterslab/betaSandwich) with:
 
-``` r
-
-if (!require("pak")) install.packages("pak")
-pak::pkg_install("jeksterslab/betaSandwich")
-```
+\
+`if`` ``(``!`[`require`](https://rdrr.io/r/base/library.html)`(`[`"pak"`](https://pak.r-lib.org/)`)``)`` `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"pak"``)`\
+`pak``::`[`pkg_install`](https://pak.r-lib.org/reference/pkg_install.html)`(``"jeksterslab/betaSandwich"``)`
 
 ## Example
 
@@ -66,29 +62,21 @@ standardized regression coefficients are generated using the
 [`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)
 function from the `betaSandwich` package following Dudgeon (2017).
 
-``` r
+\
+[`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
 
-library(betaSandwich)
-```
-
-``` r
-
-df <- betaSandwich::nas1982
-```
+\
+`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://github.com/jeksterslab/betaSandwich/reference/nas1982.md)
 
 ### Fit the regression model using the `lm()` function.
 
-``` r
-
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-```
+\
+`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ### Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
-``` r
-
-BetaHC(object, type = "hc3", alpha = 0.05)
-```
+\
+[`BetaHC`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`
 
     ## Call:
     ## BetaHC(object = object, type = "hc3", alpha = 0.05)
