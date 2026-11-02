@@ -6,13 +6,26 @@
 and the Corresponding Sampling Covariance Matrix
 Assuming Multivariate Normality}
 \usage{
-BetaN(object, alpha = c(0.05, 0.01, 0.001))
+BetaN(object, alpha = c(0.05, 0.01, 0.001), std_y = TRUE, std_x = NULL)
 }
 \arguments{
 \item{object}{Object of class \code{lm}.}
 
 \item{alpha}{Numeric vector.
 Significance level \eqn{\alpha}.}
+
+\item{std_y}{Logical.
+Standardize \eqn{y}.
+With \code{std_y = FALSE}, \eqn{y} is left in its original units
+(\eqn{b_j \sigma_{x_j}}).}
+
+\item{std_x}{Character vector or \code{NULL}.
+Names of the regressors to standardize.
+\code{NULL} (default) standardizes all regressors;
+\code{character(0)} standardizes none (\eqn{b_j / \sigma_y}).
+Leaving a dummy variable out keeps its 0-1 contrast.
+The delta method accounts for the sampling variability
+of the standard deviations.}
 }
 \value{
 Returns an object

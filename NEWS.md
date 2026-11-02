@@ -1,8 +1,20 @@
 # betaSandwich 1.0.9.9000
 
+## Minor
+
+* Selective standardization: the arguments `std_y` and `std_x` standardize
+  only y or only the named regressors (for example, leave a dummy
+  variable in its 0-1 units). The defaults give the same results as
+  before.
+* `DiffBetaSandwich()` stops when the slopes are not fully standardized.
+
 ## Patch
 
-* Latest development version.
+* Fixed the standard error of R-squared in `RSqBetaSandwich()`, which was
+  about three times too small for every covariance type. With R-squared
+  as a parameter, the variance of y is beta' Sigma_X beta / R-squared, so
+  its derivatives with respect to beta and Sigma_X are now divided by
+  R-squared.
 
 # betaSandwich 1.0.9
 

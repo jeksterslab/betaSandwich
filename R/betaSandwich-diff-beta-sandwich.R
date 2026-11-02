@@ -46,6 +46,9 @@ DiffBetaSandwich <- function(object,
   if (object$lm_process$p < 2) {
     stop("Two or more regressors is required.")
   }
+  if (isFALSE(attributes(object)$std)) {
+    stop("Differences need fully standardized slopes.")
+  }
   est <- object$lm_process$dif_betastar
   jcap <- .JacobianDiffBetaStar(
     p = object$lm_process$p

@@ -89,24 +89,24 @@ summary(mvn)
 #> 
 #> Multiple correlation with MVN standard errors:
 #>        est     se       t df p   2.5%  97.5%
-#> rsq 0.8045 0.0328 24.5344 42 0 0.7383 0.8707
-#> adj 0.7906 0.0351 22.5014 42 0 0.7197 0.8615
+#> rsq 0.8045 0.0517 15.5608 42 0 0.7002 0.9089
+#> adj 0.7906 0.0554 14.2713 42 0 0.6788 0.9024
 summary(adf)
 #> Call:
 #> RSqBetaSandwich(object = std_adf, alpha = 0.05)
 #> 
 #> Multiple correlation with MVN standard errors:
 #>        est     se       t df p   2.5%  97.5%
-#> rsq 0.8045 0.0287 28.0431 42 0 0.7466 0.8624
-#> adj 0.7906 0.0307 25.7193 42 0 0.7285 0.8526
+#> rsq 0.8045 0.0519 15.4910 42 0 0.6997 0.9093
+#> adj 0.7906 0.0556 14.2073 42 0 0.6783 0.9029
 summary(hc3)
 #> Call:
 #> RSqBetaSandwich(object = std_hc3, alpha = 0.05)
 #> 
 #> Multiple correlation with HC3 standard errors:
 #>        est     se       t df p   2.5%  97.5%
-#> rsq 0.8045 0.0313 25.6916 42 0 0.7413 0.8677
-#> adj 0.7906 0.0336 23.5627 42 0 0.7229 0.8583
+#> rsq 0.8045 0.0573 14.0286 42 0 0.6888 0.9203
+#> adj 0.7906 0.0614 12.8662 42 0 0.6666 0.9146
 ```
 
 ### coef
@@ -134,16 +134,16 @@ Calculate the sampling covariance matrix of R-squared and adjusted R-squared.
 ``` r
 vcov(mvn)
 #>             rsq         adj
-#> rsq 0.001075300 0.001152107
-#> adj 0.001152107 0.001234400
+#> rsq 0.002673125 0.002864062
+#> adj 0.002864062 0.003068638
 vcov(adf)
-#>              rsq          adj
-#> rsq 0.0008230557 0.0008818454
-#> adj 0.0008818454 0.0009448343
+#>             rsq         adj
+#> rsq 0.002697266 0.002889927
+#> adj 0.002889927 0.003096351
 vcov(hc3)
-#>              rsq         adj
-#> rsq 0.0009806163 0.001050660
-#> adj 0.0010506603 0.001125707
+#>             rsq         adj
+#> rsq 0.003288894 0.003523815
+#> adj 0.003523815 0.003775516
 ```
 
 ### confint
@@ -154,16 +154,16 @@ Generate confidence intervals for R-squared and adjusted R-squared.
 ``` r
 confint(mvn, level = 0.95)
 #>         2.5 %    97.5 %
-#> rsq 0.7383498 0.8707027
-#> adj 0.7196605 0.8614672
+#> rsq 0.7001868 0.9088657
+#> adj 0.6787716 0.9023561
 confint(adf, level = 0.95)
 #>         2.5 %    97.5 %
-#> rsq 0.7466296 0.8624229
-#> adj 0.7285317 0.8525960
+#> rsq 0.6997168 0.9093357
+#> adj 0.6782680 0.9028597
 confint(hc3, level = 0.95)
 #>         2.5 %    97.5 %
-#> rsq 0.7413304 0.8677221
-#> adj 0.7228540 0.8582736
+#> rsq 0.6887915 0.9202610
+#> adj 0.6665624 0.9145653
 ```
 
 ## References
