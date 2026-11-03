@@ -16,7 +16,8 @@ the output of the \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaN]{BetaN()}}
 Significance level \eqn{\alpha}.}
 }
 \value{
-Returns an object of class \code{diffbetasandwich}
+Returns an object of class \code{essandwich}
+(and \code{diffbetasandwich})
 which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
@@ -26,6 +27,7 @@ which is a list with the following elements:
 differences of standardized slopes.}
 \item{est}{Vector of
 differences of standardized slopes.}
+\item{fun}{Function used ("DiffBetaSandwich").}
 }
 }
 \description{
@@ -49,7 +51,11 @@ Other Beta Sandwich Functions:
 \code{\link[=BetaADF]{BetaADF()}},
 \code{\link[=BetaHC]{BetaHC()}},
 \code{\link[=BetaN]{BetaN()}},
-\code{\link[=RSqBetaSandwich]{RSqBetaSandwich()}}
+\code{\link[=DeltaRSqSandwich]{DeltaRSqSandwich()}},
+\code{\link[=FSqSandwich]{FSqSandwich()}},
+\code{\link[=PCorSandwich]{PCorSandwich()}},
+\code{\link[=RSqSandwich]{RSqSandwich()}},
+\code{\link[=SCorSandwich]{SCorSandwich()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

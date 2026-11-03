@@ -3,7 +3,8 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns an object of class `diffbetasandwich`
+#' @return Returns an object of class `essandwich`
+#'   (and `diffbetasandwich`)
 #'   which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
@@ -13,6 +14,7 @@
 #'       differences of standardized slopes.}
 #'     \item{est}{Vector of
 #'       differences of standardized slopes.}
+#'     \item{fun}{Function used ("DiffBetaSandwich").}
 #'   }
 #'
 #' @param object Object of class `betasandwich`,
@@ -50,7 +52,7 @@ DiffBetaSandwich <- function(object,
     stop("Differences need fully standardized slopes.")
   }
   est <- object$lm_process$dif_betastar
-  jcap <- .JacobianDiffBetaStar(
+  jcap <- .JacDiffBetaStar(
     p = object$lm_process$p
   )
   vcov <- object$vcov[
@@ -71,9 +73,11 @@ DiffBetaSandwich <- function(object,
       alpha = alpha
     ),
     vcov = vcov,
-    est = est
+    est = est,
+    fun = "DiffBetaSandwich"
   )
   class(out) <- c(
+    "essandwich",
     "diffbetasandwich",
     class(out)
   )

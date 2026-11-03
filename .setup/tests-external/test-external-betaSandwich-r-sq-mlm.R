@@ -31,7 +31,7 @@ lapply(
     )
     object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
     sandwich <- BetaHC(object, type = "hc0")
-    rsq <- RSqBetaSandwich(sandwich)
+    rsq <- RSqSandwich(sandwich)
     ci <- confint(rsq)
     model <- paste(
       "QUALITY ~ NARTIC + PCTGRT + PCTSUPP;",

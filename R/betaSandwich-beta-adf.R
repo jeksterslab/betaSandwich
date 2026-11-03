@@ -95,7 +95,7 @@ BetaADF <- function(object,
     std_x = std_x,
     xnames = lm_process$xnames
   )
-  jcap <- .JacobianVechSigmaWRTThetaStar(
+  jcap <- .JacVechSigmaWRTThetaStar(
     betastar = lm_process$betastar,
     sigmay = lm_process$sigma[1],
     sigmax = lm_process$sigma[-1],

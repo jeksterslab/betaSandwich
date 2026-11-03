@@ -1,5 +1,20 @@
 # betaSandwich 1.0.9.9000
 
+## Major
+
+* Added `SCorSandwich()`, `PCorSandwich()`, `DeltaRSqSandwich()`, and
+  `FSqSandwich()`: delta-method intervals for semipartial correlations,
+  squared partial correlations, the improvement in R-squared, and Cohen's
+  f-squared (global and local), with normal-theory, ADF, or HC standard
+  errors, as in betaMC and betaNB.
+* `RSqBetaSandwich()` is removed. Use `RSqSandwich()`, which gives the same
+  estimates and standard errors; its intervals and tests use the normal
+  distribution, as the other functions do, and its estimates are named
+  `rsq` and `adj`.
+* The new functions and `DiffBetaSandwich()` return objects of class
+  `essandwich` with one set of methods. `DiffBetaSandwich()` objects also
+  keep the class `diffbetasandwich`.
+
 ## Minor
 
 * Selective standardization: the arguments `std_y` and `std_x` standardize

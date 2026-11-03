@@ -8,9 +8,17 @@ reference:
 - title: Standardized Regression Coefficients
   contents:
   - has_keyword("std")
-- title: Multiple Correlation
+- title: R-Squared
   contents:
   - has_keyword("rsq")
+- title: Semipartial and Squared Partial Correlations
+  contents:
+  - has_keyword("scor")
+  - has_keyword("pcor")
+- title: Improvement in R-Squared and Cohen's f-Squared
+  contents:
+  - has_keyword("deltarsq")
+  - has_keyword("fsq")
 - title: Differences of Standardized Regression Coefficients
   contents:
   - has_keyword("diff")
@@ -26,7 +34,8 @@ articles:
   contents:
   - example-beta-sandwich
   - example-diff-beta-sandwich
-  - example-r-sq-beta-sandwich
+  - example-r-sq-sandwich
+  - example-es-sandwich
 - title: Session Information
   contents:
   - session
