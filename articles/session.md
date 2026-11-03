@@ -34,7 +34,7 @@
 `#> `\
 `#> loaded via a namespace (and not attached):`\
 `#> [1] compiler_4.6.2  cli_3.6.6.9000  tools_4.6.2     otel_0.2.0     `\
-`#> [5] rProject_0.0.61 knitr_1.52      xfun_0.62       rlang_1.3.0    `\
+`#> [5] rProject_0.0.62 knitr_1.52      xfun_0.62       rlang_1.3.0    `\
 `#> [9] evaluate_1.0.5`
 
 ## Packages
@@ -43,7 +43,7 @@
 [`installed.packages`](https://rdrr.io/r/utils/installed.packages.html)`(``)``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"Package"``, ``"Version"``)``]`\
 `#>                   Package             Version     `\
 `#> betaSandwich      "betaSandwich"      "1.0.9.9000"`\
-`#> rProject          "rProject"          "0.0.61"    `\
+`#> rProject          "rProject"          "0.0.62"    `\
 `#> abind             "abind"             "1.4-8"     `\
 `#> Amelia            "Amelia"            "1.8.3"     `\
 `#> arm               "arm"               "1.15-3"    `\
@@ -258,7 +258,7 @@
 `#> pak               "pak"               "0.11.1"    `\
 `#> pan               "pan"               "2.0"       `\
 `#> pander            "pander"            "0.6.6"     `\
-`#> parallelly        "parallelly"        "1.48.0"    `\
+`#> parallelly        "parallelly"        "1.50.0"    `\
 `#> parsnip           "parsnip"           "1.6.1"     `\
 `#> patchwork         "patchwork"         "1.3.2"     `\
 `#> pbapply           "pbapply"           "1.7-5"     `\
@@ -337,7 +337,7 @@
 `#> roxygen2          "roxygen2"          "8.1.1.9000"`\
 `#> rpf               "rpf"               "1.0.15"    `\
 `#> RPostgres         "RPostgres"         "1.4.10"    `\
-`#> rProject          "rProject"          "0.0.60"    `\
+`#> rProject          "rProject"          "0.0.62"    `\
 `#> rprojroot         "rprojroot"         "2.1.1"     `\
 `#> rsample           "rsample"           "1.3.2"     `\
 `#> RSQLite           "RSQLite"           "3.53.3"    `\
@@ -463,10 +463,10 @@
     #> Socket(s):                               1
     #> Stepping:                                0
     #> Frequency boost:                         enabled
-    #> CPU(s) scaling MHz:                      60%
+    #> CPU(s) scaling MHz:                      81%
     #> CPU max MHz:                             5060.9761
     #> CPU min MHz:                             1219.5129
-    #> BogoMIPS:                                4990.58
+    #> BogoMIPS:                                4990.68
     #> Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d amd_lbr_pmc_freeze
     #> Virtualization:                          AMD-V
     #> L1d cache:                               768 KiB (16 instances)
@@ -497,6 +497,6 @@
 ## Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            44Gi       4.3Gi        28Gi        42Mi        12Gi        40Gi
+    #> Mem:            44Gi       2.8Gi        32Gi        18Mi       9.8Gi        41Gi
     #> Swap:           22Gi          0B        22Gi
-    #> Total:          66Gi       4.3Gi        51Gi
+    #> Total:          66Gi       2.8Gi        54Gi
