@@ -96,8 +96,12 @@ Confidence intervals for standardized regression coefficients in R.
 Other Beta Sandwich Functions:
 \code{\link[=BetaHC]{BetaHC()}},
 \code{\link[=BetaN]{BetaN()}},
+\code{\link[=DeltaRSqSandwich]{DeltaRSqSandwich()}},
 \code{\link[=DiffBetaSandwich]{DiffBetaSandwich()}},
-\code{\link[=RSqBetaSandwich]{RSqBetaSandwich()}}
+\code{\link[=FSqSandwich]{FSqSandwich()}},
+\code{\link[=PCorSandwich]{PCorSandwich()}},
+\code{\link[=RSqSandwich]{RSqSandwich()}},
+\code{\link[=SCorSandwich]{SCorSandwich()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

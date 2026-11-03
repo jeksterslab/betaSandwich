@@ -33,7 +33,7 @@
     ]
   } else {
     idx <- seq_len(2 * p + 1)
-    jcap <- .JacobianBetaStarSelectWRTThetaStar(
+    jcap <- .JacBetaStarSelWRTThetaStar(
       betastar = lm_process$betastar,
       sigmay = lm_process$sigma[1],
       sigmax = lm_process$sigma[-1],

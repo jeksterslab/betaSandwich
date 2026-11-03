@@ -132,7 +132,7 @@ BetaHC <- function(object,
     ),
     n = lm_process$n
   )
-  jcap <- .JacobianVechSigmaWRTThetaStar(
+  jcap <- .JacVechSigmaWRTThetaStar(
     betastar = lm_process$betastar,
     sigmay = lm_process$sigma[1],
     sigmax = lm_process$sigma[-1],
