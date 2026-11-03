@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>betaSandwich: Example Using the RSqBetaSandwich Function • betaSandwich</title>
+<title>betaSandwich: Example Using the RSqSandwich Function • betaSandwich</title>
 <!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
@@ -13,7 +13,7 @@
 <link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="betaSandwich: Example Using the RSqBetaSandwich Function">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="betaSandwich: Example Using the RSqSandwich Function">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -55,22 +55,21 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>betaSandwich: Example Using the RSqBetaSandwich Function</h1>
+      <h1>betaSandwich: Example Using the RSqSandwich Function</h1>
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaSandwich/blob/main/vignettes/example-r-sq-beta-sandwich.Rmd"><code>vignettes/example-r-sq-beta-sandwich.Rmd</code></a></small>
-      <div class="d-none name"><code>example-r-sq-beta-sandwich.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/jeksterslab/betaSandwich/blob/main/vignettes/example-r-sq-sandwich.Rmd"><code>vignettes/example-r-sq-sandwich.Rmd</code></a></small>
+      <div class="d-none name"><code>example-r-sq-sandwich.Rmd</code></div>
     </div>
 
     
     
 <p>Confidence intervals for multiple correlation are generated using the
-<code><a href="../reference/RSqBetaSandwich.html">RSqBetaSandwich()</a></code> function from the
-<code>betaSandwich</code> package. In this example, we use the data set
-and the model used in <a href="example-beta-sandwich.html">betaSandwich:
-Example Using the BetaHC Function</a>.</p>
+<code><a href="../reference/RSqSandwich.html">RSqSandwich()</a></code> function from the <code>betaSandwich</code>
+package. In this example, we use the data set and the model used in <a href="example-beta-sandwich.html">betaSandwich: Example Using the BetaHC
+Function</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaSandwich">betaSandwich</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -110,9 +109,9 @@ adjusted R-squared) and the corresponding sampling covariance
 matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-multiple-correlation-coefficients-r-squared-and-adjusted-r-squared-and-the-corresponding-sampling-covariance-matrix-"></a>
 </h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RSqBetaSandwich.html">RSqBetaSandwich</a></span><span class="op">(</span><span class="va">std_mvn</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
-<span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RSqBetaSandwich.html">RSqBetaSandwich</a></span><span class="op">(</span><span class="va">std_adf</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
-<span><span class="va">hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RSqBetaSandwich.html">RSqBetaSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RSqSandwich.html">RSqSandwich</a></span><span class="op">(</span><span class="va">std_mvn</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RSqSandwich.html">RSqSandwich</a></span><span class="op">(</span><span class="va">std_adf</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="va">hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RSqSandwich.html">RSqSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a>
@@ -120,32 +119,32 @@ matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-multiple-correl
 <div class="section level3">
 <h3 id="summary">summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h3>
-<p>Summary of the results of <code><a href="../reference/RSqBetaSandwich.html">RSqBetaSandwich()</a></code>.</p>
+<p>Summary of the results of <code><a href="../reference/RSqSandwich.html">RSqSandwich()</a></code>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
-<span><span class="co">#&gt; RSqBetaSandwich(object = std_mvn, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; RSqSandwich(object = std_mvn, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Multiple correlation with MVN standard errors:</span></span>
-<span><span class="co">#&gt;        est     se       t df p   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0517 15.5608 42 0 0.7002 0.9089</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0554 14.2713 42 0 0.6788 0.9024</span></span>
+<span><span class="co">#&gt; R-squared and adjusted R-squared with MVN standard errors:</span></span>
+<span><span class="co">#&gt;        est     se       z p   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0517 15.5608 0 0.7032 0.9059</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0554 14.2713 0 0.6820 0.8991</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
-<span><span class="co">#&gt; RSqBetaSandwich(object = std_adf, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; RSqSandwich(object = std_adf, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Multiple correlation with MVN standard errors:</span></span>
-<span><span class="co">#&gt;        est     se       t df p   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0519 15.4910 42 0 0.6997 0.9093</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0556 14.2073 42 0 0.6783 0.9029</span></span>
+<span><span class="co">#&gt; R-squared and adjusted R-squared with MVN standard errors:</span></span>
+<span><span class="co">#&gt;        est     se       z p   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0519 15.4910 0 0.7027 0.9063</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0556 14.2073 0 0.6815 0.8996</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
-<span><span class="co">#&gt; RSqBetaSandwich(object = std_hc3, alpha = 0.05)</span></span>
+<span><span class="co">#&gt; RSqSandwich(object = std_hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Multiple correlation with HC3 standard errors:</span></span>
-<span><span class="co">#&gt;        est     se       t df p   2.5%  97.5%</span></span>
-<span><span class="co">#&gt; rsq 0.8045 0.0573 14.0286 42 0 0.6888 0.9203</span></span>
-<span><span class="co">#&gt; adj 0.7906 0.0614 12.8662 42 0 0.6666 0.9146</span></span></code></pre></div>
+<span><span class="co">#&gt; R-squared and adjusted R-squared with HC3 standard errors:</span></span>
+<span><span class="co">#&gt;        est     se       z p   2.5%  97.5%</span></span>
+<span><span class="co">#&gt; rsq 0.8045 0.0573 14.0286 0 0.6921 0.9169</span></span>
+<span><span class="co">#&gt; adj 0.7906 0.0614 12.8662 0 0.6701 0.9110</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="coef">coef<a class="anchor" aria-label="anchor" href="#coef"></a>
@@ -153,13 +152,13 @@ matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-multiple-correl
 <p>Calculate R-squared and adjusted R-squared.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">mvn</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   rsq.rsq   adj.adj </span></span>
+<span><span class="co">#&gt;       rsq       adj </span></span>
 <span><span class="co">#&gt; 0.8045263 0.7905638</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">adf</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   rsq.rsq   adj.adj </span></span>
+<span><span class="co">#&gt;       rsq       adj </span></span>
 <span><span class="co">#&gt; 0.8045263 0.7905638</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">hc3</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   rsq.rsq   adj.adj </span></span>
+<span><span class="co">#&gt;       rsq       adj </span></span>
 <span><span class="co">#&gt; 0.8045263 0.7905638</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -189,16 +188,16 @@ R-squared.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">mvn</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; rsq 0.7001868 0.9088657</span></span>
-<span><span class="co">#&gt; adj 0.6787716 0.9023561</span></span>
+<span><span class="co">#&gt; rsq 0.7031917 0.9058608</span></span>
+<span><span class="co">#&gt; adj 0.6819911 0.8991366</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">adf</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; rsq 0.6997168 0.9093357</span></span>
-<span><span class="co">#&gt; adj 0.6782680 0.9028597</span></span>
+<span><span class="co">#&gt; rsq 0.7027351 0.9063174</span></span>
+<span><span class="co">#&gt; adj 0.6815019 0.8996258</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         2.5 %    97.5 %</span></span>
-<span><span class="co">#&gt; rsq 0.6887915 0.9202610</span></span>
-<span><span class="co">#&gt; adj 0.6665624 0.9145653</span></span></code></pre></div>
+<span><span class="co">#&gt; rsq 0.6921245 0.9169280</span></span>
+<span><span class="co">#&gt; adj 0.6701334 0.9109943</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2 unnumbered">

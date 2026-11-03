@@ -64,7 +64,8 @@ Significance level \(\alpha\).</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Returns an object of class <code>diffbetasandwich</code>
+    <p>Returns an object of class <code>essandwich</code>
+(and <code>diffbetasandwich</code>)
 which is a list with the following elements:</p><dl><dt>call</dt>
 <dd><p>Function call.</p></dd>
 
@@ -82,6 +83,9 @@ differences of standardized slopes.</p></dd>
 <dd><p>Vector of
 differences of standardized slopes.</p></dd>
 
+<dt>fun</dt>
+<dd><p>Function used ("DiffBetaSandwich").</p></dd>
+
 
 </dl></div>
     <div class="section level2">
@@ -90,7 +94,11 @@ differences of standardized slopes.</p></dd>
 <code><a href="BetaADF.html">BetaADF()</a></code>,
 <code><a href="BetaHC.html">BetaHC()</a></code>,
 <code><a href="BetaN.html">BetaN()</a></code>,
-<code><a href="RSqBetaSandwich.html">RSqBetaSandwich()</a></code></p></div>
+<code><a href="DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code>,
+<code><a href="FSqSandwich.html">FSqSandwich()</a></code>,
+<code><a href="PCorSandwich.html">PCorSandwich()</a></code>,
+<code><a href="RSqSandwich.html">RSqSandwich()</a></code>,
+<code><a href="SCorSandwich.html">SCorSandwich()</a></code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -107,7 +115,7 @@ differences of standardized slopes.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DiffBetaSandwich(object = std)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Difference between standardized regression coefficients with HC3 standard errors:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences of standardized regression slopes with HC3 standard errors:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   est     se      z      p   0.05%    0.5%    2.5%  97.5%</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT  0.1037 0.1417 0.7316 0.4644 -0.3626 -0.2613 -0.1741 0.3814</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP 0.2319 0.1318 1.7595 0.0785 -0.2018 -0.1076 -0.0264 0.4902</span>
@@ -120,7 +128,7 @@ differences of standardized slopes.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DiffBetaSandwich(object = std)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Difference between standardized regression coefficients with HC3 standard errors:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Differences of standardized regression slopes with HC3 standard errors:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   est     se      z      p   0.05%    0.5%    2.5%  97.5%</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTGRT  0.1037 0.1417 0.7316 0.4644 -0.3626 -0.2613 -0.1741 0.3814</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC-PCTSUPP 0.2319 0.1318 1.7595 0.0785 -0.2018 -0.1076 -0.0264 0.4902</span>

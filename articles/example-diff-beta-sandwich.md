@@ -54,7 +54,7 @@ Summary of the results of
 `#> Call:`\
 `#> DiffBetaSandwich(object = std_mvn, alpha = 0.05)`\
 `#> `\
-`#> Difference between standardized regression coefficients with MVN standard errors:`\
+`#> Differences of standardized regression slopes with MVN standard errors:`\
 `#>                   est     se      z      p    2.5%  97.5%`\
 `#> NARTIC-PCTGRT  0.1037 0.1357 0.7640 0.4449 -0.1623 0.3696`\
 `#> NARTIC-PCTSUPP 0.2319 0.1252 1.8524 0.0640 -0.0135 0.4773`\
@@ -63,7 +63,7 @@ Summary of the results of
 `#> Call:`\
 `#> DiffBetaSandwich(object = std_adf, alpha = 0.05)`\
 `#> `\
-`#> Difference between standardized regression coefficients with MVN standard errors:`\
+`#> Differences of standardized regression slopes with MVN standard errors:`\
 `#>                   est     se      z      p    2.5%  97.5%`\
 `#> NARTIC-PCTGRT  0.1037 0.1212 0.8555 0.3923 -0.1338 0.3411`\
 `#> NARTIC-PCTSUPP 0.2319 0.1181 1.9642 0.0495  0.0005 0.4633`\
@@ -72,7 +72,7 @@ Summary of the results of
 `#> Call:`\
 `#> DiffBetaSandwich(object = std_hc3, alpha = 0.05)`\
 `#> `\
-`#> Difference between standardized regression coefficients with HC3 standard errors:`\
+`#> Differences of standardized regression slopes with HC3 standard errors:`\
 `#>                   est     se      z      p    2.5%  97.5%`\
 `#> NARTIC-PCTGRT  0.1037 0.1417 0.7316 0.4644 -0.1741 0.3814`\
 `#> NARTIC-PCTSUPP 0.2319 0.1318 1.7595 0.0785 -0.0264 0.4902`\

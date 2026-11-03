@@ -118,11 +118,29 @@ computing*. R Foundation for Statistical Computing.
   : Estimate Standardized Regression Coefficients and the Corresponding
   Sampling Covariance Matrix Assuming Multivariate Normality
 
-## Multiple Correlation
+## R-Squared
 
-- [`RSqBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqBetaSandwich.md)
-  : Estimate Multiple Correlation Coefficients (R-squared and adjusted
-  R-squared) and the Corresponding Sampling Covariance Matrix
+- [`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)
+  : Estimate R-Squared and Adjusted R-Squared and the Corresponding
+  Sampling Covariance Matrix
+
+## Semipartial and Squared Partial Correlations
+
+- [`SCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/SCorSandwich.md)
+  : Estimate Semipartial Correlation Coefficients and the Corresponding
+  Sampling Covariance Matrix
+- [`PCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/PCorSandwich.md)
+  : Estimate Squared Partial Correlation Coefficients and the
+  Corresponding Sampling Covariance Matrix
+
+## Improvement in R-Squared and Cohen’s f-Squared
+
+- [`DeltaRSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md)
+  : Estimate Improvement in R-Squared and the Corresponding Sampling
+  Covariance Matrix
+- [`FSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/FSqSandwich.md)
+  : Estimate Cohen's f-Squared and Local f-Squared and the Corresponding
+  Sampling Covariance Matrix
 
 ## Differences of Standardized Regression Coefficients
 
@@ -135,63 +153,51 @@ computing*. R Foundation for Statistical Computing.
 - [`coef(`*`<betasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/coef.betasandwich.md)
   : Standardized Regression Slopes
 
-- [`coef(`*`<diffbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/coef.diffbetasandwich.md)
-  : Differences of Standardized Regression Slopes
+- [`coef(`*`<essandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/coef.essandwich.md)
+  :
 
-- [`coef(`*`<rsqbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/coef.rsqbetasandwich.md)
-  : Multiple Correlation Coefficients (R-Squared and Adjusted R-Squared)
+  Estimates for an Object of Class `essandwich`
 
 - [`confint(`*`<betasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/confint.betasandwich.md)
   : Confidence Intervals for Standardized Regression Slopes
 
-- [`confint(`*`<diffbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/confint.diffbetasandwich.md)
-  : Confidence Intervals for Differences of Standardized Regression
-  Slopes
+- [`confint(`*`<essandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/confint.essandwich.md)
+  :
 
-- [`confint(`*`<rsqbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/confint.rsqbetasandwich.md)
-  : Confidence Intervals for Multiple Correlation Coefficients
-  (R-Squared and Adjusted R-Squared)
+  Confidence Intervals for an Object of Class `essandwich`
 
 - [`print(`*`<betasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/print.betasandwich.md)
   :
 
   Print Method for an Object of Class `betasandwich`
 
-- [`print(`*`<diffbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/print.diffbetasandwich.md)
+- [`print(`*`<essandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/print.essandwich.md)
   :
 
-  Print Method for an Object of Class `diffbetasandwich`
+  Print Method for an Object of Class `essandwich`
 
-- [`print(`*`<rsqbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/print.rsqbetasandwich.md)
+- [`print(`*`<summary.essandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/print.summary.essandwich.md)
   :
 
-  Print Method for an Object of Class `rsqbetasandwich`
+  Print Method for an Object of Class `summary.essandwich`
 
 - [`summary(`*`<betasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/summary.betasandwich.md)
   :
 
   Summary Method for an Object of Class `betasandwich`
 
-- [`summary(`*`<diffbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/summary.diffbetasandwich.md)
+- [`summary(`*`<essandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/summary.essandwich.md)
   :
 
-  Summary Method for an Object of Class `diffbetasandwich`
-
-- [`summary(`*`<rsqbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/summary.rsqbetasandwich.md)
-  :
-
-  Summary Method for an Object of Class `rsqbetasandwich`
+  Summary Method for an Object of Class `essandwich`
 
 - [`vcov(`*`<betasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/vcov.betasandwich.md)
   : Sampling Covariance Matrix of the Standardized Regression Slopes
 
-- [`vcov(`*`<diffbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/vcov.diffbetasandwich.md)
-  : Sampling Covariance Matrix of Differences of Standardized Regression
-  Slopes
+- [`vcov(`*`<essandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/vcov.essandwich.md)
+  :
 
-- [`vcov(`*`<rsqbetasandwich>`*`)`](https://github.com/jeksterslab/betaSandwich/reference/vcov.rsqbetasandwich.md)
-  : Sampling Covariance Matrix of Multiple Correlation Coefficients
-  (R-Squared and Adjusted R-Squared)
+  Sampling Covariance Matrix for an Object of Class `essandwich`
 
 ## Data
 
@@ -206,8 +212,11 @@ computing*. R Foundation for Statistical Computing.
   Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sandwich.md):
 - [betaSandwich: Example Using the DiffBetaSandwich
   Function](https://github.com/jeksterslab/betaSandwich/articles/example-diff-beta-sandwich.md):
-- [betaSandwich: Example Using the RSqBetaSandwich
-  Function](https://github.com/jeksterslab/betaSandwich/articles/example-r-sq-beta-sandwich.md):
+- [betaSandwich: Example Using the RSqSandwich
+  Function](https://github.com/jeksterslab/betaSandwich/articles/example-r-sq-sandwich.md):
+- [betaSandwich: Example Using the SCorSandwich, PCorSandwich,
+  DeltaRSqSandwich, and FSqSandwich
+  Functions](https://github.com/jeksterslab/betaSandwich/articles/example-es-sandwich.md):
 
 ### Session Information
 

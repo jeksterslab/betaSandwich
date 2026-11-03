@@ -2,6 +2,29 @@
 
 ## betaSandwich 1.0.9.9000
 
+### Major
+
+- Added
+  [`SCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/SCorSandwich.md),
+  [`PCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/PCorSandwich.md),
+  [`DeltaRSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md),
+  and
+  [`FSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/FSqSandwich.md):
+  delta-method intervals for semipartial correlations, squared partial
+  correlations, the improvement in R-squared, and Cohen’s f-squared
+  (global and local), with normal-theory, ADF, or HC standard errors, as
+  in betaMC and betaNB.
+- `RSqBetaSandwich()` is removed. Use
+  [`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md),
+  which gives the same estimates and standard errors; its intervals and
+  tests use the normal distribution, as the other functions do, and its
+  estimates are named `rsq` and `adj`.
+- The new functions and
+  [`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md)
+  return objects of class `essandwich` with one set of methods.
+  [`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md)
+  objects also keep the class `diffbetasandwich`.
+
 ### Minor
 
 - Selective standardization: the arguments `std_y` and `std_x`
@@ -13,9 +36,8 @@
 
 ### Patch
 
-- Fixed the standard error of R-squared in
-  [`RSqBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqBetaSandwich.md),
-  which was about three times too small for every covariance type. With
+- Fixed the standard error of R-squared in `RSqBetaSandwich()`, which
+  was about three times too small for every covariance type. With
   R-squared as a parameter, the variance of y is beta’ Sigma_X beta /
   R-squared, so its derivatives with respect to beta and Sigma_X are now
   divided by R-squared.
@@ -68,9 +90,7 @@ CRAN release: 2023-04-25
 
 - Added the
   [`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md)
-  and the
-  [`RSqBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqBetaSandwich.md)
-  functions.
+  and the `RSqBetaSandwich()` functions.
 
 ## betaSandwich 1.0.3
 

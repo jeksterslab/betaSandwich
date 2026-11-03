@@ -1,12 +1,11 @@
-# Confidence Intervals for Multiple Correlation Coefficients (R-Squared and Adjusted R-Squared)
+# Confidence Intervals for an Object of Class `essandwich`
 
-Confidence Intervals for Multiple Correlation Coefficients (R-Squared
-and Adjusted R-Squared)
+Confidence Intervals for an Object of Class `essandwich`
 
 ## Usage
 
 ``` r
-# S3 method for class 'rsqbetasandwich'
+# S3 method for class 'essandwich'
 confint(object, parm = NULL, level = 0.95, ...)
 ```
 
@@ -14,7 +13,7 @@ confint(object, parm = NULL, level = 0.95, ...)
 
 - object:
 
-  Object of class `rsqbetasandwich`.
+  Object of class `essandwich`.
 
 - parm:
 
@@ -43,9 +42,9 @@ Ivan Jacob Agaloos Pesigan
 ``` r
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
-rsq <- RSqBetaSandwich(std)
-confint(rsq, level = 0.95)
+out <- RSqSandwich(std)
+confint(out, level = 0.95)
 #>         2.5 %    97.5 %
-#> rsq 0.6887915 0.9202610
-#> adj 0.6665624 0.9145653
+#> rsq 0.6921245 0.9169280
+#> adj 0.6701334 0.9109943
 ```

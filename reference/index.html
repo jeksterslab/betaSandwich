@@ -64,7 +64,7 @@
         </dt>
         <dd>Estimate Standardized Regression Coefficients and the Corresponding Sampling Covariance Matrix Assuming Multivariate Normality</dd>
       </dl></div><div class="section level2">
-      <h2 id="multiple-correlation">Multiple Correlation<a class="anchor" aria-label="anchor" href="#multiple-correlation"></a></h2>
+      <h2 id="r-squared">R-Squared<a class="anchor" aria-label="anchor" href="#r-squared"></a></h2>
 
 
 
@@ -75,10 +75,56 @@
 
       <dl><dt>
 
-          <code><a href="RSqBetaSandwich.html">RSqBetaSandwich()</a></code>
+          <code><a href="RSqSandwich.html">RSqSandwich()</a></code>
 
         </dt>
-        <dd>Estimate Multiple Correlation Coefficients (R-squared and adjusted R-squared) and the Corresponding Sampling Covariance Matrix</dd>
+        <dd>Estimate R-Squared and Adjusted R-Squared and the Corresponding Sampling Covariance Matrix</dd>
+      </dl></div><div class="section level2">
+      <h2 id="semipartial-and-squared-partial-correlations">Semipartial and Squared Partial Correlations<a class="anchor" aria-label="anchor" href="#semipartial-and-squared-partial-correlations"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="SCorSandwich.html">SCorSandwich()</a></code>
+
+        </dt>
+        <dd>Estimate Semipartial Correlation Coefficients and the Corresponding Sampling Covariance Matrix</dd>
+
+        <dt>
+
+          <code><a href="PCorSandwich.html">PCorSandwich()</a></code>
+
+        </dt>
+        <dd>Estimate Squared Partial Correlation Coefficients and the Corresponding Sampling Covariance Matrix</dd>
+      </dl></div><div class="section level2">
+      <h2 id="improvement-in-r-squared-and-cohen-s-f-squared">Improvement in R-Squared and Cohen’s f-Squared<a class="anchor" aria-label="anchor" href="#improvement-in-r-squared-and-cohen-s-f-squared"></a></h2>
+
+
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code>
+
+        </dt>
+        <dd>Estimate Improvement in R-Squared and the Corresponding Sampling Covariance Matrix</dd>
+
+        <dt>
+
+          <code><a href="FSqSandwich.html">FSqSandwich()</a></code>
+
+        </dt>
+        <dd>Estimate Cohen's f-Squared and Local f-Squared and the Corresponding Sampling Covariance Matrix</dd>
       </dl></div><div class="section level2">
       <h2 id="differences-of-standardized-regression-coefficients">Differences of Standardized Regression Coefficients<a class="anchor" aria-label="anchor" href="#differences-of-standardized-regression-coefficients"></a></h2>
 
@@ -114,17 +160,10 @@
 
         <dt>
 
-          <code><a href="coef.diffbetasandwich.html">coef(<i>&lt;diffbetasandwich&gt;</i>)</a></code>
+          <code><a href="coef.essandwich.html">coef(<i>&lt;essandwich&gt;</i>)</a></code>
 
         </dt>
-        <dd>Differences of Standardized Regression Slopes</dd>
-
-        <dt>
-
-          <code><a href="coef.rsqbetasandwich.html">coef(<i>&lt;rsqbetasandwich&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Multiple Correlation Coefficients (R-Squared and Adjusted R-Squared)</dd>
+        <dd>Estimates for an Object of Class <code>essandwich</code></dd>
 
         <dt>
 
@@ -135,17 +174,10 @@
 
         <dt>
 
-          <code><a href="confint.diffbetasandwich.html">confint(<i>&lt;diffbetasandwich&gt;</i>)</a></code>
+          <code><a href="confint.essandwich.html">confint(<i>&lt;essandwich&gt;</i>)</a></code>
 
         </dt>
-        <dd>Confidence Intervals for Differences of Standardized Regression Slopes</dd>
-
-        <dt>
-
-          <code><a href="confint.rsqbetasandwich.html">confint(<i>&lt;rsqbetasandwich&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Confidence Intervals for Multiple Correlation Coefficients (R-Squared and Adjusted R-Squared)</dd>
+        <dd>Confidence Intervals for an Object of Class <code>essandwich</code></dd>
 
         <dt>
 
@@ -156,17 +188,17 @@
 
         <dt>
 
-          <code><a href="print.diffbetasandwich.html">print(<i>&lt;diffbetasandwich&gt;</i>)</a></code>
+          <code><a href="print.essandwich.html">print(<i>&lt;essandwich&gt;</i>)</a></code>
 
         </dt>
-        <dd>Print Method for an Object of Class <code>diffbetasandwich</code></dd>
+        <dd>Print Method for an Object of Class <code>essandwich</code></dd>
 
         <dt>
 
-          <code><a href="print.rsqbetasandwich.html">print(<i>&lt;rsqbetasandwich&gt;</i>)</a></code>
+          <code><a href="print.summary.essandwich.html">print(<i>&lt;summary.essandwich&gt;</i>)</a></code>
 
         </dt>
-        <dd>Print Method for an Object of Class <code>rsqbetasandwich</code></dd>
+        <dd>Print Method for an Object of Class <code>summary.essandwich</code></dd>
 
         <dt>
 
@@ -177,17 +209,10 @@
 
         <dt>
 
-          <code><a href="summary.diffbetasandwich.html">summary(<i>&lt;diffbetasandwich&gt;</i>)</a></code>
+          <code><a href="summary.essandwich.html">summary(<i>&lt;essandwich&gt;</i>)</a></code>
 
         </dt>
-        <dd>Summary Method for an Object of Class <code>diffbetasandwich</code></dd>
-
-        <dt>
-
-          <code><a href="summary.rsqbetasandwich.html">summary(<i>&lt;rsqbetasandwich&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Summary Method for an Object of Class <code>rsqbetasandwich</code></dd>
+        <dd>Summary Method for an Object of Class <code>essandwich</code></dd>
 
         <dt>
 
@@ -198,17 +223,10 @@
 
         <dt>
 
-          <code><a href="vcov.diffbetasandwich.html">vcov(<i>&lt;diffbetasandwich&gt;</i>)</a></code>
+          <code><a href="vcov.essandwich.html">vcov(<i>&lt;essandwich&gt;</i>)</a></code>
 
         </dt>
-        <dd>Sampling Covariance Matrix of Differences of Standardized Regression Slopes</dd>
-
-        <dt>
-
-          <code><a href="vcov.rsqbetasandwich.html">vcov(<i>&lt;rsqbetasandwich&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Sampling Covariance Matrix of Multiple Correlation Coefficients (R-Squared and Adjusted R-Squared)</dd>
+        <dd>Sampling Covariance Matrix for an Object of Class <code>essandwich</code></dd>
       </dl></div><div class="section level2">
       <h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a></h2>
 

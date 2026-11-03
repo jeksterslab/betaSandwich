@@ -1,7 +1,7 @@
-# betaSandwich: Example Using the RSqBetaSandwich Function
+# betaSandwich: Example Using the RSqSandwich Function
 
 Confidence intervals for multiple correlation are generated using the
-[`RSqBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqBetaSandwich.md)
+[`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)
 function from the `betaSandwich` package. In this example, we use the
 data set and the model used in [betaSandwich: Example Using the BetaHC
 Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sandwich.md).
@@ -37,42 +37,42 @@ Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sand
 ## Estimate the multiple correlation coefficients (R-squared and adjusted R-squared) and the corresponding sampling covariance matrix.
 
 \
-`mvn`` ``<-`` `[`RSqBetaSandwich`](https://github.com/jeksterslab/betaSandwich/reference/RSqBetaSandwich.md)`(``std_mvn``, alpha ``=`` ``0.05``)`\
-`adf`` ``<-`` `[`RSqBetaSandwich`](https://github.com/jeksterslab/betaSandwich/reference/RSqBetaSandwich.md)`(``std_adf``, alpha ``=`` ``0.05``)`\
-`hc3`` ``<-`` `[`RSqBetaSandwich`](https://github.com/jeksterslab/betaSandwich/reference/RSqBetaSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)`
+`mvn`` ``<-`` `[`RSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)`(``std_mvn``, alpha ``=`` ``0.05``)`\
+`adf`` ``<-`` `[`RSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)`(``std_adf``, alpha ``=`` ``0.05``)`\
+`hc3`` ``<-`` `[`RSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)`
 
 ## Methods
 
 ### summary
 
 Summary of the results of
-[`RSqBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqBetaSandwich.md).
+[`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md).
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\
 `#> Call:`\
-`#> RSqBetaSandwich(object = std_mvn, alpha = 0.05)`\
+`#> RSqSandwich(object = std_mvn, alpha = 0.05)`\
 `#> `\
-`#> Multiple correlation with MVN standard errors:`\
-`#>        est     se       t df p   2.5%  97.5%`\
-`#> rsq 0.8045 0.0517 15.5608 42 0 0.7002 0.9089`\
-`#> adj 0.7906 0.0554 14.2713 42 0 0.6788 0.9024`\
+`#> R-squared and adjusted R-squared with MVN standard errors:`\
+`#>        est     se       z p   2.5%  97.5%`\
+`#> rsq 0.8045 0.0517 15.5608 0 0.7032 0.9059`\
+`#> adj 0.7906 0.0554 14.2713 0 0.6820 0.8991`\
 [`summary`](https://rdrr.io/r/base/summary.html)`(``adf``)`\
 `#> Call:`\
-`#> RSqBetaSandwich(object = std_adf, alpha = 0.05)`\
+`#> RSqSandwich(object = std_adf, alpha = 0.05)`\
 `#> `\
-`#> Multiple correlation with MVN standard errors:`\
-`#>        est     se       t df p   2.5%  97.5%`\
-`#> rsq 0.8045 0.0519 15.4910 42 0 0.6997 0.9093`\
-`#> adj 0.7906 0.0556 14.2073 42 0 0.6783 0.9029`\
+`#> R-squared and adjusted R-squared with MVN standard errors:`\
+`#>        est     se       z p   2.5%  97.5%`\
+`#> rsq 0.8045 0.0519 15.4910 0 0.7027 0.9063`\
+`#> adj 0.7906 0.0556 14.2073 0 0.6815 0.8996`\
 [`summary`](https://rdrr.io/r/base/summary.html)`(``hc3``)`\
 `#> Call:`\
-`#> RSqBetaSandwich(object = std_hc3, alpha = 0.05)`\
+`#> RSqSandwich(object = std_hc3, alpha = 0.05)`\
 `#> `\
-`#> Multiple correlation with HC3 standard errors:`\
-`#>        est     se       t df p   2.5%  97.5%`\
-`#> rsq 0.8045 0.0573 14.0286 42 0 0.6888 0.9203`\
-`#> adj 0.7906 0.0614 12.8662 42 0 0.6666 0.9146`
+`#> R-squared and adjusted R-squared with HC3 standard errors:`\
+`#>        est     se       z p   2.5%  97.5%`\
+`#> rsq 0.8045 0.0573 14.0286 0 0.6921 0.9169`\
+`#> adj 0.7906 0.0614 12.8662 0 0.6701 0.9110`
 
 ### coef
 
@@ -80,13 +80,13 @@ Calculate R-squared and adjusted R-squared.
 
 \
 [`coef`](https://rdrr.io/r/stats/coef.html)`(``mvn``)`\
-`#>   rsq.rsq   adj.adj `\
+`#>       rsq       adj `\
 `#> 0.8045263 0.7905638`\
 [`coef`](https://rdrr.io/r/stats/coef.html)`(``adf``)`\
-`#>   rsq.rsq   adj.adj `\
+`#>       rsq       adj `\
 `#> 0.8045263 0.7905638`\
 [`coef`](https://rdrr.io/r/stats/coef.html)`(``hc3``)`\
-`#>   rsq.rsq   adj.adj `\
+`#>       rsq       adj `\
 `#> 0.8045263 0.7905638`
 
 ### vcov
@@ -115,16 +115,16 @@ Generate confidence intervals for R-squared and adjusted R-squared.
 \
 [`confint`](https://rdrr.io/r/stats/confint.html)`(``mvn``, level ``=`` ``0.95``)`\
 `#>         2.5 %    97.5 %`\
-`#> rsq 0.7001868 0.9088657`\
-`#> adj 0.6787716 0.9023561`\
+`#> rsq 0.7031917 0.9058608`\
+`#> adj 0.6819911 0.8991366`\
 [`confint`](https://rdrr.io/r/stats/confint.html)`(``adf``, level ``=`` ``0.95``)`\
 `#>         2.5 %    97.5 %`\
-`#> rsq 0.6997168 0.9093357`\
-`#> adj 0.6782680 0.9028597`\
+`#> rsq 0.7027351 0.9063174`\
+`#> adj 0.6815019 0.8996258`\
 [`confint`](https://rdrr.io/r/stats/confint.html)`(``hc3``, level ``=`` ``0.95``)`\
 `#>         2.5 %    97.5 %`\
-`#> rsq 0.6887915 0.9202610`\
-`#> adj 0.6665624 0.9145653`
+`#> rsq 0.6921245 0.9169280`\
+`#> adj 0.6701334 0.9109943`
 
 ## References
 

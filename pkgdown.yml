@@ -5,9 +5,10 @@ articles:
   betaSandwich: betaSandwich.html
   example-beta-sandwich: example-beta-sandwich.html
   example-diff-beta-sandwich: example-diff-beta-sandwich.html
-  example-r-sq-beta-sandwich: example-r-sq-beta-sandwich.html
+  example-es-sandwich: example-es-sandwich.html
+  example-r-sq-sandwich: example-r-sq-sandwich.html
   session: session.html
-last_built: 2026-11-03T04:19Z
+last_built: 2026-11-03T16:27Z
 urls:
   reference: https://github.com/jeksterslab/betaSandwich/reference
   article: https://github.com/jeksterslab/betaSandwich/articles

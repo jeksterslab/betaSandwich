@@ -99,8 +99,12 @@ coefficients in R. *Multivariate Behavioral Research*.
 Other Beta Sandwich Functions:
 [`BetaADF()`](https://github.com/jeksterslab/betaSandwich/reference/BetaADF.md),
 [`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md),
+[`DeltaRSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md),
 [`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md),
-[`RSqBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqBetaSandwich.md)
+[`FSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/FSqSandwich.md),
+[`PCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/PCorSandwich.md),
+[`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md),
+[`SCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/SCorSandwich.md)
 
 ## Author
 
