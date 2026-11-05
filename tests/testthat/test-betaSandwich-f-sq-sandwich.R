@@ -36,7 +36,21 @@ lapply(
         testthat::skip_on_cran()
         ref <- (function() {
           r2 <- summary(object)$r.squared
-          c(r2 / (1 - r2), sapply(1:3, function(j) (r2 - summary(stats::lm(df$y ~ as.matrix(df[paste0("x", setdiff(1:3, j))])))$r.squared) / (1 - r2)))
+          c(
+            r2 / (1 - r2),
+            sapply(
+              1:3,
+              function(j) {
+                (
+                  r2 - summary(
+                    stats::lm(
+                      df$y ~ as.matrix(df[paste0("x", setdiff(1:3, j))])
+                    )
+                  )$r.squared
+                ) / (1 - r2)
+              }
+            )
+          )
         })()
         for (fit in list(BetaN(object), BetaADF(object), BetaHC(object))) {
           testthat::expect_equal(

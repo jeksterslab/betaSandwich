@@ -35,7 +35,21 @@ lapply(
       {
         testthat::skip_on_cran()
         ref <- (function() {
-          sapply(1:3, function(j) stats::cor(df$y, stats::resid(stats::lm(df[[paste0("x", j)]] ~ as.matrix(df[paste0("x", setdiff(1:3, j))])))))
+          sapply(
+            1:3,
+            function(j) {
+              stats::cor(
+                df$y,
+                stats::resid(
+                  stats::lm(
+                    df[[paste0("x", j)]] ~ as.matrix(
+                      df[paste0("x", setdiff(1:3, j))]
+                    )
+                  )
+                )
+              )
+            }
+          )
         })()
         for (fit in list(BetaN(object), BetaADF(object), BetaHC(object))) {
           testthat::expect_equal(
