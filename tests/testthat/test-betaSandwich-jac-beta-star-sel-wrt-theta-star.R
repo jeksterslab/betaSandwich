@@ -19,7 +19,13 @@ lapply(
     for (std_y in c(TRUE, FALSE)) {
       for (std_x in list(rep(TRUE, p), c(TRUE, FALSE, TRUE), rep(FALSE, p))) {
         testthat::test_that(
-          paste(text, "std_y =", std_y, "std_x =", paste(std_x, collapse = " ")),
+          paste(
+            text,
+            "std_y =",
+            std_y,
+            "std_x =",
+            paste(std_x, collapse = " ")
+          ),
           {
             testthat::skip_on_cran()
             Value <- function(theta) {

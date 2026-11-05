@@ -21,7 +21,7 @@ lapply(
         p <- 3
         draws <- matrix(data = stats::rnorm(5 * p), nrow = 5)
         # one set of standard deviations per draw, as in
-        # .BetaStarSelectofVechSigmaMat()
+        # .BetaStarSelectofVechSigmaMat
         sigmay <- stats::runif(5, 1, 2)
         sigmax <- matrix(data = stats::runif(5 * p, 0.5, 3), nrow = 5)
         for (std_y in c(TRUE, FALSE)) {
