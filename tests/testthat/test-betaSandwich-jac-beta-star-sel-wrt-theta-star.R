@@ -4,52 +4,53 @@ lapply(
   FUN = function(i,
                  text,
                  tol) {
+    testthat::skip_on_cran()
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     p <- 3
     for (std_y in c(TRUE, FALSE)) {
-      for (std_x in list(rep(TRUE, p), c(TRUE, FALSE, TRUE), rep(FALSE, p))) {
+      for (std_x in list(
+        rep(x = TRUE, p),
+        c(TRUE, FALSE, TRUE),
+        rep(x = FALSE, p)
+      )) {
         testthat::test_that(
-          paste(
+          desc = paste(
             text,
             "std_y =",
             std_y,
             "std_x =",
             paste(std_x, collapse = " ")
           ),
-          {
-            testthat::skip_on_cran()
+          code = {
             Value <- function(theta) {
-              betastar <- theta[seq_len(p)]
+              betastar <- theta[seq_len(length.out = p)]
               sigmay <- theta[p + 1]
-              sigmax <- theta[p + 1 + seq_len(p)]
+              sigmax <- theta[p + 1 + seq_len(length.out = p)]
               betastar * sigmay^(1 - std_y) * sigmax^(std_x - 1)
             }
-            theta <- c(stats::rnorm(p), 1.5, stats::runif(p, 1, 2))
+            theta <- c(
+              stats::rnorm(n = p),
+              1.5,
+              stats::runif(n = p, min = 1, max = 2)
+            )
             jcap <- .JacBetaStarSelWRTThetaStar(
-              betastar = theta[seq_len(p)],
+              betastar = theta[seq_len(length.out = p)],
               sigmay = theta[p + 1],
-              sigmax = theta[p + 1 + seq_len(p)],
+              sigmax = theta[p + 1 + seq_len(length.out = p)],
               std_y = std_y,
               std_x = std_x
             )
             num <- sapply(
-              X = seq_along(theta),
+              X = seq_along(along.with = theta),
               FUN = function(i) {
-                e <- replace(0 * theta, i, 1e-6)
-                (Value(theta + e) - Value(theta - e)) / 2e-6
+                e <- replace(x = 0 * theta, list = i, values = 1e-6)
+                (Value(theta = theta + e) - Value(theta = theta - e)) / 2e-6
               }
             )
-            testthat::expect_true(max(abs(jcap - num)) < tol)
+            testthat::expect_true(object = max(abs(x = jcap - num)) < tol)
           }
         )
       }

@@ -15,7 +15,7 @@
 #' @noRd
 .ESSandwichCI <- function(object,
                           alpha = NULL) {
-  if (is.null(alpha)) {
+  if (is.null(x = alpha)) {
     alpha <- object$args$alpha
   }
   stopifnot(
@@ -23,7 +23,7 @@
   )
   .CIWald(
     est = object$est,
-    se = sqrt(diag(object$vcov)),
+    se = sqrt(x = diag(x = object$vcov)),
     theta = 0,
     alpha = alpha,
     z = TRUE

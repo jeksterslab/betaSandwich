@@ -96,7 +96,7 @@ BetaHC <- function(object,
       what = "lm"
     )
   )
-  lm_process <- .ProcessLM(object)
+  lm_process <- .ProcessLM(object = object)
   index <- .BetaStarSelectIndex(
     std_x = std_x,
     xnames = lm_process$xnames
@@ -116,14 +116,14 @@ BetaHC <- function(object,
   constant <- k
   gammacap <- .GammaHC(
     d = .DofMat(
-      lm_process$x,
-      center = colMeans(lm_process$x),
+      x = lm_process$x,
+      center = colMeans(x = lm_process$x),
       n = lm_process$n,
       k = lm_process$k
     ),
     sigmacap = lm_process$sigmacap,
     qcap = .QMat(
-      h = stats::hatvalues(object),
+      h = stats::hatvalues(model = object),
       k = lm_process$k,
       type = type,
       g1 = g1,
@@ -146,9 +146,9 @@ BetaHC <- function(object,
   )
   gammacap_mvn <- .GammaN(
     sigmacap = lm_process$sigmacap,
-    pinv_of_dcap = .PInvDmat(.DMat(lm_process$k))
+    pinv_of_dcap = .PInvDmat(d = .DMat(k = lm_process$k))
   )
-  wcap <- chol2inv(chol(gammacap_mvn))
+  wcap <- chol2inv(x = chol(x = gammacap_mvn))
   acov <- .ACovHC(
     jcap = jcap,
     gammacap = gammacap,
@@ -165,7 +165,7 @@ BetaHC <- function(object,
     std_y = std_y,
     std_x = index
   )
-  colnames(vcov) <- rownames(vcov) <- lm_process$xnames
+  colnames(x = vcov) <- rownames(x = vcov) <- lm_process$xnames
   out <- list(
     call = match.call(),
     args = list(
@@ -194,10 +194,10 @@ BetaHC <- function(object,
       std_x = index
     )
   )
-  attributes(out)$std <- std_y && all(index)
-  class(out) <- c(
+  attributes(x = out)$std <- std_y && all(index)
+  class(x = out) <- c(
     "betasandwich",
-    class(out)
+    class(x = out)
   )
   out
 }

@@ -1,33 +1,32 @@
 betaSandwich
 ================
 Ivan Jacob Agaloos Pesigan
-2026-11-05
+2026-11-10
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 <!-- badges: start -->
-
 [![DOI](https://zenodo.org/badge/DOI/10.1080/00273171.2023.2201277.svg)](https://doi.org/10.1080/00273171.2023.2201277)
-[![CRAN
-Status](https://www.r-pkg.org/badges/version/betaSandwich)](https://cran.r-project.org/package=betaSandwich)
-[![R-Universe
-Status](https://jeksterslab.r-universe.dev/badges/betaSandwich)](https://jeksterslab.r-universe.dev)
-[![Make
-Project](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml)
-[![R-CMD-check-standard](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml)
-[![R-CMD-check-oldrel](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml)
-[![R Package Test
-Coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml)
-[![Lint R
-Package](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml)
-[![Package Website (GitHub
-Pages)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml)
-[![Compile
-LaTeX](https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml)
-[![Shell
-Check](https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml)
+[![CRAN Status](https://www.r-pkg.org/badges/version/betaSandwich)](https://cran.r-project.org/package=betaSandwich)
+[![R-Universe Status](https://jeksterslab.r-universe.dev/badges/betaSandwich)](https://jeksterslab.r-universe.dev)
 [![pages-build-deployment](https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment)
 [![codecov](https://codecov.io/gh/jeksterslab/betaSandwich/branch/main/graph/badge.svg?token=KVLUET3DJ6)](https://codecov.io/gh/jeksterslab/betaSandwich)
+[![Make Project (make all)](https://github.com/jeksterslab/betaSandwich/actions/workflows/make-all.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/make-all.yml)
+[![Make Project](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml)
+[![R-CMD-check-full](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml)
+[![R-CMD-check-oldrel](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml)
+[![R-CMD-check-standard](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml)
+[![Compile LaTeX](https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml)
+[![Lint R Package](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml)
+[![Non-ASCII Check](https://github.com/jeksterslab/betaSandwich/actions/workflows/non-ascii-check.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/non-ascii-check.yml)
+[![Package Website (GitHub Pages)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml)
+[![rhub 1 (essential)](https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-1-essential.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-1-essential.yml)
+[![rhub 2 (memory)](https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-2-memory.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-2-memory.yml)
+[![rhub 3 (numerics), review only](https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-3-numerics.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-3-numerics.yml)
+[![rhub 4 (compilers), review only](https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-4-compilers.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-4-compilers.yml)
+[![Shell Check](https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml)
+[![Source Code](https://github.com/jeksterslab/betaSandwich/actions/workflows/source.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/source.yml)
+[![R Package Test Coverage](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml)
 <!-- badges: end -->
 
 ## Description

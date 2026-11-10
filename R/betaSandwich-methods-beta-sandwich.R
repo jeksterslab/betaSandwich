@@ -31,7 +31,7 @@ print.betasandwich <- function(x,
                                digits = 4,
                                ...) {
   print.summary.betasandwich(
-    summary.betasandwich(
+    x = summary.betasandwich(
       object = x,
       alpha = alpha,
       digits = digits
@@ -95,7 +95,7 @@ summary.betasandwich <- function(object,
     x = ci,
     which = "digits"
   ) <- digits
-  class(ci) <- "summary.betasandwich"
+  class(x = ci) <- "summary.betasandwich"
   ci
 }
 
@@ -113,14 +113,14 @@ print.summary.betasandwich <- function(x,
     which = "fit"
   )
   cat("Call:\n")
-  base::print(object$call)
+  base::print(x = object$call)
   cat(
     "\nStandardized regression slopes with",
-    toupper(object$args$type),
+    toupper(x = object$args$type),
     "standard errors:\n"
   )
-  print(print_summary)
-  invisible(x)
+  print(x = print_summary)
+  invisible(x = x)
 }
 
 #' Sampling Covariance Matrix of the Standardized Regression Slopes
@@ -144,8 +144,8 @@ print.summary.betasandwich <- function(x,
 vcov.betasandwich <- function(object,
                               ...) {
   object$vcov[
-    seq_len(object$lm_process$p),
-    seq_len(object$lm_process$p),
+    seq_len(length.out = object$lm_process$p),
+    seq_len(length.out = object$lm_process$p),
     drop = FALSE
   ]
 }
@@ -196,19 +196,19 @@ confint.betasandwich <- function(object,
                                  parm = NULL,
                                  level = 0.95,
                                  ...) {
-  if (is.null(parm)) {
-    parm <- seq_len(object$lm_process$p)
+  if (is.null(x = parm)) {
+    parm <- seq_len(length.out = object$lm_process$p)
   }
   ci <- .BetaCI(
     object = object,
     alpha = 1 - level[1]
   )[parm, 6:7, drop = FALSE] # always t
-  varnames <- colnames(ci)
+  varnames <- colnames(x = ci)
   varnames <- gsub(
     pattern = "%",
     replacement = " %",
     x = varnames
   )
-  colnames(ci) <- varnames
+  colnames(x = ci) <- varnames
   ci
 }

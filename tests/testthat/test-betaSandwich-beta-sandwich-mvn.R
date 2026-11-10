@@ -4,24 +4,17 @@ lapply(
   FUN = function(i,
                  tol,
                  text) {
+    testthat::skip_on_cran()
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     testthat::test_that(
-      paste(text, "coef"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "coef"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -29,31 +22,33 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-        out <- BetaN(object)
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
+        out <- BetaN(object = object)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              coef(out) - c(0.4951, 0.3915, 0.2632)
+              x = stats::coef(object = out) - c(0.4951, 0.3915, 0.2632)
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              out$est - coef(out)
+              x = out$est - stats::coef(object = out)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "se"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "se"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -61,19 +56,24 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-        out <- BetaN(object)
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
+        out <- BetaN(object = object)
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              summary(out)[, "se"] - c(0.0759, 0.0770, 0.0747)
+              x = summary(object = out)[, "se"] - c(0.0759, 0.0770, 0.0747)
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              sqrt(diag(vcov(out))) - summary(out)[, "se"]
+              x = sqrt(
+                x = diag(x = stats::vcov(object = out))
+              ) - summary(object = out)[, "se"]
             ) <= tol
           )
         )
