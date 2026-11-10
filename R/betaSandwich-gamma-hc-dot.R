@@ -23,12 +23,12 @@
   ) * Reduce(
     f = "+",
     x = lapply(
-      X = seq_len(n),
+      X = seq_len(length.out = n),
       FUN = function(i) {
         qcap[i] * tcrossprod(
-          .Vech(
-            tcrossprod(
-              d[i, ]
+          x = .Vech(
+            x = tcrossprod(
+              x = d[i, ]
             ) - sigmacap
           )
         )

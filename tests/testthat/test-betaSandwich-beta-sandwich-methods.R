@@ -3,24 +3,17 @@ lapply(
   X = 1,
   FUN = function(i,
                  text) {
+    testthat::skip_on_cran()
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     testthat::test_that(
-      paste(text, "methods"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "methods"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -28,52 +21,55 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-        hc <- BetaHC(object)
-        print.betasandwich(hc)
-        summary.betasandwich(hc)
-        print.summary.betasandwich(summary.betasandwich(hc))
-        coef.betasandwich(hc)
-        vcov.betasandwich(hc)
-        confint.betasandwich(hc)
-        mvn <- BetaN(object)
-        print.betasandwich(mvn)
-        summary.betasandwich(mvn)
-        print.summary.betasandwich(summary.betasandwich(mvn))
-        coef.betasandwich(mvn)
-        vcov.betasandwich(mvn)
-        confint.betasandwich(mvn)
-        adf <- BetaADF(object)
-        print.betasandwich(adf)
-        summary.betasandwich(adf)
-        print.summary.betasandwich(summary.betasandwich(adf))
-        coef.betasandwich(adf)
-        vcov.betasandwich(adf)
-        confint.betasandwich(adf)
-        object <- lm(QUALITY ~ NARTIC, data = df)
-        hc <- BetaHC(object)
-        print.betasandwich(hc)
-        summary.betasandwich(hc)
-        print.summary.betasandwich(summary.betasandwich(hc))
-        coef.betasandwich(hc)
-        vcov.betasandwich(hc)
-        confint.betasandwich(hc)
-        mvn <- BetaN(object)
-        print.betasandwich(mvn)
-        summary.betasandwich(mvn)
-        print.summary.betasandwich(summary.betasandwich(mvn))
-        coef.betasandwich(mvn)
-        vcov.betasandwich(mvn)
-        confint.betasandwich(mvn)
-        adf <- BetaADF(object)
-        print.betasandwich(adf)
-        summary.betasandwich(adf)
-        print.summary.betasandwich(summary.betasandwich(adf))
-        coef.betasandwich(adf)
-        vcov.betasandwich(adf)
-        confint.betasandwich(adf)
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
+        hc <- BetaHC(object = object)
+        print.betasandwich(x = hc)
+        summary.betasandwich(object = hc)
+        print.summary.betasandwich(x = summary.betasandwich(object = hc))
+        coef.betasandwich(object = hc)
+        vcov.betasandwich(object = hc)
+        confint.betasandwich(object = hc)
+        mvn <- BetaN(object = object)
+        print.betasandwich(x = mvn)
+        summary.betasandwich(object = mvn)
+        print.summary.betasandwich(x = summary.betasandwich(object = mvn))
+        coef.betasandwich(object = mvn)
+        vcov.betasandwich(object = mvn)
+        confint.betasandwich(object = mvn)
+        adf <- BetaADF(object = object)
+        print.betasandwich(x = adf)
+        summary.betasandwich(object = adf)
+        print.summary.betasandwich(x = summary.betasandwich(object = adf))
+        coef.betasandwich(object = adf)
+        vcov.betasandwich(object = adf)
+        confint.betasandwich(object = adf)
+        object <- stats::lm(formula = QUALITY ~ NARTIC, data = df)
+        hc <- BetaHC(object = object)
+        print.betasandwich(x = hc)
+        summary.betasandwich(object = hc)
+        print.summary.betasandwich(x = summary.betasandwich(object = hc))
+        coef.betasandwich(object = hc)
+        vcov.betasandwich(object = hc)
+        confint.betasandwich(object = hc)
+        mvn <- BetaN(object = object)
+        print.betasandwich(x = mvn)
+        summary.betasandwich(object = mvn)
+        print.summary.betasandwich(x = summary.betasandwich(object = mvn))
+        coef.betasandwich(object = mvn)
+        vcov.betasandwich(object = mvn)
+        confint.betasandwich(object = mvn)
+        adf <- BetaADF(object = object)
+        print.betasandwich(x = adf)
+        summary.betasandwich(object = adf)
+        print.summary.betasandwich(x = summary.betasandwich(object = adf))
+        coef.betasandwich(object = adf)
+        vcov.betasandwich(object = adf)
+        confint.betasandwich(object = adf)
         testthat::expect_true(
-          TRUE
+          object = TRUE
         )
       }
     )

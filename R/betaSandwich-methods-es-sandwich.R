@@ -31,7 +31,7 @@ print.essandwich <- function(x,
                              digits = 4,
                              ...) {
   print.summary.essandwich(
-    summary.essandwich(
+    x = summary.essandwich(
       object = x,
       alpha = alpha,
       digits = digits
@@ -95,7 +95,7 @@ summary.essandwich <- function(object,
     x = ci,
     which = "digits"
   ) <- digits
-  class(ci) <- "summary.essandwich"
+  class(x = ci) <- "summary.essandwich"
   ci
 }
 
@@ -142,17 +142,17 @@ print.summary.essandwich <- function(x,
     DiffBetaSandwich = "Differences of standardized regression slopes"
   )
   cat("Call:\n")
-  base::print(object$call)
+  base::print(x = object$call)
   cat(
     "\n",
     label,
     " with ",
-    toupper(object$fit$args$type),
+    toupper(x = object$fit$args$type),
     " standard errors:\n",
     sep = ""
   )
-  print(print_summary)
-  invisible(x)
+  print(x = print_summary)
+  invisible(x = x)
 }
 
 #' Sampling Covariance Matrix for an Object of Class `essandwich`
@@ -227,21 +227,21 @@ confint.essandwich <- function(object,
                                parm = NULL,
                                level = 0.95,
                                ...) {
-  if (is.null(parm)) {
+  if (is.null(x = parm)) {
     parm <- seq_along(
-      object$est
+      along.with = object$est
     )
   }
   ci <- .ESSandwichCI(
     object = object,
     alpha = 1 - level[1]
   )[parm, 5:6, drop = FALSE]
-  varnames <- colnames(ci)
+  varnames <- colnames(x = ci)
   varnames <- gsub(
     pattern = "%",
     replacement = " %",
     x = varnames
   )
-  colnames(ci) <- varnames
+  colnames(x = ci) <- varnames
   ci
 }

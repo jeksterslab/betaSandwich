@@ -4,24 +4,17 @@ lapply(
   FUN = function(i,
                  text,
                  tol) {
+    testthat::skip_on_cran()
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     testthat::test_that(
-      paste(text, "mvn", "multiple regression"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "mvn", "multiple regression"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -29,11 +22,14 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
         ############################################################
         # coverage #################################################
         ############################################################
-        lm_process <- .ProcessLM(object)
+        lm_process <- .ProcessLM(object = object)
         .JacVechSigmaWRTTheta(
           beta = lm_process$beta,
           sigmacapx = lm_process$sigmacap[
@@ -46,35 +42,34 @@ lapply(
           rsq = NULL
         )
         ############################################################
-        r_sq <- summary(object)$r.squared
-        adj <- summary(object)$adj.r.squared
-        mvn <- RSqSandwich(BetaN(object))
+        r_sq <- summary(object = object)$r.squared
+        adj <- summary(object = object)$adj.r.squared
+        mvn <- RSqSandwich(object = BetaN(object = object))
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              c(
+              x = c(
                 r_sq,
                 adj
-              ) - coef(mvn)
+              ) - stats::coef(object = mvn)
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              summary(mvn)[, "est"] - coef(mvn)
+              x = summary(object = mvn)[, "est"] - stats::coef(object = mvn)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "adf", "multiple regression"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "adf", "multiple regression"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -82,36 +77,38 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-        r_sq <- summary(object)$r.squared
-        adj <- summary(object)$adj.r.squared
-        adf <- RSqSandwich(BetaADF(object))
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
+        r_sq <- summary(object = object)$r.squared
+        adj <- summary(object = object)$adj.r.squared
+        adf <- RSqSandwich(object = BetaADF(object = object))
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              c(
+              x = c(
                 r_sq,
                 adj
-              ) - coef(adf)
+              ) - stats::coef(object = adf)
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              summary(adf)[, "est"] - coef(adf)
+              x = summary(object = adf)[, "est"] - stats::coef(object = adf)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc3", "multiple regression"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "hc3", "multiple regression"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -119,36 +116,38 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-        r_sq <- summary(object)$r.squared
-        adj <- summary(object)$adj.r.squared
-        hc3 <- RSqSandwich(BetaHC(object))
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
+        r_sq <- summary(object = object)$r.squared
+        adj <- summary(object = object)$adj.r.squared
+        hc3 <- RSqSandwich(object = BetaHC(object = object))
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              c(
+              x = c(
                 r_sq,
                 adj
-              ) - coef(hc3)
+              ) - stats::coef(object = hc3)
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              summary(hc3)[, "est"] - coef(hc3)
+              x = summary(object = hc3)[, "est"] - stats::coef(object = hc3)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "mvn", "simple regression"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "mvn", "simple regression"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -156,36 +155,35 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC, data = df)
-        r_sq <- summary(object)$r.squared
-        adj <- summary(object)$adj.r.squared
-        mvn <- RSqSandwich(BetaN(object))
+        object <- stats::lm(formula = QUALITY ~ NARTIC, data = df)
+        r_sq <- summary(object = object)$r.squared
+        adj <- summary(object = object)$adj.r.squared
+        mvn <- RSqSandwich(object = BetaN(object = object))
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              c(
+              x = c(
                 r_sq,
                 adj
-              ) - coef(mvn)
+              ) - stats::coef(object = mvn)
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              summary(mvn)[, "est"] - coef(mvn)
+              x = summary(object = mvn)[, "est"] - stats::coef(object = mvn)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "adf", "simple regression"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "adf", "simple regression"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -193,36 +191,35 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC, data = df)
-        r_sq <- summary(object)$r.squared
-        adj <- summary(object)$adj.r.squared
-        adf <- RSqSandwich(BetaADF(object))
+        object <- stats::lm(formula = QUALITY ~ NARTIC, data = df)
+        r_sq <- summary(object = object)$r.squared
+        adj <- summary(object = object)$adj.r.squared
+        adf <- RSqSandwich(object = BetaADF(object = object))
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              c(
+              x = c(
                 r_sq,
                 adj
-              ) - coef(adf)
+              ) - stats::coef(object = adf)
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              summary(adf)[, "est"] - coef(adf)
+              x = summary(object = adf)[, "est"] - stats::coef(object = adf)
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "hc3", "simple regression"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "hc3", "simple regression"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -230,24 +227,24 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC, data = df)
-        r_sq <- summary(object)$r.squared
-        adj <- summary(object)$adj.r.squared
-        hc3 <- RSqSandwich(BetaHC(object))
+        object <- stats::lm(formula = QUALITY ~ NARTIC, data = df)
+        r_sq <- summary(object = object)$r.squared
+        adj <- summary(object = object)$adj.r.squared
+        hc3 <- RSqSandwich(object = BetaHC(object = object))
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              c(
+              x = c(
                 r_sq,
                 adj
-              ) - coef(hc3)
+              ) - stats::coef(object = hc3)
             ) <= tol
           )
         )
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              summary(hc3)[, "est"] - coef(hc3)
+              x = summary(object = hc3)[, "est"] - stats::coef(object = hc3)
             ) <= tol
           )
         )

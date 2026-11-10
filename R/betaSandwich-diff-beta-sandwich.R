@@ -48,7 +48,7 @@ DiffBetaSandwich <- function(object,
   if (object$lm_process$p < 2) {
     stop("Two or more regressors is required.")
   }
-  if (isFALSE(attributes(object)$std)) {
+  if (isFALSE(x = attributes(x = object)$std)) {
     stop("Differences need fully standardized slopes.")
   }
   est <- object$lm_process$dif_betastar
@@ -56,15 +56,17 @@ DiffBetaSandwich <- function(object,
     p = object$lm_process$p
   )
   vcov <- object$vcov[
-    seq_len(object$lm_process$p),
-    seq_len(object$lm_process$p),
+    seq_len(length.out = object$lm_process$p),
+    seq_len(length.out = object$lm_process$p),
     drop = FALSE
   ]
   vcov <- jcap %*% tcrossprod(
-    vcov,
-    jcap
+    x = vcov,
+    y = jcap
   )
-  colnames(vcov) <- rownames(vcov) <- names(object$lm_process$dif_betastar)
+  colnames(
+    x = vcov
+  ) <- rownames(x = vcov) <- names(x = object$lm_process$dif_betastar)
   out <- list(
     call = match.call(),
     fit = object,
@@ -76,10 +78,10 @@ DiffBetaSandwich <- function(object,
     est = est,
     fun = "DiffBetaSandwich"
   )
-  class(out) <- c(
+  class(x = out) <- c(
     "essandwich",
     "diffbetasandwich",
-    class(out)
+    class(x = out)
   )
   out
 }

@@ -27,12 +27,12 @@
   p <- lm_process$p
   if (std_y && all(std_x)) {
     out <- vcov[
-      seq_len(p),
-      seq_len(p),
+      seq_len(length.out = p),
+      seq_len(length.out = p),
       drop = FALSE
     ]
   } else {
-    idx <- seq_len(2 * p + 1)
+    idx <- seq_len(length.out = 2 * p + 1)
     jcap <- .JacBetaStarSelWRTThetaStar(
       betastar = lm_process$betastar,
       sigmay = lm_process$sigma[1],
@@ -41,10 +41,10 @@
       std_x = std_x
     )
     out <- jcap %*% tcrossprod(
-      vcov[idx, idx, drop = FALSE],
-      jcap
+      x = vcov[idx, idx, drop = FALSE],
+      y = jcap
     )
   }
-  colnames(out) <- rownames(out) <- lm_process$xnames
+  colnames(x = out) <- rownames(x = out) <- lm_process$xnames
   out
 }

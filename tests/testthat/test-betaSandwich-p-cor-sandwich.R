@@ -4,51 +4,52 @@ lapply(
   FUN = function(i,
                  text,
                  tol) {
+    testthat::skip_on_cran()
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     # effect size as a function of betastar and rhocapx
     es <- function(betastar,
                    rhocapx) {
-      rsq <- drop(crossprod(betastar, rhocapx %*% betastar))
-      srsq <- betastar^2 / diag(solve(rhocapx))
+      rsq <- drop(x = crossprod(x = betastar, y = rhocapx %*% betastar))
+      srsq <- betastar^2 / diag(x = solve(a = rhocapx))
       srsq / (1 - rsq + srsq)
     }
     n <- 2000
-    x <- matrix(data = stats::rnorm(n * 3), ncol = 3)
+    x <- matrix(data = stats::rnorm(n = n * 3), ncol = 3)
     x[, 2] <- 0.5 * x[, 1] + x[, 2]
-    y <- drop(x %*% c(0.4, 0.3, 0.2)) + stats::rnorm(n) * sqrt(1 + x[, 1]^2)
-    colnames(x) <- c("x1", "x2", "x3")
+    y <- drop(
+      x = x %*% c(0.4, 0.3, 0.2)
+    ) + stats::rnorm(n = n) * sqrt(x = 1 + x[, 1]^2)
+    colnames(x = x) <- c("x1", "x2", "x3")
     df <- data.frame(y = y, x)
-    object <- lm(y ~ x1 + x2 + x3, data = df)
+    object <- stats::lm(formula = y ~ x1 + x2 + x3, data = df)
 
     testthat::test_that(
-      paste(text, "estimates"),
-      {
-        testthat::skip_on_cran()
+      desc = paste(text, "estimates"),
+      code = {
         ref <- (function() {
-          sapply(1:3, function(j) {
-            z <- as.matrix(df[paste0("x", setdiff(1:3, j))])
+          sapply(X = 1:3, FUN = function(j) {
+            z <- as.matrix(x = df[paste0("x", setdiff(x = 1:3, y = j))])
             stats::cor(
-              stats::resid(
-                stats::lm(df$y ~ z)
-              ),
-              stats::resid(stats::lm(df[[paste0("x", j)]] ~ z))
+              x = stats::resid(object = stats::lm(formula = df$y ~ z)),
+              y = stats::resid(
+                object = stats::lm(formula = df[[paste0("x", j)]] ~ z)
+              )
             )^2
           })
         })()
-        for (fit in list(BetaN(object), BetaADF(object), BetaHC(object))) {
+        for (fit in list(
+          BetaN(object = object),
+          BetaADF(object = object),
+          BetaHC(object = object)
+        )) {
           testthat::expect_equal(
-            unname(coef(PCorSandwich(fit))),
-            unname(ref),
+            object = unname(
+              obj = stats::coef(object = PCorSandwich(object = fit))
+            ),
+            expected = unname(obj = ref),
             tolerance = tol
           )
         }
@@ -56,17 +57,19 @@ lapply(
     )
 
     testthat::test_that(
-      paste(text, "standard errors against a Monte Carlo of the same vcov"),
-      {
-        testthat::skip_on_cran()
+      desc = paste(
+        text,
+        "standard errors against a Monte Carlo of the same vcov"
+      ),
+      code = {
         p <- 3
-        lower <- which(lower.tri(diag(p)), arr.ind = TRUE)
+        lower <- which(x = lower.tri(x = diag(x = p)), arr.ind = TRUE)
         for (type in c("mvn", "adf", "hc3")) {
           fit <- switch(
             EXPR = type,
-            mvn = BetaN(object),
-            adf = BetaADF(object),
-            BetaHC(object, type = type)
+            mvn = BetaN(object = object),
+            adf = BetaADF(object = object),
+            BetaHC(object = object, type = type)
           )
           lm_process <- fit$lm_process
           if (type %in% c("mvn", "adf")) {
@@ -82,50 +85,59 @@ lapply(
           theta <- c(
             lm_process$betastar,
             lm_process$sigma,
-            lm_process$rhocap[-1, -1][lower.tri(diag(p))]
+            lm_process$rhocap[-1, -1][lower.tri(x = diag(x = p))]
           )
           draws <- matrix(
-            data = stats::rnorm(2e4 * length(theta)),
-            ncol = length(theta)
-          ) %*% chol(vcov_theta)
-          draws <- sweep(draws, 2, theta, "+")
+            data = stats::rnorm(n = 2e4 * length(x = theta)),
+            ncol = length(x = theta)
+          ) %*% chol(x = vcov_theta)
+          draws <- sweep(x = draws, MARGIN = 2, STATS = theta, FUN = "+")
           values <- t(
-            apply(
+            x = apply(
               X = draws,
               MARGIN = 1,
               FUN = function(th) {
-                rhocapx <- diag(p)
-                rhocapx[lower] <- th[2 * p + 1 + seq_len(nrow(lower))]
-                rhocapx[lower[, 2:1]] <- th[2 * p + 1 + seq_len(nrow(lower))]
-                es(betastar = th[seq_len(p)], rhocapx = rhocapx)
+                rhocapx <- diag(x = p)
+                rhocapx[lower] <- th[2 * p + 1 + seq_len(
+                  length.out = nrow(x = lower)
+                )]
+                rhocapx[lower[, 2:1]] <- th[2 * p + 1 + seq_len(
+                  length.out = nrow(x = lower)
+                )]
+                es(betastar = th[seq_len(length.out = p)], rhocapx = rhocapx)
               }
             )
           )
-          if (nrow(values) == 1) {
-            values <- t(values)
+          if (nrow(x = values) == 1) {
+            values <- t(x = values)
           }
-          out <- PCorSandwich(fit)
-          ratio <- sqrt(diag(vcov(out))) / apply(values, 2, stats::sd)
-          testthat::expect_true(all(abs(ratio - 1) < 0.03))
+          out <- PCorSandwich(object = fit)
+          ratio <- sqrt(
+            x = diag(x = stats::vcov(object = out))
+          ) / apply(X = values, MARGIN = 2, FUN = stats::sd)
+          testthat::expect_true(object = all(abs(x = ratio - 1) < 0.03))
         }
       }
     )
 
     testthat::test_that(
-      paste(text, "errors"),
-      {
-        testthat::skip_on_cran()
-        testthat::expect_error(PCorSandwich(object))
-        testthat::expect_error(PCorSandwich(list()))
-        one <- BetaHC(lm(y ~ x1, data = df))
+      desc = paste(text, "errors"),
+      code = {
+        testthat::expect_error(object = PCorSandwich(object = object))
+        testthat::expect_error(object = PCorSandwich(object = list()))
+        one <- BetaHC(object = stats::lm(formula = y ~ x1, data = df))
         if (2 > 1) {
           testthat::expect_error(
-            PCorSandwich(one),
-            "Two or more regressors"
+            object = PCorSandwich(object = one),
+            regexp = "Two or more regressors"
           )
         } else {
-          out <- PCorSandwich(one)
-          testthat::expect_true(all(is.finite(sqrt(diag(vcov(out))))))
+          out <- PCorSandwich(object = one)
+          testthat::expect_true(
+            object = all(
+              is.finite(x = sqrt(x = diag(x = stats::vcov(object = out))))
+            )
+          )
         }
       }
     )

@@ -3,24 +3,17 @@ lapply(
   X = 1,
   FUN = function(i,
                  text) {
+    testthat::skip_on_cran()
     message(text)
 
-    set.seed(42)
-
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
+    set.seed(seed = 42)
 
     testthat::test_that(
-      paste(text, "methods"),
-      {
-        testthat::skip_on_cran()
-        if (!exists("nas1982")) {
+      desc = paste(text, "methods"),
+      code = {
+        if (!exists(x = "nas1982")) {
           try(
-            data(
+            expr = utils::data(
               "nas1982",
               package = "betaSandwich"
             ),
@@ -28,10 +21,13 @@ lapply(
           )
         }
         df <- nas1982
-        object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-        lm_process <- betaSandwich:::.ProcessLM(object)
+        object <- stats::lm(
+          formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+          data = df
+        )
+        lm_process <- betaSandwich:::.ProcessLM(object = object)
         print(
-          betaSandwich:::.JacVechSigmaWRTTheta(
+          x = betaSandwich:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -41,7 +37,7 @@ lapply(
           )
         )
         print(
-          betaSandwich:::.JacVechSigmaWRTTheta(
+          x = betaSandwich:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -51,7 +47,7 @@ lapply(
           )
         )
         print(
-          betaSandwich:::.JacVechSigmaWRTTheta(
+          x = betaSandwich:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -61,7 +57,7 @@ lapply(
           )
         )
         print(
-          betaSandwich:::.JacVechSigmaWRTTheta(
+          x = betaSandwich:::.JacVechSigmaWRTTheta(
             beta = lm_process$beta,
             sigmacapx = lm_process$sigmacapx,
             q = lm_process$q,
@@ -71,7 +67,7 @@ lapply(
           )
         )
         testthat::expect_true(
-          TRUE
+          object = TRUE
         )
       }
     )

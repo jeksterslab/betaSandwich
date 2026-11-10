@@ -2,7 +2,8 @@
 % Please edit documentation in R/betaSandwich-f-sq-sandwich.R
 \name{FSqSandwich}
 \alias{FSqSandwich}
-\title{Estimate Cohen's f-Squared and Local f-Squared and the Corresponding Sampling
+\title{Estimate Cohen's f-Squared and Local f-Squared and the Corresponding
+Sampling
 Covariance Matrix}
 \usage{
 FSqSandwich(object, alpha = c(0.05, 0.01, 0.001))
@@ -30,7 +31,8 @@ each regressor.}
 }
 }
 \description{
-Estimate Cohen's f-Squared and Local f-Squared and the Corresponding Sampling
+Estimate Cohen's f-Squared and Local f-Squared and the Corresponding
+Sampling
 Covariance Matrix
 }
 \details{

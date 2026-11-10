@@ -44,10 +44,10 @@
     )
   }
   vcov <- jcap %*% tcrossprod(
-    vcov,
-    jcap
+    x = vcov,
+    y = jcap
   )
-  colnames(vcov) <- rownames(vcov) <- names(est)
+  colnames(x = vcov) <- rownames(x = vcov) <- names(x = est)
   out <- list(
     call = call,
     fit = object,
@@ -59,9 +59,9 @@
     est = est,
     fun = fun
   )
-  class(out) <- c(
+  class(x = out) <- c(
     "essandwich",
-    class(out)
+    class(x = out)
   )
   out
 }

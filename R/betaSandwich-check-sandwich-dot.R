@@ -20,5 +20,5 @@
   if (object$lm_process$p < p_min) {
     stop("Two or more regressors is required.")
   }
-  invisible(TRUE)
+  invisible(x = TRUE)
 }

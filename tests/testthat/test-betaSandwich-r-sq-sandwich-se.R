@@ -4,33 +4,29 @@ lapply(
   FUN = function(i,
                  text,
                  tol) {
+    testthat::skip_on_cran()
     message(text)
-    if (!identical(Sys.getenv("NOT_CRAN"), "true") && !interactive()) {
-      message("CRAN: tests skipped.")
-      # nolint start
-      return(invisible(NULL))
-      # nolint end
-    }
     testthat::test_that(
-      paste(text, "standard error of R-squared"),
-      {
-        testthat::skip_on_cran()
-        set.seed(42)
+      desc = paste(text, "standard error of R-squared"),
+      code = {
+        set.seed(seed = 42)
         n <- 5000
-        x <- matrix(rnorm(n * 2), ncol = 2)
-        y <- drop(x %*% c(0.4, 0.3)) + rnorm(n)
-        object <- lm(y ~ x)
-        rsq <- summary(object)$r.squared
+        x <- matrix(data = stats::rnorm(n = n * 2), ncol = 2)
+        y <- drop(x = x %*% c(0.4, 0.3)) + stats::rnorm(n = n)
+        object <- stats::lm(formula = y ~ x)
+        rsq <- summary(object = object)$r.squared
         # normal-theory large-sample standard error
-        se <- sqrt(4 * rsq * (1 - rsq)^2 / n)
+        se <- sqrt(x = 4 * rsq * (1 - rsq)^2 / n)
         for (std in list(
-          BetaN(object),
-          BetaADF(object),
-          BetaHC(object, type = "hc3")
+          BetaN(object = object),
+          BetaADF(object = object),
+          BetaHC(object = object, type = "hc3")
         )) {
-          out <- RSqSandwich(std)
+          out <- RSqSandwich(object = std)
           testthat::expect_true(
-            abs(sqrt(diag(vcov(out)))[1] / se - 1) <= tol
+            object = abs(
+              x = sqrt(x = diag(x = stats::vcov(object = out)))[1] / se - 1
+            ) <= tol
           )
         }
       }

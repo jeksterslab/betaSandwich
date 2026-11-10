@@ -90,7 +90,7 @@ BetaADF <- function(object,
       what = "lm"
     )
   )
-  lm_process <- .ProcessLM(object)
+  lm_process <- .ProcessLM(object = object)
   index <- .BetaStarSelectIndex(
     std_x = std_x,
     xnames = lm_process$xnames
@@ -113,13 +113,13 @@ BetaADF <- function(object,
     ) / lm_process$n
   )
   vechsigmacap_consistent <- .Vech(
-    sigmacap_consistent
+    x = sigmacap_consistent
   )
   gammacap_adf <- .GammaADFUnbiased(
     gammacapadf_consistent = .GammaADFConsistent(
       d = .DofMat(
-        lm_process$x,
-        center = colMeans(lm_process$x),
+        x = lm_process$x,
+        center = colMeans(x = lm_process$x),
         n = lm_process$n,
         k = lm_process$k
       ),
@@ -128,15 +128,15 @@ BetaADF <- function(object,
     ),
     gammacapmvn_consistent = .GammaN(
       sigmacap = sigmacap_consistent,
-      pinv_of_dcap = .PInvDmat(.DMat(lm_process$k))
+      pinv_of_dcap = .PInvDmat(d = .DMat(k = lm_process$k))
     ),
     vechsigmacap_consistent = vechsigmacap_consistent,
     n = lm_process$n
   )
   # the procedure from here on is the same as normal
   acov <- chol2inv(
-    chol(
-      .ACovSEMInverse(
+    x = chol(
+      x = .ACovSEMInverse(
         jcap = jcap,
         acov = gammacap_adf
       )
@@ -149,7 +149,7 @@ BetaADF <- function(object,
     std_y = std_y,
     std_x = index
   )
-  colnames(vcov) <- rownames(vcov) <- lm_process$xnames
+  colnames(x = vcov) <- rownames(x = vcov) <- lm_process$xnames
   out <- list(
     call = match.call(),
     args = list(
@@ -162,7 +162,7 @@ BetaADF <- function(object,
     lm_process = lm_process,
     gamma_n = .GammaN(
       sigmacap = lm_process$sigmacap,
-      pinv_of_dcap = .PInvDmat(.DMat(lm_process$k))
+      pinv_of_dcap = .PInvDmat(d = .DMat(k = lm_process$k))
     ),
     gamma_hc = NULL,
     gamma = gammacap_adf,
@@ -174,10 +174,10 @@ BetaADF <- function(object,
       std_x = index
     )
   )
-  attributes(out)$std <- std_y && all(index)
-  class(out) <- c(
+  attributes(x = out)$std <- std_y && all(index)
+  class(x = out) <- c(
     "betasandwich",
-    class(out)
+    class(x = out)
   )
   out
 }
