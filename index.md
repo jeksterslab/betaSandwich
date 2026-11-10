@@ -1,6 +1,6 @@
 # betaSandwich
 
-Ivan Jacob Agaloos Pesigan 2026-11-05
+Ivan Jacob Agaloos Pesigan 2026-11-10
 
 ## Description
 
@@ -39,14 +39,14 @@ number of published articles attributed to the program faculty members
 ratings of 46 doctoral programs in psychology in the USA (National
 Research Council, 1982). Robust confidence intervals for the
 standardized regression coefficients are generated using the
-[`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)
+[`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)
 function from the `betaSandwich` package following Dudgeon (2017).
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
 
 \
-`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://github.com/jeksterslab/betaSandwich/reference/nas1982.md)
+`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://jeksterslab.github.io/betaSandwich/reference/nas1982.md)
 
 ### Fit the regression model using the `lm()` function.
 
@@ -56,7 +56,7 @@ function from the `betaSandwich` package following Dudgeon (2017).
 ### Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
 \
-[`BetaHC`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`\
+[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> BetaHC(object = object, type = "hc3", alpha = 0.05)`\
 `#> `\

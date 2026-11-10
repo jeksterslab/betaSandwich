@@ -14,10 +14,10 @@ SCorSandwich(object, alpha = c(0.05, 0.01, 0.001))
 - object:
 
   Object of class `betasandwich`, that is, the output of the
-  [`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md),
-  [`BetaN()`](https://github.com/jeksterslab/betaSandwich/reference/BetaN.md),
+  [`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md),
+  [`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md),
   or
-  [`BetaADF()`](https://github.com/jeksterslab/betaSandwich/reference/BetaADF.md)
+  [`BetaADF()`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md)
   functions.
 
 - alpha:
@@ -63,14 +63,14 @@ heteroskedasticity-consistent). Two or more regressors are required.
 ## See also
 
 Other Beta Sandwich Functions:
-[`BetaADF()`](https://github.com/jeksterslab/betaSandwich/reference/BetaADF.md),
-[`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md),
-[`BetaN()`](https://github.com/jeksterslab/betaSandwich/reference/BetaN.md),
-[`DeltaRSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md),
-[`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md),
-[`FSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/FSqSandwich.md),
-[`PCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/PCorSandwich.md),
-[`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)
+[`BetaADF()`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md),
+[`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md),
+[`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md),
+[`DeltaRSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md),
+[`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md),
+[`FSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/FSqSandwich.md),
+[`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md),
+[`RSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)
 
 ## Author
 

@@ -5,24 +5,24 @@
 ### Major
 
 - Added
-  [`SCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/SCorSandwich.md),
-  [`PCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/PCorSandwich.md),
-  [`DeltaRSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md),
+  [`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md),
+  [`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md),
+  [`DeltaRSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md),
   and
-  [`FSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/FSqSandwich.md):
+  [`FSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/FSqSandwich.md):
   delta-method intervals for semipartial correlations, squared partial
   correlations, the improvement in R-squared, and Cohen’s f-squared
   (global and local), with normal-theory, ADF, or HC standard errors, as
   in betaMC and betaNB.
 - `RSqBetaSandwich()` is removed. Use
-  [`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md),
+  [`RSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md),
   which gives the same estimates and standard errors; its intervals and
   tests use the normal distribution, as the other functions do, and its
   estimates are named `rsq` and `adj`.
 - The new functions and
-  [`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md)
+  [`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)
   return objects of class `essandwich` with one set of methods.
-  [`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md)
+  [`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)
   objects also keep the class `diffbetasandwich`.
 
 ### Minor
@@ -31,7 +31,7 @@
   standardize only y or only the named regressors (for example, leave a
   dummy variable in its 0-1 units). The defaults give the same results
   as before.
-- [`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md)
+- [`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)
   stops when the slopes are not fully standardized.
 
 ### Patch
@@ -89,7 +89,7 @@ CRAN release: 2023-04-25
 ### Patch
 
 - Added the
-  [`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md)
+  [`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)
   and the `RSqBetaSandwich()` functions.
 
 ## betaSandwich 1.0.3
@@ -99,7 +99,7 @@ CRAN release: 2022-12-17
 ### Patch
 
 - Added the
-  [`BetaADF()`](https://github.com/jeksterslab/betaSandwich/reference/BetaADF.md)
+  [`BetaADF()`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md)
   function.
 
 ## betaSandwich 1.0.2

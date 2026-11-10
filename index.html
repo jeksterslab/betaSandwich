@@ -43,7 +43,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="nav-link" href="https://github.com/jeksterslab/betaSandwich/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/jeksterslab/betaSandwich/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -54,7 +54,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="betasandwich">betaSandwich<a class="anchor" aria-label="anchor" href="#betasandwich"></a>
 </h1></div>
-<p>Ivan Jacob Agaloos Pesigan 2026-11-05</p>
+<p>Ivan Jacob Agaloos Pesigan 2026-11-10</p>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
@@ -69,7 +69,7 @@
 <p>You can install the CRAN release of <code>betaSandwich</code> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"betaSandwich"</span><span class="op">)</span></span></code></pre></div>
-<p>You can install the development version of <code>betaSandwich</code> from <a href="https://github.com/jeksterslab/betaSandwich">GitHub</a> with:</p>
+<p>You can install the development version of <code>betaSandwich</code> from <a href="https://github.com/jeksterslab/betaSandwich" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://pak.r-lib.org/" class="external-link">"pak"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"jeksterslab/betaSandwich"</span><span class="op">)</span></span></code></pre></div>
@@ -79,7 +79,7 @@
 </h2>
 <p>In this example, a multiple regression model is fitted using program quality ratings (<code>QUALITY</code>) as the regressand/outcome variable and number of published articles attributed to the program faculty members (<code>NARTIC</code>), percent of faculty members holding research grants (<code>PCTGRT</code>), and percentage of program graduates who received support (<code>PCTSUPP</code>) as regressor/predictor variables using a data set from 1982 ratings of 46 doctoral programs in psychology in the USA (National Research Council, 1982). Robust confidence intervals for the standardized regression coefficients are generated using the <code><a href="reference/BetaHC.html">BetaHC()</a></code> function from the <code>betaSandwich</code> package following Dudgeon (2017).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaSandwich">betaSandwich</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaSandwich" class="external-link">betaSandwich</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">betaSandwich</span><span class="fu">::</span><span class="va"><a href="reference/nas1982.html">nas1982</a></span></span></code></pre></div>
 <div class="section level3">
@@ -111,7 +111,7 @@
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
 </h2>
-<p>See <a href="https://jeksterslab.github.io/betaSandwich/index.html" class="external-link">GitHub Pages</a> for package documentation.</p>
+<p>See <a href="https://jeksterslab.github.io/betaSandwich/index.html">GitHub Pages</a> for package documentation.</p>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
@@ -141,8 +141,8 @@ R Core Team. (2026). <em>R: A language and environment for statistical computing
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li><a href="https://cloud.r-project.org/package=betaSandwich" class="external-link">View on CRAN</a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/">Browse source code</a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/issues">Report a bug</a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -175,16 +175,24 @@ R Core Team. (2026). <em>R: A language and environment for statistical computing
 <li><a href="https://doi.org/10.1080/00273171.2023.2201277" class="external-link"><img src="https://zenodo.org/badge/DOI/10.1080/00273171.2023.2201277.svg" alt="DOI"></a></li>
 <li><a href="https://cran.r-project.org/package=betaSandwich" class="external-link"><img src="https://www.r-pkg.org/badges/version/betaSandwich" alt="CRAN Status"></a></li>
 <li><a href="https://jeksterslab.r-universe.dev" class="external-link"><img src="https://jeksterslab.r-universe.dev/badges/betaSandwich" alt="R-Universe Status"></a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml/badge.svg" alt="Make Project"></a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml/badge.svg" alt="R-CMD-check-standard"></a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml/badge.svg" alt="R-CMD-check-oldrel"></a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml/badge.svg" alt="R Package Test Coverage"></a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml/badge.svg" alt="Lint R Package"></a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml/badge.svg" alt="Package Website (GitHub Pages)"></a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml/badge.svg" alt="Compile LaTeX"></a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml/badge.svg" alt="Shell Check"></a></li>
-<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a></li>
 <li><a href="https://codecov.io/gh/jeksterslab/betaSandwich" class="external-link"><img src="https://codecov.io/gh/jeksterslab/betaSandwich/branch/main/graph/badge.svg?token=KVLUET3DJ6" alt="codecov"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/make-all.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/make-all.yml/badge.svg" alt="Make Project (make all)"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/make.yml/badge.svg" alt="Make Project"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-full.yml/badge.svg" alt="R-CMD-check-full"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-oldrel.yml/badge.svg" alt="R-CMD-check-oldrel"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/check-standard.yml/badge.svg" alt="R-CMD-check-standard"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/latex.yml/badge.svg" alt="Compile LaTeX"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/lint.yml/badge.svg" alt="Lint R Package"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/non-ascii-check.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/non-ascii-check.yml/badge.svg" alt="Non-ASCII Check"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/pkgdown-gh-pages.yml/badge.svg" alt="Package Website (GitHub Pages)"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-1-essential.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-1-essential.yml/badge.svg" alt="rhub 1 (essential)"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-2-memory.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-2-memory.yml/badge.svg" alt="rhub 2 (memory)"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-3-numerics.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-3-numerics.yml/badge.svg" alt="rhub 3 (numerics), review only"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-4-compilers.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/rhub-4-compilers.yml/badge.svg" alt="rhub 4 (compilers), review only"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/shellcheck.yml/badge.svg" alt="Shell Check"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/source.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/source.yml/badge.svg" alt="Source Code"></a></li>
+<li><a href="https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml" class="external-link"><img src="https://github.com/jeksterslab/betaSandwich/actions/workflows/test-coverage.yml/badge.svg" alt="R Package Test Coverage"></a></li>
 </ul>
 </div>
 
@@ -193,7 +201,7 @@ R Core Team. (2026). <em>R: A language and environment for statistical computing
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ivan Jacob Agaloos Pesigan.</p>
+  <p>Ivan Jacob Agaloos Pesigan, <a href="https://hhd.psu.edu/hdfs" class="external-link">Department of Human Development and Family Studies</a>, The Pennsylvania State University</p>
 </div>
 
 <div class="pkgdown-footer-right">

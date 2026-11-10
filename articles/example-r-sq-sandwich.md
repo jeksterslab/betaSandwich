@@ -1,16 +1,16 @@
 # betaSandwich: Example Using the RSqSandwich Function
 
 Confidence intervals for multiple correlation are generated using the
-[`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)
+[`RSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)
 function from the `betaSandwich` package. In this example, we use the
 data set and the model used in [betaSandwich: Example Using the BetaHC
-Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sandwich.md).
+Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandwich.md).
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
 
 \
-`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://github.com/jeksterslab/betaSandwich/reference/nas1982.md)
+`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://jeksterslab.github.io/betaSandwich/reference/nas1982.md)
 
 ## Fit the regression model using the `lm()` function.
 
@@ -22,31 +22,31 @@ Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sand
 #### Multivariate Normal-Theory Approach
 
 \
-`std_mvn`` ``<-`` `[`BetaN`](https://github.com/jeksterslab/betaSandwich/reference/BetaN.md)`(``object``)`
+`std_mvn`` ``<-`` `[`BetaN`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md)`(``object``)`
 
 #### Asymptotic Distribution-Free Approach
 
 \
-`std_adf`` ``<-`` `[`BetaADF`](https://github.com/jeksterslab/betaSandwich/reference/BetaADF.md)`(``object``)`
+`std_adf`` ``<-`` `[`BetaADF`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md)`(``object``)`
 
 #### HC3
 
 \
-`std_hc3`` ``<-`` `[`BetaHC`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``)`
+`std_hc3`` ``<-`` `[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ## Estimate the multiple correlation coefficients (R-squared and adjusted R-squared) and the corresponding sampling covariance matrix.
 
 \
-`mvn`` ``<-`` `[`RSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)`(``std_mvn``, alpha ``=`` ``0.05``)`\
-`adf`` ``<-`` `[`RSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)`(``std_adf``, alpha ``=`` ``0.05``)`\
-`hc3`` ``<-`` `[`RSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)`
+`mvn`` ``<-`` `[`RSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)`(``std_mvn``, alpha ``=`` ``0.05``)`\
+`adf`` ``<-`` `[`RSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)`(``std_adf``, alpha ``=`` ``0.05``)`\
+`hc3`` ``<-`` `[`RSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)`
 
 ## Methods
 
 ### summary
 
 Summary of the results of
-[`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md).
+[`RSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md).
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\

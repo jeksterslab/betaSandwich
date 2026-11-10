@@ -115,14 +115,14 @@ coefficients in R. *Multivariate Behavioral Research*.
 ## See also
 
 Other Beta Sandwich Functions:
-[`BetaADF()`](https://github.com/jeksterslab/betaSandwich/reference/BetaADF.md),
-[`BetaN()`](https://github.com/jeksterslab/betaSandwich/reference/BetaN.md),
-[`DeltaRSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md),
-[`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md),
-[`FSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/FSqSandwich.md),
-[`PCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/PCorSandwich.md),
-[`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md),
-[`SCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/SCorSandwich.md)
+[`BetaADF()`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md),
+[`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md),
+[`DeltaRSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md),
+[`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md),
+[`FSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/FSqSandwich.md),
+[`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md),
+[`RSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md),
+[`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md)
 
 ## Author
 

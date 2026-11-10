@@ -3,20 +3,20 @@
 Confidence intervals for semipartial correlations, squared partial
 correlations, the improvement in R-squared, and Cohen’s f-squared are
 generated using the
-[`SCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/SCorSandwich.md),
-[`PCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/PCorSandwich.md),
-[`DeltaRSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md),
+[`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md),
+[`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md),
+[`DeltaRSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md),
 and
-[`FSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/FSqSandwich.md)
+[`FSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/FSqSandwich.md)
 functions from the `betaSandwich` package. In this example, we use the
 data set and the model used in [betaSandwich: Example Using the BetaHC
-Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sandwich.md).
+Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandwich.md).
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
 
 \
-`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://github.com/jeksterslab/betaSandwich/reference/nas1982.md)
+`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://jeksterslab.github.io/betaSandwich/reference/nas1982.md)
 
 ## Fit the regression model using the `lm()` function.
 
@@ -28,22 +28,22 @@ Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sand
 #### Multivariate Normal-Theory Approach
 
 \
-`std_mvn`` ``<-`` `[`BetaN`](https://github.com/jeksterslab/betaSandwich/reference/BetaN.md)`(``object``)`
+`std_mvn`` ``<-`` `[`BetaN`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md)`(``object``)`
 
 #### Asymptotic Distribution-Free Approach
 
 \
-`std_adf`` ``<-`` `[`BetaADF`](https://github.com/jeksterslab/betaSandwich/reference/BetaADF.md)`(``object``)`
+`std_adf`` ``<-`` `[`BetaADF`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md)`(``object``)`
 
 #### HC3
 
 \
-`std_hc3`` ``<-`` `[`BetaHC`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``)`
+`std_hc3`` ``<-`` `[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``)`
 
 ## Semipartial correlations
 
 \
-[`summary`](https://rdrr.io/r/base/summary.html)`(`[`SCorSandwich`](https://github.com/jeksterslab/betaSandwich/reference/SCorSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(`[`SCorSandwich`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
 `#> Call:`\
 `#> SCorSandwich(object = std_hc3, alpha = 0.05)`\
 `#> `\
@@ -56,7 +56,7 @@ Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sand
 ## Squared partial correlations
 
 \
-[`summary`](https://rdrr.io/r/base/summary.html)`(`[`PCorSandwich`](https://github.com/jeksterslab/betaSandwich/reference/PCorSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(`[`PCorSandwich`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
 `#> Call:`\
 `#> PCorSandwich(object = std_hc3, alpha = 0.05)`\
 `#> `\
@@ -69,7 +69,7 @@ Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sand
 ## Improvement in R-squared
 
 \
-[`summary`](https://rdrr.io/r/base/summary.html)`(`[`DeltaRSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(`[`DeltaRSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
 `#> Call:`\
 `#> DeltaRSqSandwich(object = std_hc3, alpha = 0.05)`\
 `#> `\
@@ -82,7 +82,7 @@ Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sand
 ## Cohen’s f-squared and local f-squared
 
 \
-[`summary`](https://rdrr.io/r/base/summary.html)`(`[`FSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/FSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(`[`FSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/FSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
 `#> Call:`\
 `#> FSqSandwich(object = std_hc3, alpha = 0.05)`\
 `#> `\
@@ -96,17 +96,17 @@ Function](https://github.com/jeksterslab/betaSandwich/articles/example-beta-sand
 ## Comparing covariance estimators
 
 \
-[`confint`](https://rdrr.io/r/stats/confint.html)`(`[`DeltaRSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md)`(``std_mvn``)``, level ``=`` ``0.95``)`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(`[`DeltaRSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md)`(``std_mvn``)``, level ``=`` ``0.95``)`\
 `#>                2.5 %    97.5 %`\
 `#> NARTIC   0.055421734 0.3163632`\
 `#> PCTGRT   0.017881671 0.2174267`\
 `#> PCTSUPP -0.008779331 0.1225237`\
-[`confint`](https://rdrr.io/r/stats/confint.html)`(`[`DeltaRSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md)`(``std_adf``)``, level ``=`` ``0.95``)`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(`[`DeltaRSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md)`(``std_adf``)``, level ``=`` ``0.95``)`\
 `#>                2.5 %    97.5 %`\
 `#> NARTIC   0.072394224 0.2993907`\
 `#> PCTGRT   0.025067308 0.2102410`\
 `#> PCTSUPP -0.008691312 0.1224357`\
-[`confint`](https://rdrr.io/r/stats/confint.html)`(`[`DeltaRSqSandwich`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md)`(``std_hc3``)``, level ``=`` ``0.95``)`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(`[`DeltaRSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md)`(``std_hc3``)``, level ``=`` ``0.95``)`\
 `#>               2.5 %    97.5 %`\
 `#> NARTIC   0.05170296 0.3200820`\
 `#> PCTGRT   0.01155384 0.2237545`\

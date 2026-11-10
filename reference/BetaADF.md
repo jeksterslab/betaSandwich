@@ -78,10 +78,10 @@ following elements:
 ## Details
 
 Note that while the calculation in `BetaADF()` is different from
-[`betaDelta::BetaDelta()`](https://github.com/jeksterslab/betaDelta/reference/BetaDelta.html)
+[`betaDelta::BetaDelta()`](https://jeksterslab.github.io/betaDelta//reference/BetaDelta.html)
 with `type = "adf"`, the results are numerically equivalent. `BetaADF()`
 is appropriate when sample sizes are moderate to large (`n > 250`).
-[`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)
+[`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)
 is recommended in most situations.
 
 ## References
@@ -103,14 +103,14 @@ coefficients in R. *Multivariate Behavioral Research*.
 ## See also
 
 Other Beta Sandwich Functions:
-[`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md),
-[`BetaN()`](https://github.com/jeksterslab/betaSandwich/reference/BetaN.md),
-[`DeltaRSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DeltaRSqSandwich.md),
-[`DiffBetaSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/DiffBetaSandwich.md),
-[`FSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/FSqSandwich.md),
-[`PCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/PCorSandwich.md),
-[`RSqSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/RSqSandwich.md),
-[`SCorSandwich()`](https://github.com/jeksterslab/betaSandwich/reference/SCorSandwich.md)
+[`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md),
+[`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md),
+[`DeltaRSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md),
+[`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md),
+[`FSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/FSqSandwich.md),
+[`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md),
+[`RSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md),
+[`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md)
 
 ## Author
 

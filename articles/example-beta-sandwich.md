@@ -9,14 +9,14 @@ number of published articles attributed to the program faculty members
 ratings of 46 doctoral programs in psychology in the USA (National
 Research Council, 1982). Robust confidence intervals for the
 standardized regression coefficients are generated using the
-[`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)
+[`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)
 function from the `betaSandwich` package following Dudgeon (2017).[^1]
 
 \
 [`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
 
 \
-`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://github.com/jeksterslab/betaSandwich/reference/nas1982.md)
+`df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://jeksterslab.github.io/betaSandwich/reference/nas1982.md)
 
 ## Fit the regression model using the `lm()` function.
 
@@ -26,7 +26,7 @@ function from the `betaSandwich` package following Dudgeon (2017).[^1]
 ## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
 \
-[`BetaHC`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`\
+[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> BetaHC(object = object, type = "hc3", alpha = 0.05)`\
 `#> `\
@@ -39,12 +39,12 @@ function from the `betaSandwich` package following Dudgeon (2017).[^1]
 ## Methods
 
 \
-`out`` ``<-`` `[`BetaHC`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`
+`out`` ``<-`` `[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`
 
 ### summary
 
 Summary of the results of
-[`BetaHC()`](https://github.com/jeksterslab/betaSandwich/reference/BetaHC.md).
+[`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md).
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(``out``)`\
@@ -105,8 +105,8 @@ coefficients in R. *Multivariate Behavioral Research*, *58*(6),
 1183–1186. <https://doi.org/10.1080/00273171.2023.2201277>
 
 [^1]: The
-    [`BetaN()`](https://github.com/jeksterslab/betaSandwich/reference/BetaN.md),
+    [`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md),
     and
-    [`BetaADF()`](https://github.com/jeksterslab/betaSandwich/reference/BetaADF.md)
+    [`BetaADF()`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md)
     functions are also available using the normal-theory and the
     asymptotic distribution-free approaches, respectively.
