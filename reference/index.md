@@ -25,6 +25,8 @@
 - [`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md)
   : Estimate Semipartial Correlation Coefficients and the Corresponding
   Sampling Covariance Matrix
+- [`SCorSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSqSandwich.md)
+  : Squared Signed-Semipartial Confidence Intervals
 - [`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md)
   : Estimate Squared Partial Correlation Coefficients and the
   Corresponding Sampling Covariance Matrix
