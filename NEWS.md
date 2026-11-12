@@ -1,3 +1,7 @@
+# betaSandwich 1.0.9.9001
+
+- Add SCorSqSandwich() for the image of a signed-semipartial interval under squaring.
+
 # betaSandwich 1.0.9.9000
 
 ## Major
