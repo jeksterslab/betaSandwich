@@ -68,6 +68,17 @@ std_hc3 <- BetaHC(object, type = "hc3")
 
 ## Estimate the multiple correlation coefficients (R-squared and adjusted R-squared) and the corresponding sampling covariance matrix.
 
+The R-squared and the adjusted R-squared are
+$R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}_{x} \boldsymbol{\beta}^{\ast}$
+and
+$\bar{R}^{2} = 1 - \left( 1 - R^{2} \right) \left( n - 1 \right) / \left( n - k \right)$,
+where $\boldsymbol{\beta}^{\ast}$ is the vector of standardized slopes,
+$\mathbf{R}_{x}$ is the correlation matrix of the regressors,
+$n$ is the sample size,
+and $k$ is the number of parameters of the regression model, including the intercept.
+The sampling covariance matrix is obtained by the delta method
+from the sampling covariance matrix of the standardized parameters.
+
 
 ``` r
 mvn <- RSqSandwich(std_mvn, alpha = 0.05)

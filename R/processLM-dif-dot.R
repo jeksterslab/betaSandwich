@@ -21,12 +21,15 @@
                  p,
                  xnames) {
   if (p > 1) {
-    dif_idx <- utils::combn(seq_len(p), 2)
-    p_dif <- dim(dif_idx)[2]
+    dif_idx <- utils::combn(
+      x = seq_len(length.out = p),
+      m = 2
+    )
+    p_dif <- dim(x = dif_idx)[2]
     dif_betastar <- rep(x = 0.0, times = p_dif)
     dif_beta <- rep(x = 0.0, times = p_dif)
     dif_names <- rep(x = 0.0, times = p_dif)
-    for (i in seq_len(p_dif)) {
+    for (i in seq_len(length.out = p_dif)) {
       dif_betastar[i] <- betastar[dif_idx[1, i]] - betastar[dif_idx[2, i]]
       dif_beta[i] <- beta[dif_idx[1, i]] - beta[dif_idx[2, i]]
       dif_names[i] <- paste0(
@@ -35,8 +38,8 @@
         xnames[dif_idx[2, i]]
       )
     }
-    names(dif_betastar) <- dif_names
-    names(dif_beta) <- dif_names
+    names(x = dif_betastar) <- dif_names
+    names(x = dif_beta) <- dif_names
   } else {
     dif_betastar <- NA
     dif_beta <- NA

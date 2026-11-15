@@ -1,18 +1,14 @@
-#' Wald Confidence Intervals
+#' Wald Tests and Confidence Intervals (Internal)
 #'
-#' Generates Wald Confidence Intervals
+#' Computes, for each parameter,
+#' the Wald test statistic
+#' \eqn{\left( \hat{\theta} - \theta_{0} \right) / \mathrm{se}},
+#' its two-sided \eqn{p} value,
+#' and Wald confidence intervals,
+#' from the standard normal or the \eqn{t} distribution.
+#' No input checks: see `CIWald()`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#'
-#' @return Returns a numeric matrix with the following variables:
-#'   \describe{
-#'     \item{est}{Estimates}
-#'     \item{se}{Standard errors}
-#'     \item{t or z}{Test statistics}
-#'     \item{p}{p value}
-#'     \item{ci}{Confidence intervals}
-#'   }
-#'   Note that if `test = TRUE`, the `ci` columns are omitted.
 #'
 #' @param est Numeric vector.
 #'   Estimates.
@@ -35,6 +31,28 @@
 #'   If `FALSE`,
 #'   return both results of hypothesis tests and confidence intervals.
 #'
+#' @return Returns a numeric matrix with one row per parameter
+#'   and the following columns:
+#'   \describe{
+#'     \item{est}{Estimates.}
+#'     \item{se}{Standard errors.}
+#'     \item{z or t}{Test statistics.}
+#'     \item{df}{Degrees of freedom (`z = FALSE` only).}
+#'     \item{p}{Two-sided p values.}
+#'     \item{ci}{Confidence limits, one column per probability,
+#'       named as percentages, for example `2.5%` and `97.5%`.}
+#'   }
+#'   If `test = TRUE`, the confidence limits are omitted.
+#'
+#' @examples
+#' .CIWald(
+#'   est = c(0.5, 0.25),
+#'   se = c(0.1, 0.1),
+#'   theta = 0,
+#'   alpha = 0.05,
+#'   z = TRUE
+#' )
+#'
 #' @family Wald Confidence Intervals Functions
 #' @keywords wald ci internal
 #' @noRd
@@ -51,9 +69,9 @@
     foo <- function(probs,
                     est,
                     se) {
-      est + stats::qnorm(probs) * se
+      est + stats::qnorm(p = probs) * se
     }
-    p <- 2 * stats::pnorm(-abs(stat))
+    p <- 2 * stats::pnorm(q = -abs(x = stat))
     out <- cbind(
       est,
       se,
@@ -67,13 +85,12 @@
       "p"
     )
   } else {
-    # nocov start
     foo <- function(probs,
                     est,
                     se) {
-      est + stats::qt(probs, df = df) * se
+      est + stats::qt(p = probs, df = df) * se
     }
-    p <- 2 * stats::pt(-abs(stat), df = df)
+    p <- 2 * stats::pt(q = -abs(x = stat), df = df)
     out <- cbind(
       est,
       se,
@@ -88,7 +105,6 @@
       "df",
       "p"
     )
-    # nocov end
   }
   if (!test) {
     ci <- lapply(
@@ -110,6 +126,6 @@
       ci
     )
   }
-  colnames(out) <- varnames
+  colnames(x = out) <- varnames
   out
 }

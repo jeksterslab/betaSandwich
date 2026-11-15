@@ -1,28 +1,29 @@
-#' Probabilities
+#' Probabilities of Two-Sided Significance Levels (Internal)
 #'
-#' Generates a vector of probabilities
-#' associated with the two-tailed `alpha` level provided in increasing order.
+#' Returns the lower and upper tail probabilities
+#' \eqn{\alpha / 2} and \eqn{1 - \alpha / 2}
+#' of each two-sided significance level \eqn{\alpha},
+#' sorted in increasing order.
+#' No input checks: see `ProbsofAlpha()`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#'
-#' @return Returns a vector of probabilities.
 #'
 #' @param alpha Numeric vector.
 #'   Significance level/s.
 #'
+#' @return Returns a numeric vector of probabilities
+#'   of length `2 * length(alpha)`.
+#'
+#' @examples
+#' .ProbsofAlpha(alpha = c(0.05, 0.01, 0.001))
+#'
 #' @family Wald Confidence Intervals Functions
 #' @keywords wald alpha internal
 #' @noRd
-.ProbsofAlpha <- function(
-  alpha = c(
-    0.05,
-    0.01,
-    0.001
-  )
-) {
+.ProbsofAlpha <- function(alpha = c(0.05, 0.01, 0.001)) {
   lower <- 0.5 * alpha
   sort(
-    c(
+    x = c(
       lower,
       1 - lower
     )

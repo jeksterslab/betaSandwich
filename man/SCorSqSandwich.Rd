@@ -22,13 +22,38 @@ contains zero. This differs from an interval of squared draws.
 No draws are generated and no endpoints are clipped to one.
 Failed signed endpoints remain missing.
 }
+\details{
+The semipartial correlation \eqn{sr_{j}} (see \code{\link[=SCorSandwich]{SCorSandwich()}}) is signed,
+and its confidence interval \eqn{\left[ l, u \right]} may contain zero.
+The interval for \eqn{sr^{2}_{j}} is the image of that interval under squaring.
+The squared interval is
+\eqn{\left[ l^{2}, u^{2} \right]} if \eqn{0 < l},
+\eqn{\left[ u^{2}, l^{2} \right]} if \eqn{u < 0},
+and \eqn{\left[ 0, \max \left( l^{2}, u^{2} \right) \right]}
+if the signed interval contains zero.
+This is not the interval of squared draws, and it is not an interval for
+\code{\link[=DeltaRSqSandwich]{DeltaRSqSandwich()}}, which is based on the delta method.
+}
 \examples{
 fit <- stats::lm(formula = mpg ~ wt + hp, data = mtcars)
 out <- BetaHC(object = fit)
 SCorSqSandwich(object = out)
 }
+\seealso{
+Other Beta Sandwich Functions:
+\code{\link[=BetaADF]{BetaADF()}},
+\code{\link[=BetaHC]{BetaHC()}},
+\code{\link[=BetaN]{BetaN()}},
+\code{\link[=DeltaRSqSandwich]{DeltaRSqSandwich()}},
+\code{\link[=DiffBetaSandwich]{DiffBetaSandwich()}},
+\code{\link[=FSqSandwich]{FSqSandwich()}},
+\code{\link[=PCorSandwich]{PCorSandwich()}},
+\code{\link[=RSqSandwich]{RSqSandwich()}},
+\code{\link[=SCorSandwich]{SCorSandwich()}}
+}
 \author{
 Ivan Jacob Agaloos Pesigan
 }
+\concept{Beta Sandwich Functions}
 \keyword{betaSandwich}
 \keyword{scor}

@@ -56,18 +56,18 @@
 #' @noRd
 .ProcessLM <- function(object) {
   # call
-  call0 <- stats::getCall(object)
+  call0 <- stats::getCall(x = object)
   # data set used by lm
   y <- object$model[, 1]
-  x <- stats::model.matrix(object)
+  x <- stats::model.matrix(object = object)
   X <- x
   x[, 1] <- y
-  varnames <- colnames(x)
-  varnames[1] <- colnames(object$model)[1]
-  colnames(x) <- varnames
+  varnames <- colnames(x = x)
+  varnames[1] <- colnames(x = object$model)[1]
+  colnames(x = x) <- varnames
   xnames <- varnames[-1]
   # n, k, p, q, df
-  dims <- dim(x)
+  dims <- dim(x = x)
   n <- dims[1]
   k <- dims[2]
   p <- k - 1
@@ -75,38 +75,40 @@
   q <- p + 1 + 0.5 * p * (p + 1)
   # moments
   ## means
-  mu <- colMeans(x)
+  mu <- colMeans(x = x)
   ## covariances
-  sigmacap <- stats::cov(x)
+  sigmacap <- stats::cov(x = x)
   vechsigmacap <- .Vech(
-    sigmacap
+    x = sigmacap
   )
   sigmacapx <- sigmacap[2:k, 2:k, drop = FALSE]
   vechsigmacapx <- .Vech(
-    sigmacapx
+    x = sigmacapx
   )
-  sigma <- sqrt(diag(sigmacap))
+  sigma <- sqrt(x = diag(x = sigmacap))
   sigmacap_consistent <- (
     sigmacap * (
       n - 1
     ) / n
   )
   vechsigmacap_consistent <- .Vech(
-    sigmacap_consistent
+    x = sigmacap_consistent
   )
-  pinv_of_dcap <- .PInvDmat(.DMat(k))
+  pinv_of_dcap <- .PInvDmat(
+    d = .DMat(k = k)
+  )
   ## correlations
   rhocap <- .RhoofSigma(
-    sigmacap,
+    x = sigmacap,
     q = 1 / sigma
   )
   ## parameter estimates
   coef <- beta <- object$coefficients
   beta0 <- coef[1]
   beta <- coef[-1]
-  sigmasq <- stats::sigma(object)^2
+  sigmasq <- stats::sigma(object = object)^2
   theta <- unname(
-    c(
+    obj = c(
       beta,
       sigmasq,
       vechsigmacapx
@@ -118,7 +120,7 @@
     rhocap = rhocap,
     k = k
   )
-  names(betastar) <- xnames
+  names(x = betastar) <- xnames
   ## R-squared
   rsq <- .RSqofSigma(
     sigmacap = sigmacap,
@@ -144,8 +146,8 @@
       srsq = scor^2,
       rsq = rsq[1]
     )
-    names(scor) <- xnames
-    names(pcor) <- xnames
+    names(x = scor) <- xnames
+    names(x = pcor) <- xnames
   } else {
     scor <- NA
     pcor <- NA

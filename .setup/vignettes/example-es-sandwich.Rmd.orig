@@ -1,5 +1,5 @@
 ---
-title: "betaSandwich: Example Using the SCorSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions"
+title: "betaSandwich: Example Using the SCorSandwich, SCorSqSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions"
 author: "Ivan Jacob Agaloos Pesigan"
 output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
@@ -9,7 +9,7 @@ nocite: |
   @Dudgeon-2017
   @NationalResearchCouncil-1982
 vignette: >
-  %\VignetteIndexEntry{betaSandwich: Example Using the SCorSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions}
+  %\VignetteIndexEntry{betaSandwich: Example Using the SCorSandwich, SCorSqSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -23,11 +23,12 @@ knitr::opts_chunk$set(
 
 Confidence intervals for
 semipartial correlations,
+squared semipartial correlations,
 squared partial correlations,
 the improvement in R-squared,
 and Cohen's f-squared
 are generated using
-the `SCorSandwich()`, `PCorSandwich()`, `DeltaRSqSandwich()`,
+the `SCorSandwich()`, `SCorSqSandwich()`, `PCorSandwich()`, `DeltaRSqSandwich()`,
 and `FSqSandwich()` functions from the `betaSandwich` package.
 In this example,
 we use the data set and the model used in
@@ -85,11 +86,37 @@ std_hc3 <- BetaHC(object, type = "hc3")
 
 ## Semipartial correlations
 
+The semipartial correlation of regressor $j$ is
+$sr_{j} = \beta^{\ast}_{j} / \sqrt{\left[ \mathbf{R}_{x}^{-1} \right]_{jj}}$,
+the correlation between the outcome and the part of regressor $j$
+that is not explained by the other regressors.
+
 ```{r}
 summary(SCorSandwich(std_hc3, alpha = 0.05))
 ```
 
+## Squared semipartial correlations
+
+The `SCorSqSandwich()` function squares the signed-semipartial interval as a set.
+If the signed interval contains zero,
+the lower limit of the squared interval is zero.
+Writing the signed interval as $\left[ l, u \right]$,
+the squared interval is $\left[ l^{2}, u^{2} \right]$ if $0 < l$,
+$\left[ u^{2}, l^{2} \right]$ if $u < 0$,
+and $\left[ 0, \max \left( l^{2}, u^{2} \right) \right]$ otherwise.
+The function returns a data frame with the estimate and the confidence limits.
+
+```{r}
+SCorSqSandwich(std_hc3, level = 0.95)
+```
+
 ## Squared partial correlations
+
+The squared partial correlation is
+$pr^{2}_{j} = sr^{2}_{j} / \left( 1 - R^{2} + sr^{2}_{j} \right)$,
+the proportion of the variance of the outcome
+not explained by the other regressors
+that is explained by regressor $j$.
 
 ```{r}
 summary(PCorSandwich(std_hc3, alpha = 0.05))
@@ -97,14 +124,37 @@ summary(PCorSandwich(std_hc3, alpha = 0.05))
 
 ## Improvement in R-squared
 
+The improvement in R-squared is
+$\Delta R^{2}_{j} = R^{2} - R^{2}_{-j} = sr^{2}_{j}$,
+the decrease in $R^{2}$ when regressor $j$ is removed from the model.
+
 ```{r}
 summary(DeltaRSqSandwich(std_hc3, alpha = 0.05))
 ```
 
 ## Cohen's f-squared and local f-squared
 
+Cohen's f-squared is
+$f^{2} = R^{2} / \left( 1 - R^{2} \right)$
+and the local f-squared of regressor $j$ is
+$f^{2}_{j} = sr^{2}_{j} / \left( 1 - R^{2} \right)$.
+By convention, values of about 0.02, 0.15, and 0.35
+are small, medium, and large effects.
+
 ```{r}
 summary(FSqSandwich(std_hc3, alpha = 0.05))
+```
+
+## Extracting estimates, sampling covariance matrices, and confidence intervals
+
+The `coef()`, `vcov()`, and `confint()` methods
+work on the objects returned by the effect size functions.
+
+```{r}
+scor <- SCorSandwich(std_hc3)
+coef(scor)
+vcov(scor)
+confint(scor, level = 0.95)
 ```
 
 ## Comparing covariance estimators

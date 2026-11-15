@@ -1,28 +1,39 @@
-#' The Duplication Matrix
+#' The Duplication Matrix (Internal)
+#'
+#' Returns the duplication matrix \eqn{\boldsymbol{D}_{k}},
+#' the \eqn{k^2 \times k (k + 1) / 2} matrix
+#' with \eqn{\boldsymbol{D}_{k}
+#' \operatorname{vech} \! \left( \boldsymbol{A} \right) =
+#' \operatorname{vec} \! \left( \boldsymbol{A} \right)}
+#' for every symmetric \eqn{k \times k} matrix \eqn{\boldsymbol{A}}.
+#' No input checks: see `DMat()`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param k Positive integer.
-#'   Dimension of the `k` by `k` matrix.
+#'   Dimension of the \eqn{k \times k} matrix.
 #'
-#' @return Returns a matrix.
+#' @return Returns a numeric \eqn{k^2 \times k (k + 1) / 2} matrix.
+#'
+#' @examples
+#' .DMat(k = 3L)
 #'
 #' @family Symmetric Functions
 #' @keywords linearAlgebra symmetric internal
 #' @noRd
 .DMat <- function(k) {
   sym <- matrix(
-    0,
+    data = 0,
     nrow = k,
     ncol = k
   )
   q <- seq_len(
-    0.5 * k * (k + 1)
+    length.out = 0.5 * k * (k + 1)
   )
-  sym[lower.tri(sym, diag = TRUE)] <- q
-  sym[upper.tri(sym)] <- t(sym)[upper.tri(sym)]
+  sym[lower.tri(x = sym, diag = TRUE)] <- q
+  sym[upper.tri(x = sym)] <- t(x = sym)[upper.tri(x = sym)]
   outer(
-    X = .Vec(sym),
+    X = .Vec(x = sym),
     Y = q,
     FUN = function(x, y) {
       ifelse(

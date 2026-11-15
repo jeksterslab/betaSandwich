@@ -2,9 +2,12 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @inheritParams .BetaStarSelect
 #' @param lm_process List.
 #'   Output of `.ProcessLM()`.
+#' @param std_y Logical.
+#'   If `std_y = TRUE`, standardize the dependent variable.
+#' @param std_x Logical vector.
+#'   `TRUE` for each regressor to standardize.
 #' @return Returns a named numeric vector.
 #'
 #' @family Process LM Functions
@@ -20,6 +23,6 @@
     std_y = std_y,
     std_x = std_x
   )
-  names(out) <- lm_process$xnames
+  names(x = out) <- lm_process$xnames
   out
 }

@@ -14,15 +14,22 @@
 #' @return Returns a `p` by `q` numeric matrix,
 #'   where \eqn{q = 2p + 1 + p \left( p - 1 \right) / 2}.
 #'
+#' @examples
+#' rhocapx <- matrix(data = c(1, 0.3, 0.3, 1), nrow = 2)
+#' strRegression:::.JacDeltaRSqWRTThetaStar(
+#'   betastar = c(0.4, 0.3),
+#'   rhocapx = rhocapx
+#' )
+#'
 #' @family Structure of Regression Functions
 #' @keywords strRegression internal
 #' @noRd
 .JacDeltaRSqWRTThetaStar <- function(betastar,
                                      rhocapx) {
   scor <- betastar / sqrt(
-    diag(
-      chol2inv(
-        chol(rhocapx)
+    x = diag(
+      x = chol2inv(
+        x = chol(x = rhocapx)
       )
     )
   )

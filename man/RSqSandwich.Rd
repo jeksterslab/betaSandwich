@@ -38,6 +38,22 @@ from the
 sampling covariance matrix of the standardized parameters stored in
 \code{object} (normal-theory, asymptotically distribution-free, or
 heteroskedasticity-consistent).
+
+Let \eqn{\boldsymbol{\beta}^{\ast}} be the vector of standardized slopes,
+\eqn{\mathbf{R}_{x}} the correlation matrix of the regressors,
+\eqn{r^{jj}} the \eqn{j}th diagonal element of \eqn{\mathbf{R}_{x}^{-1}},
+and \eqn{R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}_{x} \boldsymbol{\beta}^{\ast}}.
+The R-squared and the adjusted R-squared are
+\deqn{R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}_{x} \boldsymbol{\beta}^{\ast}, \quad \bar{R}^{2} = 1 - \left( 1 - R^{2} \right) \frac{n - 1}{n - k},}
+where \eqn{n} is the sample size and \eqn{k} is the number of parameters
+in the regression model, including the intercept.
+For an effect size \eqn{g\left( \boldsymbol{\theta}^{\ast} \right)}
+that is a function of the standardized parameters,
+the sampling variance is approximated by the delta method,
+\deqn{\widehat{\mathrm{var}} \left( \hat{g} \right) = \mathbf{J}_{g} \, \widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}} \, \mathbf{J}_{g}^{\prime},}
+where \eqn{\mathbf{J}_{g}} is the Jacobian of \eqn{g} and
+\eqn{\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}} is the sampling covariance matrix
+from \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaADF]{BetaADF()}}, or \code{\link[=BetaN]{BetaN()}}.
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
@@ -60,7 +76,8 @@ Other Beta Sandwich Functions:
 \code{\link[=DiffBetaSandwich]{DiffBetaSandwich()}},
 \code{\link[=FSqSandwich]{FSqSandwich()}},
 \code{\link[=PCorSandwich]{PCorSandwich()}},
-\code{\link[=SCorSandwich]{SCorSandwich()}}
+\code{\link[=SCorSandwich]{SCorSandwich()}},
+\code{\link[=SCorSqSandwich]{SCorSqSandwich()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

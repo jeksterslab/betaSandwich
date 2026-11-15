@@ -1,6 +1,9 @@
 # betaSandwich 1.0.9.9001
 
 - Add SCorSqSandwich() for the image of a signed-semipartial interval under squaring.
+- Update the description, README, and vignette to list the current features.
+- Add a package help page; replace roxygen links to betaDelta (not on CRAN) with code text.
+- Add examples for SCorSqSandwich() and for the coef(), vcov(), and confint() methods to the effect size vignette.
 
 # betaSandwich 1.0.9.9000
 

@@ -18,6 +18,17 @@
 #'   `p` regressors.
 #'
 #' @return Returns a matrix.
+#' @examples
+#' rhocapx <- matrix(data = c(1, 0.3, 0.3, 1), nrow = 2)
+#' strRegression:::.JacVechSigmaWRTThetaStar(
+#'   betastar = c(0.4, 0.3),
+#'   sigmay = 2,
+#'   sigmax = c(1, 1.5),
+#'   rhocapx = rhocapx,
+#'   q = 6,
+#'   p = 2
+#' )
+#'
 #' @family Derivatives Functions
 #' @keywords strRegression derivatives internal
 #' @noRd
@@ -27,14 +38,14 @@
                                       rhocapx,
                                       q,
                                       p) {
-  dsigmax <- diag(p)
-  diag(dsigmax) <- sigmax
+  dsigmax <- diag(x = p)
+  diag(x = dsigmax) <- sigmax
   dsigmax
-  dp <- .DMat(p)
-  iden <- diag(p)
+  dp <- .DMat(k = p)
+  iden <- diag(x = p)
   diags <- diag(
-    matrix(
-      data = seq_len(p * p),
+    x = matrix(
+      data = seq_len(length.out = p * p),
       nrow = p,
       ncol = p
     )
@@ -42,15 +53,15 @@
   vechnames_rhocapx <- paste0(
     "rho",
     .VechNames(
-      x = paste0("x", seq_len(p)),
+      x = paste0("x", seq_len(length.out = p)),
       sep = ""
     )
   )
   vecnames_rhocapx <- paste0(
     "rho",
     outer(
-      X = seq_len(p),
-      Y = seq_len(p),
+      X = seq_len(length.out = p),
+      Y = seq_len(length.out = p),
       FUN = function(x, y) {
         paste0(
           "x",
@@ -64,8 +75,8 @@
   vecnames_sigmacapx <- paste0(
     "sigma",
     outer(
-      X = seq_len(p),
-      Y = seq_len(p),
+      X = seq_len(length.out = p),
+      Y = seq_len(length.out = p),
       FUN = function(x, y) {
         paste0(
           "x",
@@ -87,19 +98,19 @@
     nrow = q,
     ncol = q
   )
-  rownames(jcap) <- c(
+  rownames(x = jcap) <- c(
     moments$sigmaysq,
     moments$sigmayx,
     moments$vechsigmacapx
   )
   if (p == 1) {
-    colnames(jcap) <- c(
+    colnames(x = jcap) <- c(
       theta$betastar,
       theta$sigmay,
       theta$sigmax
     )
   } else {
-    colnames(jcap) <- c(
+    colnames(x = jcap) <- c(
       theta$betastar,
       theta$sigmay,
       theta$sigmax,
@@ -118,31 +129,31 @@
     moments$sigmayx,
     theta$sigmay
   ] <- (rhocapx %*% betastar) * sigmax
-  sigmayx_wrt_sigmax <- .Vec(rhocapx %*% betastar)
-  d_rhocapx_betastar <- diag(length(sigmayx_wrt_sigmax))
-  diag(d_rhocapx_betastar) <- sigmayx_wrt_sigmax
+  sigmayx_wrt_sigmax <- .Vec(x = rhocapx %*% betastar)
+  d_rhocapx_betastar <- diag(x = length(x = sigmayx_wrt_sigmax))
+  diag(x = d_rhocapx_betastar) <- sigmayx_wrt_sigmax
   sigmayx_wrt_sigmax <- sigmay * d_rhocapx_betastar
   jcap[
     moments$sigmayx,
     theta$sigmax
   ] <- sigmayx_wrt_sigmax
   sigmayx_wrt_vechsrhocapx <- sigmay * kronecker(
-    t(betastar),
-    dsigmax
+    X = t(x = betastar),
+    Y = dsigmax
   ) %*% dp
-  colnames(sigmayx_wrt_vechsrhocapx) <- vechnames_rhocapx
+  colnames(x = sigmayx_wrt_vechsrhocapx) <- vechnames_rhocapx
   jcap[
     moments$sigmayx,
     theta$vechsrhocapx
   ] <- sigmayx_wrt_vechsrhocapx[, theta$vechsrhocapx, drop = FALSE]
   vechsigmacapx_wrt_sigmax <- kronecker(
-    t(
-      rhocapx %*% dsigmax
+    X = t(
+      x = rhocapx %*% dsigmax
     ),
-    iden
+    Y = iden
   ) + kronecker(
-    iden,
-    dsigmax %*% rhocapx
+    X = iden,
+    Y = dsigmax %*% rhocapx
   )
   vechsigmacapx_wrt_sigmax <- vechsigmacapx_wrt_sigmax[, diags, drop = FALSE]
   jcap[
@@ -151,10 +162,10 @@
   ] <- do.call(
     what = "cbind",
     args = lapply(
-      X = seq_len(p),
+      X = seq_len(length.out = p),
       FUN = function(i) {
         .Vech(
-          matrix(
+          x = matrix(
             data = vechsigmacapx_wrt_sigmax[, i],
             nrow = p
           )
@@ -164,11 +175,11 @@
   )
   if (p > 1) {
     vechsigmacapx_wrt_vechsrhocapx <- kronecker(
-      dsigmax,
-      dsigmax
+      X = dsigmax,
+      Y = dsigmax
     )
-    colnames(vechsigmacapx_wrt_vechsrhocapx) <- vecnames_rhocapx
-    rownames(vechsigmacapx_wrt_vechsrhocapx) <- vecnames_sigmacapx
+    colnames(x = vechsigmacapx_wrt_vechsrhocapx) <- vecnames_rhocapx
+    rownames(x = vechsigmacapx_wrt_vechsrhocapx) <- vecnames_sigmacapx
     vechsigmacapx_wrt_vechsrhocapx
     jcap[
       moments$vechsigmacapx,
