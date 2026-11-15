@@ -36,6 +36,12 @@
 
 ### Patch
 
+- [`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)
+  and the HC-based functions are faster: the internal `.GammaHC()`
+  builds the `vech(d_i d_i' - Sigma)` rows for all observations at once
+  and uses [`crossprod()`](https://rdrr.io/r/base/crossprod.html) (n =
+  5000, 8 regressors: 0.88 s to 0.02-0.07 s); the results are unchanged.
+
 - Fixed the standard error of R-squared in `RSqBetaSandwich()`, which
   was about three times too small for every covariance type. With
   R-squared as a parameter, the variance of y is beta’ Sigma_X beta /

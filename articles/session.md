@@ -468,7 +468,7 @@
     #> Socket(s):                               1
     #> Stepping:                                0
     #> Frequency boost:                         enabled
-    #> CPU(s) scaling MHz:                      64%
+    #> CPU(s) scaling MHz:                      59%
     #> CPU max MHz:                             5060.9761
     #> CPU min MHz:                             1219.5129
     #> BogoMIPS:                                4990.54
@@ -502,6 +502,6 @@
 ### Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            44Gi       2.7Gi        31Gi        13Mi        10Gi        41Gi
+    #> Mem:            44Gi       2.5Gi        31Gi        13Mi        10Gi        42Gi
     #> Swap:           22Gi          0B        22Gi
-    #> Total:          66Gi       2.7Gi        53Gi
+    #> Total:          66Gi       2.5Gi        54Gi
