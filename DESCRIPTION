@@ -11,8 +11,12 @@ Authors@R:
 Description: Generates robust confidence intervals for standardized regression coefficients
     using heteroskedasticity-consistent standard errors for models fitted by lm()
     as described in Dudgeon (2017) <doi:10.1007/s11336-017-9563-z>.
+    Sampling covariance matrices can also be obtained
+    under multivariate normal theory and the asymptotically distribution-free approach.
     The package can also be used to generate confidence intervals for R-squared,
-    adjusted R-squared, and differences of standardized regression coefficients.
+    adjusted R-squared, differences of standardized regression coefficients,
+    semipartial correlations, squared partial correlations,
+    the improvement in R-squared, and Cohen's f-squared.
     A description of the package and code examples
     are presented in Pesigan, Sun, and Cheung (2023) <doi:10.1080/00273171.2023.2201277>.
 URL: https://github.com/jeksterslab/betaSandwich,
@@ -23,10 +27,10 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 3.5.0)
-Suggests: knitr, rmarkdown, testthat, betaDelta, betaMC, betaNB
+Suggests: knitr, rmarkdown, testthat
 Config/roxygen2/version: 8.1.1.9000
 NeedsCompilation: no
-Packaged: 2026-11-12 23:18:59 UTC; root
+Packaged: 2026-11-15 12:14:08 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0003-4818-8420>)
 Maintainer: Ivan Jacob Agaloos Pesigan <r.jeksterslab@gmail.com>

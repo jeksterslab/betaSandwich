@@ -116,7 +116,8 @@ Other Beta Sandwich Functions:
 \code{\link[=FSqSandwich]{FSqSandwich()}},
 \code{\link[=PCorSandwich]{PCorSandwich()}},
 \code{\link[=RSqSandwich]{RSqSandwich()}},
-\code{\link[=SCorSandwich]{SCorSandwich()}}
+\code{\link[=SCorSandwich]{SCorSandwich()}},
+\code{\link[=SCorSqSandwich]{SCorSqSandwich()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

@@ -41,6 +41,28 @@ from the
 sampling covariance matrix of the standardized parameters stored in
 \code{object} (normal-theory, asymptotically distribution-free, or
 heteroskedasticity-consistent).
+
+Let \eqn{\boldsymbol{\beta}^{\ast}} be the vector of standardized slopes,
+\eqn{\mathbf{R}_{x}} the correlation matrix of the regressors,
+\eqn{r^{jj}} the \eqn{j}th diagonal element of \eqn{\mathbf{R}_{x}^{-1}},
+and \eqn{R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}_{x} \boldsymbol{\beta}^{\ast}}.
+The semipartial correlation of regressor \eqn{j} is
+\deqn{sr_{j} = \beta^{\ast}_{j} / \sqrt{r^{jj}} = \beta^{\ast}_{j} \sqrt{1 - R^{2}_{j \cdot -j}},}
+where \eqn{R^{2}_{j \cdot -j}} is the R-squared from regressing regressor \eqn{j}
+on the other regressors.
+Its square, \eqn{sr^{2}_{j}}, is the change in \eqn{R^{2}} when regressor \eqn{j} is added last.
+Because \eqn{1 / r^{jj} = 1 - R^{2}_{j \cdot -j}}, \eqn{sr_{j}} shrinks toward zero
+as regressor \eqn{j} becomes more redundant with the other regressors.
+Cohen's f-squared and the local f-squared of regressor \eqn{j} are
+\deqn{f^{2} = \frac{R^{2}}{1 - R^{2}}, \quad f^{2}_{j} = \frac{sr^{2}_{j}}{1 - R^{2}}.}
+By convention (Cohen, 1988), values of about 0.02, 0.15, and 0.35 are small, medium, and large effects.
+For an effect size \eqn{g\left( \boldsymbol{\theta}^{\ast} \right)}
+that is a function of the standardized parameters,
+the sampling variance is approximated by the delta method,
+\deqn{\widehat{\mathrm{var}} \left( \hat{g} \right) = \mathbf{J}_{g} \, \widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}} \, \mathbf{J}_{g}^{\prime},}
+where \eqn{\mathbf{J}_{g}} is the Jacobian of \eqn{g} and
+\eqn{\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}} is the sampling covariance matrix
+from \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaADF]{BetaADF()}}, or \code{\link[=BetaN]{BetaN()}}.
 }
 \examples{
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
@@ -63,7 +85,8 @@ Other Beta Sandwich Functions:
 \code{\link[=DiffBetaSandwich]{DiffBetaSandwich()}},
 \code{\link[=PCorSandwich]{PCorSandwich()}},
 \code{\link[=RSqSandwich]{RSqSandwich()}},
-\code{\link[=SCorSandwich]{SCorSandwich()}}
+\code{\link[=SCorSandwich]{SCorSandwich()}},
+\code{\link[=SCorSqSandwich]{SCorSqSandwich()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

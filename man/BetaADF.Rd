@@ -55,7 +55,7 @@ Using the Asymptotic Distribution-Free Approach
 }
 \details{
 Note that while the calculation in \code{\link[=BetaADF]{BetaADF()}}
-is different from \code{\link[betaDelta:BetaDelta]{betaDelta::BetaDelta()}} with \code{type = "adf"},
+is different from \code{betaDelta::BetaDelta()} with \code{type = "adf"},
 the results are numerically equivalent.
 \code{\link[=BetaADF]{BetaADF()}} is appropriate when sample sizes are moderate to large
 (\code{n > 250}).
@@ -101,7 +101,8 @@ Other Beta Sandwich Functions:
 \code{\link[=FSqSandwich]{FSqSandwich()}},
 \code{\link[=PCorSandwich]{PCorSandwich()}},
 \code{\link[=RSqSandwich]{RSqSandwich()}},
-\code{\link[=SCorSandwich]{SCorSandwich()}}
+\code{\link[=SCorSandwich]{SCorSandwich()}},
+\code{\link[=SCorSqSandwich]{SCorSqSandwich()}}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

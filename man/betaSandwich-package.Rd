@@ -4,9 +4,50 @@
 \name{betaSandwich-package}
 \alias{betaSandwich}
 \alias{betaSandwich-package}
-\title{betaSandwich: Robust Confidence Intervals for Standardized Regression Coefficients}
+\title{betaSandwich: Robust Confidence Intervals for Standardized Regression
+Coefficients}
 \description{
-Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017) \doi{10.1007/s11336-017-9563-z}. The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, and differences of standardized regression coefficients. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023) \doi{10.1080/00273171.2023.2201277}.
+Generates robust confidence intervals for standardized regression
+coefficients using heteroskedasticity-consistent standard errors for models
+fitted by \code{\link[stats:lm]{stats::lm()}} (Dudgeon, 2017). Sampling covariance matrices can
+also be obtained under multivariate normal theory and the asymptotically
+distribution-free approach.
+}
+\section{Standardized regression coefficients}{
+
+\code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaADF]{BetaADF()}}, and \code{\link[=BetaN]{BetaN()}} estimate the standardized regression
+coefficients and the corresponding sampling covariance matrix.
+\code{\link[=BetaHC]{BetaHC()}} is recommended in most situations.
+}
+
+\section{Functions of the standardized coefficients}{
+
+\code{\link[=RSqSandwich]{RSqSandwich()}} (R-squared and adjusted R-squared),
+\code{\link[=DiffBetaSandwich]{DiffBetaSandwich()}} (differences of standardized slopes),
+\code{\link[=SCorSandwich]{SCorSandwich()}} and \code{\link[=SCorSqSandwich]{SCorSqSandwich()}} (semipartial correlations),
+\code{\link[=PCorSandwich]{PCorSandwich()}} (squared partial correlations),
+\code{\link[=DeltaRSqSandwich]{DeltaRSqSandwich()}} (improvement in R-squared), and
+\code{\link[=FSqSandwich]{FSqSandwich()}} (Cohen's f-squared and local f-squared).
+}
+
+\section{Methods}{
+
+The \code{coef()}, \code{vcov()}, \code{confint()}, \code{summary()}, and \code{print()} methods are
+available for objects of class \code{betasandwich} and \code{essandwich}.
+}
+
+\references{
+Dudgeon, P. (2017).
+Some improvements in confidence intervals for standardized regression
+coefficients.
+\emph{Psychometrika}, \emph{82}(4), 928--951.
+\doi{10.1007/s11336-017-9563-z}
+
+Pesigan, I. J. A., Sun, R. W., & Cheung, S. F. (2023).
+betaDelta and betaSandwich:
+Confidence intervals for standardized regression coefficients in R.
+\emph{Multivariate Behavioral Research}.
+\doi{10.1080/00273171.2023.2201277}
 }
 \seealso{
 Useful links:
