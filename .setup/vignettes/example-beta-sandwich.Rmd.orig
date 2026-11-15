@@ -32,14 +32,14 @@ using the `BetaHC()` function from the `betaSandwich` package following @Dudgeon
 
 ```{r}
 #| message = FALSE
-library(betaSandwich)
+library(package = betaSandwich)
 ```
 
 ```{r}
 #| echo = FALSE
-if (!exists("nas1982")) {
+if (!exists(x = "nas1982")) {
   try(
-    data(
+    expr = utils::data(
       "nas1982",
       package = "betaSandwich"
     ),
@@ -56,19 +56,19 @@ df <- betaSandwich::nas1982
 ## Fit the regression model using the `lm()` function.
 
 ```{r}
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
 ```{r}
-BetaHC(object, type = "hc3", alpha = 0.05)
+BetaHC(object = object, type = "hc3", alpha = 0.05)
 ```
 
 ## Methods
 
 ```{r}
-out <- BetaHC(object, type = "hc3", alpha = 0.05)
+out <- BetaHC(object = object, type = "hc3", alpha = 0.05)
 ```
 
 ### summary
@@ -76,7 +76,7 @@ out <- BetaHC(object, type = "hc3", alpha = 0.05)
 Summary of the results of `BetaHC()`.
 
 ```{r}
-summary(out)
+summary(object = out)
 ```
 
 ### coef
@@ -84,7 +84,7 @@ summary(out)
 Calculate the standardized regression slopes.
 
 ```{r}
-coef(out)
+stats::coef(object = out)
 ```
 
 ### vcov
@@ -92,7 +92,7 @@ coef(out)
 Calculate the robust sampling covariance matrix of the standardized regression slopes.
 
 ```{r}
-vcov(out)
+stats::vcov(object = out)
 ```
 
 ### confint
@@ -100,7 +100,7 @@ vcov(out)
 Generate robust confidence intervals for standardized regression slopes.
 
 ```{r}
-confint(out, level = 0.95)
+stats::confint(object = out, level = 0.95)
 ```
 
 ## References

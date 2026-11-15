@@ -29,10 +29,10 @@
 % #| message = FALSE,
 % #| warning = FALSE,
 % #| results = "asis"
-% if (require("rProject")) {
+% if (require(package = "rProject")) {
 %   Bib(
 %     path = dirname(
-%       root$find_file(
+%       path = root$find_file(
 %         "project.Rproj"
 %       )
 %     )
@@ -65,7 +65,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\baselinestretch}{1}
+\linespread{1}\selectfont
 
 \title{betaSandwich: Staging}
 \author{Ivan Jacob Agaloos Pesigan}
@@ -85,72 +85,72 @@ Staging...
 
 %% begin.rcode
 % df <- nas1982
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-% mvn <- BetaN(object)
-% adf <- BetaADF(object)
-% hc3 <- BetaHC(object, type = "hc3")
-% summary(mvn)
-% summary(adf)
-% summary(hc3)
-% coef(mvn)
-% coef(adf)
-% coef(hc3)
-% vcov(mvn)
-% vcov(adf)
-% vcov(hc3)
-% confint(mvn)
-% confint(adf)
-% confint(hc3)
+% object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% mvn <- BetaN(object = object)
+% adf <- BetaADF(object = object)
+% hc3 <- BetaHC(object = object, type = "hc3")
+% summary(object = mvn)
+% summary(object = adf)
+% summary(object = hc3)
+% stats::coef(object = mvn)
+% stats::coef(object = adf)
+% stats::coef(object = hc3)
+% stats::vcov(object = mvn)
+% stats::vcov(object = adf)
+% stats::vcov(object = hc3)
+% stats::confint(object = mvn)
+% stats::confint(object = adf)
+% stats::confint(object = hc3)
 %% end.rcode
 
 \section{Multiple Correlation}
 
 %% begin.rcode
 % df <- nas1982
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-% std_mvn <- BetaN(object)
-% std_adf <- BetaADF(object)
-% std_hc3 <- BetaHC(object, type = "hc3")
-% mvn <- RSqSandwich(std_mvn)
-% adf <- RSqSandwich(std_adf)
-% hc3 <- RSqSandwich(std_hc3)
-% summary(mvn)
-% summary(adf)
-% summary(hc3)
-% coef(mvn)
-% coef(adf)
-% coef(hc3)
-% vcov(mvn)
-% vcov(adf)
-% vcov(hc3)
-% confint(mvn)
-% confint(adf)
-% confint(hc3)
+% object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% std_mvn <- BetaN(object = object)
+% std_adf <- BetaADF(object = object)
+% std_hc3 <- BetaHC(object = object, type = "hc3")
+% mvn <- RSqSandwich(object = std_mvn)
+% adf <- RSqSandwich(object = std_adf)
+% hc3 <- RSqSandwich(object = std_hc3)
+% summary(object = mvn)
+% summary(object = adf)
+% summary(object = hc3)
+% stats::coef(object = mvn)
+% stats::coef(object = adf)
+% stats::coef(object = hc3)
+% stats::vcov(object = mvn)
+% stats::vcov(object = adf)
+% stats::vcov(object = hc3)
+% stats::confint(object = mvn)
+% stats::confint(object = adf)
+% stats::confint(object = hc3)
 %% end.rcode
 
 \section{Differences of Standardized Slopes}
 
 %% begin.rcode
 % df <- nas1982
-% object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-% std_mvn <- BetaN(object)
-% std_adf <- BetaADF(object)
-% std_hc3 <- BetaHC(object, type = "hc3")
-% mvn <- DiffBetaSandwich(std_mvn)
-% adf <- DiffBetaSandwich(std_adf)
-% hc3 <- DiffBetaSandwich(std_hc3)
-% summary(mvn)
-% summary(adf)
-% summary(hc3)
-% coef(mvn)
-% coef(adf)
-% coef(hc3)
-% vcov(mvn)
-% vcov(adf)
-% vcov(hc3)
-% confint(mvn)
-% confint(adf)
-% confint(hc3)
+% object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+% std_mvn <- BetaN(object = object)
+% std_adf <- BetaADF(object = object)
+% std_hc3 <- BetaHC(object = object, type = "hc3")
+% mvn <- DiffBetaSandwich(object = std_mvn)
+% adf <- DiffBetaSandwich(object = std_adf)
+% hc3 <- DiffBetaSandwich(object = std_hc3)
+% summary(object = mvn)
+% summary(object = adf)
+% summary(object = hc3)
+% stats::coef(object = mvn)
+% stats::coef(object = adf)
+% stats::coef(object = hc3)
+% stats::vcov(object = mvn)
+% stats::vcov(object = adf)
+% stats::vcov(object = hc3)
+% stats::confint(object = mvn)
+% stats::confint(object = adf)
+% stats::confint(object = hc3)
 %% end.rcode
 
 \nocite{RCoreTeam-2026}

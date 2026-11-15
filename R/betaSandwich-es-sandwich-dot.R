@@ -4,8 +4,8 @@
 #' Applies the Jacobian `jcap` of an effect size
 #' with respect to the standardized parameter vector
 #' \eqn{\boldsymbol{\theta}^{\ast} = \left( \boldsymbol{\beta}^{\ast},
-#' \sigma_{y}, \boldsymbol{\sigma}_{\mathbf{x}},
-#' \mathrm{vechs} \left( \mathbf{R}_{\mathbf{X}} \right) \right)}
+#' \sigma_{y}, \boldsymbol{\sigma}_{\boldsymbol{x}},
+#' \mathrm{vechs} \left( \boldsymbol{R}_{\boldsymbol{X}} \right) \right)}
 #' to the sampling covariance matrix of
 #' \eqn{\hat{\boldsymbol{\theta}}^{\ast}} stored in `object`
 #' and returns an object of class `essandwich`.

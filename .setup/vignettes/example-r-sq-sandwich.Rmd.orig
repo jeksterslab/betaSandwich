@@ -31,14 +31,14 @@ we use the data set and the model used in
 
 ```{r}
 #| message = FALSE
-library(betaSandwich)
+library(package = betaSandwich)
 ```
 
 ```{r}
 #| echo = FALSE
-if (!exists("nas1982")) {
+if (!exists(x = "nas1982")) {
   try(
-    data(
+    expr = utils::data(
       "nas1982",
       package = "betaSandwich"
     ),
@@ -56,46 +56,46 @@ df <- betaSandwich::nas1982
 ## Fit the regression model using the `lm()` function.
 
 ```{r}
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ## Estimate the standardized regression slopes and the corresponding sampling covariance matrix.
 
-#### Multivariate Normal-Theory Approach
+### Multivariate Normal-Theory Approach
 
 ```{r}
-std_mvn <- BetaN(object)
+std_mvn <- BetaN(object = object)
 ```
 
 #### Asymptotic Distribution-Free Approach
 
 ```{r}
-std_adf <- BetaADF(object)
+std_adf <- BetaADF(object = object)
 ```
 
 #### HC3
 
 ```{r}
-std_hc3 <- BetaHC(object, type = "hc3")
+std_hc3 <- BetaHC(object = object, type = "hc3")
 ```
 
 ## Estimate the multiple correlation coefficients (R-squared and adjusted R-squared) and the corresponding sampling covariance matrix.
 
 The R-squared and the adjusted R-squared are
-$R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}_{x} \boldsymbol{\beta}^{\ast}$
+$R^{2} = \boldsymbol{\beta}^{\ast\prime} \boldsymbol{R}_{x} \boldsymbol{\beta}^{\ast}$
 and
 $\bar{R}^{2} = 1 - \left( 1 - R^{2} \right) \left( n - 1 \right) / \left( n - k \right)$,
 where $\boldsymbol{\beta}^{\ast}$ is the vector of standardized slopes,
-$\mathbf{R}_{x}$ is the correlation matrix of the regressors,
+$\boldsymbol{R}_{x}$ is the correlation matrix of the regressors,
 $n$ is the sample size,
 and $k$ is the number of parameters of the regression model, including the intercept.
 The sampling covariance matrix is obtained by the delta method
 from the sampling covariance matrix of the standardized parameters.
 
 ```{r}
-mvn <- RSqSandwich(std_mvn, alpha = 0.05)
-adf <- RSqSandwich(std_adf, alpha = 0.05)
-hc3 <- RSqSandwich(std_hc3, alpha = 0.05)
+mvn <- RSqSandwich(object = std_mvn, alpha = 0.05)
+adf <- RSqSandwich(object = std_adf, alpha = 0.05)
+hc3 <- RSqSandwich(object = std_hc3, alpha = 0.05)
 ```
 
 ## Methods
@@ -105,9 +105,9 @@ hc3 <- RSqSandwich(std_hc3, alpha = 0.05)
 Summary of the results of `RSqSandwich()`.
 
 ```{r}
-summary(mvn)
-summary(adf)
-summary(hc3)
+summary(object = mvn)
+summary(object = adf)
+summary(object = hc3)
 ```
 
 ### coef
@@ -115,9 +115,9 @@ summary(hc3)
 Calculate R-squared and adjusted R-squared.
 
 ```{r}
-coef(mvn)
-coef(adf)
-coef(hc3)
+stats::coef(object = mvn)
+stats::coef(object = adf)
+stats::coef(object = hc3)
 ```
 
 ### vcov
@@ -125,9 +125,9 @@ coef(hc3)
 Calculate the sampling covariance matrix of R-squared and adjusted R-squared.
 
 ```{r}
-vcov(mvn)
-vcov(adf)
-vcov(hc3)
+stats::vcov(object = mvn)
+stats::vcov(object = adf)
+stats::vcov(object = hc3)
 ```
 
 ### confint
@@ -135,9 +135,9 @@ vcov(hc3)
 Generate confidence intervals for R-squared and adjusted R-squared.
 
 ```{r}
-confint(mvn, level = 0.95)
-confint(adf, level = 0.95)
-confint(hc3, level = 0.95)
+stats::confint(object = mvn, level = 0.95)
+stats::confint(object = adf, level = 0.95)
+stats::confint(object = hc3, level = 0.95)
 ```
 
 ## References

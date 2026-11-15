@@ -29,10 +29,10 @@
 % #| message = FALSE,
 % #| warning = FALSE,
 % #| results = "asis"
-% if (require("rProject")) {
+% if (require(package = "rProject")) {
 %   Bib(
 %     path = dirname(
-%       root$find_file(
+%       path = root$find_file(
 %         "project.Rproj"
 %       )
 %     )
@@ -65,7 +65,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\baselinestretch}{1}
+\linespread{1}\selectfont
 
 \title{betaSandwich: Internal Tests}
 \author{Ivan Jacob Agaloos Pesigan}
@@ -110,8 +110,8 @@
 %   X = ls(),
 %   FUN = function(x) {
 %     class(
-%       eval(
-%         parse(
+%       x = eval(
+%         expr = parse(
 %           text = x
 %         )
 %       )

@@ -27,7 +27,7 @@ using the `BetaHC()` function from the `betaSandwich` package following @Dudgeon
 
 
 ``` r
-library(betaSandwich)
+library(package = betaSandwich)
 ```
 
 
@@ -41,14 +41,14 @@ df <- betaSandwich::nas1982
 
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
 
 ``` r
-BetaHC(object, type = "hc3", alpha = 0.05)
+BetaHC(object = object, type = "hc3", alpha = 0.05)
 #> Call:
 #> BetaHC(object = object, type = "hc3", alpha = 0.05)
 #> 
@@ -63,7 +63,7 @@ BetaHC(object, type = "hc3", alpha = 0.05)
 
 
 ``` r
-out <- BetaHC(object, type = "hc3", alpha = 0.05)
+out <- BetaHC(object = object, type = "hc3", alpha = 0.05)
 ```
 
 ### summary
@@ -72,7 +72,7 @@ Summary of the results of `BetaHC()`.
 
 
 ``` r
-summary(out)
+summary(object = out)
 #> Call:
 #> BetaHC(object = object, type = "hc3", alpha = 0.05)
 #> 
@@ -89,7 +89,7 @@ Calculate the standardized regression slopes.
 
 
 ``` r
-coef(out)
+stats::coef(object = out)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.4951451 0.3914887 0.2632477
 ```
@@ -100,7 +100,7 @@ Calculate the robust sampling covariance matrix of the standardized regression s
 
 
 ``` r
-vcov(out)
+stats::vcov(object = out)
 #>               NARTIC       PCTGRT      PCTSUPP
 #> NARTIC   0.006172168 -0.003602529 -0.001943469
 #> PCTGRT  -0.003602529  0.006699155 -0.002443584
@@ -113,7 +113,7 @@ Generate robust confidence intervals for standardized regression slopes.
 
 
 ``` r
-confint(out, level = 0.95)
+stats::confint(object = out, level = 0.95)
 #>              2.5 %    97.5 %
 #> NARTIC  0.33659828 0.6536920
 #> PCTGRT  0.22631203 0.5566654

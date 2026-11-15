@@ -29,10 +29,10 @@
 % #| message = FALSE,
 % #| warning = FALSE,
 % #| results = "asis"
-% if (require("rProject")) {
+% if (require(package = "rProject")) {
 %   Bib(
 %     path = dirname(
-%       root$find_file(
+%       path = root$find_file(
 %         "project.Rproj"
 %       )
 %     )
@@ -76,13 +76,13 @@
 \section*{Session}
 
 %% begin.rcode
-% sessionInfo()
+% utils::sessionInfo()
 %% end.rcode
 
 \section*{Packages}
 
 %% begin.rcode
-% unname(installed.packages()[, 1])
+% unname(obj = utils::installed.packages()[, 1])
 %% end.rcode
 
 \nocite{RCoreTeam-2026}

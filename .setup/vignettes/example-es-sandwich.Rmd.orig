@@ -36,14 +36,14 @@ we use the data set and the model used in
 
 ```{r}
 #| message = FALSE
-library(betaSandwich)
+library(package = betaSandwich)
 ```
 
 ```{r}
 #| echo = FALSE
-if (!exists("nas1982")) {
+if (!exists(x = "nas1982")) {
   try(
-    data(
+    expr = utils::data(
       "nas1982",
       package = "betaSandwich"
     ),
@@ -58,41 +58,163 @@ df <- nas1982
 df <- betaSandwich::nas1982
 ```
 
+## Effect sizes
+
+Let $\boldsymbol{\beta}^{\ast}$ be the vector of standardized slopes,
+$\boldsymbol{R}_{x}$ the correlation matrix of the regressors,
+$r^{jj}$ the $j$th diagonal element of $\boldsymbol{R}_{x}^{-1}$,
+$n$ the sample size,
+and $k$ the number of parameters of the regression model, including the intercept.
+Each effect size below is a function
+$g\left( \boldsymbol{\theta}^{\ast} \right)$
+of the standardized parameters.
+Its sampling variance is approximated by the delta method,
+
+$$
+\widehat{\operatorname{var}} \left( \hat{g} \right)
+=
+\boldsymbol{J}_{g}
+\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}
+\boldsymbol{J}_{g}^{\prime},
+$$
+
+where $\boldsymbol{J}_{g}$ is the Jacobian of $g$ and
+$\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}$
+is the sampling covariance matrix from
+`BetaHC()`, `BetaADF()`, or `BetaN()` [@Yuan-Chan-2011].
+The three functions differ in the estimator of the asymptotic covariance matrix of the sample covariances.
+`BetaN()` assumes multivariate normality [@Browne-1984].
+`BetaADF()` uses sample fourth moments and requires only that they exist,
+but it is noisy in small samples [@Browne-1984; @Jones-Waller-2015].
+`BetaHC()` keeps the normal-theory model for the regressors
+but replaces the assumption of constant error variance
+with the squared residuals of the cases (HC0 to HC5)
+[@White-1980; @MacKinnon-White-1985; @CribariNeto-2004; @Dudgeon-2017],
+and it is recommended in most situations.
+Confidence intervals are $\hat{g} \pm z_{1 - \alpha / 2} \, \widehat{\mathrm{se}} \left( \hat{g} \right)$.
+
+**R-squared and adjusted R-squared** (`RSqSandwich()`)
+
+$$
+R^{2} = \boldsymbol{\beta}^{\ast\prime} \boldsymbol{R}_{x} \boldsymbol{\beta}^{\ast},
+\quad
+\bar{R}^{2} = 1 - \left( 1 - R^{2} \right) \frac{n - 1}{n - k}.
+$$
+
+$R^{2}$ is the proportion of the variance of the outcome explained by the regressors.
+$\bar{R}^{2}$ corrects $R^{2}$ for the number of regressors.
+
+**Semipartial correlation** (`SCorSandwich()`)
+
+$$
+sr_{j}
+=
+\frac{\beta^{\ast}_{j}}{\sqrt{r^{jj}}}
+=
+\beta^{\ast}_{j} \sqrt{1 - R^{2}_{j \cdot -j}},
+$$
+
+where $R^{2}_{j \cdot -j}$ is the R-squared from regressing regressor $j$
+on the other regressors.
+It is the correlation between the outcome and the part of regressor $j$
+that is not explained by the other regressors.
+Because $1 / r^{jj} = 1 - R^{2}_{j \cdot -j}$,
+$sr_{j}$ shrinks toward zero as regressor $j$ becomes more redundant with the other regressors,
+even when $\beta^{\ast}_{j}$ does not.
+
+**Improvement in R-squared** (`DeltaRSqSandwich()`)
+
+$$
+\Delta R^{2}_{j} = R^{2} - R^{2}_{-j} = sr^{2}_{j}.
+$$
+
+It is the change in $R^{2}$ when regressor $j$ is added last,
+the proportion of the variance of the outcome that regressor $j$ alone accounts for.
+
+**Squared semipartial correlation interval** (`SCorSqSandwich()`)
+
+The interval $\left[ l, u \right]$ of the signed $sr_{j}$ is squared as a set.
+The result is
+$\left[ l^{2}, u^{2} \right]$ if $0 < l$,
+$\left[ u^{2}, l^{2} \right]$ if $u < 0$,
+and $\left[ 0, \max \left( l^{2}, u^{2} \right) \right]$ if the interval contains zero.
+This is not the delta-method interval of `DeltaRSqSandwich()`.
+
+**Squared partial correlation** (`PCorSandwich()`)
+
+$$
+pr^{2}_{j} = \frac{sr^{2}_{j}}{1 - R^{2} + sr^{2}_{j}}.
+$$
+
+It is the proportion of the variance of the outcome
+not explained by the other regressors
+that is explained by regressor $j$.
+
+**Cohen's f-squared and local f-squared** (`FSqSandwich()`)
+
+$$
+f^{2} = \frac{R^{2}}{1 - R^{2}},
+\quad
+f^{2}_{j} = \frac{sr^{2}_{j}}{1 - R^{2}}.
+$$
+
+By convention [@Cohen-1988], values of about 0.02, 0.15, and 0.35 are small, medium, and large effects.
+
+**Differences of standardized slopes** (`DiffBetaSandwich()`)
+
+$$
+\beta^{\ast}_{j} - \beta^{\ast}_{l}.
+$$
+
+It compares the standardized effects of regressors $j$ and $l$ on the same scale.
+
+**Effect sizes near zero**
+
+$\beta^{\ast}_{j}$ and $sr_{j}$ are signed and have no boundary at zero.
+$R^{2}$, $\Delta R^{2}_{j}$, $pr^{2}_{j}$, and $f^{2}_{j}$ cannot be negative.
+When the population value is zero, the gradient of the squared effect sizes is zero,
+the first-order delta-method variance vanishes,
+and a symmetric Wald interval is not justified.
+Near zero, the sampling distribution remains skewed and bounded in finite samples,
+and the interval can extend below zero.
+An interval for $sr_{j}$ can therefore behave well where the interval for $sr^{2}_{j}$ does not.
+`SCorSqSandwich()` respects the bound by squaring the interval of $sr_{j}$ as a set.
+
 ## Fit the regression model using the `lm()` function.
 
 ```{r}
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
 ```
 
 ## Estimate the standardized regression slopes and the corresponding sampling covariance matrix.
 
-#### Multivariate Normal-Theory Approach
+### Multivariate Normal-Theory Approach
 
 ```{r}
-std_mvn <- BetaN(object)
+std_mvn <- BetaN(object = object)
 ```
 
 #### Asymptotic Distribution-Free Approach
 
 ```{r}
-std_adf <- BetaADF(object)
+std_adf <- BetaADF(object = object)
 ```
 
 #### HC3
 
 ```{r}
-std_hc3 <- BetaHC(object, type = "hc3")
+std_hc3 <- BetaHC(object = object, type = "hc3")
 ```
 
 ## Semipartial correlations
 
 The semipartial correlation of regressor $j$ is
-$sr_{j} = \beta^{\ast}_{j} / \sqrt{\left[ \mathbf{R}_{x}^{-1} \right]_{jj}}$,
+$sr_{j} = \beta^{\ast}_{j} / \sqrt{\left[ \boldsymbol{R}_{x}^{-1} \right]_{jj}}$,
 the correlation between the outcome and the part of regressor $j$
 that is not explained by the other regressors.
 
 ```{r}
-summary(SCorSandwich(std_hc3, alpha = 0.05))
+summary(object = SCorSandwich(object = std_hc3, alpha = 0.05))
 ```
 
 ## Squared semipartial correlations
@@ -107,7 +229,7 @@ and $\left[ 0, \max \left( l^{2}, u^{2} \right) \right]$ otherwise.
 The function returns a data frame with the estimate and the confidence limits.
 
 ```{r}
-SCorSqSandwich(std_hc3, level = 0.95)
+SCorSqSandwich(object = std_hc3, level = 0.95)
 ```
 
 ## Squared partial correlations
@@ -119,7 +241,7 @@ not explained by the other regressors
 that is explained by regressor $j$.
 
 ```{r}
-summary(PCorSandwich(std_hc3, alpha = 0.05))
+summary(object = PCorSandwich(object = std_hc3, alpha = 0.05))
 ```
 
 ## Improvement in R-squared
@@ -129,7 +251,7 @@ $\Delta R^{2}_{j} = R^{2} - R^{2}_{-j} = sr^{2}_{j}$,
 the decrease in $R^{2}$ when regressor $j$ is removed from the model.
 
 ```{r}
-summary(DeltaRSqSandwich(std_hc3, alpha = 0.05))
+summary(object = DeltaRSqSandwich(object = std_hc3, alpha = 0.05))
 ```
 
 ## Cohen's f-squared and local f-squared
@@ -142,7 +264,7 @@ By convention, values of about 0.02, 0.15, and 0.35
 are small, medium, and large effects.
 
 ```{r}
-summary(FSqSandwich(std_hc3, alpha = 0.05))
+summary(object = FSqSandwich(object = std_hc3, alpha = 0.05))
 ```
 
 ## Extracting estimates, sampling covariance matrices, and confidence intervals
@@ -151,18 +273,18 @@ The `coef()`, `vcov()`, and `confint()` methods
 work on the objects returned by the effect size functions.
 
 ```{r}
-scor <- SCorSandwich(std_hc3)
-coef(scor)
-vcov(scor)
-confint(scor, level = 0.95)
+scor <- SCorSandwich(object = std_hc3)
+stats::coef(object = scor)
+stats::vcov(object = scor)
+stats::confint(object = scor, level = 0.95)
 ```
 
 ## Comparing covariance estimators
 
 ```{r}
-confint(DeltaRSqSandwich(std_mvn), level = 0.95)
-confint(DeltaRSqSandwich(std_adf), level = 0.95)
-confint(DeltaRSqSandwich(std_hc3), level = 0.95)
+stats::confint(object = DeltaRSqSandwich(object = std_mvn), level = 0.95)
+stats::confint(object = DeltaRSqSandwich(object = std_adf), level = 0.95)
+stats::confint(object = DeltaRSqSandwich(object = std_hc3), level = 0.95)
 ```
 
 ## References

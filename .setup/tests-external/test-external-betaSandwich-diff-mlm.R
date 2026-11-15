@@ -5,11 +5,11 @@ lapply(
                  text,
                  n,
                  tol) {
-    set.seed(42)
+    set.seed(seed = 42)
     message(text)
-    if (!exists("nas1982")) {
+    if (!exists(x = "nas1982")) {
       try(
-        data(
+        expr = utils::data(
           "nas1982",
           package = "betaSandwich"
         ),
@@ -18,21 +18,21 @@ lapply(
     }
     df <- nas1982
     df <- as.data.frame(
-      MASS::mvrnorm(
+      x = MASS::mvrnorm(
         n = n,
         mu = colMeans(
-          df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
+          x = df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
         ),
-        Sigma = cov(
-          df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
+        Sigma = stats::cov(
+          x = df[, c("QUALITY", "NARTIC", "PCTGRT", "PCTSUPP")]
         ),
         empirical = TRUE
       )
     )
-    object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
-    sandwich <- BetaHC(object, type = "hc0")
-    diff <- DiffBetaSandwich(sandwich)
-    ci <- confint(diff)
+    object <- stats::lm(formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = df)
+    sandwich <- BetaHC(object = object, type = "hc0")
+    diff <- DiffBetaSandwich(object = sandwich)
+    ci <- stats::confint(object = diff)
     model <- paste(
       "QUALITY ~ b1 * NARTIC + b2 * PCTGRT + b3 * PCTSUPP;",
       "diff12 := b1 - b2; diff13 := b1 - b3; diff23 := b2 - b3"
@@ -42,50 +42,50 @@ lapply(
       data = df,
       estimator = "MLM"
     )
-    std <- lavaan::standardizedSolution(lav)
+    std <- lavaan::standardizedSolution(object = lav)
     testthat::test_that(
-      paste(text, "coef"),
-      {
+      desc = paste(text, "coef"),
+      code = {
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              coef(diff) - std[11:13, "est.std"]
+              x = stats::coef(object = diff) - std[11:13, "est.std"]
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "se"),
-      {
+      desc = paste(text, "se"),
+      code = {
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              sqrt(diag(vcov(diff))) - std[11:13, "se"]
+              x = sqrt(x = diag(x = stats::vcov(object = diff))) - std[11:13, "se"]
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "ci.lower"),
-      {
+      desc = paste(text, "ci.lower"),
+      code = {
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              ci[, 1] - std[11:13, "ci.lower"]
+              x = ci[, 1] - std[11:13, "ci.lower"]
             ) <= tol
           )
         )
       }
     )
     testthat::test_that(
-      paste(text, "ci.upper"),
-      {
+      desc = paste(text, "ci.upper"),
+      code = {
         testthat::expect_true(
-          all(
+          object = all(
             abs(
-              ci[, 2] - std[11:13, "ci.upper"]
+              x = ci[, 2] - std[11:13, "ci.upper"]
             ) <= tol
           )
         )
