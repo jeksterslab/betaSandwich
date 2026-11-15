@@ -1,4 +1,4 @@
-#' Leverage Adjustment (\eqn{\mathbf{Q}})
+#' Leverage Adjustment (\eqn{\boldsymbol{Q}})
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

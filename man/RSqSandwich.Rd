@@ -40,19 +40,26 @@ sampling covariance matrix of the standardized parameters stored in
 heteroskedasticity-consistent).
 
 Let \eqn{\boldsymbol{\beta}^{\ast}} be the vector of standardized slopes,
-\eqn{\mathbf{R}_{x}} the correlation matrix of the regressors,
-\eqn{r^{jj}} the \eqn{j}th diagonal element of \eqn{\mathbf{R}_{x}^{-1}},
-and \eqn{R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}_{x} \boldsymbol{\beta}^{\ast}}.
+\eqn{\boldsymbol{R}_{x}} the correlation matrix of the regressors,
+\eqn{r^{jj}} the \eqn{j}th diagonal element of \eqn{\boldsymbol{R}_{x}^{-1}},
+and \eqn{R^{2} = \boldsymbol{\beta}^{\ast\prime} \boldsymbol{R}_{x}
+\boldsymbol{\beta}^{\ast}}.
 The R-squared and the adjusted R-squared are
-\deqn{R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}_{x} \boldsymbol{\beta}^{\ast}, \quad \bar{R}^{2} = 1 - \left( 1 - R^{2} \right) \frac{n - 1}{n - k},}
+\deqn{R^{2} = \boldsymbol{\beta}^{\ast\prime} \boldsymbol{R}_{x}
+\boldsymbol{\beta}^{\ast}, \quad \bar{R}^{2} = 1 - \left( 1 - R^{2} \right)
+\frac{n - 1}{n - k},}
 where \eqn{n} is the sample size and \eqn{k} is the number of parameters
 in the regression model, including the intercept.
 For an effect size \eqn{g\left( \boldsymbol{\theta}^{\ast} \right)}
 that is a function of the standardized parameters,
 the sampling variance is approximated by the delta method,
-\deqn{\widehat{\mathrm{var}} \left( \hat{g} \right) = \mathbf{J}_{g} \, \widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}} \, \mathbf{J}_{g}^{\prime},}
-where \eqn{\mathbf{J}_{g}} is the Jacobian of \eqn{g} and
-\eqn{\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}} is the sampling covariance matrix
+\deqn{\widehat{\operatorname{var}} \left( \hat{g} \right) =
+\boldsymbol{J}_{g} \,
+\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}} \,
+\boldsymbol{J}_{g}^{\prime},}
+where \eqn{\boldsymbol{J}_{g}} is the Jacobian of \eqn{g} and
+\eqn{\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}} is the
+sampling covariance matrix
 from \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaADF]{BetaADF()}}, or \code{\link[=BetaN]{BetaN()}}.
 }
 \examples{

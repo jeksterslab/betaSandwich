@@ -25,7 +25,8 @@ Failed signed endpoints remain missing.
 \details{
 The semipartial correlation \eqn{sr_{j}} (see \code{\link[=SCorSandwich]{SCorSandwich()}}) is signed,
 and its confidence interval \eqn{\left[ l, u \right]} may contain zero.
-The interval for \eqn{sr^{2}_{j}} is the image of that interval under squaring.
+The interval for \eqn{sr^{2}_{j}} is the image of that interval under
+squaring.
 The squared interval is
 \eqn{\left[ l^{2}, u^{2} \right]} if \eqn{0 < l},
 \eqn{\left[ u^{2}, l^{2} \right]} if \eqn{u < 0},
