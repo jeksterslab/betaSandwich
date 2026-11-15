@@ -127,7 +127,7 @@
 <td>R functions shared with other packages, copied into <code>R/</code>
 </td>
 </tr><tr><td><code>.setup/r-miscellaneous/</code></td>
-<td>helpers that are not part of the package (for example <code>texTools</code>)</td>
+<td>helpers that are not part of the package (for example <code>texHelper</code>)</td>
 </tr><tr><td><code>.setup/tests-benchmark/</code></td>
 <td>benchmark tests, outside the unit tests (<code>test-benchmark-&lt;pkg&gt;-&lt;name&gt;.R</code>)</td>
 </tr><tr><td><code>.setup/tests-external/</code></td>
@@ -162,6 +162,8 @@
 <td>install the shell, tmux, Vim, and xterm files from rProject (<code>make all</code> does not)</td>
 </tr><tr><td><code>make tree</code></td>
 <td>the project’s folders and what each is for; flags missing and non-standard folders</td>
+</tr><tr><td><code>make conform</code></td>
+<td>compare the project with the standard (<code>REFERENCE=&lt;project&gt;</code>, <code>REMOTE=TRUE</code>); <code>FIX=TRUE</code> writes the <code>fix</code> rows, then the log and the upload folder</td>
 </tr><tr><td><code>make project</code></td>
 <td>settings, template files; restores <code>.setup/scripts/rproject.lock</code> (rProject, image, snapshot)</td>
 </tr><tr><td><code>make upgrade</code></td>

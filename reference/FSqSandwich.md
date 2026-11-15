@@ -62,6 +62,37 @@ sampling covariance matrix of the standardized parameters stored in
 `object` (normal-theory, asymptotically distribution-free, or
 heteroskedasticity-consistent).
 
+Let \\(\boldsymbol{\beta}^{\ast}\\) be the vector of standardized
+slopes, \\(\mathbf{R}\_{x}\\) the correlation matrix of the regressors,
+\\(r^{jj}\\) the \\(j\\)th diagonal element of
+\\(\mathbf{R}\_{x}^{-1}\\), and \\(R^{2} =
+\boldsymbol{\beta}^{\ast\prime} \mathbf{R}\_{x}
+\boldsymbol{\beta}^{\ast}\\). The semipartial correlation of regressor
+\\(j\\) is \$\$sr\_{j} = \beta^{\ast}\_{j} / \sqrt{r^{jj}} =
+\beta^{\ast}\_{j} \sqrt{1 - R^{2}\_{j \cdot -j}},\$\$ where \\(R^{2}\_{j
+\cdot -j}\\) is the R-squared from regressing regressor \\(j\\) on the
+other regressors. Its square, \\(sr^{2}\_{j}\\), is the change in
+\\(R^{2}\\) when regressor \\(j\\) is added last. Because \\(1 / r^{jj}
+= 1 - R^{2}\_{j \cdot -j}\\), \\(sr\_{j}\\) shrinks toward zero as
+regressor \\(j\\) becomes more redundant with the other regressors.
+Cohen's f-squared and the local f-squared of regressor \\(j\\) are
+\$\$f^{2} = \frac{R^{2}}{1 - R^{2}}, \quad f^{2}\_{j} =
+\frac{sr^{2}\_{j}}{1 - R^{2}}.\$\$ By convention (Cohen, 1988), values
+of about 0.02, 0.15, and 0.35 are small, medium, and large effects. For
+an effect size \\(g\left( \boldsymbol{\theta}^{\ast} \right)\\) that is
+a function of the standardized parameters, the sampling variance is
+approximated by the delta method, \$\$\widehat{\mathrm{var}} \left(
+\hat{g} \right) = \mathbf{J}\_{g} \\,
+\widehat{\boldsymbol{\Sigma}}\_{\boldsymbol{\theta}^{\ast}} \\,
+\mathbf{J}\_{g}^{\prime},\$\$ where \\(\mathbf{J}\_{g}\\) is the
+Jacobian of \\(g\\) and
+\\(\widehat{\boldsymbol{\Sigma}}\_{\boldsymbol{\theta}^{\ast}}\\) is the
+sampling covariance matrix from
+[`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md),
+[`BetaADF()`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md),
+or
+[`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md).
+
 ## See also
 
 Other Beta Sandwich Functions:
@@ -72,7 +103,8 @@ Other Beta Sandwich Functions:
 [`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md),
 [`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md),
 [`RSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md),
-[`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md)
+[`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md),
+[`SCorSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSqSandwich.md)
 
 ## Author
 

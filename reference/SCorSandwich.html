@@ -93,6 +93,25 @@ from the
 sampling covariance matrix of the standardized parameters stored in
 <code>object</code> (normal-theory, asymptotically distribution-free, or
 heteroskedasticity-consistent). Two or more regressors are required.</p>
+<p>Let \(\boldsymbol{\beta}^{\ast}\) be the vector of standardized slopes,
+\(\mathbf{R}_{x}\) the correlation matrix of the regressors,
+\(r^{jj}\) the \(j\)th diagonal element of \(\mathbf{R}_{x}^{-1}\),
+and \(R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}_{x} \boldsymbol{\beta}^{\ast}\).
+The semipartial correlation of regressor \(j\) is
+$$sr_{j} = \beta^{\ast}_{j} / \sqrt{r^{jj}} = \beta^{\ast}_{j} \sqrt{1 - R^{2}_{j \cdot -j}},$$
+where \(R^{2}_{j \cdot -j}\) is the R-squared from regressing regressor \(j\)
+on the other regressors.
+Its square, \(sr^{2}_{j}\), is the change in \(R^{2}\) when regressor \(j\) is added last.
+Because \(1 / r^{jj} = 1 - R^{2}_{j \cdot -j}\), \(sr_{j}\) shrinks toward zero
+as regressor \(j\) becomes more redundant with the other regressors.
+The sign of \(sr_{j}\) follows the sign of \(\beta^{\ast}_{j}\).
+For an effect size \(g\left( \boldsymbol{\theta}^{\ast} \right)\)
+that is a function of the standardized parameters,
+the sampling variance is approximated by the delta method,
+$$\widehat{\mathrm{var}} \left( \hat{g} \right) = \mathbf{J}_{g} \, \widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}} \, \mathbf{J}_{g}^{\prime},$$
+where \(\mathbf{J}_{g}\) is the Jacobian of \(g\) and
+\(\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}\) is the sampling covariance matrix
+from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.html">BetaADF()</a></code>, or <code><a href="BetaN.html">BetaN()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -104,7 +123,8 @@ heteroskedasticity-consistent). Two or more regressors are required.</p>
 <code><a href="DiffBetaSandwich.html">DiffBetaSandwich()</a></code>,
 <code><a href="FSqSandwich.html">FSqSandwich()</a></code>,
 <code><a href="PCorSandwich.html">PCorSandwich()</a></code>,
-<code><a href="RSqSandwich.html">RSqSandwich()</a></code></p></div>
+<code><a href="RSqSandwich.html">RSqSandwich()</a></code>,
+<code><a href="SCorSqSandwich.html">SCorSqSandwich()</a></code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

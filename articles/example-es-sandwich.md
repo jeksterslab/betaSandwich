@@ -1,9 +1,10 @@
-# betaSandwich: Example Using the SCorSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions
+# betaSandwich: Example Using the SCorSandwich, SCorSqSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions
 
-Confidence intervals for semipartial correlations, squared partial
-correlations, the improvement in R-squared, and Cohen’s f-squared are
-generated using the
+Confidence intervals for semipartial correlations, squared semipartial
+correlations, squared partial correlations, the improvement in
+R-squared, and Cohen’s f-squared are generated using the
 [`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md),
+[`SCorSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSqSandwich.md),
 [`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md),
 [`DeltaRSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md),
 and
@@ -42,6 +43,11 @@ Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandw
 
 ## Semipartial correlations
 
+The semipartial correlation of regressor j is sr\_{j} =
+\beta^{\ast}\_{j} / \sqrt{\left\[ \mathbf{R}\_{x}^{-1} \right\]\_{jj}},
+the correlation between the outcome and the part of regressor j that is
+not explained by the other regressors.
+
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(`[`SCorSandwich`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
 `#> Call:`\
@@ -53,7 +59,31 @@ Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandw
 `#> PCTGRT  0.3430 0.0789 4.3468 0.0000 0.1883 0.4977`\
 `#> PCTSUPP 0.2385 0.0783 3.0465 0.0023 0.0851 0.3919`
 
+## Squared semipartial correlations
+
+The
+[`SCorSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSqSandwich.md)
+function squares the signed-semipartial interval as a set. If the signed
+interval contains zero, the lower limit of the squared interval is zero.
+Writing the signed interval as \left\[ l, u \right\], the squared
+interval is \left\[ l^{2}, u^{2} \right\] if 0 \< l, \left\[ u^{2},
+l^{2} \right\] if u \< 0, and \left\[ 0, \max \left( l^{2}, u^{2}
+\right) \right\] otherwise. The function returns a data frame with the
+estimate and the confidence limits.
+
+\
+[`SCorSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/SCorSqSandwich.md)`(``std_hc3``, level ``=`` ``0.95``)`\
+`#>               est       lower     upper`\
+`#> NARTIC  0.1858925 0.075919679 0.3442987`\
+`#> PCTGRT  0.1176542 0.035474114 0.2476748`\
+`#> PCTSUPP 0.0568722 0.007234428 0.1535875`
+
 ## Squared partial correlations
+
+The squared partial correlation is pr^{2}\_{j} = sr^{2}\_{j} / \left(
+1 - R^{2} + sr^{2}\_{j} \right), the proportion of the variance of the
+outcome not explained by the other regressors that is explained by
+regressor j.
 
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(`[`PCorSandwich`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
@@ -68,6 +98,10 @@ Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandw
 
 ## Improvement in R-squared
 
+The improvement in R-squared is \Delta R^{2}\_{j} = R^{2} - R^{2}\_{-j}
+= sr^{2}\_{j}, the decrease in R^{2} when regressor j is removed from
+the model.
+
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(`[`DeltaRSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DeltaRSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
 `#> Call:`\
@@ -81,6 +115,11 @@ Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandw
 
 ## Cohen’s f-squared and local f-squared
 
+Cohen’s f-squared is f^{2} = R^{2} / \left( 1 - R^{2} \right) and the
+local f-squared of regressor j is f^{2}\_{j} = sr^{2}\_{j} / \left( 1 -
+R^{2} \right). By convention, values of about 0.02, 0.15, and 0.35 are
+small, medium, and large effects.
+
 \
 [`summary`](https://rdrr.io/r/base/summary.html)`(`[`FSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/FSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)``)`\
 `#> Call:`\
@@ -92,6 +131,29 @@ Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandw
 `#> NARTIC  0.9510 0.4166 2.2825 0.0225  0.1344 1.7676`\
 `#> PCTGRT  0.6019 0.2967 2.0288 0.0425  0.0204 1.1834`\
 `#> PCTSUPP 0.2909 0.2128 1.3670 0.1716 -0.1262 0.7081`
+
+## Extracting estimates, sampling covariance matrices, and confidence intervals
+
+The [`coef()`](https://rdrr.io/r/stats/coef.html),
+[`vcov()`](https://rdrr.io/r/stats/vcov.html), and
+[`confint()`](https://rdrr.io/r/stats/confint.html) methods work on the
+objects returned by the effect size functions.
+
+\
+`scor`` ``<-`` `[`SCorSandwich`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md)`(``std_hc3``)`\
+[`coef`](https://rdrr.io/r/stats/coef.html)`(``scor``)`\
+`#>    NARTIC    PCTGRT   PCTSUPP `\
+`#> 0.4311525 0.3430075 0.2384789`\
+[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``scor``)`\
+`#>                NARTIC        PCTGRT       PCTSUPP`\
+`#> NARTIC   0.0063040434 -0.0002532449 -0.0004374935`\
+`#> PCTGRT  -0.0002532449  0.0062268718 -0.0010139363`\
+`#> PCTSUPP -0.0004374935 -0.0010139363  0.0061275595`\
+[`confint`](https://rdrr.io/r/stats/confint.html)`(``scor``, level ``=`` ``0.95``)`\
+`#>              2.5 %    97.5 %`\
+`#> NARTIC  0.27553526 0.5867697`\
+`#> PCTGRT  0.18834573 0.4976693`\
+`#> PCTSUPP 0.08505544 0.3919024`
 
 ## Comparing covariance estimators
 

@@ -108,6 +108,14 @@ sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate
 <h2 id="estimate-differences-of-standardized-regression-slopes-and-the-corresponding-sampling-covariance-matrix-">Estimate differences of standardized regression slopes and the
 corresponding sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate-differences-of-standardized-regression-slopes-and-the-corresponding-sampling-covariance-matrix-"></a>
 </h2>
+<p>The difference between the standardized slopes of regressors <span class="math inline">j</span> and <span class="math inline">l</span> is
+<span class="math inline">\beta^{\ast}_{j} - \beta^{\ast}_{l}</span>. It
+compares the standardized effects of the two regressors on the same
+scale. The sampling variance of the difference is <span class="math inline">\mathrm{var} \left( \hat{\beta}^{\ast}_{j} \right) +
+\mathrm{var} \left( \hat{\beta}^{\ast}_{l} \right) - 2 \, \mathrm{cov}
+\left( \hat{\beta}^{\ast}_{j}, \hat{\beta}^{\ast}_{l} \right)</span>,
+obtained from the sampling covariance matrix of the standardized
+slopes.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/DiffBetaSandwich.html">DiffBetaSandwich</a></span><span class="op">(</span><span class="va">std_mvn</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/DiffBetaSandwich.html">DiffBetaSandwich</a></span><span class="op">(</span><span class="va">std_adf</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>

@@ -66,7 +66,7 @@ the user maintains (aims, data, notation, co-authors, open issues).
 | `.setup/build/` | the package tarball and the PDF manual (`Build()`, `Manual()`) |
 | `.setup/cpp/` | C++ sources, copied into `src/` |
 | `.setup/r-dependencies/` | R functions shared with other packages, copied into `R/` |
-| `.setup/r-miscellaneous/` | helpers that are not part of the package (for example `texTools`) |
+| `.setup/r-miscellaneous/` | helpers that are not part of the package (for example `texHelper`) |
 | `.setup/tests-benchmark/` | benchmark tests, outside the unit tests (`test-benchmark-<pkg>-<name>.R`) |
 | `.setup/tests-external/` | external tests, outside the unit tests (`test-external-<pkg>-<name>.R`) |
 | `.setup/bin/` | optional: R scripts run at `make project` (for example, to build a bespoke binary) |
@@ -86,6 +86,7 @@ the user maintains (aims, data, notation, co-authors, open issues).
 | `make release` | `make all`, the secret scan, then `make auto`; stops at the first failure |
 | `make dotfiles` | install the shell, tmux, Vim, and xterm files from rProject (`make all` does not) |
 | `make tree` | the project’s folders and what each is for; flags missing and non-standard folders |
+| `make conform` | compare the project with the standard (`REFERENCE=<project>`, `REMOTE=TRUE`); `FIX=TRUE` writes the `fix` rows, then the log and the upload folder |
 | `make project` | settings, template files; restores `.setup/scripts/rproject.lock` (rProject, image, snapshot) |
 | `make upgrade` | move to the newest rProject; the next `make auto` updates the lock. Never upgrade a package the image has: add it to the image |
 

@@ -60,6 +60,30 @@ sampling covariance matrix of the standardized parameters stored in
 `object` (normal-theory, asymptotically distribution-free, or
 heteroskedasticity-consistent).
 
+Let \\(\boldsymbol{\beta}^{\ast}\\) be the vector of standardized
+slopes, \\(\mathbf{R}\_{x}\\) the correlation matrix of the regressors,
+\\(r^{jj}\\) the \\(j\\)th diagonal element of
+\\(\mathbf{R}\_{x}^{-1}\\), and \\(R^{2} =
+\boldsymbol{\beta}^{\ast\prime} \mathbf{R}\_{x}
+\boldsymbol{\beta}^{\ast}\\). The R-squared and the adjusted R-squared
+are \$\$R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}\_{x}
+\boldsymbol{\beta}^{\ast}, \quad \bar{R}^{2} = 1 - \left( 1 - R^{2}
+\right) \frac{n - 1}{n - k},\$\$ where \\(n\\) is the sample size and
+\\(k\\) is the number of parameters in the regression model, including
+the intercept. For an effect size \\(g\left( \boldsymbol{\theta}^{\ast}
+\right)\\) that is a function of the standardized parameters, the
+sampling variance is approximated by the delta method,
+\$\$\widehat{\mathrm{var}} \left( \hat{g} \right) = \mathbf{J}\_{g} \\,
+\widehat{\boldsymbol{\Sigma}}\_{\boldsymbol{\theta}^{\ast}} \\,
+\mathbf{J}\_{g}^{\prime},\$\$ where \\(\mathbf{J}\_{g}\\) is the
+Jacobian of \\(g\\) and
+\\(\widehat{\boldsymbol{\Sigma}}\_{\boldsymbol{\theta}^{\ast}}\\) is the
+sampling covariance matrix from
+[`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md),
+[`BetaADF()`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md),
+or
+[`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md).
+
 ## See also
 
 Other Beta Sandwich Functions:
@@ -70,7 +94,8 @@ Other Beta Sandwich Functions:
 [`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md),
 [`FSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/FSqSandwich.md),
 [`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md),
-[`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md)
+[`SCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSandwich.md),
+[`SCorSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSqSandwich.md)
 
 ## Author
 

@@ -108,6 +108,14 @@ sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate
 adjusted R-squared) and the corresponding sampling covariance
 matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-multiple-correlation-coefficients-r-squared-and-adjusted-r-squared-and-the-corresponding-sampling-covariance-matrix-"></a>
 </h2>
+<p>The R-squared and the adjusted R-squared are <span class="math inline">R^{2} = \boldsymbol{\beta}^{\ast\prime}
+\mathbf{R}_{x} \boldsymbol{\beta}^{\ast}</span> and <span class="math inline">\bar{R}^{2} = 1 - \left( 1 - R^{2} \right) \left( n
+- 1 \right) / \left( n - k \right)</span>, where <span class="math inline">\boldsymbol{\beta}^{\ast}</span> is the vector of
+standardized slopes, <span class="math inline">\mathbf{R}_{x}</span> is
+the correlation matrix of the regressors, <span class="math inline">n</span> is the sample size, and <span class="math inline">k</span> is the number of parameters of the
+regression model, including the intercept. The sampling covariance
+matrix is obtained by the delta method from the sampling covariance
+matrix of the standardized parameters.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RSqSandwich.html">RSqSandwich</a></span><span class="op">(</span><span class="va">std_mvn</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="va">adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/RSqSandwich.html">RSqSandwich</a></span><span class="op">(</span><span class="va">std_adf</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>

@@ -14,8 +14,8 @@
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Robust Confidence Intervals for Standardized Regression Coefficients">
-<meta name="description" content="Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017) &lt;doi:10.1007/s11336-017-9563-z&gt;. The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, and differences of standardized regression coefficients. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023) &lt;doi:10.1080/00273171.2023.2201277&gt;.">
-<meta property="og:description" content="Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017) &lt;doi:10.1007/s11336-017-9563-z&gt;. The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, and differences of standardized regression coefficients. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023) &lt;doi:10.1080/00273171.2023.2201277&gt;.">
+<meta name="description" content="Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017) &lt;doi:10.1007/s11336-017-9563-z&gt;. Sampling covariance matrices can also be obtained under multivariate normal theory and the asymptotically distribution-free approach. The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, differences of standardized regression coefficients, semipartial correlations, squared partial correlations, the improvement in R-squared, and Cohen's f-squared. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023) &lt;doi:10.1080/00273171.2023.2201277&gt;.">
+<meta property="og:description" content="Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by lm() as described in Dudgeon (2017) &lt;doi:10.1007/s11336-017-9563-z&gt;. Sampling covariance matrices can also be obtained under multivariate normal theory and the asymptotically distribution-free approach. The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, differences of standardized regression coefficients, semipartial correlations, squared partial correlations, the improvement in R-squared, and Cohen's f-squared. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023) &lt;doi:10.1080/00273171.2023.2201277&gt;.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -54,14 +54,14 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="betasandwich">betaSandwich<a class="anchor" aria-label="anchor" href="#betasandwich"></a>
 </h1></div>
-<p>Ivan Jacob Agaloos Pesigan 2026-11-12</p>
+<p>Ivan Jacob Agaloos Pesigan 2026-11-15</p>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h2>
-<p>Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> as described in Dudgeon (2017: <a href="http://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">http://doi.org/10.1007/s11336-017-9563-z</a>). The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, and differences of standardized regression coefficients. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023: <a href="https://doi.org/10.1080/00273171.2023.2201277" class="external-link uri">https://doi.org/10.1080/00273171.2023.2201277</a>).</p>
+<p>Generates robust confidence intervals for standardized regression coefficients using heteroskedasticity-consistent standard errors for models fitted by <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> as described in Dudgeon (2017: <a href="http://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">http://doi.org/10.1007/s11336-017-9563-z</a>). Sampling covariance matrices can also be obtained under multivariate normal theory and the asymptotically distribution-free approach. The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, differences of standardized regression coefficients, semipartial correlations, squared partial correlations, the improvement in R-squared, and Cohen’s f-squared. A description of the package and code examples are presented in Pesigan, Sun, and Cheung (2023: <a href="https://doi.org/10.1080/00273171.2023.2201277" class="external-link uri">https://doi.org/10.1080/00273171.2023.2201277</a>).</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -106,7 +106,101 @@
 <div class="section level2">
 <h2 id="other-features">Other Features<a class="anchor" aria-label="anchor" href="#other-features"></a>
 </h2>
-<p>The package can also be used to generate confidence intervals for R-squared, adjusted R-squared, and differences of standardized regression coefficients.</p>
+<p>The package provides the following functions.</p>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code><a href="reference/BetaHC.html">BetaHC()</a></code></td>
+<td>Standardized regression coefficients with a heteroskedasticity-consistent sampling covariance matrix (HC0-HC5)</td>
+</tr>
+<tr>
+<td><code><a href="reference/BetaADF.html">BetaADF()</a></code></td>
+<td>Standardized regression coefficients with an asymptotically distribution-free sampling covariance matrix</td>
+</tr>
+<tr>
+<td><code><a href="reference/BetaN.html">BetaN()</a></code></td>
+<td>Standardized regression coefficients with a multivariate normal-theory sampling covariance matrix</td>
+</tr>
+<tr>
+<td><code><a href="reference/RSqSandwich.html">RSqSandwich()</a></code></td>
+<td>R-squared and adjusted R-squared</td>
+</tr>
+<tr>
+<td><code><a href="reference/DiffBetaSandwich.html">DiffBetaSandwich()</a></code></td>
+<td>Differences of standardized regression coefficients</td>
+</tr>
+<tr>
+<td><code><a href="reference/SCorSandwich.html">SCorSandwich()</a></code></td>
+<td>Semipartial correlations</td>
+</tr>
+<tr>
+<td><code><a href="reference/SCorSqSandwich.html">SCorSqSandwich()</a></code></td>
+<td>Squared semipartial correlations (squared signed interval)</td>
+</tr>
+<tr>
+<td><code><a href="reference/PCorSandwich.html">PCorSandwich()</a></code></td>
+<td>Squared partial correlations</td>
+</tr>
+<tr>
+<td><code><a href="reference/DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code></td>
+<td>Improvement in R-squared</td>
+</tr>
+<tr>
+<td><code><a href="reference/FSqSandwich.html">FSqSandwich()</a></code></td>
+<td>Cohen’s f-squared and local f-squared</td>
+</tr>
+</tbody>
+</table>
+<p>The <code><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef()</a></code>, <code><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov()</a></code>, <code><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint()</a></code>, <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code>, and <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> methods are available for the returned objects. Examples for each function are in the package vignettes.</p>
+</div>
+<div class="section level2">
+<h2 id="effect-sizes">Effect Sizes<a class="anchor" aria-label="anchor" href="#effect-sizes"></a>
+</h2>
+<p>Let <span class="math inline">\boldsymbol{\beta}^{\ast}</span> be the vector of standardized slopes, <span class="math inline">\mathbf{R}_{x}</span> the correlation matrix of the regressors, <span class="math inline">r^{jj}</span> the <span class="math inline">j</span>th diagonal element of <span class="math inline">\mathbf{R}_{x}^{-1}</span>, <span class="math inline">n</span> the sample size, and <span class="math inline">k</span> the number of parameters of the regression model, including the intercept. Each effect size below is a function <span class="math inline">g\left( \boldsymbol{\theta}^{\ast} \right)</span> of the standardized parameters. Its sampling variance is approximated by the delta method,</p>
+<p><span class="math display">\widehat{\mathrm{var}} \left( \hat{g} \right)
+=
+\mathbf{J}_{g}
+\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}
+\mathbf{J}_{g}^{\prime},</span></p>
+<p>where <span class="math inline">\mathbf{J}_{g}</span> is the Jacobian of <span class="math inline">g</span> and <span class="math inline">\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}</span> is the sampling covariance matrix from <code><a href="reference/BetaHC.html">BetaHC()</a></code>, <code><a href="reference/BetaADF.html">BetaADF()</a></code>, or <code><a href="reference/BetaN.html">BetaN()</a></code> (Yuan &amp; Chan, 2011). The three functions differ in the estimator of the asymptotic covariance matrix of the sample covariances. <code><a href="reference/BetaN.html">BetaN()</a></code> assumes multivariate normality (Browne, 1984). <code><a href="reference/BetaADF.html">BetaADF()</a></code> uses sample fourth moments and requires only that they exist, but it is noisy in small samples (Browne, 1984; Jones &amp; Waller, 2015). <code><a href="reference/BetaHC.html">BetaHC()</a></code> keeps the normal-theory model for the regressors but replaces the assumption of constant error variance with the squared residuals of the cases (HC0 to HC5) (Cribari-Neto, 2004; Dudgeon, 2017; MacKinnon &amp; White, 1985; White, 1980), and it is recommended in most situations. Confidence intervals are <span class="math inline">\hat{g} \pm z_{1 - \alpha / 2} \, \widehat{\mathrm{se}} \left( \hat{g} \right)</span>.</p>
+<p><strong>R-squared and adjusted R-squared</strong> (<code><a href="reference/RSqSandwich.html">RSqSandwich()</a></code>)</p>
+<p><span class="math display">R^{2} = \boldsymbol{\beta}^{\ast\prime} \mathbf{R}_{x} \boldsymbol{\beta}^{\ast},
+\quad
+\bar{R}^{2} = 1 - \left( 1 - R^{2} \right) \frac{n - 1}{n - k}.</span></p>
+<p><span class="math inline">R^{2}</span> is the proportion of the variance of the outcome explained by the regressors. <span class="math inline">\bar{R}^{2}</span> corrects <span class="math inline">R^{2}</span> for the number of regressors.</p>
+<p><strong>Semipartial correlation</strong> (<code><a href="reference/SCorSandwich.html">SCorSandwich()</a></code>)</p>
+<p><span class="math display">sr_{j}
+=
+\frac{\beta^{\ast}_{j}}{\sqrt{r^{jj}}}
+=
+\beta^{\ast}_{j} \sqrt{1 - R^{2}_{j \cdot -j}},</span></p>
+<p>where <span class="math inline">R^{2}_{j \cdot -j}</span> is the R-squared from regressing regressor <span class="math inline">j</span> on the other regressors. It is the correlation between the outcome and the part of regressor <span class="math inline">j</span> that is not explained by the other regressors. Because <span class="math inline">1 / r^{jj} = 1 - R^{2}_{j \cdot -j}</span>, <span class="math inline">sr_{j}</span> shrinks toward zero as regressor <span class="math inline">j</span> becomes more redundant with the other regressors, even when <span class="math inline">\beta^{\ast}_{j}</span> does not.</p>
+<p><strong>Improvement in R-squared</strong> (<code><a href="reference/DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code>)</p>
+<p><span class="math display">\Delta R^{2}_{j} = R^{2} - R^{2}_{-j} = sr^{2}_{j}.</span></p>
+<p>It is the change in <span class="math inline">R^{2}</span> when regressor <span class="math inline">j</span> is added last, the proportion of the variance of the outcome that regressor <span class="math inline">j</span> alone accounts for.</p>
+<p><strong>Squared semipartial correlation interval</strong> (<code><a href="reference/SCorSqSandwich.html">SCorSqSandwich()</a></code>)</p>
+<p>The interval <span class="math inline">\left[ l, u \right]</span> of the signed <span class="math inline">sr_{j}</span> is squared as a set. The result is <span class="math inline">\left[ l^{2}, u^{2} \right]</span> if <span class="math inline">0 &lt; l</span>, <span class="math inline">\left[ u^{2}, l^{2} \right]</span> if <span class="math inline">u &lt; 0</span>, and <span class="math inline">\left[ 0, \max \left( l^{2}, u^{2} \right) \right]</span> if the interval contains zero. This is not the delta-method interval of <code><a href="reference/DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code>.</p>
+<p><strong>Squared partial correlation</strong> (<code><a href="reference/PCorSandwich.html">PCorSandwich()</a></code>)</p>
+<p><span class="math display">pr^{2}_{j} = \frac{sr^{2}_{j}}{1 - R^{2} + sr^{2}_{j}}.</span></p>
+<p>It is the proportion of the variance of the outcome not explained by the other regressors that is explained by regressor <span class="math inline">j</span>.</p>
+<p><strong>Cohen’s f-squared and local f-squared</strong> (<code><a href="reference/FSqSandwich.html">FSqSandwich()</a></code>)</p>
+<p><span class="math display">f^{2} = \frac{R^{2}}{1 - R^{2}},
+\quad
+f^{2}_{j} = \frac{sr^{2}_{j}}{1 - R^{2}}.</span></p>
+<p>By convention (Cohen, 1988), values of about 0.02, 0.15, and 0.35 are small, medium, and large effects.</p>
+<p><strong>Differences of standardized slopes</strong> (<code><a href="reference/DiffBetaSandwich.html">DiffBetaSandwich()</a></code>)</p>
+<p><span class="math display">\beta^{\ast}_{j} - \beta^{\ast}_{l}.</span></p>
+<p>It compares the standardized effects of regressors <span class="math inline">j</span> and <span class="math inline">l</span> on the same scale.</p>
+<p><strong>Effect sizes near zero</strong></p>
+<p><span class="math inline">\beta^{\ast}_{j}</span> and <span class="math inline">sr_{j}</span> are signed and have no boundary at zero. <span class="math inline">R^{2}</span>, <span class="math inline">\Delta R^{2}_{j}</span>, <span class="math inline">pr^{2}_{j}</span>, and <span class="math inline">f^{2}_{j}</span> cannot be negative. When the population value is zero, the gradient of the squared effect sizes is zero, the first-order delta-method variance vanishes, and a symmetric Wald interval is not justified. Near zero, the sampling distribution remains skewed and bounded in finite samples, and the interval can extend below zero. An interval for <span class="math inline">sr_{j}</span> can therefore behave well where the interval for <span class="math inline">sr^{2}_{j}</span> does not. <code><a href="reference/SCorSqSandwich.html">SCorSqSandwich()</a></code> respects the bound by squaring the interval of <span class="math inline">sr_{j}</span> as a set.</p>
 </div>
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
@@ -122,8 +216,23 @@
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
+<div id="ref-Browne-1984" class="csl-entry">
+Browne, M. W. (1984). Asymptotically distribution-free methods for the analysis of covariance structures. <em>British Journal of Mathematical and Statistical Psychology</em>, <em>37</em>(1), 62–83. <a href="https://doi.org/10.1111/j.2044-8317.1984.tb00789.x" class="external-link uri">https://doi.org/10.1111/j.2044-8317.1984.tb00789.x</a>
+</div>
+<div id="ref-Cohen-1988" class="csl-entry">
+Cohen, J. (1988). <em>Statistical power analysis for the behavioral sciences</em> (2nd ed.). Routledge. <a href="https://doi.org/10.4324/9780203771587" class="external-link uri">https://doi.org/10.4324/9780203771587</a>
+</div>
+<div id="ref-CribariNeto-2004" class="csl-entry">
+Cribari-Neto, F. (2004). Asymptotic inference under heteroskedasticity of unknown form. <em>Computational Statistics &amp; Data Analysis</em>, <em>45</em>(2), 215–233. <a href="https://doi.org/10.1016/s0167-9473(02)00366-3" class="external-link uri">https://doi.org/10.1016/s0167-9473(02)00366-3</a>
+</div>
 <div id="ref-Dudgeon-2017" class="csl-entry">
 Dudgeon, P. (2017). Some improvements in confidence intervals for standardized regression coefficients. <em>Psychometrika</em>, <em>82</em>(4), 928–951. <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link uri">https://doi.org/10.1007/s11336-017-9563-z</a>
+</div>
+<div id="ref-Jones-Waller-2015" class="csl-entry">
+Jones, J. A., &amp; Waller, N. G. (2015). The normal-theory and asymptotic distribution-free (ADF) covariance matrix of standardized regression coefficients: Theoretical extensions and finite sample behavior. <em>Psychometrika</em>, <em>80</em>(2), 365–378. <a href="https://doi.org/10.1007/s11336-013-9380-y" class="external-link uri">https://doi.org/10.1007/s11336-013-9380-y</a>
+</div>
+<div id="ref-MacKinnon-White-1985" class="csl-entry">
+MacKinnon, J. G., &amp; White, H. (1985). Some heteroskedasticity-consistent covariance matrix estimators with improved finite sample properties. <em>Journal of Econometrics</em>, <em>29</em>(3), 305–325. <a href="https://doi.org/10.1016/0304-4076(85)90158-7" class="external-link uri">https://doi.org/10.1016/0304-4076(85)90158-7</a>
 </div>
 <div id="ref-NationalResearchCouncil-1982" class="csl-entry">
 National Research Council. (1982). <em>An assessment of research-doctorate programs in the United States: Social and behavioral sciences</em>. National Academies Press. <a href="https://doi.org/10.17226/9781" class="external-link uri">https://doi.org/10.17226/9781</a>
@@ -133,6 +242,12 @@ Pesigan, I. J. A., Sun, R. W., &amp; Cheung, S. F. (2023). <span class="nocase">
 </div>
 <div id="ref-RCoreTeam-2026" class="csl-entry">
 R Core Team. (2026). <em>R: A language and environment for statistical computing</em>. R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="external-link uri">https://www.R-project.org/</a>
+</div>
+<div id="ref-White-1980" class="csl-entry">
+White, H. (1980). A heteroskedasticity-consistent covariance matrix estimator and a direct test for heteroskedasticity. <em>Econometrica</em>, <em>48</em>(4), 817–838. <a href="https://doi.org/10.2307/1912934" class="external-link uri">https://doi.org/10.2307/1912934</a>
+</div>
+<div id="ref-Yuan-Chan-2011" class="csl-entry">
+Yuan, K.-H., &amp; Chan, W. (2011). Biases and standard errors of standardized regression coefficients. <em>Psychometrika</em>, <em>76</em>(4), 670–690. <a href="https://doi.org/10.1007/s11336-011-9224-6" class="external-link uri">https://doi.org/10.1007/s11336-011-9224-6</a>
 </div>
 </div>
 </div>

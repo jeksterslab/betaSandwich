@@ -37,6 +37,15 @@ Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandw
 
 ## Estimate differences of standardized regression slopes and the corresponding sampling covariance matrix.
 
+The difference between the standardized slopes of regressors j and l is
+\beta^{\ast}\_{j} - \beta^{\ast}\_{l}. It compares the standardized
+effects of the two regressors on the same scale. The sampling variance
+of the difference is \mathrm{var} \left( \hat{\beta}^{\ast}\_{j}
+\right) + \mathrm{var} \left( \hat{\beta}^{\ast}\_{l} \right) - 2 \\,
+\mathrm{cov} \left( \hat{\beta}^{\ast}\_{j}, \hat{\beta}^{\ast}\_{l}
+\right), obtained from the sampling covariance matrix of the
+standardized slopes.
+
 \
 `mvn`` ``<-`` `[`DiffBetaSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)`(``std_mvn``, alpha ``=`` ``0.05``)`\
 `adf`` ``<-`` `[`DiffBetaSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)`(``std_adf``, alpha ``=`` ``0.05``)`\

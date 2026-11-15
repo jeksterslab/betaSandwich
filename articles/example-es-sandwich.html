@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>betaSandwich: Example Using the SCorSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions • betaSandwich</title>
+<title>betaSandwich: Example Using the SCorSandwich, SCorSqSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions • betaSandwich</title>
 <!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
@@ -13,7 +13,7 @@
 <link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="betaSandwich: Example Using the SCorSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="betaSandwich: Example Using the SCorSandwich, SCorSqSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -55,7 +55,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>betaSandwich: Example Using the SCorSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions</h1>
+      <h1>betaSandwich: Example Using the SCorSandwich, SCorSqSandwich, PCorSandwich, DeltaRSqSandwich, and FSqSandwich Functions</h1>
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
@@ -66,9 +66,10 @@ Agaloos Pesigan</h4>
 
     
     
-<p>Confidence intervals for semipartial correlations, squared partial
-correlations, the improvement in R-squared, and Cohen’s f-squared are
-generated using the <code><a href="../reference/SCorSandwich.html">SCorSandwich()</a></code>,
+<p>Confidence intervals for semipartial correlations, squared
+semipartial correlations, squared partial correlations, the improvement
+in R-squared, and Cohen’s f-squared are generated using the
+<code><a href="../reference/SCorSandwich.html">SCorSandwich()</a></code>, <code><a href="../reference/SCorSqSandwich.html">SCorSqSandwich()</a></code>,
 <code><a href="../reference/PCorSandwich.html">PCorSandwich()</a></code>, <code><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code>, and
 <code><a href="../reference/FSqSandwich.html">FSqSandwich()</a></code> functions from the <code>betaSandwich</code>
 package. In this example, we use the data set and the model used in <a href="example-beta-sandwich.html">betaSandwich: Example Using the BetaHC
@@ -109,6 +110,11 @@ sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate
 <div class="section level2">
 <h2 id="semipartial-correlations">Semipartial correlations<a class="anchor" aria-label="anchor" href="#semipartial-correlations"></a>
 </h2>
+<p>The semipartial correlation of regressor <span class="math inline">j</span> is <span class="math inline">sr_{j} =
+\beta^{\ast}_{j} / \sqrt{\left[ \mathbf{R}_{x}^{-1}
+\right]_{jj}}</span>, the correlation between the outcome and the part
+of regressor <span class="math inline">j</span> that is not explained by
+the other regressors.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/SCorSandwich.html">SCorSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
@@ -121,9 +127,31 @@ sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate
 <span><span class="co">#&gt; PCTSUPP 0.2385 0.0783 3.0465 0.0023 0.0851 0.3919</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="squared-semipartial-correlations">Squared semipartial correlations<a class="anchor" aria-label="anchor" href="#squared-semipartial-correlations"></a>
+</h2>
+<p>The <code><a href="../reference/SCorSqSandwich.html">SCorSqSandwich()</a></code> function squares the
+signed-semipartial interval as a set. If the signed interval contains
+zero, the lower limit of the squared interval is zero. Writing the
+signed interval as <span class="math inline">\left[ l, u \right]</span>,
+the squared interval is <span class="math inline">\left[ l^{2}, u^{2}
+\right]</span> if <span class="math inline">0 &lt; l</span>, <span class="math inline">\left[ u^{2}, l^{2} \right]</span> if <span class="math inline">u &lt; 0</span>, and <span class="math inline">\left[ 0, \max \left( l^{2}, u^{2} \right)
+\right]</span> otherwise. The function returns a data frame with the
+estimate and the confidence limits.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/SCorSqSandwich.html">SCorSqSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<span><span class="co">#&gt;               est       lower     upper</span></span>
+<span><span class="co">#&gt; NARTIC  0.1858925 0.075919679 0.3442987</span></span>
+<span><span class="co">#&gt; PCTGRT  0.1176542 0.035474114 0.2476748</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.0568722 0.007234428 0.1535875</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="squared-partial-correlations">Squared partial correlations<a class="anchor" aria-label="anchor" href="#squared-partial-correlations"></a>
 </h2>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p>The squared partial correlation is <span class="math inline">pr^{2}_{j} = sr^{2}_{j} / \left( 1 - R^{2} +
+sr^{2}_{j} \right)</span>, the proportion of the variance of the outcome
+not explained by the other regressors that is explained by regressor
+<span class="math inline">j</span>.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/PCorSandwich.html">PCorSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; PCorSandwich(object = std_hc3, alpha = 0.05)</span></span>
@@ -137,7 +165,10 @@ sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate
 <div class="section level2">
 <h2 id="improvement-in-r-squared">Improvement in R-squared<a class="anchor" aria-label="anchor" href="#improvement-in-r-squared"></a>
 </h2>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<p>The improvement in R-squared is <span class="math inline">\Delta
+R^{2}_{j} = R^{2} - R^{2}_{-j} = sr^{2}_{j}</span>, the decrease in
+<span class="math inline">R^{2}</span> when regressor <span class="math inline">j</span> is removed from the model.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; DeltaRSqSandwich(object = std_hc3, alpha = 0.05)</span></span>
@@ -151,7 +182,11 @@ sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate
 <div class="section level2">
 <h2 id="cohens-f-squared-and-local-f-squared">Cohen’s f-squared and local f-squared<a class="anchor" aria-label="anchor" href="#cohens-f-squared-and-local-f-squared"></a>
 </h2>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<p>Cohen’s f-squared is <span class="math inline">f^{2} = R^{2} / \left(
+1 - R^{2} \right)</span> and the local f-squared of regressor <span class="math inline">j</span> is <span class="math inline">f^{2}_{j} =
+sr^{2}_{j} / \left( 1 - R^{2} \right)</span>. By convention, values of
+about 0.02, 0.15, and 0.35 are small, medium, and large effects.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/FSqSandwich.html">FSqSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; FSqSandwich(object = std_hc3, alpha = 0.05)</span></span>
@@ -164,9 +199,32 @@ sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate
 <span><span class="co">#&gt; PCTSUPP 0.2909 0.2128 1.3670 0.1716 -0.1262 0.7081</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="extracting-estimates-sampling-covariance-matrices-and-confidence-intervals">Extracting estimates, sampling covariance matrices, and confidence
+intervals<a class="anchor" aria-label="anchor" href="#extracting-estimates-sampling-covariance-matrices-and-confidence-intervals"></a>
+</h2>
+<p>The <code><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef()</a></code>, <code><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov()</a></code>, and
+<code><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint()</a></code> methods work on the objects returned by the
+effect size functions.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">scor</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SCorSandwich.html">SCorSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">scor</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    NARTIC    PCTGRT   PCTSUPP </span></span>
+<span><span class="co">#&gt; 0.4311525 0.3430075 0.2384789</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">scor</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                NARTIC        PCTGRT       PCTSUPP</span></span>
+<span><span class="co">#&gt; NARTIC   0.0063040434 -0.0002532449 -0.0004374935</span></span>
+<span><span class="co">#&gt; PCTGRT  -0.0002532449  0.0062268718 -0.0010139363</span></span>
+<span><span class="co">#&gt; PCTSUPP -0.0004374935 -0.0010139363  0.0061275595</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">scor</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              2.5 %    97.5 %</span></span>
+<span><span class="co">#&gt; NARTIC  0.27553526 0.5867697</span></span>
+<span><span class="co">#&gt; PCTGRT  0.18834573 0.4976693</span></span>
+<span><span class="co">#&gt; PCTSUPP 0.08505544 0.3919024</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="comparing-covariance-estimators">Comparing covariance estimators<a class="anchor" aria-label="anchor" href="#comparing-covariance-estimators"></a>
 </h2>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span><span class="va">std_mvn</span><span class="op">)</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                2.5 %    97.5 %</span></span>
 <span><span class="co">#&gt; NARTIC   0.055421734 0.3163632</span></span>
