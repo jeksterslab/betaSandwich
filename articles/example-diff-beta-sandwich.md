@@ -8,7 +8,7 @@ data set and the model used in [betaSandwich: Example Using the BetaHC
 Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandwich.md).
 
 \
-[`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
+[`library`](https://rdrr.io/r/base/library.html)`(``package ``=`` ``betaSandwich``)`
 
 \
 `df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://jeksterslab.github.io/betaSandwich/reference/nas1982.md)
@@ -16,40 +16,40 @@ Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandw
 ## Fit the regression model using the `lm()` function.
 
 \
-`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
+`object`` ``<-`` ``stats``::`[`lm`](https://rdrr.io/r/stats/lm.html)`(``formula ``=`` ``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ## Estimate the standardized regression slopes and the corresponding sampling covariance matrix.
 
-#### Multivariate Normal-Theory Approach
+### Multivariate Normal-Theory Approach
 
 \
-`std_mvn`` ``<-`` `[`BetaN`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md)`(``object``)`
+`std_mvn`` ``<-`` `[`BetaN`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md)`(``object ``=`` ``object``)`
 
 #### Asymptotic Distribution-Free Approach
 
 \
-`std_adf`` ``<-`` `[`BetaADF`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md)`(``object``)`
+`std_adf`` ``<-`` `[`BetaADF`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md)`(``object ``=`` ``object``)`
 
 #### HC3
 
 \
-`std_hc3`` ``<-`` `[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``)`
+`std_hc3`` ``<-`` `[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object ``=`` ``object``, type ``=`` ``"hc3"``)`
 
 ## Estimate differences of standardized regression slopes and the corresponding sampling covariance matrix.
 
 The difference between the standardized slopes of regressors j and l is
 \beta^{\ast}\_{j} - \beta^{\ast}\_{l}. It compares the standardized
 effects of the two regressors on the same scale. The sampling variance
-of the difference is \mathrm{var} \left( \hat{\beta}^{\ast}\_{j}
-\right) + \mathrm{var} \left( \hat{\beta}^{\ast}\_{l} \right) - 2 \\,
-\mathrm{cov} \left( \hat{\beta}^{\ast}\_{j}, \hat{\beta}^{\ast}\_{l}
-\right), obtained from the sampling covariance matrix of the
-standardized slopes.
+of the difference is \operatorname{var} \left( \hat{\beta}^{\ast}\_{j}
+\right) + \operatorname{var} \left( \hat{\beta}^{\ast}\_{l} \right) - 2
+\\, \operatorname{cov} \left( \hat{\beta}^{\ast}\_{j},
+\hat{\beta}^{\ast}\_{l} \right), obtained from the sampling covariance
+matrix of the standardized slopes.
 
 \
-`mvn`` ``<-`` `[`DiffBetaSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)`(``std_mvn``, alpha ``=`` ``0.05``)`\
-`adf`` ``<-`` `[`DiffBetaSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)`(``std_adf``, alpha ``=`` ``0.05``)`\
-`hc3`` ``<-`` `[`DiffBetaSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)`
+`mvn`` ``<-`` `[`DiffBetaSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)`(``object ``=`` ``std_mvn``, alpha ``=`` ``0.05``)`\
+`adf`` ``<-`` `[`DiffBetaSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)`(``object ``=`` ``std_adf``, alpha ``=`` ``0.05``)`\
+`hc3`` ``<-`` `[`DiffBetaSandwich`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)`(``object ``=`` ``std_hc3``, alpha ``=`` ``0.05``)`
 
 ## Methods
 
@@ -59,7 +59,7 @@ Summary of the results of
 [`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md).
 
 \
-[`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``mvn``)`\
 `#> Call:`\
 `#> DiffBetaSandwich(object = std_mvn, alpha = 0.05)`\
 `#> `\
@@ -68,7 +68,7 @@ Summary of the results of
 `#> NARTIC-PCTGRT  0.1037 0.1357 0.7640 0.4449 -0.1623 0.3696`\
 `#> NARTIC-PCTSUPP 0.2319 0.1252 1.8524 0.0640 -0.0135 0.4773`\
 `#> PCTGRT-PCTSUPP 0.1282 0.1227 1.0451 0.2960 -0.1123 0.3688`\
-[`summary`](https://rdrr.io/r/base/summary.html)`(``adf``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``adf``)`\
 `#> Call:`\
 `#> DiffBetaSandwich(object = std_adf, alpha = 0.05)`\
 `#> `\
@@ -77,7 +77,7 @@ Summary of the results of
 `#> NARTIC-PCTGRT  0.1037 0.1212 0.8555 0.3923 -0.1338 0.3411`\
 `#> NARTIC-PCTSUPP 0.2319 0.1181 1.9642 0.0495  0.0005 0.4633`\
 `#> PCTGRT-PCTSUPP 0.1282 0.1215 1.0555 0.2912 -0.1099 0.3664`\
-[`summary`](https://rdrr.io/r/base/summary.html)`(``hc3``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``hc3``)`\
 `#> Call:`\
 `#> DiffBetaSandwich(object = std_hc3, alpha = 0.05)`\
 `#> `\
@@ -92,13 +92,13 @@ Summary of the results of
 Calculate differences of standardized regression slopes.
 
 \
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``mvn``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``mvn``)`\
 `#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP `\
 `#>      0.1036564      0.2318974      0.1282410`\
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``adf``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``adf``)`\
 `#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP `\
 `#>      0.1036564      0.2318974      0.1282410`\
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``hc3``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``hc3``)`\
 `#>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP `\
 `#>      0.1036564      0.2318974      0.1282410`
 
@@ -108,17 +108,17 @@ Calculate the sampling covariance matrix of differences of standardized
 regression slopes.
 
 \
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``mvn``)`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``mvn``)`\
 `#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP`\
 `#> NARTIC-PCTGRT    0.018408653    0.009511262   -0.008897391`\
 `#> NARTIC-PCTSUPP   0.009511262    0.015672035    0.006160773`\
 `#> PCTGRT-PCTSUPP  -0.008897391    0.006160773    0.015058164`\
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``adf``)`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``adf``)`\
 `#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP`\
 `#> NARTIC-PCTGRT    0.014681407    0.006928651   -0.007752755`\
 `#> NARTIC-PCTSUPP   0.006928651    0.013938955    0.007010303`\
 `#> PCTGRT-PCTSUPP  -0.007752755    0.007010303    0.014763058`\
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``hc3``)`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``hc3``)`\
 `#>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP`\
 `#> NARTIC-PCTGRT    0.020076382    0.009274583   -0.010801799`\
 `#> NARTIC-PCTSUPP   0.009274583    0.017370731    0.008096148`\
@@ -130,17 +130,17 @@ Generate confidence intervals for differences of standardized regression
 slopes.
 
 \
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``mvn``, level ``=`` ``0.95``)`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``mvn``, level ``=`` ``0.95``)`\
 `#>                      2.5 %    97.5 %`\
 `#> NARTIC-PCTGRT  -0.16226855 0.3695814`\
 `#> NARTIC-PCTSUPP -0.01346652 0.4772614`\
 `#> PCTGRT-PCTSUPP -0.11226950 0.3687516`\
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``adf``, level ``=`` ``0.95``)`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``adf``, level ``=`` ``0.95``)`\
 `#>                        2.5 %    97.5 %`\
 `#> NARTIC-PCTGRT  -0.1338262589 0.3411391`\
 `#> NARTIC-PCTSUPP  0.0004975295 0.4632974`\
 `#> PCTGRT-PCTSUPP -0.1099011119 0.3663832`\
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``hc3``, level ``=`` ``0.95``)`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``hc3``, level ``=`` ``0.95``)`\
 `#>                      2.5 %    97.5 %`\
 `#> NARTIC-PCTGRT  -0.17405314 0.3813660`\
 `#> NARTIC-PCTSUPP -0.02642203 0.4902169`\

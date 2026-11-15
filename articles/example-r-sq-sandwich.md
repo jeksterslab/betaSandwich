@@ -7,7 +7,7 @@ data set and the model used in [betaSandwich: Example Using the BetaHC
 Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandwich.md).
 
 \
-[`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
+[`library`](https://rdrr.io/r/base/library.html)`(``package ``=`` ``betaSandwich``)`
 
 \
 `df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://jeksterslab.github.io/betaSandwich/reference/nas1982.md)
@@ -15,42 +15,42 @@ Function](https://jeksterslab.github.io/betaSandwich/articles/example-beta-sandw
 ## Fit the regression model using the `lm()` function.
 
 \
-`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
+`object`` ``<-`` ``stats``::`[`lm`](https://rdrr.io/r/stats/lm.html)`(``formula ``=`` ``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ## Estimate the standardized regression slopes and the corresponding sampling covariance matrix.
 
-#### Multivariate Normal-Theory Approach
+### Multivariate Normal-Theory Approach
 
 \
-`std_mvn`` ``<-`` `[`BetaN`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md)`(``object``)`
+`std_mvn`` ``<-`` `[`BetaN`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md)`(``object ``=`` ``object``)`
 
 #### Asymptotic Distribution-Free Approach
 
 \
-`std_adf`` ``<-`` `[`BetaADF`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md)`(``object``)`
+`std_adf`` ``<-`` `[`BetaADF`](https://jeksterslab.github.io/betaSandwich/reference/BetaADF.md)`(``object ``=`` ``object``)`
 
 #### HC3
 
 \
-`std_hc3`` ``<-`` `[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``)`
+`std_hc3`` ``<-`` `[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object ``=`` ``object``, type ``=`` ``"hc3"``)`
 
 ## Estimate the multiple correlation coefficients (R-squared and adjusted R-squared) and the corresponding sampling covariance matrix.
 
 The R-squared and the adjusted R-squared are R^{2} =
-\boldsymbol{\beta}^{\ast\prime} \mathbf{R}\_{x}
+\boldsymbol{\beta}^{\ast\prime} \boldsymbol{R}\_{x}
 \boldsymbol{\beta}^{\ast} and \bar{R}^{2} = 1 - \left( 1 - R^{2} \right)
 \left( n - 1 \right) / \left( n - k \right), where
 \boldsymbol{\beta}^{\ast} is the vector of standardized slopes,
-\mathbf{R}\_{x} is the correlation matrix of the regressors, n is the
-sample size, and k is the number of parameters of the regression model,
-including the intercept. The sampling covariance matrix is obtained by
-the delta method from the sampling covariance matrix of the standardized
-parameters.
+\boldsymbol{R}\_{x} is the correlation matrix of the regressors, n is
+the sample size, and k is the number of parameters of the regression
+model, including the intercept. The sampling covariance matrix is
+obtained by the delta method from the sampling covariance matrix of the
+standardized parameters.
 
 \
-`mvn`` ``<-`` `[`RSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)`(``std_mvn``, alpha ``=`` ``0.05``)`\
-`adf`` ``<-`` `[`RSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)`(``std_adf``, alpha ``=`` ``0.05``)`\
-`hc3`` ``<-`` `[`RSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)`(``std_hc3``, alpha ``=`` ``0.05``)`
+`mvn`` ``<-`` `[`RSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)`(``object ``=`` ``std_mvn``, alpha ``=`` ``0.05``)`\
+`adf`` ``<-`` `[`RSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)`(``object ``=`` ``std_adf``, alpha ``=`` ``0.05``)`\
+`hc3`` ``<-`` `[`RSqSandwich`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md)`(``object ``=`` ``std_hc3``, alpha ``=`` ``0.05``)`
 
 ## Methods
 
@@ -60,7 +60,7 @@ Summary of the results of
 [`RSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/RSqSandwich.md).
 
 \
-[`summary`](https://rdrr.io/r/base/summary.html)`(``mvn``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``mvn``)`\
 `#> Call:`\
 `#> RSqSandwich(object = std_mvn, alpha = 0.05)`\
 `#> `\
@@ -68,7 +68,7 @@ Summary of the results of
 `#>        est     se       z p   2.5%  97.5%`\
 `#> rsq 0.8045 0.0517 15.5608 0 0.7032 0.9059`\
 `#> adj 0.7906 0.0554 14.2713 0 0.6820 0.8991`\
-[`summary`](https://rdrr.io/r/base/summary.html)`(``adf``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``adf``)`\
 `#> Call:`\
 `#> RSqSandwich(object = std_adf, alpha = 0.05)`\
 `#> `\
@@ -76,7 +76,7 @@ Summary of the results of
 `#>        est     se       z p   2.5%  97.5%`\
 `#> rsq 0.8045 0.0519 15.4910 0 0.7027 0.9063`\
 `#> adj 0.7906 0.0556 14.2073 0 0.6815 0.8996`\
-[`summary`](https://rdrr.io/r/base/summary.html)`(``hc3``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``hc3``)`\
 `#> Call:`\
 `#> RSqSandwich(object = std_hc3, alpha = 0.05)`\
 `#> `\
@@ -90,13 +90,13 @@ Summary of the results of
 Calculate R-squared and adjusted R-squared.
 
 \
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``mvn``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``mvn``)`\
 `#>       rsq       adj `\
 `#> 0.8045263 0.7905638`\
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``adf``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``adf``)`\
 `#>       rsq       adj `\
 `#> 0.8045263 0.7905638`\
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``hc3``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``hc3``)`\
 `#>       rsq       adj `\
 `#> 0.8045263 0.7905638`
 
@@ -106,15 +106,15 @@ Calculate the sampling covariance matrix of R-squared and adjusted
 R-squared.
 
 \
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``mvn``)`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``mvn``)`\
 `#>             rsq         adj`\
 `#> rsq 0.002673125 0.002864062`\
 `#> adj 0.002864062 0.003068638`\
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``adf``)`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``adf``)`\
 `#>             rsq         adj`\
 `#> rsq 0.002697266 0.002889927`\
 `#> adj 0.002889927 0.003096351`\
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``hc3``)`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``hc3``)`\
 `#>             rsq         adj`\
 `#> rsq 0.003288894 0.003523815`\
 `#> adj 0.003523815 0.003775516`
@@ -124,15 +124,15 @@ R-squared.
 Generate confidence intervals for R-squared and adjusted R-squared.
 
 \
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``mvn``, level ``=`` ``0.95``)`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``mvn``, level ``=`` ``0.95``)`\
 `#>         2.5 %    97.5 %`\
 `#> rsq 0.7031917 0.9058608`\
 `#> adj 0.6819911 0.8991366`\
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``adf``, level ``=`` ``0.95``)`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``adf``, level ``=`` ``0.95``)`\
 `#>         2.5 %    97.5 %`\
 `#> rsq 0.7027351 0.9063174`\
 `#> adj 0.6815019 0.8996258`\
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``hc3``, level ``=`` ``0.95``)`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``hc3``, level ``=`` ``0.95``)`\
 `#>         2.5 %    97.5 %`\
 `#> rsq 0.6921245 0.9169280`\
 `#> adj 0.6701334 0.9109943`

@@ -63,10 +63,10 @@ sampling covariance matrix of the standardized parameters stored in
 heteroskedasticity-consistent).
 
 Let \\(\boldsymbol{\beta}^{\ast}\\) be the vector of standardized
-slopes, \\(\mathbf{R}\_{x}\\) the correlation matrix of the regressors,
-\\(r^{jj}\\) the \\(j\\)th diagonal element of
-\\(\mathbf{R}\_{x}^{-1}\\), and \\(R^{2} =
-\boldsymbol{\beta}^{\ast\prime} \mathbf{R}\_{x}
+slopes, \\(\boldsymbol{R}\_{x}\\) the correlation matrix of the
+regressors, \\(r^{jj}\\) the \\(j\\)th diagonal element of
+\\(\boldsymbol{R}\_{x}^{-1}\\), and \\(R^{2} =
+\boldsymbol{\beta}^{\ast\prime} \boldsymbol{R}\_{x}
 \boldsymbol{\beta}^{\ast}\\). The semipartial correlation of regressor
 \\(j\\) is \$\$sr\_{j} = \beta^{\ast}\_{j} / \sqrt{r^{jj}} =
 \beta^{\ast}\_{j} \sqrt{1 - R^{2}\_{j \cdot -j}},\$\$ where \\(R^{2}\_{j
@@ -81,10 +81,10 @@ Cohen's f-squared and the local f-squared of regressor \\(j\\) are
 of about 0.02, 0.15, and 0.35 are small, medium, and large effects. For
 an effect size \\(g\left( \boldsymbol{\theta}^{\ast} \right)\\) that is
 a function of the standardized parameters, the sampling variance is
-approximated by the delta method, \$\$\widehat{\mathrm{var}} \left(
-\hat{g} \right) = \mathbf{J}\_{g} \\,
+approximated by the delta method, \$\$\widehat{\operatorname{var}}
+\left( \hat{g} \right) = \boldsymbol{J}\_{g} \\,
 \widehat{\boldsymbol{\Sigma}}\_{\boldsymbol{\theta}^{\ast}} \\,
-\mathbf{J}\_{g}^{\prime},\$\$ where \\(\mathbf{J}\_{g}\\) is the
+\boldsymbol{J}\_{g}^{\prime},\$\$ where \\(\boldsymbol{J}\_{g}\\) is the
 Jacobian of \\(g\\) and
 \\(\widehat{\boldsymbol{\Sigma}}\_{\boldsymbol{\theta}^{\ast}}\\) is the
 sampling covariance matrix from

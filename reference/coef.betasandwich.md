@@ -2,14 +2,9 @@
 
 Standardized Regression Slopes
 
-Standardized Regression Slopes
-
 ## Usage
 
 ``` r
-# S3 method for class 'betasandwich'
-coef(object, ...)
-
 # S3 method for class 'betasandwich'
 coef(object, ...)
 ```
@@ -28,8 +23,6 @@ coef(object, ...)
 
 Returns a vector of standardized regression slopes.
 
-Returns a vector of standardized regression slopes.
-
 ## Author
 
 Ivan Jacob Agaloos Pesigan
@@ -37,12 +30,6 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-coef(std)
-#>    NARTIC    PCTGRT   PCTSUPP 
-#> 0.4951451 0.3914887 0.2632477 
-
 object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
 std <- BetaHC(object)
 coef(std)

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="index.html">betaSandwich</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.9.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,6 +132,10 @@
 <td>benchmark tests, outside the unit tests (<code>test-benchmark-&lt;pkg&gt;-&lt;name&gt;.R</code>)</td>
 </tr><tr><td><code>.setup/tests-external/</code></td>
 <td>external tests, outside the unit tests (<code>test-external-&lt;pkg&gt;-&lt;name&gt;.R</code>)</td>
+</tr><tr><td><code>.setup/data-raw/</code></td>
+<td>shareable raw data</td>
+</tr><tr><td><code>.setup/data-process/</code></td>
+<td>scripts that build <code>data/*.rda</code> from the raw data</td>
 </tr><tr><td><code>.setup/bin/</code></td>
 <td>optional: R scripts run at <code>make project</code> (for example, to build a bespoke binary)</td>
 </tr></tbody></table></div>

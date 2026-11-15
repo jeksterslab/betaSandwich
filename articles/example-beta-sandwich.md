@@ -13,7 +13,7 @@ standardized regression coefficients are generated using the
 function from the `betaSandwich` package following Dudgeon (2017).[^1]
 
 \
-[`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
+[`library`](https://rdrr.io/r/base/library.html)`(``package ``=`` ``betaSandwich``)`
 
 \
 `df`` ``<-`` ``betaSandwich``::`[`nas1982`](https://jeksterslab.github.io/betaSandwich/reference/nas1982.md)
@@ -21,12 +21,12 @@ function from the `betaSandwich` package following Dudgeon (2017).[^1]
 ## Fit the regression model using the `lm()` function.
 
 \
-`object`` ``<-`` `[`lm`](https://rdrr.io/r/stats/lm.html)`(``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
+`object`` ``<-`` ``stats``::`[`lm`](https://rdrr.io/r/stats/lm.html)`(``formula ``=`` ``QUALITY`` ``~`` ``NARTIC`` ``+`` ``PCTGRT`` ``+`` ``PCTSUPP``, data ``=`` ``df``)`
 
 ## Estimate the standardized regression slopes and the corresponding robust sampling covariance matrix.
 
 \
-[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`\
+[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object ``=`` ``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`\
 `#> Call:`\
 `#> BetaHC(object = object, type = "hc3", alpha = 0.05)`\
 `#> `\
@@ -39,7 +39,7 @@ function from the `betaSandwich` package following Dudgeon (2017).[^1]
 ## Methods
 
 \
-`out`` ``<-`` `[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`
+`out`` ``<-`` `[`BetaHC`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)`(``object ``=`` ``object``, type ``=`` ``"hc3"``, alpha ``=`` ``0.05``)`
 
 ### summary
 
@@ -47,7 +47,7 @@ Summary of the results of
 [`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md).
 
 \
-[`summary`](https://rdrr.io/r/base/summary.html)`(``out``)`\
+[`summary`](https://rdrr.io/r/base/summary.html)`(``object ``=`` ``out``)`\
 `#> Call:`\
 `#> BetaHC(object = object, type = "hc3", alpha = 0.05)`\
 `#> `\
@@ -62,7 +62,7 @@ Summary of the results of
 Calculate the standardized regression slopes.
 
 \
-[`coef`](https://rdrr.io/r/stats/coef.html)`(``out``)`\
+`stats``::`[`coef`](https://rdrr.io/r/stats/coef.html)`(``object ``=`` ``out``)`\
 `#>    NARTIC    PCTGRT   PCTSUPP `\
 `#> 0.4951451 0.3914887 0.2632477`
 
@@ -72,7 +72,7 @@ Calculate the robust sampling covariance matrix of the standardized
 regression slopes.
 
 \
-[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``out``)`\
+`stats``::`[`vcov`](https://rdrr.io/r/stats/vcov.html)`(``object ``=`` ``out``)`\
 `#>               NARTIC       PCTGRT      PCTSUPP`\
 `#> NARTIC   0.006172168 -0.003602529 -0.001943469`\
 `#> PCTGRT  -0.003602529  0.006699155 -0.002443584`\
@@ -83,7 +83,7 @@ regression slopes.
 Generate robust confidence intervals for standardized regression slopes.
 
 \
-[`confint`](https://rdrr.io/r/stats/confint.html)`(``out``, level ``=`` ``0.95``)`\
+`stats``::`[`confint`](https://rdrr.io/r/stats/confint.html)`(``object ``=`` ``out``, level ``=`` ``0.95``)`\
 `#>              2.5 %    97.5 %`\
 `#> NARTIC  0.33659828 0.6536920`\
 `#> PCTGRT  0.22631203 0.5566654`\

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">betaSandwich</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.9.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,30 +35,31 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0.9.9001" id="betasandwich-1099001">betaSandwich 1.0.9.9001<a class="anchor" aria-label="anchor" href="#betasandwich-1099001"></a></h2>
-<ul><li>Add SCorSqSandwich() for the image of a signed-semipartial interval under squaring.</li>
-<li>Update the description, README, and vignette to list the current features.</li>
-<li>Add a package help page; replace roxygen links to betaDelta (not on CRAN) with code text.</li>
-<li>Add examples for SCorSqSandwich() and for the coef(), vcov(), and confint() methods to the effect size vignette.</li>
-</ul></div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0.9.9000" id="betasandwich-1099000">betaSandwich 1.0.9.9000<a class="anchor" aria-label="anchor" href="#betasandwich-1099000"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.1.0" id="betasandwich-110">betaSandwich 1.1.0<a class="anchor" aria-label="anchor" href="#betasandwich-110"></a></h2>
 <div class="section level3">
-<h3 id="major-1-0-9-9000">Major<a class="anchor" aria-label="anchor" href="#major-1-0-9-9000"></a></h3>
+<h3 id="major-1-1-0">Major<a class="anchor" aria-label="anchor" href="#major-1-1-0"></a></h3>
 <ul><li>Added <code><a href="../reference/SCorSandwich.html">SCorSandwich()</a></code>, <code><a href="../reference/PCorSandwich.html">PCorSandwich()</a></code>, <code><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code>, and <code><a href="../reference/FSqSandwich.html">FSqSandwich()</a></code>: delta-method intervals for semipartial correlations, squared partial correlations, the improvement in R-squared, and Cohen’s f-squared (global and local), with normal-theory, ADF, or HC standard errors, as in betaMC and betaNB.</li>
 <li>
 <code>RSqBetaSandwich()</code> is removed. Use <code><a href="../reference/RSqSandwich.html">RSqSandwich()</a></code>, which gives the same estimates and standard errors; its intervals and tests use the normal distribution, as the other functions do, and its estimates are named <code>rsq</code> and <code>adj</code>.</li>
 <li>The new functions and <code><a href="../reference/DiffBetaSandwich.html">DiffBetaSandwich()</a></code> return objects of class <code>essandwich</code> with one set of methods. <code><a href="../reference/DiffBetaSandwich.html">DiffBetaSandwich()</a></code> objects also keep the class <code>diffbetasandwich</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="minor-1-0-9-9000">Minor<a class="anchor" aria-label="anchor" href="#minor-1-0-9-9000"></a></h3>
+<h3 id="minor-1-1-0">Minor<a class="anchor" aria-label="anchor" href="#minor-1-1-0"></a></h3>
 <ul><li>Selective standardization: the arguments <code>std_y</code> and <code>std_x</code> standardize only y or only the named regressors (for example, leave a dummy variable in its 0-1 units). The defaults give the same results as before.</li>
 <li>
 <code><a href="../reference/DiffBetaSandwich.html">DiffBetaSandwich()</a></code> stops when the slopes are not fully standardized.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="patch-1-0-9-9000">Patch<a class="anchor" aria-label="anchor" href="#patch-1-0-9-9000"></a></h3>
+<h3 id="patch-1-1-0">Patch<a class="anchor" aria-label="anchor" href="#patch-1-1-0"></a></h3>
 <ul><li>Fixed the standard error of R-squared in <code>RSqBetaSandwich()</code>, which was about three times too small for every covariance type. With R-squared as a parameter, the variance of y is beta’ Sigma_X beta / R-squared, so its derivatives with respect to beta and Sigma_X are now divided by R-squared.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-1-1-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-1-0"></a></h3>
+<ul><li>Add <code><a href="../reference/SCorSqSandwich.html">SCorSqSandwich()</a></code> for the image of a signed-semipartial interval under squaring.</li>
+<li>Add a package help page; the description, README, and vignettes list the current features.</li>
+<li>The definitions and formulas of the effect sizes are in the roxygen documentation and in the effect size vignette; the README no longer carries them.</li>
+<li>Add examples for <code><a href="../reference/SCorSqSandwich.html">SCorSqSandwich()</a></code> and for the <code><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef()</a></code>, <code><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov()</a></code>, and <code><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint()</a></code> methods to the effect size vignette.</li>
+<li>Replace roxygen links to betaDelta (not on CRAN) with code text, and wrap the roxygen lines at 80 characters.</li>
 </ul></div>
 </div>
     <div class="section level2">

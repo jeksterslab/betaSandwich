@@ -69,6 +69,8 @@ the user maintains (aims, data, notation, co-authors, open issues).
 | `.setup/r-miscellaneous/` | helpers that are not part of the package (for example `texHelper`) |
 | `.setup/tests-benchmark/` | benchmark tests, outside the unit tests (`test-benchmark-<pkg>-<name>.R`) |
 | `.setup/tests-external/` | external tests, outside the unit tests (`test-external-<pkg>-<name>.R`) |
+| `.setup/data-raw/` | shareable raw data |
+| `.setup/data-process/` | scripts that build `data/*.rda` from the raw data |
 | `.setup/bin/` | optional: R scripts run at `make project` (for example, to build a bespoke binary) |
 
 ## Make targets

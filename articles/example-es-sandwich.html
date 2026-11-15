@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">betaSandwich</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.9.9001</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,48 +75,150 @@ in R-squared, and Cohen’s f-squared are generated using the
 package. In this example, we use the data set and the model used in <a href="example-beta-sandwich.html">betaSandwich: Example Using the BetaHC
 Function</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/betaSandwich" class="external-link">betaSandwich</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span>package <span class="op">=</span> <span class="va">betaSandwich</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">betaSandwich</span><span class="fu">::</span><span class="va"><a href="../reference/nas1982.html">nas1982</a></span></span></code></pre></div>
+<div class="section level2">
+<h2 id="effect-sizes">Effect sizes<a class="anchor" aria-label="anchor" href="#effect-sizes"></a>
+</h2>
+<p>Let <span class="math inline">\boldsymbol{\beta}^{\ast}</span> be the
+vector of standardized slopes, <span class="math inline">\boldsymbol{R}_{x}</span> the correlation matrix of
+the regressors, <span class="math inline">r^{jj}</span> the <span class="math inline">j</span>th diagonal element of <span class="math inline">\boldsymbol{R}_{x}^{-1}</span>, <span class="math inline">n</span> the sample size, and <span class="math inline">k</span> the number of parameters of the regression
+model, including the intercept. Each effect size below is a function
+<span class="math inline">g\left( \boldsymbol{\theta}^{\ast}
+\right)</span> of the standardized parameters. Its sampling variance is
+approximated by the delta method,</p>
+<p><span class="math display">\widehat{\operatorname{var}} \left(
+\hat{g} \right)
+=
+\boldsymbol{J}_{g}
+\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}
+\boldsymbol{J}_{g}^{\prime},</span></p>
+<p>where <span class="math inline">\boldsymbol{J}_{g}</span> is the
+Jacobian of <span class="math inline">g</span> and <span class="math inline">\widehat{\boldsymbol{\Sigma}}_{\boldsymbol{\theta}^{\ast}}</span>
+is the sampling covariance matrix from <code><a href="../reference/BetaHC.html">BetaHC()</a></code>,
+<code><a href="../reference/BetaADF.html">BetaADF()</a></code>, or <code><a href="../reference/BetaN.html">BetaN()</a></code> <span class="citation">(Yuan &amp; Chan, 2011)</span>. The three functions
+differ in the estimator of the asymptotic covariance matrix of the
+sample covariances. <code><a href="../reference/BetaN.html">BetaN()</a></code> assumes multivariate normality
+<span class="citation">(Browne, 1984)</span>. <code><a href="../reference/BetaADF.html">BetaADF()</a></code>
+uses sample fourth moments and requires only that they exist, but it is
+noisy in small samples <span class="citation">(Browne, 1984; Jones &amp;
+Waller, 2015)</span>. <code><a href="../reference/BetaHC.html">BetaHC()</a></code> keeps the normal-theory
+model for the regressors but replaces the assumption of constant error
+variance with the squared residuals of the cases (HC0 to HC5) <span class="citation">(Cribari-Neto, 2004; Dudgeon, 2017; MacKinnon &amp;
+White, 1985; White, 1980)</span>, and it is recommended in most
+situations. Confidence intervals are <span class="math inline">\hat{g}
+\pm z_{1 - \alpha / 2} \, \widehat{\mathrm{se}} \left( \hat{g}
+\right)</span>.</p>
+<p><strong>R-squared and adjusted R-squared</strong>
+(<code><a href="../reference/RSqSandwich.html">RSqSandwich()</a></code>)</p>
+<p><span class="math display">R^{2} = \boldsymbol{\beta}^{\ast\prime}
+\boldsymbol{R}_{x} \boldsymbol{\beta}^{\ast},
+\quad
+\bar{R}^{2} = 1 - \left( 1 - R^{2} \right) \frac{n - 1}{n -
+k}.</span></p>
+<p><span class="math inline">R^{2}</span> is the proportion of the
+variance of the outcome explained by the regressors. <span class="math inline">\bar{R}^{2}</span> corrects <span class="math inline">R^{2}</span> for the number of regressors.</p>
+<p><strong>Semipartial correlation</strong>
+(<code><a href="../reference/SCorSandwich.html">SCorSandwich()</a></code>)</p>
+<p><span class="math display">sr_{j}
+=
+\frac{\beta^{\ast}_{j}}{\sqrt{r^{jj}}}
+=
+\beta^{\ast}_{j} \sqrt{1 - R^{2}_{j \cdot -j}},</span></p>
+<p>where <span class="math inline">R^{2}_{j \cdot -j}</span> is the
+R-squared from regressing regressor <span class="math inline">j</span>
+on the other regressors. It is the correlation between the outcome and
+the part of regressor <span class="math inline">j</span> that is not
+explained by the other regressors. Because <span class="math inline">1 /
+r^{jj} = 1 - R^{2}_{j \cdot -j}</span>, <span class="math inline">sr_{j}</span> shrinks toward zero as regressor <span class="math inline">j</span> becomes more redundant with the other
+regressors, even when <span class="math inline">\beta^{\ast}_{j}</span>
+does not.</p>
+<p><strong>Improvement in R-squared</strong>
+(<code><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code>)</p>
+<p><span class="math display">\Delta R^{2}_{j} = R^{2} - R^{2}_{-j} =
+sr^{2}_{j}.</span></p>
+<p>It is the change in <span class="math inline">R^{2}</span> when
+regressor <span class="math inline">j</span> is added last, the
+proportion of the variance of the outcome that regressor <span class="math inline">j</span> alone accounts for.</p>
+<p><strong>Squared semipartial correlation interval</strong>
+(<code><a href="../reference/SCorSqSandwich.html">SCorSqSandwich()</a></code>)</p>
+<p>The interval <span class="math inline">\left[ l, u \right]</span> of
+the signed <span class="math inline">sr_{j}</span> is squared as a set.
+The result is <span class="math inline">\left[ l^{2}, u^{2}
+\right]</span> if <span class="math inline">0 &lt; l</span>, <span class="math inline">\left[ u^{2}, l^{2} \right]</span> if <span class="math inline">u &lt; 0</span>, and <span class="math inline">\left[ 0, \max \left( l^{2}, u^{2} \right)
+\right]</span> if the interval contains zero. This is not the
+delta-method interval of <code><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code>.</p>
+<p><strong>Squared partial correlation</strong>
+(<code><a href="../reference/PCorSandwich.html">PCorSandwich()</a></code>)</p>
+<p><span class="math display">pr^{2}_{j} = \frac{sr^{2}_{j}}{1 - R^{2} +
+sr^{2}_{j}}.</span></p>
+<p>It is the proportion of the variance of the outcome not explained by
+the other regressors that is explained by regressor <span class="math inline">j</span>.</p>
+<p><strong>Cohen’s f-squared and local f-squared</strong>
+(<code><a href="../reference/FSqSandwich.html">FSqSandwich()</a></code>)</p>
+<p><span class="math display">f^{2} = \frac{R^{2}}{1 - R^{2}},
+\quad
+f^{2}_{j} = \frac{sr^{2}_{j}}{1 - R^{2}}.</span></p>
+<p>By convention <span class="citation">(Cohen, 1988)</span>, values of
+about 0.02, 0.15, and 0.35 are small, medium, and large effects.</p>
+<p><strong>Differences of standardized slopes</strong>
+(<code><a href="../reference/DiffBetaSandwich.html">DiffBetaSandwich()</a></code>)</p>
+<p><span class="math display">\beta^{\ast}_{j} -
+\beta^{\ast}_{l}.</span></p>
+<p>It compares the standardized effects of regressors <span class="math inline">j</span> and <span class="math inline">l</span> on
+the same scale.</p>
+<p><strong>Effect sizes near zero</strong></p>
+<p><span class="math inline">\beta^{\ast}_{j}</span> and <span class="math inline">sr_{j}</span> are signed and have no boundary at
+zero. <span class="math inline">R^{2}</span>, <span class="math inline">\Delta R^{2}_{j}</span>, <span class="math inline">pr^{2}_{j}</span>, and <span class="math inline">f^{2}_{j}</span> cannot be negative. When the
+population value is zero, the gradient of the squared effect sizes is
+zero, the first-order delta-method variance vanishes, and a symmetric
+Wald interval is not justified. Near zero, the sampling distribution
+remains skewed and bounded in finite samples, and the interval can
+extend below zero. An interval for <span class="math inline">sr_{j}</span> can therefore behave well where the
+interval for <span class="math inline">sr^{2}_{j}</span> does not.
+<code><a href="../reference/SCorSqSandwich.html">SCorSqSandwich()</a></code> respects the bound by squaring the
+interval of <span class="math inline">sr_{j}</span> as a set.</p>
+</div>
 <div class="section level2">
 <h2 id="fit-the-regression-model-using-the-lm-function-">Fit the regression model using the <code>lm()</code> function.<a class="anchor" aria-label="anchor" href="#fit-the-regression-model-using-the-lm-function-"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="estimate-the-standardized-regression-slopes-and-the-corresponding-sampling-covariance-matrix-">Estimate the standardized regression slopes and the corresponding
 sampling covariance matrix.<a class="anchor" aria-label="anchor" href="#estimate-the-standardized-regression-slopes-and-the-corresponding-sampling-covariance-matrix-"></a>
 </h2>
-<div class="section level4">
-<h4 id="multivariate-normal-theory-approach">Multivariate Normal-Theory Approach<a class="anchor" aria-label="anchor" href="#multivariate-normal-theory-approach"></a>
-</h4>
+<div class="section level3">
+<h3 id="multivariate-normal-theory-approach">Multivariate Normal-Theory Approach<a class="anchor" aria-label="anchor" href="#multivariate-normal-theory-approach"></a>
+</h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">std_mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BetaN.html">BetaN</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></code></pre></div>
-</div>
+<code class="sourceCode R"><span><span class="va">std_mvn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BetaN.html">BetaN</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span><span class="op">)</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="asymptotic-distribution-free-approach">Asymptotic Distribution-Free Approach<a class="anchor" aria-label="anchor" href="#asymptotic-distribution-free-approach"></a>
 </h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">std_adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BetaADF.html">BetaADF</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">std_adf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BetaADF.html">BetaADF</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="hc3">HC3<a class="anchor" aria-label="anchor" href="#hc3"></a>
 </h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">std_hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BetaHC.html">BetaHC</a></span><span class="op">(</span><span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">std_hc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BetaHC.html">BetaHC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span>, type <span class="op">=</span> <span class="st">"hc3"</span><span class="op">)</span></span></code></pre></div>
+</div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="semipartial-correlations">Semipartial correlations<a class="anchor" aria-label="anchor" href="#semipartial-correlations"></a>
 </h2>
 <p>The semipartial correlation of regressor <span class="math inline">j</span> is <span class="math inline">sr_{j} =
-\beta^{\ast}_{j} / \sqrt{\left[ \mathbf{R}_{x}^{-1}
+\beta^{\ast}_{j} / \sqrt{\left[ \boldsymbol{R}_{x}^{-1}
 \right]_{jj}}</span>, the correlation between the outcome and the part
 of regressor <span class="math inline">j</span> that is not explained by
 the other regressors.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/SCorSandwich.html">SCorSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="fu"><a href="../reference/SCorSandwich.html">SCorSandwich</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; SCorSandwich(object = std_hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -138,7 +240,7 @@ the squared interval is <span class="math inline">\left[ l^{2}, u^{2}
 \right]</span> otherwise. The function returns a data frame with the
 estimate and the confidence limits.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/SCorSqSandwich.html">SCorSqSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/SCorSqSandwich.html">SCorSqSandwich</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std_hc3</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;               est       lower     upper</span></span>
 <span><span class="co">#&gt; NARTIC  0.1858925 0.075919679 0.3442987</span></span>
 <span><span class="co">#&gt; PCTGRT  0.1176542 0.035474114 0.2476748</span></span>
@@ -152,7 +254,7 @@ sr^{2}_{j} \right)</span>, the proportion of the variance of the outcome
 not explained by the other regressors that is explained by regressor
 <span class="math inline">j</span>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/PCorSandwich.html">PCorSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="fu"><a href="../reference/PCorSandwich.html">PCorSandwich</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; PCorSandwich(object = std_hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -169,7 +271,7 @@ not explained by the other regressors that is explained by regressor
 R^{2}_{j} = R^{2} - R^{2}_{-j} = sr^{2}_{j}</span>, the decrease in
 <span class="math inline">R^{2}</span> when regressor <span class="math inline">j</span> is removed from the model.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; DeltaRSqSandwich(object = std_hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -187,7 +289,7 @@ R^{2}_{j} = R^{2} - R^{2}_{-j} = sr^{2}_{j}</span>, the decrease in
 sr^{2}_{j} / \left( 1 - R^{2} \right)</span>. By convention, values of
 about 0.02, 0.15, and 0.35 are small, medium, and large effects.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="../reference/FSqSandwich.html">FSqSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="fu"><a href="../reference/FSqSandwich.html">FSqSandwich</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std_hc3</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Call:</span></span>
 <span><span class="co">#&gt; FSqSandwich(object = std_hc3, alpha = 0.05)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -206,16 +308,16 @@ intervals<a class="anchor" aria-label="anchor" href="#extracting-estimates-sampl
 <code><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint()</a></code> methods work on the objects returned by the
 effect size functions.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">scor</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SCorSandwich.html">SCorSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">scor</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">scor</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SCorSandwich.html">SCorSandwich</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std_hc3</span><span class="op">)</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">scor</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    NARTIC    PCTGRT   PCTSUPP </span></span>
 <span><span class="co">#&gt; 0.4311525 0.3430075 0.2384789</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">scor</span><span class="op">)</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">scor</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                NARTIC        PCTGRT       PCTSUPP</span></span>
 <span><span class="co">#&gt; NARTIC   0.0063040434 -0.0002532449 -0.0004374935</span></span>
 <span><span class="co">#&gt; PCTGRT  -0.0002532449  0.0062268718 -0.0010139363</span></span>
 <span><span class="co">#&gt; PCTSUPP -0.0004374935 -0.0010139363  0.0061275595</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">scor</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">scor</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;              2.5 %    97.5 %</span></span>
 <span><span class="co">#&gt; NARTIC  0.27553526 0.5867697</span></span>
 <span><span class="co">#&gt; PCTGRT  0.18834573 0.4976693</span></span>
@@ -225,17 +327,17 @@ effect size functions.</p>
 <h2 id="comparing-covariance-estimators">Comparing covariance estimators<a class="anchor" aria-label="anchor" href="#comparing-covariance-estimators"></a>
 </h2>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span><span class="va">std_mvn</span><span class="op">)</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std_mvn</span><span class="op">)</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                2.5 %    97.5 %</span></span>
 <span><span class="co">#&gt; NARTIC   0.055421734 0.3163632</span></span>
 <span><span class="co">#&gt; PCTGRT   0.017881671 0.2174267</span></span>
 <span><span class="co">#&gt; PCTSUPP -0.008779331 0.1225237</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span><span class="va">std_adf</span><span class="op">)</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std_adf</span><span class="op">)</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                2.5 %    97.5 %</span></span>
 <span><span class="co">#&gt; NARTIC   0.072394224 0.2993907</span></span>
 <span><span class="co">#&gt; PCTGRT   0.025067308 0.2102410</span></span>
 <span><span class="co">#&gt; PCTSUPP -0.008691312 0.1224357</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span><span class="va">std_hc3</span><span class="op">)</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
+<span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="fu"><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std_hc3</span><span class="op">)</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt;               2.5 %    97.5 %</span></span>
 <span><span class="co">#&gt; NARTIC   0.05170296 0.3200820</span></span>
 <span><span class="co">#&gt; PCTGRT   0.01155384 0.2237545</span></span>
@@ -245,10 +347,36 @@ effect size functions.</p>
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
+<div id="ref-Browne-1984" class="csl-entry">
+Browne, M. W. (1984). Asymptotically distribution-free methods for the
+analysis of covariance structures. <em>British Journal of Mathematical
+and Statistical Psychology</em>, <em>37</em>(1), 62–83. <a href="https://doi.org/10.1111/j.2044-8317.1984.tb00789.x" class="external-link">https://doi.org/10.1111/j.2044-8317.1984.tb00789.x</a>
+</div>
+<div id="ref-Cohen-1988" class="csl-entry">
+Cohen, J. (1988). <em>Statistical power analysis for the behavioral
+sciences</em> (2nd ed.). Routledge. <a href="https://doi.org/10.4324/9780203771587" class="external-link">https://doi.org/10.4324/9780203771587</a>
+</div>
+<div id="ref-CribariNeto-2004" class="csl-entry">
+Cribari-Neto, F. (2004). Asymptotic inference under heteroskedasticity
+of unknown form. <em>Computational Statistics &amp; Data Analysis</em>,
+<em>45</em>(2), 215–233. <a href="https://doi.org/10.1016/s0167-9473(02)00366-3" class="external-link">https://doi.org/10.1016/s0167-9473(02)00366-3</a>
+</div>
 <div id="ref-Dudgeon-2017" class="csl-entry">
 Dudgeon, P. (2017). Some improvements in confidence intervals for
 standardized regression coefficients. <em>Psychometrika</em>,
 <em>82</em>(4), 928–951. <a href="https://doi.org/10.1007/s11336-017-9563-z" class="external-link">https://doi.org/10.1007/s11336-017-9563-z</a>
+</div>
+<div id="ref-Jones-Waller-2015" class="csl-entry">
+Jones, J. A., &amp; Waller, N. G. (2015). The normal-theory and
+asymptotic distribution-free (<span>ADF</span>) covariance matrix of
+standardized regression coefficients: Theoretical extensions and finite
+sample behavior. <em>Psychometrika</em>, <em>80</em>(2), 365–378. <a href="https://doi.org/10.1007/s11336-013-9380-y" class="external-link">https://doi.org/10.1007/s11336-013-9380-y</a>
+</div>
+<div id="ref-MacKinnon-White-1985" class="csl-entry">
+MacKinnon, J. G., &amp; White, H. (1985). Some
+heteroskedasticity-consistent covariance matrix estimators with improved
+finite sample properties. <em>Journal of Econometrics</em>,
+<em>29</em>(3), 305–325. <a href="https://doi.org/10.1016/0304-4076(85)90158-7" class="external-link">https://doi.org/10.1016/0304-4076(85)90158-7</a>
 </div>
 <div id="ref-NationalResearchCouncil-1982" class="csl-entry">
 National Research Council. (1982). <em>An assessment of
@@ -259,6 +387,16 @@ and behavioral sciences</em>. National Academies Press. <a href="https://doi.org
 Pesigan, I. J. A., Sun, R. W., &amp; Cheung, S. F. (2023). <span class="nocase">betaDelta</span> and <span class="nocase">betaSandwich</span>: Confidence intervals for
 standardized regression coefficients in <span>R</span>. <em>Multivariate
 Behavioral Research</em>, <em>58</em>(6), 1183–1186. <a href="https://doi.org/10.1080/00273171.2023.2201277" class="external-link">https://doi.org/10.1080/00273171.2023.2201277</a>
+</div>
+<div id="ref-White-1980" class="csl-entry">
+White, H. (1980). A heteroskedasticity-consistent covariance matrix
+estimator and a direct test for heteroskedasticity.
+<em>Econometrica</em>, <em>48</em>(4), 817–838. <a href="https://doi.org/10.2307/1912934" class="external-link">https://doi.org/10.2307/1912934</a>
+</div>
+<div id="ref-Yuan-Chan-2011" class="csl-entry">
+Yuan, K.-H., &amp; Chan, W. (2011). Biases and standard errors of
+standardized regression coefficients. <em>Psychometrika</em>,
+<em>76</em>(4), 670–690. <a href="https://doi.org/10.1007/s11336-011-9224-6" class="external-link">https://doi.org/10.1007/s11336-011-9224-6</a>
 </div>
 </div>
 </div>

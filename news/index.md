@@ -1,17 +1,6 @@
 # Changelog
 
-## betaSandwich 1.0.9.9001
-
-- Add SCorSqSandwich() for the image of a signed-semipartial interval
-  under squaring.
-- Update the description, README, and vignette to list the current
-  features.
-- Add a package help page; replace roxygen links to betaDelta (not on
-  CRAN) with code text.
-- Add examples for SCorSqSandwich() and for the coef(), vcov(), and
-  confint() methods to the effect size vignette.
-
-## betaSandwich 1.0.9.9000
+## betaSandwich 1.1.0
 
 ### Major
 
@@ -52,6 +41,25 @@
   R-squared as a parameter, the variance of y is beta’ Sigma_X beta /
   R-squared, so its derivatives with respect to beta and Sigma_X are now
   divided by R-squared.
+
+### Documentation
+
+- Add
+  [`SCorSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSqSandwich.md)
+  for the image of a signed-semipartial interval under squaring.
+- Add a package help page; the description, README, and vignettes list
+  the current features.
+- The definitions and formulas of the effect sizes are in the roxygen
+  documentation and in the effect size vignette; the README no longer
+  carries them.
+- Add examples for
+  [`SCorSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSqSandwich.md)
+  and for the [`coef()`](https://rdrr.io/r/stats/coef.html),
+  [`vcov()`](https://rdrr.io/r/stats/vcov.html), and
+  [`confint()`](https://rdrr.io/r/stats/confint.html) methods to the
+  effect size vignette.
+- Replace roxygen links to betaDelta (not on CRAN) with code text, and
+  wrap the roxygen lines at 80 characters.
 
 ## betaSandwich 1.0.9
 
