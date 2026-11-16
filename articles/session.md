@@ -34,7 +34,7 @@
 `#> `\
 `#> loaded via a namespace (and not attached):`\
 `#> [1] compiler_4.6.2  cli_3.6.6.9000  tools_4.6.2     otel_0.3.0     `\
-`#> [5] rProject_0.0.73 knitr_1.52      xfun_0.62       rlang_1.3.0    `\
+`#> [5] rProject_0.0.75 knitr_1.52      xfun_0.62       rlang_1.3.0    `\
 `#> [9] evaluate_1.0.5`
 
 ### Packages
@@ -43,7 +43,7 @@
 `utils``::`[`installed.packages`](https://rdrr.io/r/utils/installed.packages.html)`(``)``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"Package"``, ``"Version"``)``]`\
 `#>                   Package             Version     `\
 `#> betaSandwich      "betaSandwich"      "1.1.0"     `\
-`#> rProject          "rProject"          "0.0.73"    `\
+`#> rProject          "rProject"          "0.0.75"    `\
 `#> abind             "abind"             "1.4-8"     `\
 `#> Amelia            "Amelia"            "1.8.3"     `\
 `#> arm               "arm"               "1.15-3"    `\
@@ -342,7 +342,7 @@
 `#> roxygen2          "roxygen2"          "8.1.1.9000"`\
 `#> rpf               "rpf"               "1.0.15"    `\
 `#> RPostgres         "RPostgres"         "1.4.10"    `\
-`#> rProject          "rProject"          "0.0.73"    `\
+`#> rProject          "rProject"          "0.0.74"    `\
 `#> rprojroot         "rprojroot"         "2.1.1"     `\
 `#> rsample           "rsample"           "1.3.2"     `\
 `#> RSQLite           "RSQLite"           "3.53.3"    `\
@@ -468,7 +468,7 @@
     #> Socket(s):                               1
     #> Stepping:                                0
     #> Frequency boost:                         enabled
-    #> CPU(s) scaling MHz:                      59%
+    #> CPU(s) scaling MHz:                      65%
     #> CPU max MHz:                             5060.9761
     #> CPU min MHz:                             1219.5129
     #> BogoMIPS:                                4990.54
@@ -502,6 +502,6 @@
 ### Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            44Gi       2.5Gi        31Gi        13Mi        10Gi        42Gi
+    #> Mem:            44Gi       2.6Gi        31Gi        13Mi        11Gi        41Gi
     #> Swap:           22Gi          0B        22Gi
-    #> Total:          66Gi       2.5Gi        54Gi
+    #> Total:          66Gi       2.6Gi        53Gi
