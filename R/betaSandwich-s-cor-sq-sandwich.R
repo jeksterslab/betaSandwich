@@ -24,9 +24,12 @@
 #'   row names. The point estimate is the squared signed estimate.
 #'   No standard error is implied by this interval transformation.
 #' @examples
-#' fit <- stats::lm(formula = mpg ~ wt + hp, data = mtcars)
-#' out <- BetaHC(object = fit)
-#' SCorSqSandwich(object = out)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' SCorSqSandwich(object = std)
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich scor
 #' @export

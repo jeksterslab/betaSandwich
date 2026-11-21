@@ -32,9 +32,12 @@ confidence intervals.
 Print Method for an Object of Class \code{betasandwich}
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-print(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+print(x = std)
 
 }
 \author{

@@ -18,9 +18,12 @@ Returns a vector of standardized regression slopes.
 Standardized Regression Slopes
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-coef(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+coef(object = std)
 
 }
 \author{

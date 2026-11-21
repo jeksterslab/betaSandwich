@@ -22,25 +22,20 @@
 #' @keywords linearAlgebra symmetric internal
 #' @noRd
 .DMat <- function(k) {
+  q <- 0.5 * k * (k + 1)
   sym <- matrix(
     data = 0,
     nrow = k,
     ncol = k
   )
-  q <- seq_len(
-    length.out = 0.5 * k * (k + 1)
-  )
-  sym[lower.tri(x = sym, diag = TRUE)] <- q
+  sym[lower.tri(x = sym, diag = TRUE)] <- seq_len(length.out = q)
   sym[upper.tri(x = sym)] <- t(x = sym)[upper.tri(x = sym)]
-  outer(
-    X = .Vec(x = sym),
-    Y = q,
-    FUN = function(x, y) {
-      ifelse(
-        test = x == y,
-        yes = 1,
-        no = 0
-      )
-    }
+  out <- matrix(
+    data = 0,
+    nrow = k * k,
+    ncol = q
   )
+  # one 1 per row: row i of vec(A) takes element sym[i] of vech(A)
+  out[cbind(seq_len(length.out = k * k), .Vec(x = sym))] <- 1
+  out
 }

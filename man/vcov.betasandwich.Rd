@@ -20,9 +20,12 @@ of standardized slopes.
 Sampling Covariance Matrix of the Standardized Regression Slopes
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-vcov(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+vcov(object = std)
 
 }
 \author{

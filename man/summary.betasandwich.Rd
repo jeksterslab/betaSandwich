@@ -32,9 +32,12 @@ confidence intervals.
 Summary Method for an Object of Class \code{betasandwich}
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-summary(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+summary(object = std)
 
 }
 \author{

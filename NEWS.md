@@ -28,12 +28,18 @@
 - `BetaHC()` and the HC-based functions are faster: the internal `.GammaHC()` builds the
   `vech(d_i d_i' - Sigma)` rows for all observations at once and uses `crossprod()`
   (n = 5000, 8 regressors: 0.88 s to 0.02-0.07 s); the results are unchanged.
+- `BetaADF()` and the ADF-based functions are faster: the internal ADF
+  covariance of the `vech(d_i d_i')` rows is built for all observations at
+  once and uses `crossprod()`; the results are unchanged.
 
 - Fixed the standard error of R-squared in `RSqBetaSandwich()`, which was
   about three times too small for every covariance type. With R-squared
   as a parameter, the variance of y is beta' Sigma_X beta / R-squared, so
   its derivatives with respect to beta and Sigma_X are now divided by
   R-squared.
+- The internal copies from linearAlgebra 0.0.5 (a faster duplication matrix
+  and its inverse) and processLM 0.0.11 are current; the results are
+  unchanged.
 
 ## Documentation
 
@@ -42,6 +48,10 @@
 - The definitions and formulas of the effect sizes are in the roxygen documentation and in the effect size vignette; the README no longer carries them.
 - Add examples for `SCorSqSandwich()` and for the `coef()`, `vcov()`, and `confint()` methods to the effect size vignette.
 - Replace roxygen links to betaDelta (not on CRAN) with code text, and wrap the roxygen lines at 80 characters.
+- The examples name every argument (`stats::lm(formula = ..., data = ...)`,
+  `BetaHC(object = object)`), as in the other beta packages.
+- `DeltaRSqSandwich()` cites Algina et al. (2007, 2008a, 2008b, 2010), and
+  `FSqSandwich()` cites Selya et al. (2012).
 
 # betaSandwich 1.0.9
 

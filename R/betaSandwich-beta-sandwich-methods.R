@@ -20,9 +20,12 @@
 #' @param digits Digits to print.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' print(std)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' print(x = std)
 #'
 #' @keywords methods
 #' @export
@@ -61,9 +64,12 @@ print.betasandwich <- function(x,
 #' @param digits Digits to print.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' summary(std)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' summary(object = std)
 #'
 #' @keywords methods
 #' @export
@@ -135,9 +141,12 @@ print.summary.betasandwich <- function(x,
 #' @param ... additional arguments.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' vcov(std)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' vcov(object = std)
 #'
 #' @keywords methods
 #' @export
@@ -160,9 +169,12 @@ vcov.betasandwich <- function(object,
 #' @param ... additional arguments.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' coef(std)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' coef(object = std)
 #'
 #' @keywords methods
 #' @export
@@ -186,9 +198,12 @@ coef.betasandwich <- function(object,
 #' @param level the confidence level required.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' confint(std, level = 0.95)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' confint(object = std, level = 0.95)
 #'
 #' @keywords methods
 #' @export

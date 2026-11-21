@@ -84,14 +84,17 @@ and the Corresponding Robust Sampling Covariance Matrix
 Using the Heteroskedasticity Consistent Approach
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
 # Methods -------------------------------------------------------
-print(std)
-summary(std)
-coef(std)
-vcov(std)
-confint(std, level = 0.95)
+print(x = std)
+summary(object = std)
+coef(object = std)
+vcov(object = std)
+confint(object = std, level = 0.95)
 
 }
 \references{

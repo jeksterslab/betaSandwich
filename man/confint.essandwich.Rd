@@ -25,10 +25,13 @@ Returns a matrix of confidence intervals.
 Confidence Intervals for an Object of Class \code{essandwich}
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- RSqSandwich(std)
-confint(out, level = 0.95)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- RSqSandwich(object = std)
+confint(object = out, level = 0.95)
 
 }
 \author{

@@ -36,9 +36,12 @@ This is not the interval of squared draws, and it is not an interval for
 \code{\link[=DeltaRSqSandwich]{DeltaRSqSandwich()}}, which is based on the delta method.
 }
 \examples{
-fit <- stats::lm(formula = mpg ~ wt + hp, data = mtcars)
-out <- BetaHC(object = fit)
-SCorSqSandwich(object = out)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+SCorSqSandwich(object = std)
 }
 \seealso{
 Other Beta Sandwich Functions:

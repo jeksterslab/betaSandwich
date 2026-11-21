@@ -12,7 +12,7 @@
 #' @return Returns a vector of length \eqn{k (k + 1) / 2}.
 #'
 #' @examples
-#' .Vech(x = toeplitz((3:1) / 3))
+#' .Vech(x = toeplitz(x = (3:1) / 3))
 #'
 #' @family Vectorization Functions
 #' @keywords linearAlgebra vectorization internal
