@@ -10,7 +10,7 @@
 #'   `TRUE` for each regressor to standardize.
 #' @return Returns a named numeric vector.
 #'
-#' @family Process LM Functions
+#' @family Process lm Functions
 #' @keywords processLM internal
 #' @noRd
 .BetaStarSelectLM <- function(lm_process,

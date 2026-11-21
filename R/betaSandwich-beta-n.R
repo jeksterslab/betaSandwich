@@ -60,14 +60,17 @@
 #' \doi{10.1080/00273171.2023.2201277}
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaN(object)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaN(object = object)
 #' # Methods -------------------------------------------------------
-#' print(std)
-#' summary(std)
-#' coef(std)
-#' vcov(std)
-#' confint(std, level = 0.95)
+#' print(x = std)
+#' summary(object = std)
+#' coef(object = std)
+#' vcov(object = std)
+#' confint(object = std, level = 0.95)
 #'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich std

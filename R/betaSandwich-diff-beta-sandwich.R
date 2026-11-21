@@ -24,15 +24,18 @@
 #'   Significance level \eqn{\alpha}.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' diff <- DiffBetaSandwich(std)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' diff <- DiffBetaSandwich(object = std)
 #' # Methods -------------------------------------------------------
-#' print(diff)
-#' summary(diff)
-#' coef(diff)
-#' vcov(diff)
-#' confint(diff, level = 0.95)
+#' print(x = diff)
+#' summary(object = diff)
+#' coef(object = diff)
+#' vcov(object = diff)
+#' confint(object = diff, level = 0.95)
 #'
 #' @family Beta Sandwich Functions
 #' @keywords betaSandwich diff

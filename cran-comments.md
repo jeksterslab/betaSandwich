@@ -16,7 +16,7 @@ This is a minor update (1.0.9 -> 1.1.0).
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes (Linux, R 4.6.2). The win-builder and R-hub results go here.
+0 errors | 0 warnings | 0 notes (Linux, R 4.6.2; test coverage 98.43%). The win-builder and R-hub results go here.
 
 ## Reverse dependencies
 

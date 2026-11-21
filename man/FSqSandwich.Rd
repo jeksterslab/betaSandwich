@@ -76,16 +76,27 @@ sampling covariance matrix
 from \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaADF]{BetaADF()}}, or \code{\link[=BetaN]{BetaN()}}.
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- FSqSandwich(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- FSqSandwich(object = std)
 # Methods -------------------------------------------------------
-print(out)
-summary(out)
-coef(out)
-vcov(out)
-confint(out, level = 0.95)
+print(x = out)
+summary(object = out)
+coef(object = out)
+vcov(object = out)
+confint(object = out, level = 0.95)
 
+}
+\references{
+Selya, A. S., Rose, J. S., Dierker, L. C., Hedeker, D., & Mermelstein,
+R. J. (2012).
+A practical guide to calculating Cohen's f2,
+a measure of local effect size, from PROC MIXED.
+\emph{Frontiers in Psychology}, \emph{3}, 111.
+\doi{10.3389/fpsyg.2012.00111}
 }
 \seealso{
 Other Beta Sandwich Functions:

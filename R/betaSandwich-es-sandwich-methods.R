@@ -19,10 +19,13 @@
 #' @param digits Digits to print.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' out <- RSqSandwich(std)
-#' print(out)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' out <- RSqSandwich(object = std)
+#' print(x = out)
 #'
 #' @keywords methods
 #' @export
@@ -60,10 +63,13 @@ print.essandwich <- function(x,
 #' @param digits Digits to print.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' out <- RSqSandwich(std)
-#' summary(out)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' out <- RSqSandwich(object = std)
+#' summary(object = out)
 #'
 #' @keywords methods
 #' @export
@@ -115,10 +121,13 @@ summary.essandwich <- function(object,
 #' @param ... additional arguments.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' out <- RSqSandwich(std)
-#' summary(out)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' out <- RSqSandwich(object = std)
+#' summary(object = out)
 #'
 #' @keywords methods
 #' @export
@@ -167,10 +176,13 @@ print.summary.essandwich <- function(x,
 #' @param ... additional arguments.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' out <- RSqSandwich(std)
-#' vcov(out)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' out <- RSqSandwich(object = std)
+#' vcov(object = out)
 #'
 #' @keywords methods
 #' @export
@@ -189,10 +201,13 @@ vcov.essandwich <- function(object,
 #' @param ... additional arguments.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' out <- RSqSandwich(std)
-#' coef(out)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' out <- RSqSandwich(object = std)
+#' coef(object = out)
 #'
 #' @keywords methods
 #' @export
@@ -216,10 +231,13 @@ coef.essandwich <- function(object,
 #' @param level the confidence level required.
 #'
 #' @examples
-#' object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-#' std <- BetaHC(object)
-#' out <- RSqSandwich(std)
-#' confint(out, level = 0.95)
+#' object <- stats::lm(
+#'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+#'   data = nas1982
+#' )
+#' std <- BetaHC(object = object)
+#' out <- RSqSandwich(object = std)
+#' confint(object = out, level = 0.95)
 #'
 #' @keywords methods
 #' @export

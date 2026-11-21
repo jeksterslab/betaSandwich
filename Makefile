@@ -1,4 +1,4 @@
-.PHONY: all release build clean cleanall cleanpkg cleanproj cleanpush cleantinytex bib libcheck libformat bibrproject clone coverage data dependencies readme docs dotfiles aiglobal secretscan verify spec log fixup upload sizecheck template tree conform public ai manifest install latex lint local localforce pdf pkg pkgdown project push quarto style tinytex tinytexforce vignettes upgrade
+.PHONY: all release build clean cleanall cleanpkg cleanproj cleanpush cleantinytex bib libcheck libformat bibrproject clone coverage data dependencies readme docs dotfiles aiglobal secretscan verify status spec log fixup upload sizecheck template tree conform public ai manifest install latex lint local localforce pdf pkg pkgdown project push quarto style tinytex tinytexforce vignettes upgrade
 
 push: build docs latex coverage cleanpush
 
@@ -136,6 +136,10 @@ verify:
 	@echo "\n\nVerifying the Overleaf push...\n\n"
 	@bash .setup/scripts/verify.sh || echo "\n\nWARNING: .verify was not updated (no SSH here). Run bash .setup/scripts/verify.sh on the host, then make verify again.\n\n"
 	@Rscript -e "rProject::Verify(\"${PWD}\", record = $(or ${RECORD},FALSE))"
+
+status:
+	@echo "\n\nReporting the private and public repositories...\n\n"
+	@SET="$(SET)" bash .setup/scripts/repo-status.sh $(PROJECTS)
 
 # make spec TOPIC=<topic>
 spec:

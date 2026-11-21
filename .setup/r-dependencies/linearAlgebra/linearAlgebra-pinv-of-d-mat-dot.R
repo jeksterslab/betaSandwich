@@ -8,6 +8,10 @@
 #' \operatorname{vec} \! \left( \boldsymbol{A} \right) =
 #' \operatorname{vech} \! \left( \boldsymbol{A} \right)}
 #' for every symmetric \eqn{k \times k} matrix \eqn{\boldsymbol{A}}.
+#' \eqn{\boldsymbol{D}_{k}^{\prime} \boldsymbol{D}_{k}} is diagonal,
+#' with the column sums of \eqn{\boldsymbol{D}_{k}} on the diagonal,
+#' so the inverse is a division of each row of
+#' \eqn{\boldsymbol{D}_{k}^{\prime}} by its sum.
 #' No input checks: see `PInvDmat()`.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
@@ -24,12 +28,5 @@
 #' @keywords linearAlgebra symmetric internal
 #' @noRd
 .PInvDmat <- function(d) {
-  tcrossprod(
-    x = chol2inv(
-      x = chol(
-        x = crossprod(x = d)
-      )
-    ),
-    y = d
-  )
+  t(x = d) / colSums(x = d)
 }

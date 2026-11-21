@@ -31,10 +31,13 @@ confidence intervals.
 Summary Method for an Object of Class \code{essandwich}
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- RSqSandwich(std)
-summary(out)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- RSqSandwich(object = std)
+summary(object = out)
 
 }
 \author{

@@ -39,11 +39,13 @@
 #'     \item{theta}{Parameters in the covariance structure,
 #'       that is, `beta`, `sigmasq`, `vechsigmacapx`.}
 #'     \item{betastar}{Vector of standardized regression slopes.}
-#'     \item{scor}{Vector of semipatial correlations.}
-#'     \item{pcor}{Vector of squared patial correlations.}
-#'     \item{rsq}{Vector of multiple correlation coefficients
-#'       (R-squared and adjusted R-squared).}
-#'     \item{dif_beta}{Differences of partial regression slopes.}
+#'     \item{scor}{Vector of semipartial correlations
+#'       (equal to `betastar` when `p = 1`).}
+#'     \item{pcor}{Vector of squared partial correlations
+#'       (equal to the R-squared when `p = 1`).}
+#'     \item{rsq}{Vector of the R-squared and the adjusted R-squared.}
+#'     \item{dif_beta}{Differences of partial regression slopes
+#'       (`NA` when `p = 1`).}
 #'     \item{dif_betastar}{Differences of standardized
 #'       partial regression slopes.}
 #'     \item{dif_idx}{Differences index.}
@@ -103,7 +105,7 @@
     q = 1 / sigma
   )
   ## parameter estimates
-  coef <- beta <- object$coefficients
+  coef <- object$coefficients
   beta0 <- coef[1]
   beta <- coef[-1]
   sigmasq <- stats::sigma(object = object)^2
@@ -137,21 +139,17 @@
   )
   ## semi-partial correlations
   ## squared partial correlations
-  if (p > 1) {
-    scor <- .SPCor(
-      betastar = betastar,
-      sigmacapx = sigmacapx
-    )
-    pcor <- .PCorSq(
-      srsq = scor^2,
-      rsq = rsq[1]
-    )
-    names(x = scor) <- xnames
-    names(x = pcor) <- xnames
-  } else {
-    scor <- NA
-    pcor <- NA
-  }
+  ## (p = 1: scor is betastar, pcor is the R-squared)
+  scor <- .SPCor(
+    betastar = betastar,
+    sigmacapx = sigmacapx
+  )
+  pcor <- .PCorSq(
+    srsq = scor^2,
+    rsq = rsq[1]
+  )
+  names(x = scor) <- xnames
+  names(x = pcor) <- xnames
   ## differences of slopes
   dif <- .Dif(
     beta = beta,

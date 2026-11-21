@@ -50,26 +50,27 @@
 .GammaADFConsistent <- function(d,
                                 vechsigmacap_consistent,
                                 n) {
+  # rows of v are vech(d_i d_i'), built for all observations at once
+  idx <- which(
+    x = lower.tri(
+      x = diag(
+        nrow = ncol(x = d)
+      ),
+      diag = TRUE
+    ),
+    arr.ind = TRUE
+  )
+  v <- d[
+    ,
+    idx[, 1],
+    drop = FALSE
+  ] * d[
+    ,
+    idx[, 2],
+    drop = FALSE
+  ]
   (
-    (1 / n) * (
-      Reduce(
-        f = `+`,
-        x = lapply(
-          X = seq_len(length.out = n),
-          FUN = function(i,
-                         d) {
-            tcrossprod(
-              x = .Vech(
-                x = tcrossprod(
-                  x = d[i, ]
-                )
-              )
-            )
-          },
-          d = d
-        )
-      )
-    )
+    (1 / n) * crossprod(x = v)
   ) - tcrossprod(
     x = vechsigmacap_consistent
   )

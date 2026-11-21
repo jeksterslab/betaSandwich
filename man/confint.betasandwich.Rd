@@ -25,9 +25,12 @@ Returns a matrix of confidence intervals.
 Confidence Intervals for Standardized Regression Slopes
 }
 \examples{
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-confint(std, level = 0.95)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+confint(object = std, level = 0.95)
 
 }
 \author{
