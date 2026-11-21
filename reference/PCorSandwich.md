@@ -112,11 +112,14 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- PCorSandwich(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- PCorSandwich(object = std)
 # Methods -------------------------------------------------------
-print(out)
+print(x = out)
 #> Call:
 #> PCorSandwich(object = std)
 #> 
@@ -129,7 +132,7 @@ print(out)
 #> NARTIC  0.8476
 #> PCTGRT  0.7562
 #> PCTSUPP 0.6456
-summary(out)
+summary(object = out)
 #> Call:
 #> PCorSandwich(object = std)
 #> 
@@ -142,15 +145,15 @@ summary(out)
 #> NARTIC  0.8476
 #> PCTGRT  0.7562
 #> PCTSUPP 0.6456
-coef(out)
+coef(object = out)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.4874382 0.3757383 0.2253739 
-vcov(out)
+vcov(object = out)
 #>              NARTIC       PCTGRT      PCTSUPP
 #> NARTIC  0.011980986 0.0021633722 0.0027577200
 #> PCTGRT  0.002163372 0.0133662295 0.0007428294
 #> PCTSUPP 0.002757720 0.0007428294 0.0163111322
-confint(out, level = 0.95)
+confint(object = out, level = 0.95)
 #>               2.5 %    97.5 %
 #> NARTIC   0.27290509 0.7019714
 #> PCTGRT   0.14914218 0.6023345

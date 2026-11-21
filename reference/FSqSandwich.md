@@ -93,6 +93,13 @@ sampling covariance matrix from
 or
 [`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md).
 
+## References
+
+Selya, A. S., Rose, J. S., Dierker, L. C., Hedeker, D., & Mermelstein,
+R. J. (2012). A practical guide to calculating Cohen's f2, a measure of
+local effect size, from PROC MIXED. *Frontiers in Psychology*, *3*, 111.
+[doi:10.3389/fpsyg.2012.00111](https://doi.org/10.3389/fpsyg.2012.00111)
+
 ## See also
 
 Other Beta Sandwich Functions:
@@ -113,11 +120,14 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- FSqSandwich(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- FSqSandwich(object = std)
 # Methods -------------------------------------------------------
-print(out)
+print(x = out)
 #> Call:
 #> FSqSandwich(object = std)
 #> 
@@ -132,7 +142,7 @@ print(out)
 #> NARTIC  2.3219
 #> PCTGRT  1.5781
 #> PCTSUPP 0.9913
-summary(out)
+summary(object = out)
 #> Call:
 #> FSqSandwich(object = std)
 #> 
@@ -147,16 +157,16 @@ summary(out)
 #> NARTIC  2.3219
 #> PCTGRT  1.5781
 #> PCTSUPP 0.9913
-coef(out)
+coef(object = out)
 #>       fsq    NARTIC    PCTGRT   PCTSUPP 
 #> 4.1157764 0.9509843 0.6018924 0.2909455 
-vcov(out)
+vcov(object = out)
 #>               fsq     NARTIC      PCTGRT     PCTSUPP
 #> fsq     2.2526623 0.34629953 0.180617270 0.141603544
 #> NARTIC  0.3462995 0.17358320 0.021130291 0.017493371
 #> PCTGRT  0.1806173 0.02113029 0.088012079 0.003176666
 #> PCTSUPP 0.1416035 0.01749337 0.003176666 0.045301824
-confint(out, level = 0.95)
+confint(object = out, level = 0.95)
 #>               2.5 %    97.5 %
 #> fsq      1.17409165 7.0574612
 #> NARTIC   0.13439832 1.7675703

@@ -108,11 +108,14 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- SCorSandwich(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- SCorSandwich(object = std)
 # Methods -------------------------------------------------------
-print(out)
+print(x = out)
 #> Call:
 #> SCorSandwich(object = std)
 #> 
@@ -121,7 +124,7 @@ print(out)
 #> NARTIC  0.4312 0.0794 5.4303 0.0000  0.1699 0.2266 0.2755 0.5868 0.6357 0.6924
 #> PCTGRT  0.3430 0.0789 4.3468 0.0000  0.0834 0.1397 0.1883 0.4977 0.5463 0.6027
 #> PCTSUPP 0.2385 0.0783 3.0465 0.0023 -0.0191 0.0368 0.0851 0.3919 0.4401 0.4961
-summary(out)
+summary(object = out)
 #> Call:
 #> SCorSandwich(object = std)
 #> 
@@ -130,15 +133,15 @@ summary(out)
 #> NARTIC  0.4312 0.0794 5.4303 0.0000  0.1699 0.2266 0.2755 0.5868 0.6357 0.6924
 #> PCTGRT  0.3430 0.0789 4.3468 0.0000  0.0834 0.1397 0.1883 0.4977 0.5463 0.6027
 #> PCTSUPP 0.2385 0.0783 3.0465 0.0023 -0.0191 0.0368 0.0851 0.3919 0.4401 0.4961
-coef(out)
+coef(object = out)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.4311525 0.3430075 0.2384789 
-vcov(out)
+vcov(object = out)
 #>                NARTIC        PCTGRT       PCTSUPP
 #> NARTIC   0.0063040434 -0.0002532449 -0.0004374935
 #> PCTGRT  -0.0002532449  0.0062268718 -0.0010139363
 #> PCTSUPP -0.0004374935 -0.0010139363  0.0061275595
-confint(out, level = 0.95)
+confint(object = out, level = 0.95)
 #>              2.5 %    97.5 %
 #> NARTIC  0.27553526 0.5867697
 #> PCTGRT  0.18834573 0.4976693

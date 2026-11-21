@@ -30,9 +30,12 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-coef(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+coef(object = std)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.4951451 0.3914887 0.2632477 
 ```

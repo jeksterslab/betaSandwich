@@ -40,9 +40,12 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-confint(std, level = 0.95)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+confint(object = std, level = 0.95)
 #>              2.5 %    97.5 %
 #> NARTIC  0.33659828 0.6536920
 #> PCTGRT  0.22631203 0.5566654

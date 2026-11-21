@@ -40,10 +40,13 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- RSqSandwich(std)
-summary(out)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- RSqSandwich(object = std)
+summary(object = out)
 #> Call:
 #> RSqSandwich(object = std)
 #> 

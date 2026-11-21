@@ -91,6 +91,29 @@ sampling covariance matrix from
 or
 [`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md).
 
+## References
+
+Algina, J., Keselman, H. J., & Penfield, R. D. (2007). Confidence
+intervals for an effect size measure in multiple linear regression.
+*Educational and Psychological Measurement*, *67*(2), 207–218.
+[doi:10.1177/0013164406292030](https://doi.org/10.1177/0013164406292030)
+
+Algina, J., Keselman, H. J., & Penfield, R. D. (2008a). Confidence
+intervals for the squared multiple semipartial correlation coefficient.
+*Journal of Modern Applied Statistical Methods*, *7*(1), 2–10.
+[doi:10.22237/jmasm/1209614460](https://doi.org/10.22237/jmasm/1209614460)
+
+Algina, J., Keselman, H. J., & Penfield, R. D. (2008b). Note on a
+confidence interval for the squared semipartial correlation coefficient.
+*Educational and Psychological Measurement*, *68*(5), 734–741.
+[doi:10.1177/0013164407313371](https://doi.org/10.1177/0013164407313371)
+
+Algina, J., Keselman, H. J., & Penfield, R. D. (2010). Confidence
+intervals for squared semipartial correlation coefficients: The effect
+of nonnormality. *Educational and Psychological Measurement*, *70*(6),
+926–940.
+[doi:10.1177/0013164410379335](https://doi.org/10.1177/0013164410379335)
+
 ## See also
 
 Other Beta Sandwich Functions:
@@ -111,11 +134,14 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- DeltaRSqSandwich(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- DeltaRSqSandwich(object = std)
 # Methods -------------------------------------------------------
-print(out)
+print(x = out)
 #> Call:
 #> DeltaRSqSandwich(object = std)
 #> 
@@ -128,7 +154,7 @@ print(out)
 #> NARTIC  0.4112
 #> PCTGRT  0.2958
 #> PCTSUPP 0.1797
-summary(out)
+summary(object = out)
 #> Call:
 #> DeltaRSqSandwich(object = std)
 #> 
@@ -141,15 +167,15 @@ summary(out)
 #> NARTIC  0.4112
 #> PCTGRT  0.2958
 #> PCTSUPP 0.1797
-coef(out)
+coef(object = out)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.1858925 0.1176542 0.0568722 
-vcov(out)
+vcov(object = out)
 #>                NARTIC        PCTGRT       PCTSUPP
 #> NARTIC   0.0046874969 -0.0001498081 -0.0001799337
 #> PCTGRT  -0.0001498081  0.0029304696 -0.0003317602
 #> PCTSUPP -0.0001799337 -0.0003317602  0.0013939512
-confint(out, level = 0.95)
+confint(object = out, level = 0.95)
 #>               2.5 %    97.5 %
 #> NARTIC   0.05170296 0.3200820
 #> PCTGRT   0.01155384 0.2237545

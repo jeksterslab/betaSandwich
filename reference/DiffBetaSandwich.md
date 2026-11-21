@@ -73,11 +73,14 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-diff <- DiffBetaSandwich(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+diff <- DiffBetaSandwich(object = std)
 # Methods -------------------------------------------------------
-print(diff)
+print(x = diff)
 #> Call:
 #> DiffBetaSandwich(object = std)
 #> 
@@ -90,7 +93,7 @@ print(diff)
 #> NARTIC-PCTGRT  0.4686 0.5699
 #> NARTIC-PCTSUPP 0.5714 0.6656
 #> PCTGRT-PCTSUPP 0.4823 0.5806
-summary(diff)
+summary(object = diff)
 #> Call:
 #> DiffBetaSandwich(object = std)
 #> 
@@ -103,15 +106,15 @@ summary(diff)
 #> NARTIC-PCTGRT  0.4686 0.5699
 #> NARTIC-PCTSUPP 0.5714 0.6656
 #> PCTGRT-PCTSUPP 0.4823 0.5806
-coef(diff)
+coef(object = diff)
 #>  NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP 
 #>      0.1036564      0.2318974      0.1282410 
-vcov(diff)
+vcov(object = diff)
 #>                NARTIC-PCTGRT NARTIC-PCTSUPP PCTGRT-PCTSUPP
 #> NARTIC-PCTGRT    0.020076382    0.009274583   -0.010801799
 #> NARTIC-PCTSUPP   0.009274583    0.017370731    0.008096148
 #> PCTGRT-PCTSUPP  -0.010801799    0.008096148    0.018897947
-confint(diff, level = 0.95)
+confint(object = diff, level = 0.95)
 #>                      2.5 %    97.5 %
 #> NARTIC-PCTGRT  -0.17405314 0.3813660
 #> NARTIC-PCTSUPP -0.02642203 0.4902169

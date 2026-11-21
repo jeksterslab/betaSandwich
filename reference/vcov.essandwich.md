@@ -30,10 +30,13 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- RSqSandwich(std)
-vcov(out)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- RSqSandwich(object = std)
+vcov(object = out)
 #>             rsq         adj
 #> rsq 0.003288894 0.003523815
 #> adj 0.003523815 0.003775516

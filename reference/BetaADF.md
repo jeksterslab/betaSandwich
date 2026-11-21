@@ -120,10 +120,13 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaADF(object)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaADF(object = object)
 # Methods -------------------------------------------------------
-print(std)
+print(x = std)
 #> Call:
 #> BetaADF(object = object)
 #> 
@@ -136,7 +139,7 @@ print(std)
 #> NARTIC  0.7335
 #> PCTGRT  0.6426
 #> PCTSUPP 0.5353
-summary(std)
+summary(object = std)
 #> Call:
 #> BetaADF(object = object)
 #> 
@@ -149,15 +152,15 @@ summary(std)
 #> NARTIC  0.7335
 #> PCTGRT  0.6426
 #> PCTSUPP 0.5353
-coef(std)
+coef(object = std)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.4951451 0.3914887 0.2632477 
-vcov(std)
+vcov(object = std)
 #>               NARTIC       PCTGRT      PCTSUPP
 #> NARTIC   0.004539472 -0.002552698 -0.001742698
 #> PCTGRT  -0.002552698  0.005036538 -0.001906216
 #> PCTSUPP -0.001742698 -0.001906216  0.005914088
-confint(std, level = 0.95)
+confint(object = std, level = 0.95)
 #>             2.5 %    97.5 %
 #> NARTIC  0.3591757 0.6311146
 #> PCTGRT  0.2482683 0.5347091

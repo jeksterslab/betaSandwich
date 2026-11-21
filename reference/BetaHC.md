@@ -132,10 +132,13 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
 # Methods -------------------------------------------------------
-print(std)
+print(x = std)
 #> Call:
 #> BetaHC(object = object)
 #> 
@@ -148,7 +151,7 @@ print(std)
 #> NARTIC  0.7731
 #> PCTGRT  0.6810
 #> PCTSUPP 0.5658
-summary(std)
+summary(object = std)
 #> Call:
 #> BetaHC(object = object)
 #> 
@@ -161,15 +164,15 @@ summary(std)
 #> NARTIC  0.7731
 #> PCTGRT  0.6810
 #> PCTSUPP 0.5658
-coef(std)
+coef(object = std)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.4951451 0.3914887 0.2632477 
-vcov(std)
+vcov(object = std)
 #>               NARTIC       PCTGRT      PCTSUPP
 #> NARTIC   0.006172168 -0.003602529 -0.001943469
 #> PCTGRT  -0.003602529  0.006699155 -0.002443584
 #> PCTSUPP -0.001943469 -0.002443584  0.007311625
-confint(std, level = 0.95)
+confint(object = std, level = 0.95)
 #>              2.5 %    97.5 %
 #> NARTIC  0.33659828 0.6536920
 #> PCTGRT  0.22631203 0.5566654

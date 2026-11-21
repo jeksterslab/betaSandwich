@@ -40,10 +40,13 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- RSqSandwich(std)
-confint(out, level = 0.95)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- RSqSandwich(object = std)
+confint(object = out, level = 0.95)
 #>         2.5 %    97.5 %
 #> rsq 0.6921245 0.9169280
 #> adj 0.6701334 0.9109943

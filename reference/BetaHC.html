@@ -189,10 +189,13 @@ Confidence intervals for standardized regression coefficients in R.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">nas1982</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu">BetaHC</span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">nas1982</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu">BetaHC</span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Methods -------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BetaHC(object = object)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -205,7 +208,7 @@ Confidence intervals for standardized regression coefficients in R.
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.7731</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.6810</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.5658</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BetaHC(object = object)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -218,15 +221,15 @@ Confidence intervals for standardized regression coefficients in R.
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.7731</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.6810</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.5658</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    NARTIC    PCTGRT   PCTSUPP </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.4951451 0.3914887 0.2632477 </span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               NARTIC       PCTGRT      PCTSUPP</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.006172168 -0.003602529 -0.001943469</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  -0.003602529  0.006699155 -0.002443584</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP -0.001943469 -0.002443584  0.007311625</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">std</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">std</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              2.5 %    97.5 %</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.33659828 0.6536920</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.22631203 0.5566654</span>

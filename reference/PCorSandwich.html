@@ -146,11 +146,14 @@ from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.htm
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">nas1982</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu"><a href="BetaHC.html">BetaHC</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">PCorSandwich</span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">nas1982</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu"><a href="BetaHC.html">BetaHC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">PCorSandwich</span><span class="op">(</span>object <span class="op">=</span> <span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Methods -------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCorSandwich(object = std)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -163,7 +166,7 @@ from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.htm
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.8476</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.7562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.6456</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCorSandwich(object = std)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -176,15 +179,15 @@ from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.htm
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.8476</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.7562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.6456</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    NARTIC    PCTGRT   PCTSUPP </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.4874382 0.3757383 0.2253739 </span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              NARTIC       PCTGRT      PCTSUPP</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.011980986 0.0021633722 0.0027577200</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.002163372 0.0133662295 0.0007428294</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.002757720 0.0007428294 0.0163111322</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">out</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               2.5 %    97.5 %</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.27290509 0.7019714</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT   0.14914218 0.6023345</span>

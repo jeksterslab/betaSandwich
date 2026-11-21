@@ -142,11 +142,14 @@ from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.htm
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">nas1982</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu"><a href="BetaHC.html">BetaHC</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">SCorSandwich</span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">nas1982</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu"><a href="BetaHC.html">BetaHC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">SCorSandwich</span><span class="op">(</span>object <span class="op">=</span> <span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Methods -------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SCorSandwich(object = std)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -155,7 +158,7 @@ from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.htm
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4312 0.0794 5.4303 0.0000  0.1699 0.2266 0.2755 0.5868 0.6357 0.6924</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.3430 0.0789 4.3468 0.0000  0.0834 0.1397 0.1883 0.4977 0.5463 0.6027</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2385 0.0783 3.0465 0.0023 -0.0191 0.0368 0.0851 0.3919 0.4401 0.4961</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SCorSandwich(object = std)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -164,15 +167,15 @@ from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.htm
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4312 0.0794 5.4303 0.0000  0.1699 0.2266 0.2755 0.5868 0.6357 0.6924</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.3430 0.0789 4.3468 0.0000  0.0834 0.1397 0.1883 0.4977 0.5463 0.6027</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.2385 0.0783 3.0465 0.0023 -0.0191 0.0368 0.0851 0.3919 0.4401 0.4961</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    NARTIC    PCTGRT   PCTSUPP </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.4311525 0.3430075 0.2384789 </span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                NARTIC        PCTGRT       PCTSUPP</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.0063040434 -0.0002532449 -0.0004374935</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  -0.0002532449  0.0062268718 -0.0010139363</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP -0.0004374935 -0.0010139363  0.0061275595</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">out</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              2.5 %    97.5 %</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.27553526 0.5867697</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.18834573 0.4976693</span>

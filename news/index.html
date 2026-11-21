@@ -52,7 +52,9 @@
 <div class="section level3">
 <h3 id="patch-1-1-0">Patch<a class="anchor" aria-label="anchor" href="#patch-1-1-0"></a></h3>
 <ul><li><p><code><a href="../reference/BetaHC.html">BetaHC()</a></code> and the HC-based functions are faster: the internal <code>.GammaHC()</code> builds the <code>vech(d_i d_i' - Sigma)</code> rows for all observations at once and uses <code><a href="https://rdrr.io/r/base/crossprod.html" class="external-link">crossprod()</a></code> (n = 5000, 8 regressors: 0.88 s to 0.02-0.07 s); the results are unchanged.</p></li>
+<li><p><code><a href="../reference/BetaADF.html">BetaADF()</a></code> and the ADF-based functions are faster: the internal ADF covariance of the <code>vech(d_i d_i')</code> rows is built for all observations at once and uses <code><a href="https://rdrr.io/r/base/crossprod.html" class="external-link">crossprod()</a></code>; the results are unchanged.</p></li>
 <li><p>Fixed the standard error of R-squared in <code>RSqBetaSandwich()</code>, which was about three times too small for every covariance type. With R-squared as a parameter, the variance of y is beta’ Sigma_X beta / R-squared, so its derivatives with respect to beta and Sigma_X are now divided by R-squared.</p></li>
+<li><p>The internal copies from linearAlgebra 0.0.5 (a faster duplication matrix and its inverse) and processLM 0.0.11 are current; the results are unchanged.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-1-1-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-1-0"></a></h3>
@@ -61,6 +63,9 @@
 <li>The definitions and formulas of the effect sizes are in the roxygen documentation and in the effect size vignette; the README no longer carries them.</li>
 <li>Add examples for <code><a href="../reference/SCorSqSandwich.html">SCorSqSandwich()</a></code> and for the <code><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef()</a></code>, <code><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov()</a></code>, and <code><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint()</a></code> methods to the effect size vignette.</li>
 <li>Replace roxygen links to betaDelta (not on CRAN) with code text, and wrap the roxygen lines at 80 characters.</li>
+<li>The examples name every argument (<code>stats::lm(formula = ..., data = ...)</code>, <code>BetaHC(object = object)</code>), as in the other beta packages.</li>
+<li>
+<code><a href="../reference/DeltaRSqSandwich.html">DeltaRSqSandwich()</a></code> cites Algina et al. (2007, 2008a, 2008b, 2010), and <code><a href="../reference/FSqSandwich.html">FSqSandwich()</a></code> cites Selya et al. (2012).</li>
 </ul></div>
 </div>
     <div class="section level2">

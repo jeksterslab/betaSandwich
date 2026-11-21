@@ -125,6 +125,29 @@ sampling covariance matrix
 from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.html">BetaADF()</a></code>, or <code><a href="BetaN.html">BetaN()</a></code>.</p>
     </div>
     <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p>Algina, J., Keselman, H. J., &amp; Penfield, R. D. (2007).
+Confidence intervals for an effect size measure
+in multiple linear regression.
+<em>Educational and Psychological Measurement</em>, <em>67</em>(2), 207–218.
+<a href="https://doi.org/10.1177/0013164406292030" class="external-link">doi:10.1177/0013164406292030</a></p>
+<p>Algina, J., Keselman, H. J., &amp; Penfield, R. D. (2008a).
+Confidence intervals for the squared multiple semipartial
+correlation coefficient.
+<em>Journal of Modern Applied Statistical Methods</em>, <em>7</em>(1), 2–10.
+<a href="https://doi.org/10.22237/jmasm/1209614460" class="external-link">doi:10.22237/jmasm/1209614460</a></p>
+<p>Algina, J., Keselman, H. J., &amp; Penfield, R. D. (2008b).
+Note on a confidence interval for the squared semipartial
+correlation coefficient.
+<em>Educational and Psychological Measurement</em>, <em>68</em>(5), 734–741.
+<a href="https://doi.org/10.1177/0013164407313371" class="external-link">doi:10.1177/0013164407313371</a></p>
+<p>Algina, J., Keselman, H. J., &amp; Penfield, R. D. (2010).
+Confidence intervals for squared semipartial correlation coefficients:
+The effect of nonnormality.
+<em>Educational and Psychological Measurement</em>, <em>70</em>(6), 926–940.
+<a href="https://doi.org/10.1177/0013164410379335" class="external-link">doi:10.1177/0013164410379335</a></p>
+    </div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other Beta Sandwich Functions:
 <code><a href="BetaADF.html">BetaADF()</a></code>,
@@ -144,11 +167,14 @@ from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.htm
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>, data <span class="op">=</span> <span class="va">nas1982</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu"><a href="BetaHC.html">BetaHC</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">DeltaRSqSandwich</span><span class="op">(</span><span class="va">std</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>,</span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="va">nas1982</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu"><a href="BetaHC.html">BetaHC</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">DeltaRSqSandwich</span><span class="op">(</span>object <span class="op">=</span> <span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Methods -------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DeltaRSqSandwich(object = std)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -161,7 +187,7 @@ from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.htm
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4112</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.2958</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.1797</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DeltaRSqSandwich(object = std)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -174,15 +200,15 @@ from <code><a href="BetaHC.html">BetaHC()</a></code>, <code><a href="BetaADF.htm
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC  0.4112</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  0.2958</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP 0.1797</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    NARTIC    PCTGRT   PCTSUPP </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.1858925 0.1176542 0.0568722 </span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                NARTIC        PCTGRT       PCTSUPP</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.0046874969 -0.0001498081 -0.0001799337</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT  -0.0001498081  0.0029304696 -0.0003317602</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTSUPP -0.0001799337 -0.0003317602  0.0013939512</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">out</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">out</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               2.5 %    97.5 %</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NARTIC   0.05170296 0.3200820</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PCTGRT   0.01155384 0.2237545</span>

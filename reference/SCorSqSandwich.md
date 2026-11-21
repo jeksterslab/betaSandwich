@@ -62,10 +62,14 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-fit <- stats::lm(formula = mpg ~ wt + hp, data = mtcars)
-out <- BetaHC(object = fit)
-SCorSqSandwich(object = out)
-#>           est      lower     upper
-#> wt 0.22434811 0.07255841 0.4596044
-#> hp 0.07395266 0.01974972 0.1626921
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+SCorSqSandwich(object = std)
+#>               est       lower     upper
+#> NARTIC  0.1858925 0.075919679 0.3442987
+#> PCTGRT  0.1176542 0.035474114 0.2476748
+#> PCTSUPP 0.0568722 0.007234428 0.1535875
 ```

@@ -114,10 +114,13 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaN(object)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaN(object = object)
 # Methods -------------------------------------------------------
-print(std)
+print(x = std)
 #> Call:
 #> BetaN(object = object)
 #> 
@@ -130,7 +133,7 @@ print(std)
 #> NARTIC  0.7635
 #> PCTGRT  0.6640
 #> PCTSUPP 0.5276
-summary(std)
+summary(object = std)
 #> Call:
 #> BetaN(object = object)
 #> 
@@ -143,15 +146,15 @@ summary(std)
 #> NARTIC  0.7635
 #> PCTGRT  0.6640
 #> PCTSUPP 0.5276
-coef(std)
+coef(object = std)
 #>    NARTIC    PCTGRT   PCTSUPP 
 #> 0.4951451 0.3914887 0.2632477 
-vcov(std)
+vcov(object = std)
 #>               NARTIC       PCTGRT      PCTSUPP
 #> NARTIC   0.005754524 -0.003360334 -0.002166127
 #> PCTGRT  -0.003360334  0.005933462 -0.001769723
 #> PCTSUPP -0.002166127 -0.001769723  0.005585256
-confint(std, level = 0.95)
+confint(object = std, level = 0.95)
 #>             2.5 %    97.5 %
 #> NARTIC  0.3420563 0.6482339
 #> PCTGRT  0.2360380 0.5469395

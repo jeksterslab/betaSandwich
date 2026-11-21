@@ -105,11 +105,14 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
-object <- lm(QUALITY ~ NARTIC + PCTGRT + PCTSUPP, data = nas1982)
-std <- BetaHC(object)
-out <- RSqSandwich(std)
+object <- stats::lm(
+  formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
+  data = nas1982
+)
+std <- BetaHC(object = object)
+out <- RSqSandwich(object = std)
 # Methods -------------------------------------------------------
-print(out)
+print(x = out)
 #> Call:
 #> RSqSandwich(object = std)
 #> 
@@ -117,7 +120,7 @@ print(out)
 #>        est     se       z p  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
 #> rsq 0.8045 0.0573 14.0286 0 0.6158 0.6568 0.6921 0.9169 0.9522 0.9932
 #> adj 0.7906 0.0614 12.8662 0 0.5884 0.6323 0.6701 0.9110 0.9488 0.9928
-summary(out)
+summary(object = out)
 #> Call:
 #> RSqSandwich(object = std)
 #> 
@@ -125,14 +128,14 @@ summary(out)
 #>        est     se       z p  0.05%   0.5%   2.5%  97.5%  99.5% 99.95%
 #> rsq 0.8045 0.0573 14.0286 0 0.6158 0.6568 0.6921 0.9169 0.9522 0.9932
 #> adj 0.7906 0.0614 12.8662 0 0.5884 0.6323 0.6701 0.9110 0.9488 0.9928
-coef(out)
+coef(object = out)
 #>       rsq       adj 
 #> 0.8045263 0.7905638 
-vcov(out)
+vcov(object = out)
 #>             rsq         adj
 #> rsq 0.003288894 0.003523815
 #> adj 0.003523815 0.003775516
-confint(out, level = 0.95)
+confint(object = out, level = 0.95)
 #>         2.5 %    97.5 %
 #> rsq 0.6921245 0.9169280
 #> adj 0.6701334 0.9109943
