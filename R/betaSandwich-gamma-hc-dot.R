@@ -11,7 +11,7 @@
 #' @param n Integer.
 #'   Sample size.
 #'
-#' @family BetaSandwich Functions
+#' @family Beta Sandwich Functions
 #' @keywords betaSandwich gamma internal
 #' @noRd
 .GammaHC <- function(d,

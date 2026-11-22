@@ -58,13 +58,22 @@
 #' @inheritParams RSqSandwich
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' # PCorSandwich -------------------------------------------------------------
 #' out <- PCorSandwich(object = std)
-#' # Methods -------------------------------------------------------
+#'
+#' ## Methods -----------------------------------------------------------------
 #' print(x = out)
 #' summary(object = out)
 #' coef(object = out)

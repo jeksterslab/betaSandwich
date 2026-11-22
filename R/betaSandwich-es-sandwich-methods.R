@@ -19,12 +19,22 @@
 #' @param digits Digits to print.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' # RSqSandwich --------------------------------------------------------------
 #' out <- RSqSandwich(object = std)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' print(x = out)
 #'
 #' @keywords methods
@@ -46,6 +56,18 @@ print.essandwich <- function(x,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @details
+#' The confidence intervals are
+#' \eqn{\hat{\theta} \pm z_{1 - \alpha / 2}
+#' \widehat{\operatorname{se}} \left( \hat{\theta} \right)},
+#' where \eqn{\widehat{\operatorname{se}}} is the square root of the
+#' diagonal of the delta-method sampling covariance matrix of the effect size,
+#' and \eqn{z_{p}} is the \eqn{p} quantile of the standard normal
+#' distribution.
+#' The test statistic is
+#' \eqn{z = \hat{\theta} / \widehat{\operatorname{se}} \left( \hat{\theta}
+#' \right)}.
+#'
 #' @return Returns a matrix of
 #'   estimates,
 #'   standard errors,
@@ -63,12 +85,22 @@ print.essandwich <- function(x,
 #' @param digits Digits to print.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' # RSqSandwich --------------------------------------------------------------
 #' out <- RSqSandwich(object = std)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' summary(object = out)
 #'
 #' @keywords methods
@@ -121,12 +153,22 @@ summary.essandwich <- function(object,
 #' @param ... additional arguments.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' # RSqSandwich --------------------------------------------------------------
 #' out <- RSqSandwich(object = std)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' summary(object = out)
 #'
 #' @keywords methods
@@ -176,12 +218,22 @@ print.summary.essandwich <- function(x,
 #' @param ... additional arguments.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' # RSqSandwich --------------------------------------------------------------
 #' out <- RSqSandwich(object = std)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' vcov(object = out)
 #'
 #' @keywords methods
@@ -201,12 +253,22 @@ vcov.essandwich <- function(object,
 #' @param ... additional arguments.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' # RSqSandwich --------------------------------------------------------------
 #' out <- RSqSandwich(object = std)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' coef(object = out)
 #'
 #' @keywords methods
@@ -220,6 +282,8 @@ coef.essandwich <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @inherit summary.essandwich details
+#'
 #' @return Returns a matrix of confidence intervals.
 #'
 #' @param object Object of class `essandwich`.
@@ -231,12 +295,22 @@ coef.essandwich <- function(object,
 #' @param level the confidence level required.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' # RSqSandwich --------------------------------------------------------------
 #' out <- RSqSandwich(object = std)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' confint(object = out, level = 0.95)
 #'
 #' @keywords methods

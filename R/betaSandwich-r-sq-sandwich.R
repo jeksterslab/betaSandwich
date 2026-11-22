@@ -52,13 +52,22 @@
 #'   Significance level \eqn{\alpha}.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' # RSqSandwich --------------------------------------------------------------
 #' out <- RSqSandwich(object = std)
-#' # Methods -------------------------------------------------------
+#'
+#' ## Methods -----------------------------------------------------------------
 #' print(x = out)
 #' summary(object = out)
 #' coef(object = out)

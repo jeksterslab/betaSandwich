@@ -59,14 +59,56 @@ is different from \code{betaDelta::BetaDelta()} with \code{type = "mvn"},
 the results are numerically equivalent.
 \code{\link[=BetaN]{BetaN()}} assumes multivariate normality.
 \code{\link[=BetaHC]{BetaHC()}} is recommended in most situations.
+
+Partition the covariance matrix of the outcome and the regressors as
+\deqn{\boldsymbol{\Sigma} = \begin{pmatrix} \sigma^{2}_{y} &
+\boldsymbol{\sigma}_{yx}^{\prime} \\ \boldsymbol{\sigma}_{yx} &
+\boldsymbol{\Sigma}_{x} \end{pmatrix}.}
+The regression slopes and the standardized regression slopes are
+\deqn{\boldsymbol{\beta} = \boldsymbol{\Sigma}_{x}^{-1}
+\boldsymbol{\sigma}_{yx}, \quad \beta^{\ast}_{j} = \beta_{j}
+\frac{\sigma_{x_{j}}}{\sigma_{y}},}
+where \eqn{\sigma_{x_{j}}} is the standard deviation of regressor \eqn{j}.
+With \code{std_y = FALSE}, \eqn{\sigma_{y}} is replaced by one;
+for a regressor left out of \code{std_x}, \eqn{\sigma_{x_{j}}} is replaced by one.
+
+Let \eqn{\boldsymbol{\theta}^{\ast}} collect the standardized slopes,
+\eqn{\sigma_{y}}, the standard deviations of the regressors,
+and the correlations of the regressors,
+and let \eqn{\boldsymbol{J} = \partial \operatorname{vech} \left(
+\boldsymbol{\Sigma} \right) / \partial \boldsymbol{\theta}^{\ast \prime}}
+be the Jacobian of the implied covariance matrix,
+evaluated at the estimates (Dudgeon, 2017).
+Under multivariate normality,
+\deqn{\widehat{\operatorname{var}} \left( \hat{\boldsymbol{\theta}}^{\ast}
+\right) = \frac{1}{n} \left( \boldsymbol{J}^{\prime}
+\hat{\boldsymbol{\Gamma}}_{\mathrm{N}}^{-1} \boldsymbol{J} \right)^{-1},
+\quad \hat{\boldsymbol{\Gamma}}_{\mathrm{N}} = 2 \boldsymbol{D}^{+} \left(
+\boldsymbol{S} \otimes \boldsymbol{S} \right) \boldsymbol{D}^{+ \prime},}
+where \eqn{\boldsymbol{S}} is the sample covariance matrix and
+\eqn{\boldsymbol{D}^{+}} is the Moore-Penrose inverse of the duplication
+matrix.
+The block of the standardized slopes is returned.
+The confidence intervals are
+\eqn{\hat{\beta}^{\ast}_{j} \pm t_{1 - \alpha / 2, n - k}
+\widehat{\operatorname{se}} \left( \hat{\beta}^{\ast}_{j} \right)},
+where \eqn{k} is the number of regression parameters,
+including the intercept.
 }
 \examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaN --------------------------------------------------------------------
 std <- BetaN(object = object)
-# Methods -------------------------------------------------------
+
+## Methods -----------------------------------------------------------------
 print(x = std)
 summary(object = std)
 coef(object = std)

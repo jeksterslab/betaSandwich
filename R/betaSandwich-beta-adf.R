@@ -2,6 +2,8 @@
 #' and the Corresponding Sampling Covariance Matrix
 #' Using the Asymptotic Distribution-Free Approach
 #'
+#' @author Ivan Jacob Agaloos Pesigan
+#'
 #' @details
 #' Note that while the calculation in [BetaADF()]
 #' is different from `betaDelta::BetaDelta()` with `type = "adf"`,
@@ -10,7 +12,54 @@
 #' (`n > 250`).
 #' [BetaHC()] is recommended in most situations.
 #'
-#' @author Ivan Jacob Agaloos Pesigan
+#' @details
+#' Partition the covariance matrix of the outcome and the regressors as
+#' \deqn{\boldsymbol{\Sigma} = \begin{pmatrix} \sigma^{2}_{y} &
+#' \boldsymbol{\sigma}_{yx}^{\prime} \\ \boldsymbol{\sigma}_{yx} &
+#' \boldsymbol{\Sigma}_{x} \end{pmatrix}.}
+#' The regression slopes and the standardized regression slopes are
+#' \deqn{\boldsymbol{\beta} = \boldsymbol{\Sigma}_{x}^{-1}
+#' \boldsymbol{\sigma}_{yx}, \quad \beta^{\ast}_{j} = \beta_{j}
+#' \frac{\sigma_{x_{j}}}{\sigma_{y}},}
+#' where \eqn{\sigma_{x_{j}}} is the standard deviation of regressor \eqn{j}.
+#' With `std_y = FALSE`, \eqn{\sigma_{y}} is replaced by one;
+#' for a regressor left out of `std_x`, \eqn{\sigma_{x_{j}}} is replaced by one.
+#'
+#' Let \eqn{\boldsymbol{\theta}^{\ast}} collect the standardized slopes,
+#' \eqn{\sigma_{y}}, the standard deviations of the regressors,
+#' and the correlations of the regressors,
+#' and let \eqn{\boldsymbol{J} = \partial \operatorname{vech} \left(
+#' \boldsymbol{\Sigma} \right) / \partial \boldsymbol{\theta}^{\ast \prime}}
+#' be the Jacobian of the implied covariance matrix,
+#' evaluated at the estimates (Dudgeon, 2017).
+#' The asymptotically distribution-free sampling covariance matrix is
+#' \deqn{\widehat{\operatorname{var}} \left( \hat{\boldsymbol{\theta}}^{\ast}
+#' \right) = \frac{1}{n} \left( \boldsymbol{J}^{\prime}
+#' \hat{\boldsymbol{\Gamma}}^{-1} \boldsymbol{J} \right)^{-1},}
+#' where \eqn{\hat{\boldsymbol{\Gamma}}} is the unbiased estimator
+#' \deqn{\hat{\boldsymbol{\Gamma}} = \frac{n \left( n - 1 \right)}{\left( n - 2
+#' \right) \left( n - 3 \right)} \hat{\boldsymbol{\Gamma}}_{\mathrm{ADF}} -
+#' \frac{n}{\left( n - 2 \right) \left( n - 3 \right)} \left(
+#' \hat{\boldsymbol{\Gamma}}_{\mathrm{N}} - \frac{2}{n - 1} \operatorname{vech}
+#' \left( \tilde{\boldsymbol{S}} \right) \operatorname{vech} \left(
+#' \tilde{\boldsymbol{S}} \right)^{\prime} \right),}
+#' \eqn{\tilde{\boldsymbol{S}}} is the covariance matrix with divisor \eqn{n},
+#' \eqn{\hat{\boldsymbol{\Gamma}}_{\mathrm{N}}} is the normal-theory matrix
+#' (see [BetaN()]) at \eqn{\tilde{\boldsymbol{S}}}, and
+#' \deqn{\hat{\boldsymbol{\Gamma}}_{\mathrm{ADF}} = \frac{1}{n}
+#' \sum_{i = 1}^{n} \left[ \operatorname{vech} \left( \boldsymbol{d}_{i}
+#' \boldsymbol{d}_{i}^{\prime} \right) - \operatorname{vech} \left(
+#' \tilde{\boldsymbol{S}} \right) \right] \left[ \operatorname{vech} \left(
+#' \boldsymbol{d}_{i} \boldsymbol{d}_{i}^{\prime} \right) - \operatorname{vech}
+#' \left( \tilde{\boldsymbol{S}} \right) \right]^{\prime},}
+#' with \eqn{\boldsymbol{d}_{i}} the deviation of observation \eqn{i} from the
+#' sample means.
+#' The block of the standardized slopes is returned.
+#' The confidence intervals are
+#' \eqn{\hat{\beta}^{\ast}_{j} \pm t_{1 - \alpha / 2, n - k}
+#' \widehat{\operatorname{se}} \left( \hat{\beta}^{\ast}_{j} \right)},
+#' where \eqn{k} is the number of regression parameters,
+#' including the intercept.
 #'
 #' @return Returns an object
 #'   of class `betasandwich` which is a list with the following elements:
@@ -68,12 +117,19 @@
 #' \doi{10.1080/00273171.2023.2201277}
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaADF ------------------------------------------------------------------
 #' std <- BetaADF(object = object)
-#' # Methods -------------------------------------------------------
+#'
+#' ## Methods -----------------------------------------------------------------
 #' print(x = std)
 #' summary(object = std)
 #' coef(object = std)
