@@ -2,7 +2,7 @@
 % Please edit documentation in R/betaSandwich-diff-beta-sandwich.R
 \name{DiffBetaSandwich}
 \alias{DiffBetaSandwich}
-\title{Estimate Differences of Standardized Slopes
+\title{Estimate Differences of Standardized Regression Coefficients
 and the Corresponding Sampling Covariance Matrix}
 \usage{
 DiffBetaSandwich(object, alpha = c(0.05, 0.01, 0.001))
@@ -31,17 +31,45 @@ differences of standardized slopes.}
 }
 }
 \description{
-Estimate Differences of Standardized Slopes
+Estimate Differences of Standardized Regression Coefficients
 and the Corresponding Sampling Covariance Matrix
 }
+\details{
+For every pair of regressors \eqn{j < l},
+the difference of the standardized regression slopes is
+\deqn{\Delta \beta^{\ast}_{jl} = \beta^{\ast}_{j} - \beta^{\ast}_{l}.}
+Collect the differences as \eqn{\boldsymbol{C} \boldsymbol{\beta}^{\ast}},
+where each row of \eqn{\boldsymbol{C}} has \eqn{1} in column \eqn{j},
+\eqn{-1} in column \eqn{l}, and zeros elsewhere.
+The sampling covariance matrix is
+\deqn{\widehat{\operatorname{var}} \left( \boldsymbol{C}
+\hat{\boldsymbol{\beta}}^{\ast} \right) = \boldsymbol{C}
+\widehat{\operatorname{var}} \left( \hat{\boldsymbol{\beta}}^{\ast} \right)
+\boldsymbol{C}^{\prime},}
+with \eqn{\widehat{\operatorname{var}} \left(
+\hat{\boldsymbol{\beta}}^{\ast} \right)} from \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaN]{BetaN()}}, or
+\code{\link[=BetaADF]{BetaADF()}},
+and the confidence intervals are
+\eqn{\Delta \hat{\beta}^{\ast}_{jl} \pm z_{1 - \alpha / 2}
+\widehat{\operatorname{se}} \left( \Delta \hat{\beta}^{\ast}_{jl} \right)}.
+}
 \examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaHC -------------------------------------------------------------------
 std <- BetaHC(object = object)
+
+# DiffBetaSandwich ---------------------------------------------------------
 diff <- DiffBetaSandwich(object = std)
-# Methods -------------------------------------------------------
+
+## Methods -----------------------------------------------------------------
 print(x = diff)
 summary(object = diff)
 coef(object = diff)

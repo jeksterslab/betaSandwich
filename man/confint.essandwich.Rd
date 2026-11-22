@@ -24,13 +24,35 @@ Returns a matrix of confidence intervals.
 \description{
 Confidence Intervals for an Object of Class \code{essandwich}
 }
+\details{
+The confidence intervals are
+\eqn{\hat{\theta} \pm z_{1 - \alpha / 2}
+\widehat{\operatorname{se}} \left( \hat{\theta} \right)},
+where \eqn{\widehat{\operatorname{se}}} is the square root of the
+diagonal of the delta-method sampling covariance matrix of the effect size,
+and \eqn{z_{p}} is the \eqn{p} quantile of the standard normal
+distribution.
+The test statistic is
+\eqn{z = \hat{\theta} / \widehat{\operatorname{se}} \left( \hat{\theta}
+\right)}.
+}
 \examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaHC -------------------------------------------------------------------
 std <- BetaHC(object = object)
+
+# RSqSandwich --------------------------------------------------------------
 out <- RSqSandwich(object = std)
+
+## Methods -----------------------------------------------------------------
 confint(object = out, level = 0.95)
 
 }

@@ -24,12 +24,22 @@ confidence intervals.
 Print Method for an Object of Class \code{summary.essandwich}
 }
 \examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaHC -------------------------------------------------------------------
 std <- BetaHC(object = object)
+
+# RSqSandwich --------------------------------------------------------------
 out <- RSqSandwich(object = std)
+
+## Methods -----------------------------------------------------------------
 summary(object = out)
 
 }

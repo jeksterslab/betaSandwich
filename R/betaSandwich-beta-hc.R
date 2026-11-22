@@ -4,6 +4,66 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @details
+#' Partition the covariance matrix of the outcome and the regressors as
+#' \deqn{\boldsymbol{\Sigma} = \begin{pmatrix} \sigma^{2}_{y} &
+#' \boldsymbol{\sigma}_{yx}^{\prime} \\ \boldsymbol{\sigma}_{yx} &
+#' \boldsymbol{\Sigma}_{x} \end{pmatrix}.}
+#' The regression slopes and the standardized regression slopes are
+#' \deqn{\boldsymbol{\beta} = \boldsymbol{\Sigma}_{x}^{-1}
+#' \boldsymbol{\sigma}_{yx}, \quad \beta^{\ast}_{j} = \beta_{j}
+#' \frac{\sigma_{x_{j}}}{\sigma_{y}},}
+#' where \eqn{\sigma_{x_{j}}} is the standard deviation of regressor \eqn{j}.
+#' With `std_y = FALSE`, \eqn{\sigma_{y}} is replaced by one;
+#' for a regressor left out of `std_x`, \eqn{\sigma_{x_{j}}} is replaced by one.
+#'
+#' Let \eqn{\boldsymbol{\theta}^{\ast}} collect the standardized slopes,
+#' \eqn{\sigma_{y}}, the standard deviations of the regressors,
+#' and the correlations of the regressors,
+#' and let \eqn{\boldsymbol{J} = \partial \operatorname{vech} \left(
+#' \boldsymbol{\Sigma} \right) / \partial \boldsymbol{\theta}^{\ast \prime}}
+#' be the Jacobian of the implied covariance matrix,
+#' evaluated at the estimates (Dudgeon, 2017).
+#' The heteroskedasticity-consistent sampling covariance matrix is the
+#' sandwich
+#' \deqn{\widehat{\operatorname{var}} \left( \hat{\boldsymbol{\theta}}^{\ast}
+#' \right) = \frac{n}{\left( n - 1 \right)^{2}} \boldsymbol{B}^{-1}
+#' \boldsymbol{J}^{\prime} \hat{\boldsymbol{\Gamma}}_{\mathrm{N}}^{-1}
+#' \hat{\boldsymbol{\Gamma}}_{\mathrm{HC}}
+#' \hat{\boldsymbol{\Gamma}}_{\mathrm{N}}^{-1} \boldsymbol{J}
+#' \boldsymbol{B}^{-1}, \quad \boldsymbol{B} = \boldsymbol{J}^{\prime}
+#' \hat{\boldsymbol{\Gamma}}_{\mathrm{N}}^{-1} \boldsymbol{J},}
+#' where \eqn{\hat{\boldsymbol{\Gamma}}_{\mathrm{N}}} is the normal-theory
+#' matrix (see [BetaN()]) and
+#' \deqn{\hat{\boldsymbol{\Gamma}}_{\mathrm{HC}} = \frac{1}{n}
+#' \sum_{i = 1}^{n} q_{i} \boldsymbol{v}_{i} \boldsymbol{v}_{i}^{\prime},
+#' \quad \boldsymbol{v}_{i} = \operatorname{vech} \left( \boldsymbol{d}_{i}
+#' \boldsymbol{d}_{i}^{\prime} \right) - \operatorname{vech} \left(
+#' \boldsymbol{S} \right),}
+#' with \eqn{\boldsymbol{d}_{i}} the deviation of observation \eqn{i} from the
+#' sample means.
+#' The weight \eqn{q_{i}} depends on the leverage \eqn{h_{i}},
+#' the number of regression parameters \eqn{k} (including the intercept),
+#' and `type`:
+#' \eqn{q_{i} = 1} (`"hc0"`, `"hc1"`),
+#' \eqn{\left( 1 - h_{i} \right)^{-1}} (`"hc2"`),
+#' \eqn{\left( 1 - h_{i} \right)^{-2}} (`"hc3"`),
+#' \eqn{\left( 1 - h_{i} \right)^{-\delta_{i}}} with
+#' \eqn{\delta_{i} = \min \left( 4, n h_{i} / k \right)} (`"hc4"`),
+#' \eqn{\left( 1 - h_{i} \right)^{-\lambda_{i}}} with
+#' \eqn{\lambda_{i} = \min \left( g_{1}, n h_{i} / k \right) + \min \left(
+#' g_{2}, n h_{i} / k \right)} (`"hc4m"`),
+#' and \eqn{\left( 1 - h_{i} \right)^{-\gamma_{i} / 2}} with
+#' \eqn{\gamma_{i} = \min \left( n h_{i} / k, \max \left( 4, n c \max_{l}
+#' h_{l} / k \right) \right)} (`"hc5"`, where \eqn{c} is the argument `k`).
+#' With `"hc1"`, the matrix is multiplied by \eqn{n / \left( n - k \right)}.
+#' The block of the standardized slopes is returned.
+#' The confidence intervals are
+#' \eqn{\hat{\beta}^{\ast}_{j} \pm t_{1 - \alpha / 2, n - k}
+#' \widehat{\operatorname{se}} \left( \hat{\beta}^{\ast}_{j} \right)},
+#' where \eqn{k} is the number of regression parameters,
+#' including the intercept.
+#'
 #' @return Returns an object
 #'   of class `betasandwich` which is a list with the following elements:
 #'   \describe{
@@ -70,12 +130,19 @@
 #' \doi{10.1080/00273171.2023.2201277}
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
-#' # Methods -------------------------------------------------------
+#'
+#' ## Methods -----------------------------------------------------------------
 #' print(x = std)
 #' summary(object = std)
 #' coef(object = std)

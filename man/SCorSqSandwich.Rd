@@ -2,7 +2,9 @@
 % Please edit documentation in R/betaSandwich-s-cor-sq-sandwich.R
 \name{SCorSqSandwich}
 \alias{SCorSqSandwich}
-\title{Squared Signed-Semipartial Confidence Intervals}
+\title{Estimate Squared Semipartial Correlation Coefficients
+and the Corresponding Confidence Intervals
+From the Signed Intervals}
 \usage{
 SCorSqSandwich(object, level = 0.95)
 }
@@ -13,12 +15,14 @@ SCorSqSandwich(object, level = 0.95)
 }
 \value{
 Data frame with est, lower and upper columns and predictor
-row names. The point estimate is the squared signed estimate.
+row names.
+The point estimate is the squared signed estimate.
 No standard error is implied by this interval transformation.
 }
 \description{
 Square the signed interval as a set, with lower limit zero if it
-contains zero. This differs from an interval of squared draws.
+contains zero.
+This differs from an interval of squared draws.
 No draws are generated and no endpoints are clipped to one.
 Failed signed endpoints remain missing.
 }
@@ -36,12 +40,21 @@ This is not the interval of squared draws, and it is not an interval for
 \code{\link[=DeltaRSqSandwich]{DeltaRSqSandwich()}}, which is based on the delta method.
 }
 \examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaHC -------------------------------------------------------------------
 std <- BetaHC(object = object)
+
+# SCorSqSandwich -----------------------------------------------------------
 SCorSqSandwich(object = std)
+
 }
 \seealso{
 Other Beta Sandwich Functions:

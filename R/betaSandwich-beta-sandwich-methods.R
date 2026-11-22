@@ -20,11 +20,19 @@
 #' @param digits Digits to print.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' print(x = std)
 #'
 #' @keywords methods
@@ -46,6 +54,19 @@ print.betasandwich <- function(x,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @details
+#' The confidence intervals are
+#' \eqn{\hat{\theta} \pm t_{1 - \alpha / 2, n - k}
+#' \widehat{\operatorname{se}} \left( \hat{\theta} \right)},
+#' where \eqn{\widehat{\operatorname{se}}} is the square root of the
+#' diagonal of the sampling covariance matrix
+#' (see [BetaHC()], [BetaN()], and [BetaADF()]),
+#' \eqn{n} is the sample size, and \eqn{k} is the number of regression
+#' parameters, including the intercept.
+#' The test statistic is
+#' \eqn{\hat{\theta} / \widehat{\operatorname{se}} \left( \hat{\theta} \right)}
+#' with \eqn{n - k} degrees of freedom.
+#'
 #' @return Returns a matrix of
 #'   standardized regression slopes,
 #'   standard errors,
@@ -64,11 +85,19 @@ print.betasandwich <- function(x,
 #' @param digits Digits to print.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' summary(object = std)
 #'
 #' @keywords methods
@@ -141,11 +170,19 @@ print.summary.betasandwich <- function(x,
 #' @param ... additional arguments.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' vcov(object = std)
 #'
 #' @keywords methods
@@ -169,11 +206,19 @@ vcov.betasandwich <- function(object,
 #' @param ... additional arguments.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' coef(object = std)
 #'
 #' @keywords methods
@@ -187,6 +232,8 @@ coef.betasandwich <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
+#' @inherit summary.betasandwich details
+#'
 #' @return Returns a matrix of confidence intervals.
 #'
 #' @param object Object of class `betasandwich`.
@@ -198,11 +245,19 @@ coef.betasandwich <- function(object,
 #' @param level the confidence level required.
 #'
 #' @examples
+#' # Data ---------------------------------------------------------------------
+#' data("nas1982", package = "betaSandwich")
+#'
+#' # Fit Model in lm ----------------------------------------------------------
 #' object <- stats::lm(
 #'   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
 #'   data = nas1982
 #' )
+#'
+#' # BetaHC -------------------------------------------------------------------
 #' std <- BetaHC(object = object)
+#'
+#' ## Methods -----------------------------------------------------------------
 #' confint(object = std, level = 0.95)
 #'
 #' @keywords methods

@@ -71,13 +71,22 @@ sampling covariance matrix
 from \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaADF]{BetaADF()}}, or \code{\link[=BetaN]{BetaN()}}.
 }
 \examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaHC -------------------------------------------------------------------
 std <- BetaHC(object = object)
+
+# DeltaRSqSandwich ---------------------------------------------------------
 out <- DeltaRSqSandwich(object = std)
-# Methods -------------------------------------------------------
+
+## Methods -----------------------------------------------------------------
 print(x = out)
 summary(object = out)
 coef(object = out)

@@ -24,12 +24,33 @@ Returns a matrix of confidence intervals.
 \description{
 Confidence Intervals for Standardized Regression Slopes
 }
+\details{
+The confidence intervals are
+\eqn{\hat{\theta} \pm t_{1 - \alpha / 2, n - k}
+\widehat{\operatorname{se}} \left( \hat{\theta} \right)},
+where \eqn{\widehat{\operatorname{se}}} is the square root of the
+diagonal of the sampling covariance matrix
+(see \code{\link[=BetaHC]{BetaHC()}}, \code{\link[=BetaN]{BetaN()}}, and \code{\link[=BetaADF]{BetaADF()}}),
+\eqn{n} is the sample size, and \eqn{k} is the number of regression
+parameters, including the intercept.
+The test statistic is
+\eqn{\hat{\theta} / \widehat{\operatorname{se}} \left( \hat{\theta} \right)}
+with \eqn{n - k} degrees of freedom.
+}
 \examples{
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaHC -------------------------------------------------------------------
 std <- BetaHC(object = object)
+
+## Methods -----------------------------------------------------------------
 confint(object = std, level = 0.95)
 
 }
