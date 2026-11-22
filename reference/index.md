@@ -26,7 +26,8 @@
   : Estimate Semipartial Correlation Coefficients and the Corresponding
   Sampling Covariance Matrix
 - [`SCorSqSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/SCorSqSandwich.md)
-  : Squared Signed-Semipartial Confidence Intervals
+  : Estimate Squared Semipartial Correlation Coefficients and the
+  Corresponding Confidence Intervals From the Signed Intervals
 - [`PCorSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/PCorSandwich.md)
   : Estimate Squared Partial Correlation Coefficients and the
   Corresponding Sampling Covariance Matrix
@@ -43,8 +44,8 @@
 ## Differences of Standardized Regression Coefficients
 
 - [`DiffBetaSandwich()`](https://jeksterslab.github.io/betaSandwich/reference/DiffBetaSandwich.md)
-  : Estimate Differences of Standardized Slopes and the Corresponding
-  Sampling Covariance Matrix
+  : Estimate Differences of Standardized Regression Coefficients and the
+  Corresponding Sampling Covariance Matrix
 
 ## Methods
 

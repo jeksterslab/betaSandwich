@@ -83,6 +83,38 @@ assumes multivariate normality.
 [`BetaHC()`](https://jeksterslab.github.io/betaSandwich/reference/BetaHC.md)
 is recommended in most situations.
 
+Partition the covariance matrix of the outcome and the regressors as
+\$\$\boldsymbol{\Sigma} = \begin{pmatrix} \sigma^{2}\_{y} &
+\boldsymbol{\sigma}\_{yx}^{\prime} \\\\ \boldsymbol{\sigma}\_{yx} &
+\boldsymbol{\Sigma}\_{x} \end{pmatrix}.\$\$ The regression slopes and
+the standardized regression slopes are \$\$\boldsymbol{\beta} =
+\boldsymbol{\Sigma}\_{x}^{-1} \boldsymbol{\sigma}\_{yx}, \quad
+\beta^{\ast}\_{j} = \beta\_{j} \frac{\sigma\_{x\_{j}}}{\sigma\_{y}},\$\$
+where \\(\sigma\_{x\_{j}}\\) is the standard deviation of regressor
+\\(j\\). With `std_y = FALSE`, \\(\sigma\_{y}\\) is replaced by one; for
+a regressor left out of `std_x`, \\(\sigma\_{x\_{j}}\\) is replaced by
+one.
+
+Let \\(\boldsymbol{\theta}^{\ast}\\) collect the standardized slopes,
+\\(\sigma\_{y}\\), the standard deviations of the regressors, and the
+correlations of the regressors, and let \\(\boldsymbol{J} = \partial
+\operatorname{vech} \left( \boldsymbol{\Sigma} \right) / \partial
+\boldsymbol{\theta}^{\ast \prime}\\) be the Jacobian of the implied
+covariance matrix, evaluated at the estimates (Dudgeon, 2017). Under
+multivariate normality, \$\$\widehat{\operatorname{var}} \left(
+\hat{\boldsymbol{\theta}}^{\ast} \right) = \frac{1}{n} \left(
+\boldsymbol{J}^{\prime} \hat{\boldsymbol{\Gamma}}\_{\mathrm{N}}^{-1}
+\boldsymbol{J} \right)^{-1}, \quad
+\hat{\boldsymbol{\Gamma}}\_{\mathrm{N}} = 2 \boldsymbol{D}^{+} \left(
+\boldsymbol{S} \otimes \boldsymbol{S} \right) \boldsymbol{D}^{+
+\prime},\$\$ where \\(\boldsymbol{S}\\) is the sample covariance matrix
+and \\(\boldsymbol{D}^{+}\\) is the Moore-Penrose inverse of the
+duplication matrix. The block of the standardized slopes is returned.
+The confidence intervals are \\(\hat{\beta}^{\ast}\_{j} \pm t\_{1 -
+\alpha / 2, n - k} \widehat{\operatorname{se}} \left(
+\hat{\beta}^{\ast}\_{j} \right)\\), where \\(k\\) is the number of
+regression parameters, including the intercept.
+
 ## References
 
 Dudgeon, P. (2017). Some improvements in confidence intervals for
@@ -114,12 +146,19 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaN --------------------------------------------------------------------
 std <- BetaN(object = object)
-# Methods -------------------------------------------------------
+
+## Methods -----------------------------------------------------------------
 print(x = std)
 #> Call:
 #> BetaN(object = object)

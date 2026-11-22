@@ -101,6 +101,61 @@ following elements:
 
   Vector of standardized slopes.
 
+## Details
+
+Partition the covariance matrix of the outcome and the regressors as
+\$\$\boldsymbol{\Sigma} = \begin{pmatrix} \sigma^{2}\_{y} &
+\boldsymbol{\sigma}\_{yx}^{\prime} \\\\ \boldsymbol{\sigma}\_{yx} &
+\boldsymbol{\Sigma}\_{x} \end{pmatrix}.\$\$ The regression slopes and
+the standardized regression slopes are \$\$\boldsymbol{\beta} =
+\boldsymbol{\Sigma}\_{x}^{-1} \boldsymbol{\sigma}\_{yx}, \quad
+\beta^{\ast}\_{j} = \beta\_{j} \frac{\sigma\_{x\_{j}}}{\sigma\_{y}},\$\$
+where \\(\sigma\_{x\_{j}}\\) is the standard deviation of regressor
+\\(j\\). With `std_y = FALSE`, \\(\sigma\_{y}\\) is replaced by one; for
+a regressor left out of `std_x`, \\(\sigma\_{x\_{j}}\\) is replaced by
+one.
+
+Let \\(\boldsymbol{\theta}^{\ast}\\) collect the standardized slopes,
+\\(\sigma\_{y}\\), the standard deviations of the regressors, and the
+correlations of the regressors, and let \\(\boldsymbol{J} = \partial
+\operatorname{vech} \left( \boldsymbol{\Sigma} \right) / \partial
+\boldsymbol{\theta}^{\ast \prime}\\) be the Jacobian of the implied
+covariance matrix, evaluated at the estimates (Dudgeon, 2017). The
+heteroskedasticity-consistent sampling covariance matrix is the sandwich
+\$\$\widehat{\operatorname{var}} \left( \hat{\boldsymbol{\theta}}^{\ast}
+\right) = \frac{n}{\left( n - 1 \right)^{2}} \boldsymbol{B}^{-1}
+\boldsymbol{J}^{\prime} \hat{\boldsymbol{\Gamma}}\_{\mathrm{N}}^{-1}
+\hat{\boldsymbol{\Gamma}}\_{\mathrm{HC}}
+\hat{\boldsymbol{\Gamma}}\_{\mathrm{N}}^{-1} \boldsymbol{J}
+\boldsymbol{B}^{-1}, \quad \boldsymbol{B} = \boldsymbol{J}^{\prime}
+\hat{\boldsymbol{\Gamma}}\_{\mathrm{N}}^{-1} \boldsymbol{J},\$\$ where
+\\(\hat{\boldsymbol{\Gamma}}\_{\mathrm{N}}\\) is the normal-theory
+matrix (see
+[`BetaN()`](https://jeksterslab.github.io/betaSandwich/reference/BetaN.md))
+and \$\$\hat{\boldsymbol{\Gamma}}\_{\mathrm{HC}} = \frac{1}{n} \sum\_{i
+= 1}^{n} q\_{i} \boldsymbol{v}\_{i} \boldsymbol{v}\_{i}^{\prime}, \quad
+\boldsymbol{v}\_{i} = \operatorname{vech} \left( \boldsymbol{d}\_{i}
+\boldsymbol{d}\_{i}^{\prime} \right) - \operatorname{vech} \left(
+\boldsymbol{S} \right),\$\$ with \\(\boldsymbol{d}\_{i}\\) the deviation
+of observation \\(i\\) from the sample means. The weight \\(q\_{i}\\)
+depends on the leverage \\(h\_{i}\\), the number of regression
+parameters \\(k\\) (including the intercept), and `type`: \\(q\_{i} =
+1\\) (`"hc0"`, `"hc1"`), \\(\left( 1 - h\_{i} \right)^{-1}\\) (`"hc2"`),
+\\(\left( 1 - h\_{i} \right)^{-2}\\) (`"hc3"`), \\(\left( 1 - h\_{i}
+\right)^{-\delta\_{i}}\\) with \\(\delta\_{i} = \min \left( 4, n h\_{i}
+/ k \right)\\) (`"hc4"`), \\(\left( 1 - h\_{i}
+\right)^{-\lambda\_{i}}\\) with \\(\lambda\_{i} = \min \left( g\_{1}, n
+h\_{i} / k \right) + \min \left( g\_{2}, n h\_{i} / k \right)\\)
+(`"hc4m"`), and \\(\left( 1 - h\_{i} \right)^{-\gamma\_{i} / 2}\\) with
+\\(\gamma\_{i} = \min \left( n h\_{i} / k, \max \left( 4, n c \max\_{l}
+h\_{l} / k \right) \right)\\) (`"hc5"`, where \\(c\\) is the argument
+`k`). With `"hc1"`, the matrix is multiplied by \\(n / \left( n - k
+\right)\\). The block of the standardized slopes is returned. The
+confidence intervals are \\(\hat{\beta}^{\ast}\_{j} \pm t\_{1 - \alpha /
+2, n - k} \widehat{\operatorname{se}} \left( \hat{\beta}^{\ast}\_{j}
+\right)\\), where \\(k\\) is the number of regression parameters,
+including the intercept.
+
 ## References
 
 Dudgeon, P. (2017). Some improvements in confidence intervals for
@@ -132,12 +187,19 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaHC -------------------------------------------------------------------
 std <- BetaHC(object = object)
-# Methods -------------------------------------------------------
+
+## Methods -----------------------------------------------------------------
 print(x = std)
 #> Call:
 #> BetaHC(object = object)

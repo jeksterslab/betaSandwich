@@ -1,4 +1,4 @@
-# Squared Signed-Semipartial Confidence Intervals
+# Estimate Squared Semipartial Correlation Coefficients and the Corresponding Confidence Intervals From the Signed Intervals
 
 Square the signed interval as a set, with lower limit zero if it
 contains zero. This differs from an interval of squared draws. No draws
@@ -62,11 +62,19 @@ Ivan Jacob Agaloos Pesigan
 ## Examples
 
 ``` r
+# Data ---------------------------------------------------------------------
+data("nas1982", package = "betaSandwich")
+
+# Fit Model in lm ----------------------------------------------------------
 object <- stats::lm(
   formula = QUALITY ~ NARTIC + PCTGRT + PCTSUPP,
   data = nas1982
 )
+
+# BetaHC -------------------------------------------------------------------
 std <- BetaHC(object = object)
+
+# SCorSqSandwich -----------------------------------------------------------
 SCorSqSandwich(object = std)
 #>               est       lower     upper
 #> NARTIC  0.1858925 0.075919679 0.3442987

@@ -157,6 +157,66 @@ of the standardized slopes.</p></dd>
 
 </dl></div>
     <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Partition the covariance matrix of the outcome and the regressors as
+$$\boldsymbol{\Sigma} = \begin{pmatrix} \sigma^{2}_{y} &amp;
+\boldsymbol{\sigma}_{yx}^{\prime} \\ \boldsymbol{\sigma}_{yx} &amp;
+\boldsymbol{\Sigma}_{x} \end{pmatrix}.$$
+The regression slopes and the standardized regression slopes are
+$$\boldsymbol{\beta} = \boldsymbol{\Sigma}_{x}^{-1}
+\boldsymbol{\sigma}_{yx}, \quad \beta^{\ast}_{j} = \beta_{j}
+\frac{\sigma_{x_{j}}}{\sigma_{y}},$$
+where \(\sigma_{x_{j}}\) is the standard deviation of regressor \(j\).
+With <code>std_y = FALSE</code>, \(\sigma_{y}\) is replaced by one;
+for a regressor left out of <code>std_x</code>, \(\sigma_{x_{j}}\) is replaced by one.</p>
+<p>Let \(\boldsymbol{\theta}^{\ast}\) collect the standardized slopes,
+\(\sigma_{y}\), the standard deviations of the regressors,
+and the correlations of the regressors,
+and let \(\boldsymbol{J} = \partial \operatorname{vech} \left(
+\boldsymbol{\Sigma} \right) / \partial \boldsymbol{\theta}^{\ast \prime}\)
+be the Jacobian of the implied covariance matrix,
+evaluated at the estimates (Dudgeon, 2017).
+The heteroskedasticity-consistent sampling covariance matrix is the
+sandwich
+$$\widehat{\operatorname{var}} \left( \hat{\boldsymbol{\theta}}^{\ast}
+\right) = \frac{n}{\left( n - 1 \right)^{2}} \boldsymbol{B}^{-1}
+\boldsymbol{J}^{\prime} \hat{\boldsymbol{\Gamma}}_{\mathrm{N}}^{-1}
+\hat{\boldsymbol{\Gamma}}_{\mathrm{HC}}
+\hat{\boldsymbol{\Gamma}}_{\mathrm{N}}^{-1} \boldsymbol{J}
+\boldsymbol{B}^{-1}, \quad \boldsymbol{B} = \boldsymbol{J}^{\prime}
+\hat{\boldsymbol{\Gamma}}_{\mathrm{N}}^{-1} \boldsymbol{J},$$
+where \(\hat{\boldsymbol{\Gamma}}_{\mathrm{N}}\) is the normal-theory
+matrix (see <code><a href="BetaN.html">BetaN()</a></code>) and
+$$\hat{\boldsymbol{\Gamma}}_{\mathrm{HC}} = \frac{1}{n}
+\sum_{i = 1}^{n} q_{i} \boldsymbol{v}_{i} \boldsymbol{v}_{i}^{\prime},
+\quad \boldsymbol{v}_{i} = \operatorname{vech} \left( \boldsymbol{d}_{i}
+\boldsymbol{d}_{i}^{\prime} \right) - \operatorname{vech} \left(
+\boldsymbol{S} \right),$$
+with \(\boldsymbol{d}_{i}\) the deviation of observation \(i\) from the
+sample means.
+The weight \(q_{i}\) depends on the leverage \(h_{i}\),
+the number of regression parameters \(k\) (including the intercept),
+and <code>type</code>:
+\(q_{i} = 1\) (<code>"hc0"</code>, <code>"hc1"</code>),
+\(\left( 1 - h_{i} \right)^{-1}\) (<code>"hc2"</code>),
+\(\left( 1 - h_{i} \right)^{-2}\) (<code>"hc3"</code>),
+\(\left( 1 - h_{i} \right)^{-\delta_{i}}\) with
+\(\delta_{i} = \min \left( 4, n h_{i} / k \right)\) (<code>"hc4"</code>),
+\(\left( 1 - h_{i} \right)^{-\lambda_{i}}\) with
+\(\lambda_{i} = \min \left( g_{1}, n h_{i} / k \right) + \min \left(
+g_{2}, n h_{i} / k \right)\) (<code>"hc4m"</code>),
+and \(\left( 1 - h_{i} \right)^{-\gamma_{i} / 2}\) with
+\(\gamma_{i} = \min \left( n h_{i} / k, \max \left( 4, n c \max_{l}
+h_{l} / k \right) \right)\) (<code>"hc5"</code>, where \(c\) is the argument <code>k</code>).
+With <code>"hc1"</code>, the matrix is multiplied by \(n / \left( n - k \right)\).
+The block of the standardized slopes is returned.
+The confidence intervals are
+\(\hat{\beta}^{\ast}_{j} \pm t_{1 - \alpha / 2, n - k}
+\widehat{\operatorname{se}} \left( \hat{\beta}^{\ast}_{j} \right)\),
+where \(k\) is the number of regression parameters,
+including the intercept.</p>
+    </div>
+    <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Dudgeon, P. (2017).
 Some improvements in confidence intervals
@@ -189,12 +249,19 @@ Confidence intervals for standardized regression coefficients in R.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Data ---------------------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"nas1982"</span>, package <span class="op">=</span> <span class="st">"betaSandwich"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Fit Model in lm ----------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>,</span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="va">nas1982</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># BetaHC -------------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu">BetaHC</span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># Methods -------------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Methods -----------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BetaHC(object = object)</span>

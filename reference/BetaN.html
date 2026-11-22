@@ -125,6 +125,39 @@ is different from <code><a href="https://jeksterslab.github.io/betaDelta//refere
 the results are numerically equivalent.
 <code>BetaN()</code> assumes multivariate normality.
 <code><a href="BetaHC.html">BetaHC()</a></code> is recommended in most situations.</p>
+<p>Partition the covariance matrix of the outcome and the regressors as
+$$\boldsymbol{\Sigma} = \begin{pmatrix} \sigma^{2}_{y} &amp;
+\boldsymbol{\sigma}_{yx}^{\prime} \\ \boldsymbol{\sigma}_{yx} &amp;
+\boldsymbol{\Sigma}_{x} \end{pmatrix}.$$
+The regression slopes and the standardized regression slopes are
+$$\boldsymbol{\beta} = \boldsymbol{\Sigma}_{x}^{-1}
+\boldsymbol{\sigma}_{yx}, \quad \beta^{\ast}_{j} = \beta_{j}
+\frac{\sigma_{x_{j}}}{\sigma_{y}},$$
+where \(\sigma_{x_{j}}\) is the standard deviation of regressor \(j\).
+With <code>std_y = FALSE</code>, \(\sigma_{y}\) is replaced by one;
+for a regressor left out of <code>std_x</code>, \(\sigma_{x_{j}}\) is replaced by one.</p>
+<p>Let \(\boldsymbol{\theta}^{\ast}\) collect the standardized slopes,
+\(\sigma_{y}\), the standard deviations of the regressors,
+and the correlations of the regressors,
+and let \(\boldsymbol{J} = \partial \operatorname{vech} \left(
+\boldsymbol{\Sigma} \right) / \partial \boldsymbol{\theta}^{\ast \prime}\)
+be the Jacobian of the implied covariance matrix,
+evaluated at the estimates (Dudgeon, 2017).
+Under multivariate normality,
+$$\widehat{\operatorname{var}} \left( \hat{\boldsymbol{\theta}}^{\ast}
+\right) = \frac{1}{n} \left( \boldsymbol{J}^{\prime}
+\hat{\boldsymbol{\Gamma}}_{\mathrm{N}}^{-1} \boldsymbol{J} \right)^{-1},
+\quad \hat{\boldsymbol{\Gamma}}_{\mathrm{N}} = 2 \boldsymbol{D}^{+} \left(
+\boldsymbol{S} \otimes \boldsymbol{S} \right) \boldsymbol{D}^{+ \prime},$$
+where \(\boldsymbol{S}\) is the sample covariance matrix and
+\(\boldsymbol{D}^{+}\) is the Moore-Penrose inverse of the duplication
+matrix.
+The block of the standardized slopes is returned.
+The confidence intervals are
+\(\hat{\beta}^{\ast}_{j} \pm t_{1 - \alpha / 2, n - k}
+\widehat{\operatorname{se}} \left( \hat{\beta}^{\ast}_{j} \right)\),
+where \(k\) is the number of regression parameters,
+including the intercept.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -159,12 +192,19 @@ Confidence intervals for standardized regression coefficients in R.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Data ---------------------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"nas1982"</span>, package <span class="op">=</span> <span class="st">"betaSandwich"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Fit Model in lm ----------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="va">object</span> <span class="op">&lt;-</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  formula <span class="op">=</span> <span class="va">QUALITY</span> <span class="op">~</span> <span class="va">NARTIC</span> <span class="op">+</span> <span class="va">PCTGRT</span> <span class="op">+</span> <span class="va">PCTSUPP</span>,</span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="va">nas1982</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># BetaN --------------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">std</span> <span class="op">&lt;-</span> <span class="fu">BetaN</span><span class="op">(</span>object <span class="op">=</span> <span class="va">object</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># Methods -------------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Methods -----------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">std</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> BetaN(object = object)</span>
