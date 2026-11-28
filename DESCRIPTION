@@ -30,7 +30,7 @@ Depends: R (>= 3.5.0)
 Suggests: knitr, rmarkdown, testthat
 Config/roxygen2/version: 8.1.1.9000
 NeedsCompilation: no
-Packaged: 2026-11-28 05:55:13 UTC; root
+Packaged: 2026-11-28 18:35:17 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0003-4818-8420>)
 Maintainer: Ivan Jacob Agaloos Pesigan <r.jeksterslab@gmail.com>
