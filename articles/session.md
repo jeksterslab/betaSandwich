@@ -99,7 +99,7 @@
 `#> crayon            "crayon"            "1.5.3"     `\
 `#> credentials       "credentials"       "2.0.3"     `\
 `#> crosstalk         "crosstalk"         "1.2.2"     `\
-`#> cTMed             "cTMed"             "1.0.10"    `\
+`#> cTMed             "cTMed"             "1.0.11"    `\
 `#> ctsem             "ctsem"             "3.11.1"    `\
 `#> curl              "curl"              "8.2.0"     `\
 `#> data.table        "data.table"        "1.18.6.1"  `\
@@ -176,7 +176,7 @@
 `#> gsubfn            "gsubfn"            "0.7"       `\
 `#> gtable            "gtable"            "0.3.6"     `\
 `#> gtools            "gtools"            "3.9.5"     `\
-`#> hardhat           "hardhat"           "1.4.3"     `\
+`#> hardhat           "hardhat"           "1.4.4"     `\
 `#> haven             "haven"             "2.5.5"     `\
 `#> hdrcde            "hdrcde"            "3.5.0"     `\
 `#> here              "here"              "1.0.2"     `\
@@ -263,7 +263,7 @@
 `#> pan               "pan"               "2.0"       `\
 `#> pander            "pander"            "0.6.6"     `\
 `#> parallelly        "parallelly"        "1.50.0"    `\
-`#> parsnip           "parsnip"           "1.6.1"     `\
+`#> parsnip           "parsnip"           "1.7.0"     `\
 `#> patchwork         "patchwork"         "1.3.2"     `\
 `#> pbapply           "pbapply"           "1.7-5"     `\
 `#> pbivnorm          "pbivnorm"          "0.6.0"     `\
@@ -277,7 +277,7 @@
 `#> pkgload           "pkgload"           "1.5.3"     `\
 `#> plyr              "plyr"              "1.8.9"     `\
 `#> png               "png"               "0.1-9"     `\
-`#> posterior         "posterior"         "1.8.0"     `\
+`#> posterior         "posterior"         "1.8.1"     `\
 `#> pracma            "pracma"            "2.4.6"     `\
 `#> praise            "praise"            "1.0.0"     `\
 `#> prettyunits       "prettyunits"       "1.2.0"     `\
@@ -355,7 +355,7 @@
 `#> sandwich          "sandwich"          "3.1-3"     `\
 `#> sass              "sass"              "0.5.0"     `\
 `#> scales            "scales"            "1.4.0"     `\
-`#> selectr           "selectr"           "0.8-0"     `\
+`#> selectr           "selectr"           "0.8-1"     `\
 `#> semlbci           "semlbci"           "0.12.1"    `\
 `#> semmcci           "semmcci"           "1.1.7"     `\
 `#> semPlot           "semPlot"           "1.2.0"     `\
@@ -469,7 +469,7 @@
     #> Socket(s):                               1
     #> Stepping:                                0
     #> Frequency boost:                         enabled
-    #> CPU(s) scaling MHz:                      60%
+    #> CPU(s) scaling MHz:                      55%
     #> CPU max MHz:                             5060.9761
     #> CPU min MHz:                             1219.5129
     #> BogoMIPS:                                4990.62
@@ -504,6 +504,6 @@
 ## Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            44Gi       2.8Gi        29Gi        21Mi        13Gi        41Gi
+    #> Mem:            44Gi       2.9Gi        28Gi        21Mi        13Gi        41Gi
     #> Swap:           22Gi          0B        22Gi
-    #> Total:          66Gi       2.8Gi        51Gi
+    #> Total:          66Gi       2.9Gi        51Gi
