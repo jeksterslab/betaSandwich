@@ -1,12 +1,12 @@
 # betaSandwich: Session
 
 \
-[`library`](https://rdrr.io/r/base/library.html)`(`[`betaSandwich`](https://github.com/jeksterslab/betaSandwich)`)`
+[`library`](https://rdrr.io/r/base/library.html)`(``package ``=`` ``"betaSandwich"``)`
 
 ## Session
 
 \
-[`sessionInfo`](https://rdrr.io/r/utils/sessionInfo.html)`(``)`\
+`utils``::`[`sessionInfo`](https://rdrr.io/r/utils/sessionInfo.html)`(``)`\
 `#> R version 4.6.2 (2026-10-29)`\
 `#> Platform: x86_64-pc-linux-gnu`\
 `#> Running under: Ubuntu 26.04.1 LTS`\
@@ -34,20 +34,20 @@
 `#> `\
 `#> loaded via a namespace (and not attached):`\
 `#> [1] compiler_4.6.2  cli_3.6.6.9000  tools_4.6.2     otel_0.3.0     `\
-`#> [5] rProject_0.0.76 knitr_1.52      xfun_0.62       rlang_1.3.0    `\
+`#> [5] rProject_0.0.81 knitr_1.52      xfun_0.62       rlang_1.3.0    `\
 `#> [9] evaluate_1.0.5`
 
 ## Packages
 
 \
-[`installed.packages`](https://rdrr.io/r/utils/installed.packages.html)`(``)``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"Package"``, ``"Version"``)``]`\
+`utils``::`[`installed.packages`](https://rdrr.io/r/utils/installed.packages.html)`(``)``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"Package"``, ``"Version"``)``]`\
 `#>                   Package             Version     `\
 `#> betaSandwich      "betaSandwich"      "1.1.0"     `\
-`#> rProject          "rProject"          "0.0.76"    `\
+`#> rProject          "rProject"          "0.0.81"    `\
 `#> abind             "abind"             "1.4-8"     `\
 `#> Amelia            "Amelia"            "1.8.3"     `\
-`#> arm               "arm"               "1.15-3"    `\
-`#> arrow             "arrow"             "26.0.1"    `\
+`#> arm               "arm"               "1.15-4"    `\
+`#> arrow             "arrow"             "26.0.1.1"  `\
 `#> ash               "ash"               "1.0-15"    `\
 `#> AsioHeaders       "AsioHeaders"       "1.30.2-1"  `\
 `#> askpass           "askpass"           "1.2.1"     `\
@@ -57,15 +57,15 @@
 `#> base64enc         "base64enc"         "0.1-6"     `\
 `#> bench             "bench"             "1.1.4"     `\
 `#> betaDelta         "betaDelta"         "1.1.0"     `\
-`#> betaLB            "betaLB"            "0.0.0.9002"`\
-`#> betaMC            "betaMC"            "1.3.4.9001"`\
+`#> betaLB            "betaLB"            "0.1.0"     `\
+`#> betaMC            "betaMC"            "1.3.5"     `\
 `#> betaNB            "betaNB"            "1.1.0"     `\
 `#> betaSandwich      "betaSandwich"      "1.1.0"     `\
 `#> BH                "BH"                "1.90.0-1"  `\
 `#> bibtex            "bibtex"            "0.5.3"     `\
-`#> biocmake          "biocmake"          "1.4.0"     `\
+`#> biocmake          "biocmake"          "1.6.0"     `\
 `#> BiocManager       "BiocManager"       "1.30.27"   `\
-`#> BiocVersion       "BiocVersion"       "3.23.1"    `\
+`#> BiocVersion       "BiocVersion"       "3.24.0"    `\
 `#> bit               "bit"               "4.6.0"     `\
 `#> bit64             "bit64"             "4.8.6"     `\
 `#> blob              "blob"              "1.3.0"     `\
@@ -101,7 +101,7 @@
 `#> crosstalk         "crosstalk"         "1.2.2"     `\
 `#> cTMed             "cTMed"             "1.0.10"    `\
 `#> ctsem             "ctsem"             "3.11.1"    `\
-`#> curl              "curl"              "8.1.0"     `\
+`#> curl              "curl"              "8.2.0"     `\
 `#> data.table        "data.table"        "1.18.6.1"  `\
 `#> DBI               "DBI"               "1.3.0"     `\
 `#> dbplyr            "dbplyr"            "2.6.0"     `\
@@ -114,7 +114,7 @@
 `#> DiceDesign        "DiceDesign"        "1.10"      `\
 `#> diffobj           "diffobj"           "0.3.10"    `\
 `#> digest            "digest"            "0.6.39"    `\
-`#> dir.expiry        "dir.expiry"        "1.20.0"    `\
+`#> dir.expiry        "dir.expiry"        "1.22.0"    `\
 `#> distributional    "distributional"    "0.9.0"     `\
 `#> distro            "distro"            "0.1.1"     `\
 `#> doBy              "doBy"              "4.7.2"     `\
@@ -123,7 +123,7 @@
 `#> dplyr             "dplyr"             "1.2.1"     `\
 `#> DT                "DT"                "0.34.0"    `\
 `#> dtplyr            "dtplyr"            "1.3.3"     `\
-`#> duckdb            "duckdb"            "2.0.0"     `\
+`#> duckdb            "duckdb"            "2.0.1"     `\
 `#> dynr              "dynr"              "0.1.16-112"`\
 `#> dynTools          "dynTools"          "0.0.0.9000"`\
 `#> dynUtils          "dynUtils"          "0.9.2"     `\
@@ -232,7 +232,7 @@
 `#> markdown          "markdown"          "2.1"       `\
 `#> MatrixModels      "MatrixModels"      "0.5-4"     `\
 `#> matrixStats       "matrixStats"       "1.5.0"     `\
-`#> mclust            "mclust"            "6.1.3"     `\
+`#> mclust            "mclust"            "6.1.4"     `\
 `#> memoise           "memoise"           "2.0.1"     `\
 `#> metaDyn           "metaDyn"           "1.0.4"     `\
 `#> metaSEM           "metaSEM"           "2.0"       `\
@@ -249,14 +249,14 @@
 `#> modeldata         "modeldata"         "1.6.0"     `\
 `#> modelenv          "modelenv"          "0.2.0"     `\
 `#> modelr            "modelr"            "0.1.11"    `\
-`#> MplusAutomation   "MplusAutomation"   "1.3"       `\
+`#> MplusAutomation   "MplusAutomation"   "1.4"       `\
 `#> multicool         "multicool"         "1.0.2"     `\
-`#> mvtnorm           "mvtnorm"           "1.4-2"     `\
+`#> mvtnorm           "mvtnorm"           "1.5-0"     `\
 `#> nloptr            "nloptr"            "2.2.1"     `\
 `#> numDeriv          "numDeriv"          "2016.8-1.1"`\
 `#> nycflights13      "nycflights13"      "1.0.2"     `\
-`#> OpenMx            "OpenMx"            "2.22.11"   `\
-`#> openssl           "openssl"           "2.5.0"     `\
+`#> OpenMx            "OpenMx"            "2.23.1"    `\
+`#> openssl           "openssl"           "2.6.0"     `\
 `#> ordinal           "ordinal"           "2026.7-26" `\
 `#> otel              "otel"              "0.3.0"     `\
 `#> pak               "pak"               "0.11.2"    `\
@@ -277,12 +277,12 @@
 `#> pkgload           "pkgload"           "1.5.3"     `\
 `#> plyr              "plyr"              "1.8.9"     `\
 `#> png               "png"               "0.1-9"     `\
-`#> posterior         "posterior"         "1.7.0"     `\
+`#> posterior         "posterior"         "1.8.0"     `\
 `#> pracma            "pracma"            "2.4.6"     `\
 `#> praise            "praise"            "1.0.0"     `\
 `#> prettyunits       "prettyunits"       "1.2.0"     `\
 `#> printr            "printr"            "0.3"       `\
-`#> processx          "processx"          "3.9.0"     `\
+`#> processx          "processx"          "3.10.0"    `\
 `#> prodlim           "prodlim"           "2026.03.11"`\
 `#> profmem           "profmem"           "0.7.0"     `\
 `#> profvis           "profvis"           "0.4.0"     `\
@@ -313,7 +313,7 @@
 `#> rcmdcheck         "rcmdcheck"         "1.4.0"     `\
 `#> RColorBrewer      "RColorBrewer"      "1.1-3"     `\
 `#> Rcpp              "Rcpp"              "1.1.2"     `\
-`#> RcppArmadillo     "RcppArmadillo"     "15.6.2-1"  `\
+`#> RcppArmadillo     "RcppArmadillo"     "15.8.0-1"  `\
 `#> RcppEigen         "RcppEigen"         "0.3.4.0.2" `\
 `#> RcppParallel      "RcppParallel"      "6.2.1"     `\
 `#> RcppTOML          "RcppTOML"          "0.2.3"     `\
@@ -331,18 +331,18 @@
 `#> reshape2          "reshape2"          "1.4.5"     `\
 `#> reticulate        "reticulate"        "1.47.0"    `\
 `#> rex               "rex"               "1.2.2"     `\
-`#> rhdf5             "rhdf5"             "2.56.1"    `\
-`#> rhdf5filters      "rhdf5filters"      "1.24.1"    `\
-`#> Rhdf5lib          "Rhdf5lib"          "2.0.0"     `\
+`#> rhdf5             "rhdf5"             "2.58.0"    `\
+`#> rhdf5filters      "rhdf5filters"      "1.26.0"    `\
+`#> Rhdf5lib          "Rhdf5lib"          "2.2.0"     `\
 `#> rhub              "rhub"              "2.0.1"     `\
-`#> rjags             "rjags"             "4-18"      `\
+`#> rjags             "rjags"             "5-5"       `\
 `#> rlang             "rlang"             "1.3.0"     `\
 `#> RMariaDB          "RMariaDB"          "1.3.5"     `\
 `#> rmarkdown         "rmarkdown"         "2.32"      `\
 `#> roxygen2          "roxygen2"          "8.1.1.9000"`\
 `#> rpf               "rpf"               "1.0.15"    `\
 `#> RPostgres         "RPostgres"         "1.4.10"    `\
-`#> rProject          "rProject"          "0.0.75"    `\
+`#> rProject          "rProject"          "0.0.81"    `\
 `#> rprojroot         "rprojroot"         "2.1.1"     `\
 `#> rsample           "rsample"           "1.3.2"     `\
 `#> RSQLite           "RSQLite"           "3.53.3"    `\
@@ -351,18 +351,18 @@
 `#> rstudioapi        "rstudioapi"        "0.19.0"    `\
 `#> rversions         "rversions"         "3.0.0"     `\
 `#> rvest             "rvest"             "1.0.5"     `\
-`#> S7                "S7"                "0.2.2"     `\
+`#> S7                "S7"                "1.0.0"     `\
 `#> sandwich          "sandwich"          "3.1-3"     `\
-`#> sass              "sass"              "0.4.10"    `\
+`#> sass              "sass"              "0.5.0"     `\
 `#> scales            "scales"            "1.4.0"     `\
 `#> selectr           "selectr"           "0.8-0"     `\
 `#> semlbci           "semlbci"           "0.12.1"    `\
-`#> semmcci           "semmcci"           "1.1.6.9000"`\
+`#> semmcci           "semmcci"           "1.1.7"     `\
 `#> semPlot           "semPlot"           "1.2.0"     `\
 `#> sessioninfo       "sessioninfo"       "1.2.4"     `\
 `#> sfd               "sfd"               "0.1.0"     `\
 `#> shape             "shape"             "1.4.6.1"   `\
-`#> shiny             "shiny"             "1.14.0"    `\
+`#> shiny             "shiny"             "1.15.0"    `\
 `#> simStateSpace     "simStateSpace"     "1.2.17"    `\
 `#> slider            "slider"            "0.3.3"     `\
 `#> sourcetools       "sourcetools"       "0.1.7-2"   `\
@@ -377,12 +377,12 @@
 `#> styler            "styler"            "1.11.0"    `\
 `#> symSEM            "symSEM"            "0.4"       `\
 `#> sys               "sys"               "3.4.3"     `\
-`#> systemfonts       "systemfonts"       "1.3.3"     `\
+`#> systemfonts       "systemfonts"       "1.3.4"     `\
 `#> tailor            "tailor"            "0.1.0"     `\
 `#> tensorA           "tensorA"           "0.36.2.1"  `\
 `#> testthat          "testthat"          "3.3.2"     `\
 `#> texreg            "texreg"            "1.40"      `\
-`#> textshaping       "textshaping"       "1.0.5"     `\
+`#> textshaping       "textshaping"       "1.1.0"     `\
 `#> tibble            "tibble"            "3.3.1"     `\
 `#> tidymodels        "tidymodels"        "1.5.0"     `\
 `#> tidyr             "tidyr"             "1.3.2"     `\
@@ -390,7 +390,7 @@
 `#> tidyverse         "tidyverse"         "2.0.0"     `\
 `#> timechange        "timechange"        "0.4.0"     `\
 `#> timeDate          "timeDate"          "4052.112"  `\
-`#> tinytex           "tinytex"           "0.61.5"    `\
+`#> tinytex           "tinytex"           "0.62.1"    `\
 `#> tune              "tune"              "2.1.0"     `\
 `#> tzdb              "tzdb"              "0.5.0"     `\
 `#> ucminf            "ucminf"            "1.2.3"     `\
@@ -400,13 +400,14 @@
 `#> usethis           "usethis"           "3.2.2"     `\
 `#> utf8              "utf8"              "1.2.6"     `\
 `#> uuid              "uuid"              "1.2-2"     `\
-`#> V8                "V8"                "8.2.1"     `\
+`#> V8                "V8"                "8.3.0"     `\
 `#> vars              "vars"              "1.6-1"     `\
 `#> vctrs             "vctrs"             "0.7.3"     `\
 `#> viridisLite       "viridisLite"       "0.4.3"     `\
 `#> vroom             "vroom"             "1.7.1"     `\
 `#> waldo             "waldo"             "0.6.2"     `\
 `#> warp              "warp"              "0.2.3"     `\
+`#> watcher           "watcher"           "0.2.2"     `\
 `#> whisker           "whisker"           "0.4.1"     `\
 `#> whoami            "whoami"            "1.3.0"     `\
 `#> withr             "withr"             "3.0.3"     `\
@@ -418,7 +419,7 @@
 `#> xopen             "xopen"             "1.0.1"     `\
 `#> xtable            "xtable"            "1.8-8"     `\
 `#> yaml              "yaml"              "2.3.12"    `\
-`#> yardstick         "yardstick"         "1.4.0"     `\
+`#> yardstick         "yardstick"         "1.5.0"     `\
 `#> zip               "zip"               "3.0.2"     `\
 `#> zoo               "zoo"               "1.9-1"     `\
 `#> base              "base"              "4.6.2"     `\
@@ -468,7 +469,7 @@
     #> Socket(s):                               1
     #> Stepping:                                0
     #> Frequency boost:                         enabled
-    #> CPU(s) scaling MHz:                      57%
+    #> CPU(s) scaling MHz:                      63%
     #> CPU max MHz:                             5060.9761
     #> CPU min MHz:                             1219.5129
     #> BogoMIPS:                                4990.62
@@ -503,6 +504,6 @@
 ## Memory
 
     #>                total        used        free      shared  buff/cache   available
-    #> Mem:            44Gi       2.5Gi        40Gi        13Mi       2.5Gi        41Gi
+    #> Mem:            44Gi       2.9Gi        29Gi        21Mi        12Gi        41Gi
     #> Swap:           22Gi          0B        22Gi
-    #> Total:          66Gi       2.5Gi        62Gi
+    #> Total:          66Gi       2.9Gi        51Gi
